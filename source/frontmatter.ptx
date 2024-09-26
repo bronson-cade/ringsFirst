@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This frontmatter division will contain all content before the -->
+<!-- first chapter. Fill in and comment/uncomment to see how this -->
+<!-- works. -->
+
+<frontmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="frontmatter">
+  <titlepage>
+    <author>
+      <personname>Bronson Lim</personname>
+      <department>Mathematics Department</department>
+      <institution>California State University San Bernardino</institution>
+    </author>
+    <date>
+      <today />
+    </date>
+  </titlepage>
+
+  <colophon>
+    <p>
+      This textbook aims to provide a rings first introduction to abstract algebra. At my institution, 
+      we teach ring and field theory before group theory. There are great inquiry based books available 
+      that follow this path; however, there are not many options for more traditional courses. This textbook 
+      is an attempt to provide such an option. 
+    </p>
+
+    <p>
+      I always enjoy telling my students the parable of the <url href="https://en.wikipedia.org/wiki/Blind_men_and_an_elephant">blind people and the elephant</url>. 
+      In these notes, I attempt to describe my part of the elephant. It is; however, only my part of the elephant. If you feel like something could be said differently or 
+      better please reach out.
+    </p>
+
+    <p>
+      This work is adapted from <url href="https://ringswithinquiry.org/">Rings with Inquiry</url>.
+      However, it is not an inquiry based learning textbook. Additionally, any mistakes 
+      are my own.
+    </p>
+
+    <website>
+      <url href="https://pretextbook.org">My Website</url>
+    </website>
+
+    <copyright>
+      <year>2024<ndash />2030</year>
+      <holder>Bronson Lim</holder>
+      <shortlicense> This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <url href="http://creativecommons.org/licenses/by-sa/4.0/" visual="creativecommons.org/licenses/by-sa/4.0"> CreativeCommons.org</url>
+      </shortlicense>
+    </copyright>
+  </colophon>
+</frontmatter>
+

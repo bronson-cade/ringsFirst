@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<chapter xml:id="ch1-integers" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>The Integers</title>
+
+  <introduction>
+    <p> 
+      As children we start exploring the properties and structure of the positive integers as soon as we learn to count
+      and we extend our understanding throughout our schooling as we learn about new operations and collections of
+      numbers. We begin our journey into abstract algebra with an overview of some familiar (and some possibly
+      unfamiliar) properties of the integers that are relevant to our course of inquiry. With this foundation set, we
+      will see in later chapters just how far we can extend these properties in more abstract setting.
+    </p>
+  </introduction>
+
+  <!-- include sections -->
+  <xi:include href="sec-induction-well-ordering.ptx" />
+  <xi:include href="sec-divisibility-gcd.ptx" />
+  <xi:include href="sec-primes-factorization.ptx" />
+  <xi:include href="sec-integers-modulo-m.ptx" />
+
+
+</chapter>
