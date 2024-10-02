@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_homomorphisms" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Homomorphisms</title>
+    
+  <objectives xml:id="obj_homomorphisms">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      <li>What is a ring homomorphism?</li>
+      <li>What are some examples of ring homomorphisms?</li>
+    </ul>
+  </objectives>
+   
+  <introduction>
+    <p>
+      Central to modern mathematics is the notion of <em>function</em><fn>This section assumes a familiarity with the idea of function from a set-theoretic point of view, as well as the concepts of injective (one-to-one), surjective (onto), and bijective functions (one-to-one correspondences).</fn>.
+      Functions arise in all areas of mathematics, each subdiscipline concerned with certain types of functions.
+      In algebra, our concern is with <em>operation-preserving</em> functions, such as the linear transformations <m>L : V\to W</m> of vector spaces you have seen in a course in linear algebra.
+      Those linear transformations had the properties that <m>L(\mathbf{v}+\mathbf{u}) = L(\mathbf{v})+L(\mathbf{u})</m> (addition is preserved) and <m>L(c\mathbf{u}) = c L(\mathbf{u})</m> (scalar multiplication is preserved).
+    </p>
+    <p>
+    We find something similar at work in the study of homomorphisms of rings, which we define to be functions that preserve both addition and multiplication.
+    </p>
+  </introduction>
+
+  
+  <definition xml:id="def_ringHomomorphism">
+    <idx><h>ring homomorphism</h></idx>
+    <idx><h>monomorphism</h></idx>
+    <idx><h>epimorphism</h></idx>
+    <idx><h>isomorphism</h></idx>
+    <idx><h>automorphism</h></idx>
+    <statement>
+      <p>
+        Let <m>R</m> and <m>S</m> be rings. A function <m>\varphi : R\to S</m> is called a
+        <term>ring homomorphism</term>
+        if it preserves addition, multiplication, and sends the identity of <m>R</m> to the identity of <m>S</m>.
+        That is, for all <m>x,y\in R</m>:
+        <ul>
+          <li><m>\varphi(x+y) = \varphi(x) + \varphi(y)</m>,</li>
+          <li><m>\varphi(xy) = \varphi(x)\varphi(y)</m>, and</li>
+          <li><m>\varphi(1_R) = 1_S</m>.</li>
+        </ul>
+        If <m>\varphi</m> is injective (one-to-one), we say that <m>\varphi</m> is a <term>monomorphism</term>. If <m>\varphi</m> is surjective (onto), 
+        we say that <m>\varphi</m> is an <term>epimorphism</term>. If <m>\varphi</m> is a bijection (both injective and surjective), we say that <m>\p</m> is an <term>isomorphism</term>
+        and write <m>R\cong S</m>.
+        If <m>\varphi : R\to R</m> is an isomorphism, we say <m>\varphi</m> is an <term>automorphism</term> of <m>R</m>.
+      </p>
+    </statement>
+  </definition>
+  
+  <p>
+    Our first job when glimpsing a new concept is to collect a stock of examples.
+  </p>
+  
+  <exploration xml:id="expl-homomorphism-examples">
+    <statement>
+      <p>
+          Determine whether the following functions are homomorphisms, monomorphisms, epimorphisms, isomorphisms, automorphisms, or none of these. Note that <m>R</m> denotes an arbitrary ring and <m>F</m> a field.
+      </p>
+      <ol>
+          <li><m>\varphi\colon R\to R</m> defined by <m>\varphi(x)=x</m></li>
+          <li><m>\psi\colon R\to R</m> defined by <m>\psi(x)=-x</m></li>
+          <li><m>\alpha\colon \Z\to \Z</m> defined by <m>\alpha(x)=5x</m></li>
+          
+          <li><m>Fr\colon \Z_2[x]\to \Z_2[x]</m> defined by <m>Fr(p) = p^2</m></li>
+          <li><m>\iota\colon \mathbb{C}\to \mathbb{C}</m> defined by <m>\iota(a+bi)=a-bi</m>, where <m>a,b\in \R, i^2 = -1</m></li>
+          <li><m>\beta\colon\Z\to \Z_{5}</m> defined by <m>\beta(x) = \overline{x}</m></li>
+          <li><m>\epsilon_r\colon F[x] \to F</m> defined by <m>\epsilon_r(p(x)) = p(r)</m>, where if <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m>, <m>p(r)</m> is the expression obtained by <q>plugging <m>r</m> into <m>p</m></q>: <m>p(r) = a_0 + a_1 r + \cdots + a_n r^n</m> (this is known as the <m>r</m>-evaluation map)</li>
+          <li><m>\xi\colon \Z_5 \to \Z_{10}</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m></li>
+      </ol>
+
+    </statement>
+    <solution>
+      <ol>
+        <li><m>\varphi\colon R\to R</m> defined by <m>\varphi(x)=x</m> is called the <term>identity mapping</term>. We in particular have: 
+          <m>\varphi(1_R) = 1_R</m>, <m>\varphi(x+y) = x+y = \varphi(x)+\varphi(y)</m>, and <m>\varphi(xy)=xy=\varphi(x)\varphi(y).</m>
+          The identity mapping satisfies the criteria for being a ring homomorphism. It is an automorphism.
+        </li>
+        <li>
+          <m>\psi\colon R\to R</m> defined by <m>\psi(x)=-x</m> is the negation mapping. Although it is true that
+          <me>\psi(x+y) = -(x+y) = -x+(-y)=\psi(x)+\psi(y)</me>
+          it fails the other two properties of a ring homorphism in general (sometimes not though!). Namely, for a general ring <m>1_R\neq -1_R</m> so that <m>\psi(1_R) = -1_R\neq 1_R</m> and also <m>\psi(xy) = -xy</m> but <m>\psi(x)\psi(y) = (-x)(-y) = xy</m>. In general, <m>xy\neq -xy</m> so <m>\psi</m> is not compatible with multiplication or unity. However, sometimes <m>-a = a</m> is true for every element of the ring, particularly Boolean rings. Examples include <m>\Z/2, \Z/2[x]</m>.
+        </li>
+        <li>
+          <m>\alpha\colon \Z\to \Z</m> defined by <m>\alpha(x)=5x</m>, or the multiplication by <m>5</m> map. The map <m>\alpha</m> does not preserve the unity nor does it preserve multiplication. Check! It is not a ring homomorphism.
+        </li>
+        <li>
+          <m>Fr\colon \Z_2[x]\to \Z_2[x]</m> defined by <m>Fr(p) = p^2</m> is sometimes called the Frobenius mapping. It is in fact a ring homomorphism in this case. For the unity and multiplicative compatibility we have 
+          <m>Fr(1) = 1^2 = 1</m> and <m>Fr(pq) = (pq)^2 = p^2q^2=Fr(p)Fr(q)</m>. For compatibility with addition we remind the reader that <m>2\equiv_20</m>:
+          <me>Fr(p+q) = (p+q)^2 = p^2+2pq+q^2 = p^2+q^2 = Fr(p)+Fr(q).</me>
+          It is not an automorphism; however, it is a homomorphism. Homomorphisms from a ring to itself are called <term>endomorphisms</term>.
+        </li>
+        <li>
+          <m>\iota\colon \mathbb{C}\to \mathbb{C}</m> defined by <m>\iota(a+bi)=a-bi</m>, where <m>a,b\in \R, i^2 = -1</m> TBD
+        </li>
+        <li>
+          <m>\beta\colon\Z\to \Z_{5}</m> defined by <m>\beta(x) = \overline{x}</m> TBD
+        </li>
+        <li>
+          <m>\epsilon_r\colon F[x] \to F</m> defined by <m>\epsilon_r(p(x)) = p(r)</m>, where if <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m>, <m>p(r)</m> is the expression obtained by <q>plugging <m>r</m> into <m>p</m></q>: <m>p(r) = a_0 + a_1 r + \cdots + a_n r^n</m> (this is known as the <m>r</m>-evaluation map) TBD
+        </li>
+        <li>
+          <m>\xi\colon \Z_5 \to \Z_{10}</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m> TBD.
+        </li>
+      </ol>
+    </solution>
+  </exploration>
+
+  
+  
+
+  <!-- 
+<exploration>
+    <statement>
+      <p>
+        Give an example of other rings <m>R</m> and <m>S</m> and a homomorphism <m>\p : R\to S</m>.
+        Show that your function is a homomorphism and determine whether or not it is an isomorphism.
+        Multiple presentations
+        (of different homomorphisms)
+        are possible.
+      </p>
+    </statement>
+
+    <solution>
+      <p>
+        One is complex conjugation, which is an isomorphism <m>\C\to\C</m>.
+        Another is <m>\p : \Z_5 \to \Z_{10}</m> given by <m>\p(x) = 5x</m>
+        (this isn't easy).
+      </p>
+    </solution>
+  </exploration>
+-->
+
+
+  <p>
+      Homomorphisms give rise to a particularly important class of subsets: kernels.
+    </p>
+    
+    
+  <definition>
+    <statement>
+      <p>
+        Let <m>\p : R \to S</m> be a ring homomorphism.
+        Then <m>\ker \p =\setof{r\in R}{\p(r)=0_S}</m> is the
+        <term>kernel</term> of <m>\p</m>.
+      </p>
+    </statement>
+  </definition>
+
+
+ 
+
+  <activity>
+    <statement>
+      <p>
+        For each homomorphism in <xref ref="expl-homomorphism-examples" />, find (with justification), the kernel.
+      </p>
+    </statement>
+    <solution>
+      TBD
+    </solution>
+  </activity>
+  
+
+<p>
+  In fact, kernels are not just important subsets of rings; they are ideals.
+</p>
+
+
+
+  <theorem>
+    <statement>
+      <p>
+        Given a ring homomorphism <m>\p : R\to S</m>,
+        <m>\ker\p</m> is an ideal.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      If <m>x,y\in \ker\p</m>, <m>\p(x+y) = \p(x) + \p(y) = 0_S + 0_S = 0_S</m>.
+      Similarly, if <m>x\in \ker \p</m> and <m>r\in R</m>,
+      <m>\p(rx) = \p(r) \p(x) = \p(r) 0_S = 0_S</m>.
+    </p>
+  </proof>
+  </theorem>
+  
+  <p>
+      Kernels also give a useful way of determining whether their defining homomorphisms are one-to-one.
+    </p>
+
+  
+  <theorem xml:id="thm_zeroKernelIsInto">
+    <statement>
+      <p>
+        Let <m>\varphi \colon R\to S</m> be a homomorphism.
+        Then <m>\varphi</m> is injective if and only if <m>\ker\varphi = \{0\}</m>.
+      </p>
+    </statement>
+    <proof>
+      TBD
+    </proof>
+
+  </theorem>
+  <exercises xml:id="exers-homomorphisms">
+    <title>Exercises</title>
+    <exercise xml:id="sec-homomorphisms-tf" label="sec-homomorphisms-tf">
+    <statement>
+      <p>
+        Mark the following as true or false. 
+      </p>
+      <ol>
+        <li>Suppose <m>R,S</m> are rings. Any function <m>f\colon R\to S</m> is a ring homomorphism.</li>
+        <li>Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. Then <m>\ker(\varphi)</m> is an ideal.</li>
+        <li>If <m>\varphi\colon R\to F</m> is a ring homomorphism and <m>F</m> is a field, then <m>R</m> is a field.</li>
+        <li>If <m>\varphi\colon F\to R</m> is a ring homomorphism and <m>F</m> is a field, then <m>R</m> is a field.</li>
+        <li>If <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>R</m> is a finite ring, then <m>S</m> is a finite ring.</li>
+        <li>If <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>S</m> is a finite ring, then <m>R</m> is a finite ring.</li>
+        <li>If <m>\varphi\colon R\to S</m> is an injective ring homomorphism and <m>S</m> is a finite ring, then <m>R</m> is a finite ring.</li>
+        <li>The identity map on a ring is a ring homomorphism.</li>
+        <li>The zero map <m>0\colon R\to R</m> defined by <m>0(r) = 0</m> is a ring homomorphism.</li>
+      </ol>
+    </statement>
+    </exercise>
+      
+    <exercise xml:id="evaluationHomomorphismIntegral">
+      <statement>
+        <p>
+          Fix <m>a\in\Z</m>. Let <m>\mathrm{ev}_a\colon\mathbb{Z}[x]\to\mathbb{R}</m> be defined by <m>\mathrm{ev}_a(p(x)) = p(a)</m>. 
+          Prove that <m>\mathrm{ev}_a</m> is a ring homomorphism. Then show that <m>\mathrm{ev}_a</m> is neither injective nor surjective.
+        </p>
+      </statement>
+    </exercise>
+        
+    <exercise>
+      <statement>
+        <p>
+          Define <m>\iota\colon\Z\to \Q</m> by <m>\iota(a) = \frac{a}{1}</m>. Prove that <m>\iota</m> is an injective ring homomorphism.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be any ring and <m>\mathcal{M}_n(R)</m> be the set of <m>n\times n</m> matries with entries in <m>R</m>. 
+          Define <m>\iota\colon R\to M_n(R)</m> by <m>\iota(r) = r\cdot I_n</m>, where <m>I_n</m> is the identity matrix. 
+          Prove that <m>\iota</m> is an injective ring homomorphism.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="evaluationHomomorphismGeneralR">
+      <statement>
+        <p>
+          Suppose <m>R</m> is a ring. Fix <m>a\in R</m>. Let <m>\mathrm{ev}_a\colon R[x]\to R</m> be defined by <m>\mathrm{ev}_a(p(x)) = p(a)</m>. 
+          Prove that <m>\mathrm{ev}_a</m> is a ring homomorphism. Is the evaluation homomorphism injective, surjective, and/or bijective?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Gemini, Google's LLM, has claimed that for any ring <m>R</m>, the trace map <m>\mathrm{tr}\colon M_n(R)\to R</m> defined by <m>\mathrm{tr}(A) = \sum_{i=1}^n a_{ii}</m> where <m>A=(a_{ij})</m>, is a ring homomorphism. 
+          This is true for exactly one <m>n_0\in\N</m>. Find it, prove it is a homomorphism for that <m>n_0</m>, then show it is not a homomorphism for any <m>n\neq n_0</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Consider the function <m>\mathrm{ev}_{\sqrt{2}}\colon \Z[x]\to\R</m> defined by <m>\mathrm{ev}_{\sqrt{2}}(p(x)) = p(\sqrt{2})</m>. Prove that this mapping is a homomorphism. Then show it is neither injective nor bijective. What is it's image?
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\varphi\colon R\to S</m> be a ring homomorphism. Prove that <m>\varphi(0_R) = 0_S</m>. That is, ring homomorphisms also preserve the additive identity.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\varphi\colon R\to S</m> be a ring homomorphism. Prove that the image of <m>\varphi</m> is a subring of <m>S</m>.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise xml:id="exer_centerIsARing">
+      <statement>
+        <p>
+          Let <m>R</m> be a ring. Define the set <em>center</em> of <m>R</m> to be the subset
+          <me>Z(R) = \{r\in R\mid rs = sr, \forall s\in R\}.</me>
+          That is, the center of a ring is the set of elements that commute with every element in the ring. Prove that <m>Z(R)</m> is a subring.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Find the center of <m>M_n(\R)</m>.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Consider the polynomial ring <m>\mathbb{Z}[x]</m>. Define <m>S = \{p(x)\in \Z[x]\mid p(x)\text{ only has monomials of even degree}\}</m>. Prove that <m>S</m> is a subring and argue why <m>\Z[x^2]</m> might be good notation for this subring.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Let <m>V</m> be a real vector space. Let <m>F(V) = \{T\colon V\to V\mid T\text{ is linear and has finite dimensional image}\}</m>. Show that <m>F(V)</m> is a non-unital ring (a rng).
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Show that if <m>p\mid a^3-b^3</m>, then it is not necessarily true that <m>p\mid a-b</m>. However, prove that if <m>p\mid a-b</m>, then <m>p\mid a^3-b^3</m>.
+        </p>
+      </statement>
+    </exercise>
+  
+    </exercises>
+   
+  
+</section>

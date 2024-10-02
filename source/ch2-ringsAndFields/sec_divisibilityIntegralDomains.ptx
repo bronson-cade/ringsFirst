@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_divisibilityIntegralDomains" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Divisibility in Integral Domains</title>
+    
+  <objectives xml:id="obj_divisibilityIntegralDomains">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      <li>What multiplicative properties can we generalize from <m>\Z</m> to any integral domain?</li>
+      <li>What are the differences between a prime and irreducible element in a commutative ring?</li>
+    </ul>
+  </objectives>
+    
+     
+  <p>
+    When we introduced the notion of integral domain,
+    we said that part of the reason for the definition was to capture some of the most essential properties of the integers. This is the heart of abstraction and generalization in mathematics: to distill the important properties of our objects of interest and explore the consequences of <em>those</em> properties.
+    One such important property of <m>\Z</m> is <em>cancellation</em>.
+  </p>
+  <theorem xml:id="thm-domaincancel">
+    <statement>
+      <p>
+        Let <m>R</m> be a ring.
+        Then <m>R</m> is a domain if and only if for all <m>a,b,c\in R</m> with
+        <m>c\ne 0</m> and <m>ac = bc</m>, we have <m>a = b</m>.
+      </p>
+    </statement>
+  <proof>
+    <p>
+      Assume <m>R</m> is a domain and <m>ac = bc</m>.
+      Then <m>ac - bc = 0</m>, so <m>c(a-b) = 0</m>.
+      Since <m>R</m> is a domain,
+      it has no zero divisors, and therefore either <m>c = 0</m> or <m>a-b=0</m>.
+      The first possibility is ruled out by our assumptions on <m>a,b,c</m>,
+      so we must have <m>a-b = 0</m>, or <m>a =b</m>.
+    </p>
+    <p>
+      Conversely, assume that <m>R</m> is not a domain.
+      Let <m>z\in R</m> be a zero divisor;
+      then there is a nonzero <m>x\in R</m> such that <m>xz = 0 = 0 z</m>.
+      This implies that <m>x = 0</m>, a contradiction.
+    </p>
+  </proof>      
+  </theorem>
+
+  <p>
+    We may read <xref ref="thm-domaincancel" /> as saying that the defining property of an integral domain is the ability to
+    cancel common nonzero factors.
+    Note that we have not <em>divided</em>;
+    division is not a binary operation, and nonzero elements of rings need not be units.
+    However, as was the case in <m>\Z</m>,
+    there are notions of <em>divisibility</em>
+    and <em>factorization</em> in rings.
+  </p>
+  <definition>
+  <idx>divides (ring)</idx>
+  <idx>factor (ring)</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be a commutative ring with identity, and let <m>a,b\in R</m>.
+        We say <m>a</m> <term>divides</term>
+        <m>b</m> and write <m>a\mid b</m> if there is a <m>c\in R</m> such that <m>ac = b</m>.
+        We then say that <m>a</m> is a <term>factor</term> of <m>b</m>.
+      </p>
+    </statement>
+  </definition>
+  
+  <investigation>
+      <statement>
+        <p>
+          Find all factors of <m>\overline{2}</m> in the following rings:
+        </p>
+    <ol>
+      <li><m>\Z_5</m></li>
+      <li><m>\Z_6</m></li>
+      <li><m>\Z_{10}</m></li>
+    </ol>
+  </statement>
+  <solution>
+    <p>TBD.</p>
+  </solution>
+
+    </investigation>
+
+  
+  <p>
+    Our definition of prime also extends nicely to commutative rings with identity.
+    Indeed, the desire to extend the familiar notion of prime from <m>\Z</m> to any ring is the reason for our less-familiar definition given in <xref ref="def-primeinteger" />.
+  </p>
+  <definition>
+    <statement>
+      <p>
+        Let <m>R</m> be commutative with identity.
+        We say a nonzero nonunit element <m>a\in R</m> is <term>prime</term>
+        if whenever <m>a\mid bc</m> for some <m>b,c\in R</m>,
+        either <m>a|b</m> or <m>a|c</m>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    A notion related to primality is irreducibility.
+    In fact, one might reasonably say that irreducibility is the natural generalization of the typical definition of prime one encounters in school mathematics.
+  </p>
+  <definition xml:id="def_irreducibleelement">
+  <idx>irreducible (ring element)</idx>
+  <idx>atom</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be commutative with identity.
+        We say a nonzero nonunit element <m>a\in R</m> is <term>irreducible</term>
+        if whenever <m>a = bc</m> for some <m>b,c\in R</m>,
+        one of <m>b</m> or <m>c</m> is a unit.
+        (Note that in some areas of the literature, the word <term>atom</term> is used interchangeably with irreducible.)
+      </p>
+    </statement>
+  </definition>
+  
+  <exploration xml:id="expl-unit-prime-irred">
+      <statement>
+        <p>
+          Find the units, primes, and irreducibles in the following rings.
+        </p>
+    <ol>
+      <li><m>\R</m></li>
+      <li><m>\Z</m></li>
+      <li><m>\Z_{5}</m></li>
+      <li><m>\Z_6</m></li>
+    </ol>
+  </statement>
+  <solution>
+    <p>
+      TBD.
+    </p>
+  </solution>
+  </exploration>
+
+  <p>
+      In domains, all primes are irreducible.
+    </p>
+
+  
+  <theorem xml:id="thm-primesareirredindomains">
+    <statement>
+      <p>
+        Let <m>R</m> be a domain.
+        If <m>a\in R</m> is prime, then <m>a</m> is irreducible.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Compare to the proof of <xref ref="theorem_euclidslemma">Theorem</xref>.
+    </p>
+    <p>
+      Let <m>a\in R</m> be prime,
+      and suppose that <m>a = bc</m> for some <m>b,c\in R</m>.
+      Then <m>a|bc</m>, so by definition either <m>a|b</m> or <m>a|c</m>.
+      Without loss of generality, assume <m>a|b</m>.
+      Then there is a <m>k\in R</m> such that <m>ak=b</m>, so <m>a = (ak)c</m>,
+      and we may cancel <m>a</m> to obtain <m>1_R = kc</m>.
+      Thus, <m>c</m> is a unit, making <m>a</m> irreducible.
+    </p>
+  </proof>
+  
+  
+
+
+  
+  <p>
+    In familiar settings,
+    the notion of prime and irreducible exactly coincide.
+  </p>
+  
+  <theorem xml:id="thm-irredisprimeinZ">
+    <statement>
+      <p>
+        Every irreducible in <m>\Z</m> is prime.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>p\in \Z</m> be irreducible,
+      and suppose that <m>d|p</m>.
+      Then <m>p = de</m>.
+      Since <m>p</m> is irreducible,
+      either <m>d</m> or <m>e</m> is a unit.
+      However, the only units are <m>\pm 1</m>,
+      so either one of <m>d</m> or <m>e</m> is <m>p</m> or <m>-p</m>.
+      In either case, <m>p</m> is prime.
+    </p>
+  </proof>
+  <p>
+      Despite their overlap in familiar settings, primes and irreducibles are distinct types of elements. As the next exploration demonstrates, not all primes are irreducible.
+    What is more, <xref ref="exer_irreduciblenotprime" /> will show that not all irreducibles are primes, even in domains!
+  </p>
+  
+  <exploration xml:id="expl-prime-not-irred">
+      <statement>
+        <p>
+          Find an example of a ring <m>R</m> and prime <m>p\in R</m> such that <m>p</m> is not irreducible.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In <m>R = \Z_6</m>, <m>p = \overline{3}</m> is prime by <xref ref="expl-unit-prime-irred" /> but not irreducible as <m>\overline{3}^2 = \overline{3}</m> and <m>\overline{3}</m> is not a unit.
+        </p>
+      </solution>
+    </exploration>
+    
+  <exploration xml:id="exer_irreduciblenotprime">
+    <statement>
+      <p>
+        Consider the set <m>R</m> of all polynomials in <m>\Z[x]</m> for which the coefficient on the linear term is zero.
+        That is,
+        <me>
+          R = \setof{a_0 + a_2 x^2 + \cdots + a_{n-1} x^{n-1} + a_n x^n}{a_i\in \Z,\ n\in\N_0}
+        </me>.
+      </p>
+      <p>
+        (You should convince yourself that <m>R</m> is an integral domain,
+        but do not need to prove it.) Then, find a polynomial of the form <m>x^n</m> in <m>R</m> that is irreducible,
+        but not prime.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Consider <m>f(x) = x^2</m>.
+        Then <m>f(x)</m> is irreducible,
+        as it cannot be factored into a product of linear polynomials
+        (there aren't any in <m>R</m>),
+        so any factorization of <m>f</m> is degree 2 times degree 0.
+        Then the leading coefficients must be units,
+        i.e., both 1 or both <m>-1</m>.
+      </p>
+      <p>
+        However, <m>f</m> is not prime,
+        as <m>f| x^3 \cdot x^3</m> but <m>f\nmid x^3</m>.
+      </p>
+    </solution>
+  </exploration>
+  
+  <p>
+      Our last straightforward generalization from the multiplicative structure of <m>\Z</m> is the notion of greatest common divisor. As our next definition again demonstrates, our careful work in the context of <m>\Z</m> generalizes nicely to all domains. Indeed, we intentionally did not appeal to <m>\le</m> to define the greatest common divisor in <xref ref="gcd-definition" />, as not all rings have a natural order relation like <m>\Z</m> does.
+    </p>
+
+
+  <definition xml:id="def-gcd-domain">
+  <idx>greatest common divisor (integral domain)</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be a domain, and let <m>a,b\in R</m>.
+        A nonzero element <m>d\in R</m> is a
+        <term>greatest common divisor</term>
+        of <m>a</m> and <m>b</m> if
+        <ol>
+          <li>
+            <p>
+              <m>d\mid a</m> and <m>d\mid b</m> and,
+            </p>
+          </li>
+          <li>
+            <p>
+              if <m>e\in R</m> with <m>e\mid a</m> and <m>e\mid b</m>,
+              then <m>e\mid d</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </definition>
+  <theorem>
+    <statement>
+      <p>
+        Let <m>R</m> be a domain and
+        <m>a,b\in R</m> and suppose <m>d</m> is a greatest common divisor of <m>a</m> and <m>b</m>.
+        Then any associate of <m>d</m> is also a greatest common divisor of <m>a</m> and <m>b</m>. (Recall <xref ref="def-unit" />.)
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>d</m> be a gcd of <m>a</m> and <m>b</m>,
+      let <m>u\in R^\times</m>, and <m>e =ud</m>.
+      We claim <m>e</m> is also a gcd of <m>a</m> and <m>b</m>.
+    </p>
+    <p>
+      Since <m>d|a</m> and <m>d|b</m> there are <m>k_1,k_2\in R</m> such that
+      <m>d k_1 = a</m> and <m>d k_2 = b</m>.
+      Then <m>e (u^{-1} k_1) = a</m> and <m>e (u^{-1} k_2) = b</m>,
+      so <m>e|a</m> and <m>e|b</m>.
+    </p>
+    <p>
+      Let <m>f</m> be a common divisor of <m>a</m> and <m>b</m>.
+      Since <m>d</m> is a gcd, <m>f|d</m>, i.e., <m>f k_3 = d</m>.
+      Then <m>f (uk_3) = e</m>, so <m>f|e</m>.
+    </p>
+    <p>
+      Thus, <m>e</m> is a gcd of <m>a</m> and <m>b</m>.
+    </p>
+  </proof>
+  <exploration>
+    <statement>
+      <p>
+        In most familiar domains, GCDs exist.
+        However, they don't always!
+        Find an example of elements in the ring from <xref ref="exer_irreduciblenotprime">Exercise</xref>
+        which do not have a GCD. Justify your assertion.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Consider <m>x^5</m> and <m>x^6</m>.
+        First note that <m>x^4</m> is not a common divisor in <m>R</m>.
+      </p>
+      <p>
+        Both <m>x^5</m> and <m>x^6</m> are divisible by <m>x^3</m> and <m>x^2</m> in <m>R</m>.
+        However, neither can be the gcd,
+        as <m>x^2\nmid x^3</m> and <m>x^3\nmid x^2</m>.
+      </p>
+    </solution>
+  </exploration>
+
+  <exploration xml:id="exer_ringgeneralityone">
+    <statement>
+      <p>
+        Fill in the following blanks in order of increasing generality with the words <em>ring</em>,
+        <em>integral domain</em>, <em>field</em>,
+        and <em>commutative ring</em>.
+      </p>
+      <p>
+        __________
+        <m>\Rightarrow</m> __________
+        <m>\Rightarrow</m> __________
+        <m>\Rightarrow</m> __________
+      </p>
+    </statement>
+  </exploration>
+</section>

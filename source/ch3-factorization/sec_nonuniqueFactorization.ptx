@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_nonuniqueFactorization" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Principal Ideals and Euclidean Domains</title>
+    
+  <objectives xml:id="obj_nonuniqueFactorization">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      <li>How can unique factorization fail, and why does it matter?</li>
+      <li>What is an example of a nonatomic domain?</li>
+      <li>What is an example of an element that does not factor uniquely into a product of irreducibles?</li>
+    </ul>
+  </objectives>
+  <p>
+    Despite the evidence to the contrary, not every ring has the unique factorization property. That is, there are commutative rings with identity which are not UFDs. <!-- 
+If every ring had the unique factorization property,
+    life would be very boring indeed.
+-->
+    In fact,
+    the failure of certain rings in algebraic number theory to have the unique factorization property played a role in several failed attempts to prove Fermat's Last Theorem,
+    which says that there are no nontrivial integer solutions <m>(x,y,z)</m> to the equation <m>x^n + y^n = z^n</m> if <m>n \ge 3</m>.
+    Pierre de Fermat famously claimed that he had a <q>marvelous proof</q> of this fact, but the margin of the book in which he was writing was <q>too narrow to contain it.</q>
+    Fermat's supposed proof was never found, and many now doubt that he had one.
+    The search for a valid proof would not be complete until the work of Andrew Wiles and Richard Taylor in the mid-1990s.
+  </p>
+  <p>
+    In 1847, Gabriel Lam&#xe9; claimed he had completely solved the problem.
+    His solution relied on the factorization of <m>x^p + y^p</m>,
+    where <m>p</m> is an odd prime, as
+    <me>
+      x^p + y^p = (x+y)(x+\zeta y) \cdots (x+\zeta^{p-1}y)
+    </me>,
+    where <m>\zeta = e^{2\pi i/p}</m> is a primitive <m>p</m>-th root of unity in <m>\C</m>.
+    However, the ring <m>\Z[\zeta] = \setof{a_0 + a_1 \zeta + a_2 \zeta^2 + \cdots + a_{p-1} \zeta^{p-1}}{a_i\in\Z}</m> is not a unique factorization domain.
+  </p>
+  <p>
+   There are two ways that unique factorization in an integral domain can fail: there can be a failure of a nonzero nonunit to factor into irreducibles, or there can be nonassociate factorizations of the same element. We investigate each in turn.
+   </p>
+
+
+   
+   <exploration>
+     <title>A non-atomic domain</title>
+     <statement>
+       <p>
+         We say an integral domain <m>R</m> is <term>atomic</term> if every nonzero nonunit can be written as a finite product of irreducibles in <m>R</m>. <aside>
+The term <em>atom</em> was suggested by <url href="https://en.wikipedia.org/wiki/Paul_Cohn">Paul Cohn</url> as a synonym for irreducible.
+</aside>
+         In this exploration, we encounter a non-atomic domain.
+       </p>
+    <p>
+      Let 
+      <md>
+        <mrow>R \amp = \Z + x\Q[x]</mrow>
+        <mrow> \amp = \setof{a + b_1 x + b_2 x^2 + \cdots + b_n x^n}{a\in \Z, b_1,\ldots, b_n \in \Q, n\ge 0},</mrow>
+      </md>
+the set of polynomials with integer constant terms and rational coefficients.
+    </p>
+    <ol>
+      <li>Convince yourself that <m>R</m> is an integral domain. You do not need to prove it in detail, but you should at least argue that <m>R</m> is closed under the usual polynomial addition and multiplication, and that <m>R</m> is a domain.</li>
+      <li>Describe the irreducibles in <m>R</m>.</li>
+      <li>Use the notion of degree to argue that any factorization of <m>x</m> in <m>R</m> has the form 
+      <me>
+        x = m\left(\frac{x}{m}\right).
+      </me>
+    </li>
+      <li>Explain why the factorization in the previous part cannot lead to a factorization of <m>x</m> into irreducibles in <m>R</m>.</li>
+    </ol>
+    </statement>
+    <solution>
+      TBD.
+    </solution>
+  </exploration>
+
+<p>
+    We now explore the atomic domain <m>R = \Z[\sqrt{-7}] = \setof{a+b\sqrt{-7}}{a,b\in\Z}</m>.
+    As we will see, even when a nonzero nonunit can be written as a product of irreducibles, it may be the case that this factorization is not unique. 
+  </p>
+  <activity>
+    <statement>
+      <p>
+        Verify that <m>8 = (1+\sqrt{-7})(1-\sqrt{-7})</m>.
+      </p>
+    </statement>
+  </activity>
+  
+  <p>
+    Next, we develop a multiplicative function <m>\delta</m> which enables us to explore the multiplicative properties of <m>\Z[\sqrt{-7}]</m>.
+    </p>
+
+
+  <theorem>
+    <statement>
+      <p>
+        Define <m>\delta : R \to \N_0</m> by <m>\delta(a+b\sqrt{-7}) = a^2 + 7 b^2</m>.
+        Then for all <m>x,y\in R</m>,
+        <m>\delta(xy) = \delta(x)\delta(y)</m>.
+      </p>
+    </statement>
+  </theorem>
+  <theorem>
+    <statement>
+      <p>
+        An element <m>u\in R</m> is a unit if and only if <m>\delta(u) = 1</m>.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Observe that <m>u</m> is a unit if and only if <m>uv = 1</m> for some <m>v</m>,
+      which menas that <m>1 = \delta(1) = \delta(u) \delta(v)</m>,
+      so <m>\delta(u) = \delta(v) = 1</m>.
+    </p>
+  </proof>
+  <lemma>
+    <statement>
+      <p>
+        There do not exist <m>x,y\in \N_0</m> such that <m>2 = x^2 + 7y^2</m>.
+      </p>
+    </statement>
+  </lemma>
+  <proof>
+    <p>
+      Suppose there exist <m>x,y\in \N_0</m> such that <m>2 = x^2 + y^2</m>.
+      Then we must have <m>y = 0</m>,
+      which means that <m>x^2 = 2</m>, a contradiction.
+    </p>
+  </proof>
+  <theorem>
+    <statement>
+      <p>
+        The elements 2, <m>1+ \sqrt{-7}</m>,
+        and <m>1-\sqrt{-7}</m> are irreducible in <m>R</m>.
+        We conclude that <m>R</m> is not a UFD.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Suppose <m>2 = ab</m>.
+      Then <m>4 = \delta(2) = \delta(a)\delta(b)</m>.
+      By the lemma, we may not have <m>\delta(a) = 2</m>,
+      which means without loss of generality that <m>\delta(a) = 1</m>,
+      and thus <m>a</m> is a unit.
+      Therefore, 2 is irreducible.
+    </p>
+    <p>
+      Now suppose that <m>1 + \sqrt{-7} = ab</m>.
+      Then <m>8 = \delta(1+\sqrt{-7}) = \delta(a) \delta(b)</m>.
+      The possible values for <m>\delta(a)</m> are 1, 2, 4, and 8.
+      If <m>\delta(a) = 1</m> or 8, then <m>1+\sqrt{-7}</m> is irreducible,
+      as either <m>a</m> or <m>b</m> is necessarily a unit.
+      By the lemma, we may not have
+      <m>\delta(a) = 2</m> or <m>\delta(b) = 2</m>,
+      so in fact either <m>\delta(a) = 1</m> or 8.
+      Therefore, <m>1\pm \sqrt{-7}</m> is irreducible.
+    </p>
+    <p>
+      Since we have factored 8 into two different products of irreducibles,
+      <m>R</m> is not a UFD.
+    </p>
+  </proof>
+</section>

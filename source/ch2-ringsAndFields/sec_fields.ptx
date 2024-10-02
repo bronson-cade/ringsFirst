@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_fields" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Fields</title>
+    
+  <objectives xml:id="obj_fields">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      <li>What are binary operations?</li>
+      <li>What is a field? What sorts of things can one do in a field?</li>
+      <li>What are examples of fields?</li>
+    </ul>
+  </objectives>
+
+
+  <subsection xml:id="subsec-numberSystems">
+    <title>Number Systems</title>
+    
+  <p> 
+    We now begin the process of abstraction. We will do this in stages, beginning with the concept
+    of a <em>field</em>. First, we need to formally define some familiar sets of numbers. 
+  </p>
+
+  <definition>
+    <statement>
+      <p> The rational numbers, denoted by <m>\Q</m>, is the set <me>
+          \Q = \setof{\frac{a}{b}}{a,b\in \Z, \ b\ne 0}
+        </me>. </p>
+    </statement>
+  </definition>
+
+  <p> 
+    Recall that in elementary school, you learned that two fractions <m>\frac{a}{b}, \frac{c}{d}
+    \in \Q</m> are equivalent if and only if <m>ad=bc</m>. 
+  </p>
+
+  <activity>
+    <statement>
+      <p> Prove that our elementary school definition of equivalent fractions is an equivalence
+        relation. Recall <xref ref="def-eqrel" />. </p>
+    </statement>
+  </activity>
+  <p> 
+    <idx>real numbers</idx>
+    We likely have an intuitive idea of what is meant by <m>\R</m>, the set of real numbers.
+    Defining <m>\R</m> rigorously is actually quite difficult, and occupies a significant amount of
+    time in a first course in real analysis. Thus, we will make use of your intuition.
+  </p>
+    
+  <p>
+    It is worth noting that <m>\N\subseteq \Z\subseteq \Q\subseteq \R</m>,
+    but <m>\R</m> also contains many irrational numbers,
+    such as <m>\pi</m>, <m>e</m>,
+    <m>\sqrt{2}</m>, and so on.
+  </p>
+
+  <p> Out of <m>\R</m> we may build the complex numbers. </p>
+
+  <definition>
+    <idx>complex numbers</idx>
+    <statement>
+      <p> The <term>complex numbers</term> consist of all expressions of the form <m>a+bi</m>, where <m>a,b\in
+        \R</m> and <m>i^2 = -1</m>. Given <m>z = a+bi</m>, we say <m>a</m> is the <term>real part</term>
+        of <m>z</m> and <m>b</m> is the <term>imaginary part</term>. The set of complex numbers is
+        denoted <m>\C</m>. </p>
+    </statement>
+  </definition>
+
+  </subsection>
+
+  <subsection xml:id="subsec-binaryOperations">
+    <title>Binary Operations</title>
+    
+  <p> 
+    As was mentioned in the <xref ref="Sec-Introduction" text="custom">Introduction</xref>, <em>
+    algebra</em> comes from an Arabic word meaning <q>the reunion of broken parts</q>. We therefore
+    need a way of combining two elements of a set into one; we turn to a particular type of
+    function, known as a binary operation, to accomplish this. 
+  </p>
+
+  <definition xml:id="def_binaryoperation">
+    <idx>binary operation</idx>
+    <statement>
+      <p>
+        <idx>
+          <h>binary operation</h>
+        </idx> 
+        <idx><h>closure</h></idx>
+        Let <m>X</m> be a nonempty set. A function <m>\star \colon X \times X \to X</m> is called a <term>binary operation</term>. 
+        If <m>\star</m> is a binary operation on <m>X</m>, we say that <m>X</m> is <term>closed under the operation <m>
+        \star</m></term>. [Given <m>a,b\in X</m>, we usually write <m>a\star b</m> in place of the
+        typical function notation, <m>\star(a,b)</m>.] </p>
+    </statement>
+  </definition>
+
+
+  <investigation xml:id="invest-binop">
+    <statement>
+      <p> Which of <m>+, -, \cdot, \div</m> are binary operations: <ol>
+          <li>
+            <p> on <m>\R</m>? </p>
+          </li>
+          <li>
+            <p> on <m>\Q</m>? </p>
+          </li>
+          <li>
+            <p> on <m>\Z</m>? </p>
+          </li>
+          <li>
+            <p> on <m>\N</m>? </p>
+          </li>
+          <li>
+            <p> on <m>\C</m>? (Recall that for <m>a_1 + b_1 i, a_2 + b_2 i \in \C</m>, <m>(a_1 + b_1
+        i) + (a_2 + b_2 i) := (a_1 + a_2) + (b_1 + b_2)i</m> and <m>(a_1 + b_1 i)(a_2 + b_2 i) :=
+        (a_1 a_2 - b_1 b_2) + (a_1 b_2 + b_1 a_2) i</m>.) </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer>
+      <p> Division is never a binary operation. The others are binary operations on <m>\C</m>, <m>\R,
+        \Q</m>, and <m>\Z</m>. The only binary operation on <m>\N</m> is addition. </p>
+    </answer>
+  </investigation>
+
+  <activity>
+    <statement>
+      <p> Choose your favorite nonempty set <m>X</m> and describe a binary operation different than
+        those in <xref ref="invest-binop" />. </p>
+    </statement>
+    <answer>
+      <p> Answers vary, but one option is to define <m>\min : \Z\times \Z \to \Z</m> by </p>
+      <me>\min(a,b) := \begin{cases} a \amp \text{if } a \le b\\ b \amp \text{if } b\le
+        a\end{cases.}</me>
+    </answer>
+  </activity>
+
+</subsection>
+
+<subsection xml:id="subsec-fields">
+  <title>Fields</title>
+  
+  <p> The hallmark of modern pure mathematics is the use of <em>axioms</em>. An axiom is essentially
+    an unproved assertion of truth. Our use of axioms serves several purposes. </p>
+  <p> From a logical perspective, axioms help us avoid the problem of infinite regression (e.g.,
+    asking <em>How do you know?</em> over and over again). That is, axioms give us very clear
+    starting points from which to make our deductions. </p>
+  <!--<p>
+    More generally,
+    the use of any hypotheses when asking mathematical or scientific questions is a form of creativity,
+    and even <em>play</em>.
+    God has created us in His image,
+    and he is a creative being.
+    The definitions we make and the theorems we prove are reflections of the
+    <em>imago Dei</em> in us.
+    Of course, we do not have the power to create <em>ex nihilo</em>;
+    instead, our tools are the mathematical <em>aspects</em>
+    God has imbued in his creation.
+    We can postulate structures with whichever axioms we like,
+    but our creativity is most valuable if it reflects the world <em>as it is</em>.
+  </p>-->
+  <p>
+    To that end,
+    our first abstract algebraic structure captures and axiomatizes familiar behavior about how
+    numbers can be combined to produce other numbers of the same type.
+  </p>
+  <definition xml:id="def_field">
+    <idx>field</idx>
+    <statement>
+      <p> A <term>field</term> is a nonempty set <m>F</m> with at least two elements and binary
+        operations <m>+</m> and <m>\cdot</m>, denoted <m>(F,+,\cdot)</m>, and satisfying the
+        following <term>field axioms</term>: <ol>
+          <li>
+
+            <p> Given any <m>a,b,c\in F</m>, <m>(a+b)+c = a+(b+c)</m>. (Associativity of addition) </p>
+          </li>
+          <li>
+
+            <p> Given any <m>a,b\in F</m>, <m>a+b= b+a</m>. (Commutativity of addition) </p>
+          </li>
+          <li>
+
+            <p> There exists an element <m>0_F\in F</m> such that for all <m>a\in F</m>, <m>a+0_F =
+        0_F + a = a</m>. (Additive identity) </p>
+          </li>
+          <li>
+
+            <p> Given any <m>a\in F</m> there exists a <m>b\in F</m> such that <m>a+b = b + a =0_F</m>.
+        (Additive inverse) </p>
+          </li>
+          <li>
+
+            <p> Given any <m>a,b,c\in F</m>, <m>(a\cdot b)\cdot c = a\cdot (b\cdot c)</m>.
+        (Associativity of multiplication) </p>
+          </li>
+          <li>
+
+            <p> Given any <m>a,b\in F</m>, <m>a\cdot b = b\cdot a</m>. (Commutativity of
+        multiplication) </p>
+          </li>
+          <li>
+
+            <p> There exists an element <m>1_F\in F</m> such that for all <m>a\in F</m>, <m>1_F\cdot
+        a = a\cdot 1_F = a</m>. (Multiplicative identity) </p>
+          </li>
+          <li>
+
+            <p> For all <m>a\in F</m>, <m>a\ne 0_F</m>, there exists a <m>b\in F</m> such that <m>a\cdot
+        b = b\cdot a = 1_F</m>. (Multiplicative inverse) </p>
+          </li>
+          <li>
+
+            <p> For all <m>a,b,c\in F</m>, <m>a\cdot (b+c) = a\cdot b + a\cdot c</m>. (Distributive
+        property I) </p>
+          </li>
+          <li>
+
+            <p> For all <m>a,b,c\in F</m>, <m>(a+b)\cdot c = a\cdot c + b\cdot c</m>. (Distributive
+        property II) </p>
+          </li>
+        </ol>
+
+      </p>
+    </statement>
+  </definition>
+  <p> We will usually write <m>a\cdot b</m> as <m>ab</m>. Additionally, we will usually drop the
+    subscripts on <m>0,1</m> unless we need to distinguish between fundamentally different
+    identities in different fields. </p>
+  <investigation xml:id="exer_fieldexamples">
+    <statement>
+      <p> Which of the following are fields under the specified operations? For most, a short
+        justification or counterexample is sufficient. <ol>
+          <li>
+            <p>
+              <m>\N</m> under the usual addition and multiplication operations </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z</m> under the usual addition and multiplication operations </p>
+          </li>
+          <li>
+            <p>
+              <m>2\Z</m>, the set of even integers, under the usual addition and multiplication
+        operations </p>
+          </li>
+          <li>
+            <p>
+              <m>\Q</m> under the usual addition and multiplication operations </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{6}</m> under addition and multiplication modulo 6 </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{5}</m> under addition and multiplication modulo 5 </p>
+          </li>
+          <li>
+            <p>
+              <m>\R</m> under the usual addition and multiplication operations </p>
+          </li>
+          <li>
+            <p>
+              <m>\C</m> under the complex addition and multiplication defined in <xref
+                ref="invest-binop" />
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\mathcal{M}_2(\R) := \setof{\left(\begin{matrix}a \amp b \\ c \amp d \end{matrix}
+        \right)}{a,b,c,d\in\R}</m><fn>
+                For students who have taken a linear algebra course.
+              </fn>,
+        the set of <m>2\times 2</m> matrices with real coefficients using the usual definition of
+        matrix multiplication<fn> Recall that, if <m>\left(\begin{matrix}a_1 \amp b_1 \\ c_1 \amp
+        d_1 \end{matrix} \right), \left(\begin{matrix}a_2 \amp b_2 \\ c_2 \amp d_2 \end{matrix}
+        \right)\in \mathcal{M}_2(\R)</m>, then <m>\left(\begin{matrix}a_1 \amp b_1 \\ c_1 \amp d_1
+        \end{matrix} \right) \cdot \left(\begin{matrix}a_2 \amp b_2 \\ c_2 \amp d_2 \end{matrix}
+        \right) = \left(\begin{matrix}a_1 a_2 + b_1 c_2 \amp a_1 b_2 + b_1 d_2 \\ c_1 a_2 + d_1 c_2
+        \amp c_1 b_2 + d_1 d_2 \end{matrix} \right)</m>. </fn> and matrix addition. </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <solution>
+      <p>
+        <ol>
+          <li>
+            <p>
+              <m>\N</m> is not closed under taking additive inverses, so is not a field. </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z</m> is not a field, as there is no integer <m>a</m> such that <m>2a = 1</m>. </p>
+          </li>
+          <li>
+            <p>
+              <m>2\Z</m> is not a field for the same reason. </p>
+          </li>
+          <li>
+            <p>
+              <m>\Q</m> is a field. </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{6}</m> is not a field; there is no <m>\overline{a}\in \Z_{10}</m> for which <m>\overline{2}\cdot
+              \overline{a} = \overline{1}</m> (you can check them all; there are only 4 viable
+              options). </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{5}</m> <em>is</em> a field. The axioms pertaining to addition and multiplication
+              were established earlier or rely on the same axioms holding for <m>\Z</m>. </p>
+          </li>
+          <li>
+            <p>
+              <m>\R</m> is a field </p>
+          </li>
+          <li>
+            <p>
+              <m>\C</m> is a field. Given <m>a+bi\ne 0</m>, <m>(a+bi)^{-1} = \frac{a}{a^2 + b^2} -
+              \frac{b}{a^2 + b^2} i</m>. </p>
+          </li>
+          <li>
+            <p>
+              <m>\mathcal{M}_2(\R)</m> is not a field. Matrix multiplication is not commutative. </p>
+          </li>
+        </ol>
+      </p>
+    </solution>
+  </investigation>
+
+  <p> In the <xref ref="exer_fieldexamples" />, you determined which of sets of familiar
+    mathematical objects are and are not fields. Notice that you have been working with fields for
+    years and that our abstraction of language to that of fields is simply to allow us to explore
+    the common features at the same time - it is inefficient to prove the same statement about every
+    single field when we can prove it once and for all about fields in general. </p>
+</subsection>
+<subsection xml:id="subsec-propertiesOfFields">
+  <title>Properties of Fields</title>
+  
+  <theorem xml:id="thm_fieldproperties">
+    <title>Properties of Fields</title>
+    <statement>
+      <p> Let <m>F</m> be a field. <ol>
+          <li>
+            <p> The additive identity <m>0</m> is unique. </p>
+          </li>
+          <li>
+            <p> For all <m>a\in F</m>, <m>a \cdot 0 = 0\cdot a = 0</m>. </p>
+          </li>
+          <li>
+            <p>
+              Additive inverses are unique.
+            </p>
+          </li>
+          <li>
+            <p> The multiplicative identity <m>1</m> is unique. </p>
+          </li>
+          <li>
+            <p>
+              Multiplicative inverses are unique.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>(-1)\cdot (-1) = 1</m>
+              <hint>
+                <p>
+                  Note that we are saying that the additive inverse of the multiplicative identity
+        times itself equals the multiplicative identity. You should use only the field axioms and
+        the properties previously established in this theorem.
+</p>
+              </hint>
+              <aside><q>Minus times Minus equals Plus:
+                  The reason for this we need not discuss.</q> -W.H. Auden</aside>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <ol>
+      <li>
+        <p> Assume <m>0, 0'</m> both satisfy the additive identity axiom. Observe that <m>0 = 0 + 0'
+          = 0'</m>. </p>
+      </li>
+      <li>
+        <p> As <m>0 = 0 + 0</m>, we may write <m>a\cdot 0 = a\cdot (0 + 0) = a\cdot 0 + a \cdot 0</m>.
+          Now add the additive inverse of <m>a\cdot 0</m> to both sides to obtain <m>0 = a \cdot 0 =
+          0\cdot a</m>. </p>
+      </li>
+      <li>
+        <p> Let <m>a\in F</m> and suppose <m>b</m> and <m>c</m> are such that <m>a+c = 0</m> and <m>a+b
+          = 0</m>. Then <m>a+c = a+b</m>, and we may add <m>b</m> (or <m>c</m>) to both sides to
+          obtain <m>b+(a+b) = (b+a)+b = 0 + b = b</m> and <m>c+(a+c) = (c+a)+c = 0 + c = c</m>. Thus <m>
+          b=c</m>. </p>
+      </li>
+      <li>
+        <p> Suppose <m>1</m> and <m>1'</m> are multiplicative identities. Then <m>1 = 1 \cdot 1' =
+          1'</m>. </p>
+      </li>
+      <li>
+        <p> Let <m>a\in F</m> be nonzero and suppose <m>b,c</m> are multiplicative inverses for <m>a</m>.
+          Then <m>ab = 1 = ac</m>, and we may multiply by <m>b</m> (or <m>c</m>) to obtain <m>b(ab)
+          = (ba)b = 1\cdot b = b = b(ac) = (ba)c = 1\cdot c = c</m>. </p>
+      </li>
+      <li>
+        <p> Observe that <m>(-1) + 1 = 0</m> by the definition of additive inverses. Multiply both
+          sides by <m>-1</m> and distribute to obtain <m>(-1)(-1) + (-1)\cdot 1 = (-1)\cdot 0</m>.
+          By part 2 of this theorem and the definition of a multiplicative identity, we obtain <m>(-1)(-1)
+          + (-1) = 0</m>. We now add the multiplicative identity to obtain <m>(-1)(-1) + (-1) + 1 =
+          0 + 1</m>, which simplifies to <m>(-1)(-1) = 1</m>. </p>
+
+      </li>
+
+    </ol>
+  </proof>
+  <p> One consequence of <xref ref="thm_fieldproperties" /> is that, given <m>a\in F</m>, <m>b\in
+    F\setminus \set{0}</m>, we may refer to <m>-a</m> as <em>the</em> additive inverse of <m>a</m>,
+    and <m>b^{-1}</m> as <em>the</em> multiplicative inverse of <m>b</m>. We will thus employ this
+    familiar terminology henceforth. Moreover, we will define <term>subtraction</term> in a field as <m>a-b = a+(-b)</m> 
+    and division as <m>a/b = a\cdot b^{-1}</m>.
+  </p>
+  </subsection>
+
+<subsection xml:id="subsec-subfieldsAndExtensions">
+  <title>Subfields and Extensions</title>
+
+  <p>
+    One source for new fields is to look within the fields we already have. That is, we want to know when a subset of a field is a field in its own right.
+  </p>
+    
+  <definition>
+    <idx><h>subfield</h></idx>
+    <idx><h>field extension</h></idx>
+    <statement>
+      <p>
+        Let <m>K</m> be a field.
+        If <m>F</m> is a nonempty subset satisfying
+        <ol>
+          <li>
+              <m>F\subseteq K</m> and
+          </li>
+          <li>
+              <m>F</m> is a field under the same operations as <m>K</m>,
+          </li>
+        </ol>
+      </p>
+      <p>
+        then we call <m>F</m> a <term>subfield</term> of <m>K</m>,
+        and <m>K</m> an <term>extension field</term> of <m>F</m>, and say
+        <q><m>K/F</m> is a <term>field extension</term>.</q>
+      </p>
+    </statement>
+  </definition>
+  Many of the number sets with which you are familiar are fields.
+  <theorem>
+    <statement>
+      <p>
+        The set of complex numbers <m>\mathbb{C}</m> is an extension field of <m>\R</m>. Equivalently, <m>\R</m> is a subfield of <m>\mathbb{C}</m>
+      </p>
+    </statement>
+  </theorem>
+
+  <p>
+  The last theorem in this section gives us a technique for identifying subfields of a given field.
+  </p>
+  <theorem xml:id="thm-subfieldTest">
+    <title>Subfield Test</title>
+    <statement>
+      <p>
+        Let <m>K</m> be a field and <m>F\subseteq K</m> be a subset of <m>K</m> such that:
+      <ul>
+        <li>
+          <p>
+            <m>1_K\in F</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            For any <m>a,b\in F</m>, we have <m>a-b\in F</m>. (Closed under subtraction)
+          </p>
+        </li>
+        <li>
+          <p>
+            For any <m>a,b\in F</m>, we have <m>a/b\in F</m>. (Closed under division)
+          </p>
+        </li>
+      </ul>
+      Then <m>F</m> is a field under the addition and multiplication in <m>K</m>. In particular, <m>F</m> is a subfield of <m>K</m>.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      We check all of the axioms in <xref ref="def_field"/>. Since <m>F</m> is closed under subtraction, 
+      <m>1_K-1_K=0_K\in F</m>. Since <m>0_K\in F</m> and <m>F</m> is closed under subtraction, we have <m>-a=0_K-a\in F</m> for any <m>a\in F</m>.
+      Thus <m>F</m> is closed under additive inverses. Since <m>F</m> is closed under additive inverses and subtraction we have <m>a+b = a-(-b)\in F</m> for any <m>a,b\in F</m>.
+      Thus <m>F</m> is closed under addition.
+    </p>
+    <p>
+      We now turn to the associativity and commutative properties. For any <m>a,b,c\in F</m> we know <m>a,b,c\in K</m>. Since addition in <m>K</m> is associative, we know 
+      <m>a+(b+c) = (a+b)+c</m>. Thus addition in <m>F</m> is associative. We say it is <em>inherited</em> from <m>K</m>. Similarly addition in <m>F</m> is commutative, <m>0_K</m> is the additive identity,
+      multiplication is associative and commutative, <m>1_K</m> is the multiplicative identity, and the distributive laws hold. 
+    </p>
+    <p>
+      Lastly, since <m>F</m> is closed under division and <m>1_K\in F</m>, for any <m>b\in F</m> we have <m>1_K/b\in F</m> and so the multiplicative inverse of <m>b</m> is in <m>F</m>. Thus <m>F</m> is closed 
+      under taking multiplicative inverses. This completes the checks of each of the 10 axioms.
+    </p>
+  </proof>
+  
+  <investigation>
+    <title>Quadratic Extensions of the Rationals</title>
+    <statement>
+      <p>
+        Suppose <m>d\in\mathbb{Q}</m> is any rational number such that <m>\sqrt{d}\notin\Q</m>. Define the set of rationals <em>adjoin</em> <m>\sqrt{d}</m> by:
+        <me>
+          \Q(\sqrt{d}) = \{a+b\sqrt{d}\mid a,b\in\mathbb{Q}\}.
+        </me>
+        This is a subset of <m>\mathbb{C}</m>. We claim that <m>\Q(\sqrt{d})</m> is a <em>subfield</em> of <m>\mathbb{C}</m>
+      </p>
+    </statement>
+  </investigation>
+
+  <investigation>
+    <statement>
+      <p> For which <m>n > 1</m> is <m>\Z_n</m> a field? Compute some examples, form a conjecture,
+        and prove your conjecture. </p>
+    </statement>
+  </investigation>
+</subsection>
+</section>

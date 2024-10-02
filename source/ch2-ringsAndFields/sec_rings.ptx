@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_rings" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Rings</title>
+    
+<objectives xml:id="obj_rings">
+  <title>Guiding Questions</title>
+  <introduction>
+	<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+  </introduction>
+    <ul>
+        <li>What are rings and integral domains, and how do they relate to fields?</li>
+        <li>What are subrings, and how can we tell if a given subset of a ring is a subring?</li>
+        <li>What special types of elements do rings have?</li>
+    </ul>
+  </objectives>
+    
+  <introduction>
+  <p>
+    In the previous section,
+    we observed that many familiar number systems are fields but that some are not.
+    As we will see, these non-fields are often more structurally interesting, at least from the perspective of factorization; thus, in this section, we explore them in more detail.
+    Before we proceed with that endeavor we will give a formal definition of polynomial so that we can include it in our work.
+  </p>
+  </introduction>
+
+  <definition xml:id="def-polynomial">
+    <statement>
+      <p>
+        Let <m>A</m> be a set with a well-defined addition operation <m>+</m> and additive identity <m>0</m>, and <m>x</m> a variable.
+        We define a <term>polynomial in <m>x</m> with coefficients in <m>A</m></term>
+        to be an expression of the form
+        <me>
+          p = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n
+        </me>,
+        where <m>a_n\ne 0</m>.
+        We call <m>n\in \N_0</m> the <term>degree</term>
+        of the polynomial <m>p</m>,
+        denoted <m>\deg(p) = n</m>, and
+        <m>a_0,a_1,\ldots,
+        a_n</m> the <term>coefficients</term> of the polynomial.
+        The coefficient <m>a_n</m> is known as the
+        <term>leading coefficient</term> of <m>p</m>,
+        and <m>a_n x^n</m> is the <term>leading term</term> of <m>p</m>.
+        By
+        <me>
+          A[x] := \setof{a_0 + a_1 x + a_2 x + \cdots + a_n x^n}{n\in \N_0, \ a_i\in A}
+        </me>
+        we denote the set of all polynomials with coefficients in <m>A</m>.
+        The additive identity of <m>A[x]</m> is <m>0</m>, called the <term>zero polynomial</term>, and is
+        the polynomial whose coefficients are all <m>0</m>.
+        The degree of the zero polynomial is <m>-\infty</m>.
+      </p>
+    </statement>
+  </definition>
+
+  <exploration>
+    <statement>
+      <p>
+        Give some examples of polynomials in <m>A[x]</m> for various choices of number systems <m>A</m>.
+        Identify their coefficients, leading terms, and degrees.
+      </p>
+    </statement>
+  </exploration>
+
+  <exploration>
+    <statement>
+      <p>
+        In the following table, fill in a <em>Y</em>
+        if the set has the property;
+        fill in a <em>N</em> if it does not.
+      </p>
+      <table xml:id="table_propertiessandsets">
+        <title>A list of properties and sets.</title>
+        <tabular>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell><m>\N</m></cell>
+            <cell><m>\Z</m></cell>
+            <cell><m>2\Z</m></cell>
+            <cell><m>\Q</m></cell>
+            <cell><m>\Q[x]</m></cell>
+            <cell><m>\Z_{8}</m></cell>
+            <cell><m>\Z_{2}</m></cell>
+            <cell><m>\R</m></cell>
+            <cell><m>\C</m></cell>
+            <cell><m>\mathcal{M}_2(\R)</m></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>Closure under +</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>Closure under <m>\cdot</m></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>+</m> is associative</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>\cdot</m> is associative</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>+ is commutative</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>\cdot</m> is commutative</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell><m>\cdot</m> distributes over +</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>There is an additive identity</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>All elements have additive inverses</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>There is a multiplicative identity</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row>
+            <cell>All nonzero elements have mult.<nbsp/>inverses</cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+          <row bottom="minor">
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+            <cell></cell>
+          </row>
+        </tabular>
+      </table>
+    </statement>
+  </exploration>
+
+  <exploration xml:id="q_fieldaxiomspolyring">
+    <statement>
+      <p>
+        Which of the field axioms in <xref ref="def_field" /> hold for <m>F[x]</m>,
+        where <m>F</m> is a field, and which fail to hold in general?
+      </p>
+    </statement>
+    <answer>
+      <p>
+        All the axioms hold, except F8.
+        For instance, there is no polynomial
+        <m>f(x)\in \Q[x]</m> for which <m>x f(x) = 1</m>.
+      </p>
+    </answer>
+  </exploration>
+  <p>
+    As a result of the answer to <xref ref="q_fieldaxiomspolyring" />
+    and the completed <xref ref="table_propertiessandsets">Table</xref>,
+    we make the following definition.
+  </p>
+
+  <definition xml:id="def_ring">
+    <idx>ring</idx>
+    <idx>unity</idx>
+    <statement>
+      <p>
+        A <term>ring</term> <m>R</m> is a nonempty set,
+        together with binary operations <m>+</m> and <m>\cdot</m>, denoted <m>(R,+,\cdot)</m>, and satisfying the following axioms.
+        <ol>
+          <li>
+            <p>
+              Given any <m>a,b,c\in R</m>, <m>(a+b)+c = a+(b+c)</m>. (Associativity of addition)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a,b\in R</m>, <m>a+b= b+a</m>. (Commutativity of addition)
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an element <m>0_R\in R</m> such that for all <m>a\in R</m>,
+              <m>a+0_R = 0_R + a = a</m>. (Additive identity)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a\in R</m> there exists a <m>b\in R</m> such that <m>a+b = b + a =0_R</m>. (Additive inverses)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a,b,c\in R</m>, <m>(a\cdot b)\cdot c = a\cdot (b\cdot c)</m>. (Associativity of multiplication)
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an element <m>1_R\in R</m>, such that <m>a\cdot 1_R = 1_R\cdot a=a</m> for all <m>a\in R</m>. (Multiplicative identity)
+            </p>
+          </li>
+          <li>
+            <p>
+              For all <m>a,b,c\in R</m>, <m>a\cdot (b+c) = a\cdot b + a\cdot c</m>. (Left-distributive property)
+            </p>
+          </li>
+          <li>
+            <p>
+              For all <m>a,b,c\in R</m>, <m>(a+b)\cdot c = a\cdot c + b\cdot c</m>. (Right-distributive property)
+            </p>
+          </li>
+        </ol>
+        As with fields, when the ring <m>R</m> is clear from context, we will often write <m>0</m> in place of <m>0_R</m> and <m>1</m> in place of <m>1_R</m>. The element <m>1_R</m> is also referred to as the <em>unity</em>.
+      </p>
+    </statement>
+  </definition>
+
+  <aside>
+    <title>Non-Unital Rings</title>
+    <p>
+      Most rings of interest in modern algebra, particularly commutative algebra, have a multiplicative identity. Algebraic structures that satisfy all the ring axioms except for the multiplicative identity are called <em>non-unital rings</em> and are sometimes referred to as rngs (without the i).
+    </p>
+  </aside>
+
+  <investigation>
+    <statement>
+      <p>
+        Compare and contrast <xref ref="def_field">Definitions</xref>
+        and <xref ref="def_ring"></xref>.
+        What are the similarities?
+        What are the differences?
+      </p>
+    </statement>
+  </investigation>
+
+  <p>
+    While rings do not enjoy all the properties of fields,
+    they are incredibly useful even in applied mathematics
+    (see, e.g., <xref ref="Curto2013" /> for one recent example).
+  </p>
+
+  <definition>
+    <statement>
+    <idx>commutative ring</idx>
+      <p>
+        A ring <m>R</m> is said to be <term>commutative</term> if,
+        for all <m>a,b\in R</m>, <m>ab = ba</m>.
+      </p>
+    </statement>
+  </definition>
+
+  <exploration xml:id="expl-rings-examples">
+    <statement>
+      <p>
+        Consider the sets given in <xref ref="table_propertiessandsets">Table</xref>.
+        Which are rings?
+        Which are commutative rings with identity?
+      </p>
+    </statement>
+  </exploration>
+  <exploration>
+    <statement>
+      <p>
+        Which properties of fields in <xref ref="thm_fieldproperties">Theorem</xref> hold for (commutative) rings?
+      </p>
+    </statement>
+  </exploration>
+  <investigation>
+    <statement>
+      <p>
+        Are all rings fields?
+        Are all fields rings?
+        Justify.
+      </p>
+    </statement>
+  </investigation>
+
+
+  <historical>
+  <title>Emmy Noether</title>
+  <p>
+    In the 1920s, Emmy Noether was the first to explicitly describe the ring axioms as we know them today,
+    and her definition of a (not-necessarily-commutative) ring has led to a great deal of interesting work in algebra,
+    number theory, and geometry, including the
+    (see <xref ref="SubSec-Nonunique-Factorization" />
+    for more on the historical development of the proof of Fermat's Last Theorem).
+    Most modern definitions of <em>ring</em>
+    agree with our <xref ref="def_ring">Definition</xref>
+    and allow for rings with noncommutative multiplication and no multiplicative identity.
+  </p>
+  </historical>
+  <figure>
+  <image source="../../images/Noether.jpg" width="50%">
+    <shortdescription>Portrait of Emmy Noether</shortdescription>
+  </image>
+  </figure>
+
+  <p>
+    The following theorem states that the set of polynomials with coefficients in a ring <m>R</m> is itself a ring under the usual operations of polynomial addition of like terms,
+    and multiplication via distribution.
+    The proof is not tricky, but a rigorous justification
+    (especially of, e.g., the associativity of polynomial multiplication)
+    is tedious, and thus is omitted.
+  </p>
+  <assemblage>
+  <title>Theorem</title>
+   <p>
+    <statement>
+        If <m>R</m> is a (commutative) ring
+        (with identity <m>1_R</m>),
+        then <m>R[x]</m> is a (commutative) ring
+        (with identity <m>1_{R[x]} = 1_R</m>).
+    </statement>
+   </p>
+  </assemblage>
+
+  <definition>
+  <idx>subring</idx>
+  <idx>overring</idx>
+    <statement>
+      <p>
+        Let <m>(R,+,\cdot)</m> be a ring and let <m>S\subseteq R</m>.
+        If <m>S</m> is itself a ring under <m>+</m> and <m>\cdot</m>,
+        we say <m>S</m> is a <term>subring</term> of <m>R</m>.
+        In this case, <m>R</m> is often called an
+        <term>overring</term> of <m>S</m>.
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    The following theorem provides a easy-to-apply test to check if a given subset <m>S</m> of a ring <m>R</m> is in fact a subring of <m>R</m>.
+  </p>
+  <theorem xml:id="thm_subringTest">
+  <idx>subring test</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and <m>S</m> a subset of <m>R</m>.
+        Then <m>S</m> is a subring if and only if:
+        <ol>
+          <li>
+            <p>
+              <m>1_R\in S</m>;
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S</m> is closed under multiplication; and
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S</m> is closed under subtraction.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Suppose <m>1_R\in S</m> and <m>S</m> is closed under multiplication and subtraction. We check each of the axioms in <xref ref="def_ring"/>. 
+        Since <m>1_R\in S</m> and <m>S</m> is closed under subtraction we have <m>0_R = 1_R-1_R\in S</m>. For any <m>a\in S</m>, we know that <m>a\in R</m> so that 
+        <me>
+          a+0_R = 0_R+a=a\text{ and }a\cdot 1_R = 1_R\cdot a = a.
+        </me>
+        Thus <m>0_R</m> and <m>1_R</m> are the additive and multiplicative identities, respectively, in <m>S</m>.
+      </p>
+      <p>
+        For any <m>b\in S</m>, we know that <m>-b=0_R-b\in S</m>. Thus <m>S</m> is closed under additive inverses. If <m>a,b\in S</m>, then <m>a+b=a-(-b)\in S</m> so that <m>S</m> is closed under addition.
+      </p>
+      <p>
+        For any triple of elements <m>a,b,c\in S</m>, we know <m>a,b,c\in R</m> so that <m>a+(b+c) = (a+b)+c</m> and <m>a+b=b+a</m>. Thus associativity and commutativity of addition are inherited from <m>R</m>. 
+        Similarly, <m>a\cdot(b\cdot c) = (a\cdot b)\cdot c</m>, <m>a\cdot(b+c) = a\cdot b + a\cdot c</m>, and <m>(a+b)\cdot c = a\cdot c + b\cdot c</m>. That is, <m>S</m> inherits associativity of multiplication as well as the left- and right-distributive properties from <m>R</m>.
+      </p>
+      <p>
+        We conclude that <m>S</m> is a ring under the multiplication and addition from <m>R</m>.
+      </p>
+    </proof>
+  </theorem>
+  
+  <activity>
+    <statement>
+      <p>
+        Determine whether the following rings <m>S</m> are subrings of the given rings <m>R</m>.
+        <ol>
+          <li>
+            <p>
+              <m>S = \Z</m>, <m>R = \Q</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S = \Z/5</m>, <m>R = \Z/7</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S</m> is any ring, <m>R = S[x]</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>S = \R</m>, <m>R = \mathbb{C}</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+    <answer>
+    
+    </answer>
+
+  </activity>
+
+  <definition xml:id="def-unit">
+  <idx>unit</idx>
+  <idx>associates</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and let <m>u\in R</m> be nonzero.
+        If there is a <m>v\in R</m> such that <m>uv = vu = 1</m>,
+        we say <m>u</m> is <term>unit</term> of <m>R</m>.
+        We denote the set of units of <m>R</m> by <m>R^\times</m>.
+        We say <m>x,y\in R</m> are <term>associates</term>
+        if there exists some <m>u\in R^\times</m> such that <m>x = uy</m>.
+      </p>
+    </statement>
+  </definition>
+  
+  <exploration>
+    <statement>
+      <p>
+        Explicitly describe the set <m>\Z^\times</m>.
+        What are the associates of 7 in <m>\Z</m>?
+      </p>
+    </statement>
+  </exploration>
+  <p>
+    In other words, a unit in a ring is a nonzero element with a multiplicative inverse.
+    The existence of units is the primary difference between fields and commutative rings with identity: in a field, all nonzero elements are units, while in a commutative ring with identity, no nonzero elements need be units, as <xref ref="thm-cri-field" /> demonstrates.
+  </p>
+  <theorem xml:id="thm-cri-field">
+    <statement>
+      <p>
+        A commutative ring with identity <m>R</m> in which every nonzero element is a unit is a field.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Compare the axioms for a commutative ring with identity and a field.
+      The only thing missing from the ring axioms is the existence of multiplicative inverses for nonzero elements.
+    </p>
+  </proof>
+  
+
+  <p> 
+    A useful tool for analyzing the structure of rings with finitely many elements are addition and multiplication tables. As an example, consider the addition and multiplication tables for <m>R = \Z_3</m> shown in <xref ref="table-z3addition" /> and <xref ref="table-z3multiplication" />.
+  </p>
+      
+      <table xml:id="table-z3addition">
+<title>
+  Addition table for <m>R=\Z_3</m>.
+</title>
+<tabular>
+  <row bottom="medium">
+    <cell right="medium">
+      <m>​+</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>​\overline{2}</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{1}</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{2}</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+  </row>
+</tabular>
+</table>
+
+<table xml:id="table-z3multiplication">
+<title>
+  Multiplication table for <m>R=\Z_3</m>.
+</title>>
+<tabular>
+  <row>
+    <cell right="medium">
+      <m>​\cdot</m>
+    </cell>
+    <cell bottom="medium">
+      <m>\overline{0}​</m>
+    </cell>
+    <cell bottom="medium">
+      <m>\overline{1}​</m>
+    </cell>
+    <cell bottom="medium">
+      <m>\overline{2}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>​\overline{0}</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{1}</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{2}</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+  </row>
+</tabular>
+</table>
+
+
+<investigation xml:id="invest-tables">
+  <statement>
+      <p>
+          Calculate addition and multiplication tables for the following rings.
+      </p>
+      <ol>
+          <li> <m>R = \Z_5</m></li>
+          <li> <m>R = \Z_6</m></li>
+      </ol>
+      <p>List 2-3 observations about your tables.</p>
+      </statement>	
+  <solution>
+      <p>
+          TBD.
+      </p>
+  </solution>
+</investigation>
+
+  
+  <p>
+    One of the interesting side effects of our definition of <em>ring</em>
+    is that it allows for behavior that may at first appear unintuitive or downright weird.
+  </p>
+  <definition>
+  <idx>zero divisor</idx>
+    <statement>
+      <p>
+        A <term>zero divisor</term> in a ring <m>R</m> is a nonzero element <m>z\in R</m> such that there is a nonzero <m>x\in R</m> with <m>zx = 0</m> or <m>xz=0</m>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Notice that the reason the idea of zero divisors at first appears weird is that they are not something we encounter when working with our familiar sets of numbers, such as <m>\Z</m> or <m>\R</m>.
+    In fact, we specifically use the fact that there are no zero divisors in our familiar numbers systems to solve equations in high school algebra (e.g., if <m>(x-2)(x+5)=0</m>,
+    then <m>x-2=0</m> or <m>x+5=0</m>).
+    The lack of zero divisors is one of the properties that does not persist in our abstraction from the integers to rings in general.
+  </p>
+  <exploration>
+    <statement>
+      <p>
+        Find, with justification, all of
+        the zero divisors in <m>\Z_{10}</m> and <m>\Z_{11}</m>.
+        Make and prove a conjecture about the existence of zero divisors in <m>\Z_m</m>,
+        where <m>m > 1</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The zero divisors in <m>\Z_{10}</m> are <m>\overline{2}, \overline{4}, \overline{5}, \overline{6},\overline{8}</m>.
+        There are no zero divisors in <m>\Z_{11}</m>.
+      </p>
+      <p>
+        <sc>conjecture.</sc> <m>\overline{x}\in \Z_m</m> is a zero divisor if and only if <m>\gcd(x,m) \ne 1</m>.
+      </p>
+    </solution>
+  </exploration>
+  <investigation>
+    <statement>
+      <p>
+        Are there any other rings in which you've seen zero divisors?
+        Recall your answers to <xref ref="expl-rings-examples" />.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        Matrix rings, if students have had linear algebra (and/or completed <xref ref="table_propertiessandsets" />). Otherwise, this may be a new concept.
+      </p>
+    </answer>
+  </investigation>
+  <theorem>
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and suppose
+        <m>a,b\in R</m> such that <m>ab</m> is a zero divisor.
+        Then either <m>a</m> or <m>b</m> is a zero divisor.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>a,b\in R</m> such that <m>ab</m> is a zero divisor.
+      Then <m>a,b\ne 0</m>
+      (else <m>ab = 0</m>).
+      Since <m>ab</m> is a zero divisor,
+      there is some <m>c\ne 0</m> such that <m>(ab) c = 0</m>.
+      If <m>bc\ne 0</m>,
+      then <m>a</m> is a zero divisor, as <m>a(bc) = 0</m>.
+      On the other hand, if <m>bc=0</m>,
+      then <m>b</m> is a zero divisor, as <m>b,c\ne 0</m>.
+    </p>
+  </proof>
+  <theorem xml:id="theorem_unitnotazd">
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and <m>u\in R^\times</m>.
+        Then <m>u</m> is not a zero divisor.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>u\in R^\times</m> and suppose <m>u</m> is a zero divisor.
+      Then there is some <m>v\ne 0</m> such that <m>uv = 0</m>.
+      But then <m>0_R = u^{-1} 0_R = u^{-1} (uv) = (u^{-1} u) v = 1_R v = v</m>. \Lightning
+    </p>
+  </proof>
+  <investigation>
+    <statement>
+      <p>
+        How can we reinterpret <xref ref="q_zmodmcancel" />
+        in light of our new language of units and zero divisors?
+        State a theorem that uses this new language.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        Answers may vary, but how about this: Let <m>\overline{a},\overline{b},\overline{c}\in \Z_m</m> such that <m>\overline{a}\cdot \overline{c} = \overline{b}\cdot \overline{c}</m>.
+        Then <m>\overline{a} = \overline{b}</m> if 
+        <m>\overline{c}</m> is not a zero divisor.
+      </p>
+    </answer>
+  </investigation>
+  <p>
+    While there is a well-developed body of literature on (noncommutative) rings
+    (possibly without identity),
+    from this point on,
+    and unless stated otherwise,
+    when we use the word <em>ring</em>
+    we mean <em>commutative ring with identity</em>.
+  </p>
+  <p>
+    Moreover, while even commutative rings with identity and zero divisors are of interest to mathematicians,
+    we will focus our study on rings with no zero divisors.
+    As these rings share many
+    properties of the integers, they are known as <term>integral domains</term>.
+  </p>
+  <definition>
+  <idx>integral domain</idx>
+  <idx>domain</idx>
+    <statement>
+      <p>
+        A commutative ring with identity <m>R</m> is an
+        <term>integral domain</term>,
+        or just <term>domain</term>, if <m>R</m> has no zero divisors.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    The next activities and theorems help us identify examples of domains, as well as situate the notion of a domain in its proper place relative to fields and rings in general.
+  </p>
+  <activity>
+    <statement>
+      <p>
+        Which of the following rings are domains?
+        Justify your answers.
+        <ol>
+          <li>
+            <p>
+              <m>\Z</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{8}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{19}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\R</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Q[x]</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+   </activity>
+  <theorem xml:id="theorem_everyfieldisadomain">
+    <statement>
+      <p>
+        Every field is a domain.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      If <m>F</m> is a field, the nonzero elements of <m>F</m> are units,
+      which cannot be zero divisors.
+      Thus, <m>F</m> has no zero divisors.
+    </p>
+  </proof>
+  <theorem>
+    <statement>
+      <p>
+        Let <m>m > 1</m> and <m>R = \Z_m</m>.
+        Then <m>R</m> is a field if and only if <m>R</m> is a domain.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      The forward direction holds by <xref ref="theorem_everyfieldisadomain">Theorem</xref>.
+    </p>
+    <p>
+      For the reverse, assume <m>R</m> is a domain.
+      Then <m>R</m> has no zero divisors.
+      If <m>m</m> is composite,
+      there exist integers <m>a,b</m> satisfying
+      <m>1 \lt a,b \lt m</m> such that <m>m=ab</m>.
+      Then <m>\overline{a},\overline{b}\ne \overline{0}</m> in <m>\Z_m</m>,
+      but <m>\overline{a}\cdot \overline{b} = \overline{0}</m>.
+      Thus, <m>m</m> may not be composite, and is therefore prime.
+      By an earlier theorem, <m>\Z_p</m> is a field.
+    </p>
+  </proof>
+  <theorem xml:id="theorem_subringsaredomains">
+    <statement>
+      <p>
+        If <m>R</m> is a domain and <m>S</m> is a subring of <m>R</m> with identity <m>1_S = 1_R</m>,
+        then <m>S</m> is a domain.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Any zero divisors in <m>S</m> are also zero divisors in <m>R</m>.
+      Since <m>R</m> has no zero divisors, neither does <m>S</m>.
+    </p>
+  </proof>
+  <theorem xml:id="theorem_domainimpliespolynomialdomain">
+    <statement>
+      <p>
+        If <m>R</m> is a domain, then so is <m>R[x]</m>.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>f(x) = a_i x^i + a_{i+1} x^{i+1} + \cdots a_n x^n</m> and
+      <m>g(x) = b_j x^j + b_{j+1} x^{j+1} + \cdots b_k x^k</m> be nonzero polynomials in <m>R[x]</m>,
+      where <m>a_i, b_j \ne 0</m>.
+      Then the lowest-degree term in
+      <m>f(x) g(x)</m> is <m>a_i b_j x^{i+j}</m>.
+      Since <m>R</m> is a domain, <m>a_i b_j\ne 0</m>,
+      and thus <m>f(x)g(x)</m> is not the zero polynomial.
+    </p>
+  </proof>
+  <investigation>
+    <statement>
+      <p>
+        Is the converse of <xref ref="theorem_domainimpliespolynomialdomain">Theorem</xref> true?
+        If so, give a short proof.
+        If not, find a counterexample.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        Yes.
+        Apply <xref ref="theorem_subringsaredomains">Theorem</xref>.
+      </p>
+    </answer>
+  </investigation>
+ 
+  <corollary>
+          <statement>
+              <p>
+                  Given a field <m>F</m>, the set of polynomials <m>F[x]</m> is a domain.
+              </p>
+          </statement>
+  </corollary>
+  
+<p>
+    When considering sets of polynomials,
+    as we do in <xref ref="sec-primes-factorization" /> (particularly in <xref ref="SubSec-Factoring-Polynomials" />),
+    the following results will be quite useful.
+  </p>
+
+  <theorem xml:id="theorem_degreeofproductinfield">
+    <statement>
+      <p>
+        Let <m>R</m> be a domain,
+        and let <m>p(x),q(x)\in R[x]</m> be nonzero polynomials.
+        Then <m>\deg(p(x) q(x)) = \deg(p(x)) + \deg(q(x))</m>.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      Let the leading term of <m>p(x)</m> be <m>a_n x^n</m> and the leading term of <m>q(x)</m> be <m>b_m x^m</m>.
+      Then the leading term of <m>p(x) q(x)</m> is <m>a_n b_m x^{n+m}</m>.
+      (Observe that since <m>R</m> is a domain, <m>a_n b_m \ne 0</m>.)
+      Thus, <m>\deg(p(x) q(x)) = n+m = \deg(p(x)) + \deg(q(x))</m>.
+    </p>
+  </proof>
+  </theorem>
+  
+  <exploration>
+          <statement>
+              <p>
+                  Can the hypotheses of <xref ref="theorem_degreeofproductinfield" /> be relaxed? If so, provide more general hypotheses and adapt the proof.
+                  If not, give an illustrative example.
+              </p>
+          </statement>
+          <solution>
+              <p>
+                  No; let <m>p = \overline{1} + \overline{2}x, q = \overline{2} + \overline{3}x\in \Z_6[x]</m>.
+                  Observe that <m>\deg(p) + \deg(q) = 1 + 1</m>, but <m>pq = \overline{2} + \overline{5}x</m> has degree 1. 
+              </p>
+          </solution>
+      </exploration>
+
+  
+  <investigation>
+    <statement>
+      <p>
+        Let <m>R</m> be a domain.
+        What are the units of <m>R[x]</m>?
+        Prove your answer.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        The units are <m>R^\times</m>.
+        Clearly, <m>R^\times\subseteq R[x]^\times</m>.
+      </p>
+      <p>
+        Suppose <m>p(x),q(x)\in R[x]^\times</m> such that <m>p(x) q(x) = 1</m>.
+        Then <m>\deg p(x) + \deg q(x) = \deg(p(x) q(x)) = \deg(1) = 0</m>.
+        Thus <m>\deg p(x) = \deg q(x) = 0</m>, and consequently, <m>p(x),q(x)\in R^\times</m>.
+      </p>
+    </answer>
+  </investigation>
+  <references>
+      <biblio xml:id="Curto2013">
+          C. Curto, V. Itskov, A. Veliz-Cuba, N. Youngs, <em>The Neural Ring: An Algebraic Tool for Analyzing the Intrinsic Structure of Neural Codes</em>, Bull. Math. Bio. 75 (2013), 1571-1611, <url href="https://doi.org/10.1007/s11538-013-9860-3">DOI 10.1007/s11538-013-9860-3</url>
+      </biblio>
+  </references>
+</section>

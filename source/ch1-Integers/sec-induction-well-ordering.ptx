@@ -25,6 +25,9 @@
   </p>
 
   </introduction>
+
+  <subsection xml:id="ssec_wellordering">
+    <title>Well-Ordering Principle</title>
     <definition xml:id="def_naturalnumbers">
       <statement>
         <p>
@@ -102,6 +105,8 @@ Our word choice is suggestive. In fact, other orderings do exist, and while the 
 	    <p>
         We will use this principle throughout the text, next in <xref ref="thm_divalg" />.
       </p>
+    </subsection>
+
 
       <definition xml:id="def_integers">
         <statement>
@@ -116,6 +121,8 @@ Our word choice is suggestive. In fact, other orderings do exist, and while the 
         </statement>
       </definition>
 
+  <subsection xml:id="ssec_induction">
+    <title>Principle of Mathematical Induction</title>
     <theorem xml:id="thm_mathematical_induction">
       <title>Principle of Mathematical Induction</title>
       <statement>
@@ -384,12 +391,7 @@ Our word choice is suggestive. In fact, other orderings do exist, and while the 
 			  </p>
 		  </proof>
 	  </theorem>
-<sage auto-evaluate="yes">
-<input>k = 404</input>
-</sage>
-<sage>
-<input>2*k</input>
-</sage>
+  </subsection>
   <exercises>
   <title>Exercises</title>
     <exercise xml:id="sec-induction-tf" label="sec-induction-tf">
@@ -411,29 +413,60 @@ Our word choice is suggestive. In fact, other orderings do exist, and while the 
     </statement>
     </exercise>
 
+    <exercise xml:id="sec-induction-smallest-elements1" label="sec-induction-smallest-elements1">
+      <statement>
+        <p>
+          Find the smallest element of these subsets of <m>\N</m>
+        </p>
+        <ol>
+          <li><m>\{n\in\mathbb{N}\mid n = m^2-10m+28\text{ for some integer }m\}</m></li>
+          <li><m>\{n\in\mathbb{N}\mid n = 5q+3\text{ for some integer }q\}</m></li>
+          <li><m>\{n\in\mathbb{N}\mid n = -150-17d\text{ for some integer }d\}</m></li>
+          <li><m>\{n\in\mathbb{N}\mid n = 4s+9t\text{ for some integers }s,t\}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="sec-induction-smallest-elements2" label="sec-induction-smallest-elements2">
+      <statement>
+        <p>
+          Find the smallest element of these subsets of <m>\N</m>
+        </p>
+        <ol>
+          <li><m>\{r\in\mathbb{N}_0\mid 2 = 5q+r\text{ for some integer }q\}</m></li>
+          <li><m>\{r\in\mathbb{N}_0\mid 10 = 5q+r\text{ for some integer }q\}</m></li>
+          <li><m>\{r\in\mathbb{N}_0\mid 18 = 12q+r\text{ for some integer }q\}</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+
     <exercise>
-    <title>A structured exercise</title>
     <introduction>
       <p>
-        Here is where we give the student the background information
-        required to start accomplishing tasks.
+        Here you will try out an inductive proof on your own. You'll be guided through a proof of the statement: For every <m>n\in \N</m>
+        <me>1^2+2^2+3^2+\cdots + (n-1)^2+n^2 = \frac{n(n+1)(2n+1)}{6}.</me>
+        That is, the sum of the first <m>n</m> squares can be computed as <m>\frac{n(n+1)(2n+1)}{6}</m>.
       </p>
     </introduction>
 
     <task>
     <statement>
       <p>
-        The first step to do.
+        Identify what <m>P(n)</m> is and verify <m>P(1)</m> is true.
       </p>
     </statement>
     <hint>
       <p>
-        A little hint.
+        The statement <m>P(n)</m> is the equation in the statement for a given <m>n</m>.
       </p>
     </hint>
     <answer>
       <p>
-        Just the answer.
+        <m>P(n)</m> is the statement <m>1^2+2^2+\cdots + n^2 = \frac{n(n+1)(2n+1)}{6}</m>. 
+      </p>
+      <p>
+        Thus <m>P(1)</m> is the statement <m>1^2 = \frac{1(1+1)(2+1)}{6}</m> which is certainly true.
       </p>
     </answer>
     <solution>
@@ -446,15 +479,29 @@ Our word choice is suggestive. In fact, other orderings do exist, and while the 
   <task>
     <statement>
       <p>
-        The second step to do.
-        We'll be lazy and just include an answer.
+        Verify that if <m>P(k)</m> is true, then so is <m>P(k+1)</m> must also be true.
       </p>
     </statement>
-    <answer>
+    <hint>
       <p>
-        Just the answer.
+        Write out both statements <m>P(k)</m> and <m>P(k+1)</m>. Try to manipulate <m>P(k)</m> to get <m>P(k+1)</m>.
       </p>
-    </answer>
+    </hint>
+    <solution>
+      <p>
+        We first assume that <m>P(k)</m> is true. This means 
+        <men xml:id="sum-of-squares">
+          1^2+2^2+\cdots + k^2 = \frac{k(k+1)(2k+1)}{6}.
+        </men>
+        We need to show somehow that 
+        <me>
+          1^2+2^2+\cdots + k^2+(k+1)^2 = \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}.
+        </me> 
+      </p>
+      <p>
+        Starting with <xref ref="sum-of-squares" />, we 
+      </p>
+    </solution>
   </task>
 
   <conclusion>
@@ -463,6 +510,126 @@ Our word choice is suggestive. In fact, other orderings do exist, and while the 
     </p>
   </conclusion>
   </exercise>
-  </exercises>
 
+  <exercise>
+    <introduction>
+      <p>
+        Find a formula for the sum of the first <m>n</m> odd numbers by following the steps below.
+      </p>
+    </introduction>
+
+    <task>
+    <statement>
+      <p>
+        Show by summing the first one, two, and three odd numbers, that a formula cannot be a linear function of <m>n</m>. That is, it cannot be of the form <m>an+b</m> for some <m>a,b</m>.
+      </p>
+    </statement>
+    </task>
+
+    <task>
+    <statement>
+      <p>
+        Argue that a formula could possibly be a quadratic function of <m>n</m>. Use your computations in the previous part to determine coefficients <m>a,b,c</m> so that <m>an^2+bn+c</m> agrees with your sums for <m>n=1,2,3</m>.
+      </p>
+    </statement>
+    </task>
+
+    <task>
+    <statement>
+      <p>
+        Prove your conjecture is correct.
+      </p>
+    </statement>
+    </task>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Do the same as the previous exercise but with the summation
+        <me>
+          1+4+7+\cdots + (3n-2).
+        </me>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove for all <m>k\geq 1</m>, we have <m>2^k>k</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove for all <m>k\geq 3</m>, we have <m>2^k-2>k</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove for all <m>k>2</m>, we have <m>3^k>k^2</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Formulate a problem similar to the previous three and prove it.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <title>AM-GM Inequality</title>
+    <statement>
+      <p>
+        Given numbers <m>x_1,x_2,\ldots,x_n</m>. Prove that the arithmetic mean is at least the geometric mean:
+        <me>
+          \frac{x_1+x_2+\cdots+x_n}{n}\ge (x_1\cdot x_2\cdots x_n)^{1/n}.
+        </me>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="fibonacci-numbers">
+    <statement>
+      <p>
+        Let <m>F_n</m> be the Fibonacci numbers defined with initial values <m>F_1=F_2=1</m> and recursion relation <m>F_{n+2}=F_{n+1}+F_n</m> for all integers <m>n\geq 1</m>
+        Prove that <m>F_n\le 2^n</m> for all <m>n\geq 1</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Find the first instance where <m>n!\geq 3^n</m>. Then find <m>n_0\in\N</m> such that <m>n!\geq 3^n</m> for all <m>n\geq n_0</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Find the maximum number of regions <m>R(n)</m> into which the plane can be divided using <m>n</m> lines.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove that if <m>n\geq 44</m>, then <m>n</m> cents of postage can be made using only 5 cent and 12 cent stamps.
+      </p>
+    </statement>
+  </exercise>
+
+  </exercises>
 </section>

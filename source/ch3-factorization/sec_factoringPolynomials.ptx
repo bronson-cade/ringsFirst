@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_factoringPolynomials" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Factoring Polynomials</title>
+    
+  <objectives xml:id="obj_factoringPolynomials">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      <li>What properties of divisibility in <m>\Z</m> extend to <m>F[x]</m>?</li>
+      <li>What is an irreducible polynomial? Are there any tools we can use to determine if a given polynomial is irreducible?</li>
+    </ul>
+  </objectives>
+
+
+  <p>
+    One of the most beautiful consequences of an abstract study of algebra is the fact that both <m>\Z</m> and <m>F[x]</m> are Euclidean domains.
+    While they are not
+    <q>the same</q>,
+    we can expect them to share many of the same properties.
+    In this section,
+    our first goal will be to extend familiar properties from <m>\Z</m> to <m>F[x]</m>.
+    We will also see that particular features of a polynomial (e.g., its degree, or the existence of roots) allows for additional criteria for its irreducibility to be decided.
+  </p>
+  <p>
+    Since both <m>\Z</m> and <m>F[x]</m> have a division algorithm,
+    it is reasonable
+    to expect that, similar to the integers, we can also investigate the greatest common divisor of polynomials.
+    In fact, <xref ref="invest-euclid-alg-integers" text="custom">our method</xref> for finding the greatest common divisor of two integers extends nicely to polynomials.
+  </p>
+  <investigation>
+    <statement>
+      <p>
+        Given <m>f(x),g(x)\in F[x]</m>,
+        state a conjecture that gives a means for finding <m>\gcd(f(x),g(x))</m>.
+        Prove your conjecture is correct.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The Euclidean algorithm!
+        Apply the division algorithm for polynomials and mimic the proof of the Euclidean algorithm in <m>\Z</m>.
+      </p>
+    </solution>
+  </investigation>
+
+  <investigation>
+    <statement>
+      <p>
+        Carefully state and prove a B&#xe9;zout-like theorem
+        (recall <xref ref="theorem_bezoutint">Theorem</xref>)
+        for polynomials in <m>F[x]</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        Let <m>f(x),
+        g(x)\in F[x]</m> such that <m>f</m> and <m>g</m> are not both the zero polynomial.
+        Then there exist polynomials
+        <m>s(x),
+        t(x)\in F[x]</m> such that <m>f(x) s(x) + g(x) t(x) = \gcd(f(x),g(x))</m>.
+      </p>
+    </solution>
+  </investigation>
+  
+  <p>
+      One of the most useful things we can do with polynomials is <em>evaluate</em> them by <q>plugging in</q> elements from our coefficient set (or some superset that contains it) and performing the resulting arithmetic in an appropriate ring.
+      We can make this completely rigorous using the language of functions: given a commutative ring <m>R</m> and all polynomials <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n \in R[x]</m>, we define the function <m>p_f : R\to R</m> by <m>p_f(r) = a_0 + a_1 r + \cdots + a_n r^n </m>.
+      However, we will not belabor this point; instead, we will generally write <m>p(r)</m> in place of <m>p_f(r)</m> and appeal to our common notions of evaluating polynomials.
+    </p>
+    
+    <p>
+      Given a polynomial <m>p(x)\in R[x]</m>, we have frequently been interested in finding all <m>r\in R</m> for which <m>p(r) = 0</m>.
+    </p>
+
+
+
+<!-- 
+  <p>
+    We next make the somewhat pedantic <mdash/> yet valuable <mdash/> distinction between the polynomial <m>p(x)\in R[x]</m> and the function
+    <m>p_f : R\to R</m> defined by the polynomial.
+  </p>
+-->
+
+<!-- 
+  <definition>
+    <statement>
+      <p>
+        Let <m>R</m> be a commutative ring with identity and <m>.
+        A <term>polynomial function</term>
+        <m>p_f : R \to R</m> is defined, for all <m>r\in R</m>,
+        by \in R</m>.
+        We usually denote <m>p_f(r)</m> by <m>p(r)</m>,
+        and say that <m>p(r)</m> is the polynomial <m>p</m> evaluated at <m>r</m>.
+      </p>
+    </statement>
+  </definition>
+-->
+  
+  
+
+
+
+  <definition>
+  <idx>zero (of a polynomial)</idx>
+  <idx>root</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be commutative with identity and suppose <m>p(x) \in R[x]</m>.
+        We say <m>r\in R</m> is a <term>zero</term> or <term>root</term>
+        of <m>p(x)</m> if <m>p(r) = 0</m>.
+      </p>
+    </statement>
+  </definition>
+  
+  <p>
+      When considering polynomials with integer coefficients, any rational roots are particularly well-behaved.
+    </p>
+
+
+  
+  <theorem xml:id="thm-rational-root">
+    <statement>
+      <p>
+        Let <m>p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n \in \Z[x]</m> with <m>a_0,a_n\ne 0</m>.
+        If <m>r,s\in\Z</m> such that <m>s\ne 0, \gcd(r,s)=1</m>, and <m>p(r/s)=0</m>, then <m>r|a_0</m> and <m>s|a_n</m>.
+      </p>
+    </statement>
+  <proof>
+    TBD.
+  </proof> 
+  </theorem>
+  
+  <activity>
+      <statement>
+        <p>
+          Use <xref ref="thm-rational-root" /> to find the <em>possible</em> rational roots of <m>p(x) = 40-58x-13x^2+25x^3+6x^4</m>. Which of the possibilities you found are actually roots? Justify.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          TBD.
+        </p>
+  </solution>
+</activity>
+
+      
+  <p>
+      <xref ref="thm-rational-root" /> gave a condition to check to see if polynomials in <m>\Z[x]</m> had roots in <m>\Q</m>.
+      However, the lack of a rational root for a polynomial <m>q(x)\in \Z[x]</m> is not sufficient to say that a polynomial is irreducible in <m>\Z[x]</m> according to <xref ref="def_irreducibleelement" />.
+    </p>
+    
+    <activity>
+      <statement>
+        <p>
+          Find a polynomial <m>q(x) \in \Z[x]</m> that has no roots in <m>\Q</m> but is nonetheless reducible <em>over <m>\Z</m></em>.
+        </p>
+      </statement>
+  <solution>
+    <p>	
+      Any polynomial with a nonunit integer factor will do, such as <m>q(x) = 4x^2 + 2</m>.
+    </p>
+  </solution>
+</activity>
+
+
+  
+  <p>
+    To simplify matters, we will focus henceforth on polynomials with coefficients in a field.
+    The following theorem is
+    <url href="http://www.corestandards.org/Math/Content/HSA/APR/B/2/">a result that you learned in high school algebra</url>
+    (and have likely used countless times since then),
+    but as with the other familiar topics we have explored so far,
+    it is necessary to formalize prior to continuing.
+  </p>
+  <theorem>
+  <title>Factor Theorem</title>
+    <statement>
+      <p>
+        Let <m>F</m> be a field, and <m>p(x)\in F[x]</m>.
+        Then <m>\alpha\in F</m> is a root of <m>p(x)</m> if and only if <m>x-\alpha</m> divides <m>p(x)</m>.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      If <m>x-\alpha</m> divides <m>p(x)</m>,
+      then <m>p(x) = q(x) (x-\alpha)</m> and <m>p(\alpha) = q(\alpha) (\alpha - \alpha) = 0</m>,
+      so <m>\alpha</m> is a root.
+    </p>
+    <p>
+      Otherwise, use the division algorithm to divide <m>p(x)</m> by <m>x-\alpha</m>.
+      Then <m>p(x) = q(x)(x-\alpha) + r</m>,
+      where <m>\deg r \lt \deg (x-\alpha) = 1</m>.
+      Thus, <m>r</m> is a nonzero constant.
+      If <m>\alpha</m> is a root of <m>p</m>,
+      then <m>0 = p(\alpha) = q(\alpha) (\alpha - \alpha) + r = 0 + r = r</m>,
+      so <m>r=0</m> and <m>x-\alpha | p(x)</m>.
+    </p>
+  </proof>
+  </theorem>
+  
+
+
+  
+  <p>
+      Note that while <m>F[x]</m> is a ring, and we already have a <xref ref="def_irreducibleelement" text="custom">definition</xref> of an irreducible element of a ring, we will find it useful to have a ready definition of irreducible in the context of polynomials with coefficients in a field. It is to that task that we now turn.
+    </p>
+
+  
+  <exploration>
+  <idx>irreducible (polynomial)</idx>
+    <statement>
+      <p>
+        Given a field <m>F</m>, define an irreducible element of <m>F[x]</m>,
+        keeping in view <xref ref="theorem_degreeofproductinfield">Theorem</xref>
+        and <xref ref="def_irreducibleelement">Definition</xref>.
+        <hint>
+          What are the units in <m>F[x]</m>?
+        </hint>
+
+      </p>
+    </statement>
+    <solution>
+      <p>
+        An irreducible polynomial is a nonzero nonconstant
+        <m>p(x)\in F[x]</m> such that whenever <m>p(x) = a(x) b(x)</m>,
+        where <m>a(x), b(x) \in F[x]</m>,
+        either <m>a(x)</m> or <m>b(x)</m> is a nonzero constant.
+      </p>
+    </solution>
+  </exploration>
+
+  <definition>
+  <idx>reducible (polynomial)</idx>
+    <statement>
+      <p>
+        A polynomial <m>f(x)\in F[x]</m> is <term>reducible</term>
+        if it is not irreducible.
+      </p>
+    </statement>
+  </definition>
+  <exploration>
+    <statement>
+      <p>
+        State a positive definition for a reducible polynomial with coefficients in a field <m>F</m>.
+        That is, state a definition which does not refer to the notion of irreducibility.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        A polynomial <m>r(x)</m> is reducible if it can be written as <m>r(x) = s(x) t(x)</m>,
+        where <m>1 \le \deg s(x) \lt \deg r(x)</m> and <m>1 \le \deg t(x) \lt \deg r(x)</m>.
+      </p>
+    </solution>
+  </exploration>
+
+  <theorem>
+    <statement>
+      <p>
+        Every polynomial of degree 1 in <m>F[x]</m> is irreducible.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      Let <m>f(x)</m> be degree 1 and write <m>f(x) = s(x) t(x)</m>.
+      Then <m>\deg f = 1 = \deg s + \deg t</m>.
+      Since <m>\deg s, \deg t \ge 0</m>,
+      one of <m>\deg s</m> or <m>\deg t</m> is 0, hence <m>s</m> or <m>t</m> is constant.
+    </p>
+  </proof>
+  </theorem>
+  
+  <theorem>
+    <statement>
+      <p>
+        A nonconstant polynomial <m>f(x)\in F[x]</m> of degree 2 or 3 is irreducible over <m>F</m> if and only if it has no zeros in <m>F</m>.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      We prove the double contrapositive:
+      <m>f(x)\in F[x]</m> of degree 2 or 3 is reducible if and only if it has a zero in <m>F</m>.
+    </p>
+    <p>
+      If <m>f(x)</m> is reducible there exist nonconstant
+      <m>s(x),t(x)\in F[x]</m> such that <m>f(x) = s(x) t(x)</m>.
+      Since <m>\deg f = 2</m> or 3, one of <m>s(x)</m> or <m>t(x)</m> has degree 1, and is thus of the form <m>x-\alpha</m>,
+      where <m>\alpha \in F</m>.
+      Thus, <m>f</m> has a zero.
+    </p>
+    <p>
+      Similarly, if <m>f</m> has a zero <m>\alpha\in F</m>,
+      <m>f(x) = (x-\alpha)g(x)</m>,
+      where <m>\deg g \ge 1</m>.
+      Thus, <m>f</m> is reducible over <m>F</m>.
+    </p>
+  </proof>
+  </theorem>
+  
+  
+  <p>
+      The preceding theorems allow us to explore the (ir)reducibility of polynomials of small degree with coefficients in <em>any field</em>.
+    </p>
+
+<activity>
+  <statement>
+    <p>
+      Determine which of the following polynomials are irreducible over the given fields. Justify your answer.
+    </p>
+    <ol>
+      <li> <p>Over <m>\Z_2</m>:</p>
+      <ol>
+        <li><m>x^2 + 1</m>,</li> 
+        <li><m>x^2 + x</m>,</li> 
+        <li><m>x^2 +x +1</m>,</li>
+        <li><m>x^3 + x^2 + 1</m>,</li>
+        <li><m>x^4 + x^2 + 1</m>.</li>
+      </ol>
+      </li>
+
+      <li><p>Over <m>\Z_3</m>:</p> 
+        <ol>
+        <li><m>x^2 + 1</m>,</li> 
+        <li><m>x^2 + x</m>,</li> 
+        <li><m>x^2 +x +1</m>,</li> 
+        <li><m>x^2 +x +2</m>,</li> 
+        <li><m>x^3 + x +1</m>,</li> 
+        <li><m>x^3 + x^2 + 1</m>,</li> 
+        <li><m>x^3 + x^2 + x + 1</m>.</li>
+      </ol>
+      </li>
+    </ol>
+  </statement>
+  <solution>
+    <p>
+      TBD.
+    </p>
+  </solution>
+</activity>
+
+
+  <p>
+    As the following theorem illustrates, in <m>F[x]</m>, all irreducibles are primes.
+  </p>
+
+  
+  <theorem>
+    <statement>
+      <p>
+        Let <m>F</m> be a field and
+        <m>p(x),f(x),g(x)\in F[x]</m> such that <m>p(x)</m> is irreducible and <m>p(x)</m> divides <m>f(x) g(x)</m>.
+        Then <m>p(x)</m> divides <m>f(x)</m> or <m>p(x)</m> divides <m>g(x)</m>.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      Assume <m>p(x)</m> does not divede <m>f(x)</m>.
+      Then <m>\gcd(p(x),f(x)=1</m> and <m>1=s(x)p(x)+t(x)f(x)</m>.
+      Multiplying by <m>g(x)</m> yields
+      <m>g(x)=g(x)s(x)p(x)+g(x)t(x)f(x)</m> which implies that <m>p(x)</m> divides <m>g(x)</m> (since <m>p(x)</m> divides <m>f(x)g(x)</m>) .
+    </p>
+  </proof>
+  </theorem>
+  
+  <p>
+  We next state the Fundamental Theorem of Algebra.
+  Despite its name, its proof relies on analytic properties of the real numbers; there is no purely algebraic proof.
+  Moreover, it is not essential for the work we do in following sections, but given its close relationship to the question of factorization, we include it here for completeness.
+</p>
+
+  
+  <assemblage xml:id="ftalg">
+    <title>Fundamental Theorem of Algebra</title>
+      <idx>Fundamental Theorem of Algebra</idx>
+  <p>     		
+        <statement>	
+             Every nonconstant polynomial with coefficients in <m>\C</m> has a root in <m>\C</m>.
+        </statement>
+      </p>
+  </assemblage>
+  
+  <p>
+    We conclude with one consequence of the Fundamental Theorem of Algebra.
+  </p>
+
+  
+  <theorem>
+    <statement>
+      <p>
+        Every nonconstant polynomial in <m>\C[x]</m> can be written as a product of linear polynomials.
+      </p>
+    </statement>
+    <hint>
+      <p>
+        What are the irreducibles in <m>\C[x]</m>?
+      </p>
+    </hint>
+  </theorem>
+  <proof>
+    <p>
+      Induction on degree of polynomial using previous theorem.
+    </p>
+  </proof>
+  
+  <p>
+    Thus, the multiplicative structure of <m>\C[x]</m> is straightforward: everything can be factored as a product of linear polynomials.
+    Fields of coefficients like <m>\C</m> for which this is true are said to be <term>algebraically closed</term>; not all fields satisfy this property.
+    For instance, <m>x^2 + 1\in \R[x]</m> does not factor into a product of linear polynomials. Consequently, <m>\R</m> is not algebraically closed.
+    </p>
+
+<p>
+  However, regardless of whether our field is algebraically closed, we have not yet determined that any <m>p\in F[x]</m> can be factored uniquely into a product of irreducibles, or even that such factorizations into irreducibles exist.
+  In <xref ref="SubSec-Factorization-in-Euclidean-Domains" />, we do just that.
+</p>
+
+  
+  
+</section>

@@ -202,7 +202,7 @@
       The following theorem formalizes this idea for <m>a,b\in \N</m>.
     </p>
     
-    <theorem xml:id="thm_divalg">
+    <theorem xml:id="thm_division-algorithm">
       <title>The Division Algorithm for <m>\N</m></title>
       <idx>Division Algorithm (<m>\N</m>)</idx>
       <statement>
@@ -633,11 +633,143 @@
     </subsection>
 
     
-    <conclusion>
-    		<p>
-    			In this section, we have collected some initial results about divisibility in the integers.
-    			We'll next explore the multiplicative building blocks of the integers, the primes, in preparation for a deeper exploration of factorization.
-    		</p>
-    	</conclusion>
+  <conclusion>
+    <p>
+    	In this section, we have collected some initial results about divisibility in the integers.
+    	We'll next explore the multiplicative building blocks of the integers, the primes, in preparation for a deeper exploration of factorization.
+    </p>
+  </conclusion>
+
+  <exercises xml:id="sec-divisibility-gcd-exercises">
+    <title>Exercises</title>
+    <exercise xml:id="sec-divisiblity-gcd-tf" label="sec-divisibility-gcd-tf">
+    <statement>
+      <p>
+        Mark the following as true or false. 
+      </p>
+      <ol>
+        <li>If <m>a\mid b</m>, then <m>b\mid a</m>.</li>
+        <li>If <m>a\mid bc</m>, then <m>a\mid b</m> or <m>a\mid c</m>.</li>
+        <li>If <m>a\mid b</m>, then <m>a\mid(-b)</m>.</li>
+        <li>There exists integers <m>x,y\in\Z</m> such that <m>2x+4y=1</m>.</li>
+        <li>The greatest common divisor of <m>a</m> and <m>b</m> is a divisor of both <m>a</m> and <m>b</m>.</li>
+        <li>The greatest common divisor of any two integers is always positive.</li>
+        <li>It makes sense to define the greatest common divisor of any finite number of integers.</li>
+        <li>The greatest common divisor of 0 and 0 is 0.</li>
+        <li>For any pair of integers <m>a,b\in\Z</m>, not both zero, there exists integers <m>x</m> and <m>y</m> so that <m>ax+by = \mathrm{lcm}(a,b)</m> (the least common multiple).</li>
+      </ol>
+    </statement>
+    </exercise>
+
+    <exercise xml:id="sec-divisibility-gcd-quorem" label="sec-divisibility-gcd-quorem">
+      <statement>
+        <p>
+          Apply the <xref ref="thm_division-algorithm">Division Algorithm</xref> to determine the quotient and remainder for the following pairs of integers:
+        </p>
+        <ol>
+          <li><m>a = 56, b = 7</m></li>
+          <li><m>a = 125, b = 15</m></li>
+          <li><m>a = 12345, b = 67</m></li>
+          <li><m>a = 0, b = 34</m></li>
+          <li><m>a = 84, b = 12</m></li>
+          <li><m>a = 96, b = 16</m></li>
+          <li><m>a = 105, b = 5</m></li>
+        </ol>
+      </statement>
+    </exercise>
+
+
+    <exercise xml:id="sec-divisibility-gcd-gcds" label="sec-divisibility-gcd-gcds">
+      <statement>
+        <p>
+          For each of the pairs of integers in <xref ref="sec-divisibility-gcd-quorem" /> determine their greatest common divisor <m>\gcd(a,b)</m>.
+        </p>
+      </statement>
+    </exercise>
     
+  <exercise xml:id="sec-divisibility-gcd-bezout-coeff" label="sec-divisibility-gcd-bezout-coeff">
+    <statement>
+      <p>
+        For each of the pairs of integers in <xref ref="sec-divisibility-gcd-quorem" /> find B&#xe9;zout coefficients. That is, find <m>x,y\in \Z</m> such that 
+        <me>ax+by = \gcd(a,b)</me>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <introduction>
+      <p>
+        Use induction to prove that for any <m>n\geq 1</m> <m>3\mid 2^{2n}-1</m>.
+      </p>
+    </introduction>
+  </exercise>
+
+  <exercise>
+    <introduction>
+      <p>
+        Use induction to prove that for any <m>m\geq 1</m> <m>8\mid 5^{2m}+7</m>.
+      </p>
+    </introduction>
+  </exercise>
+
+
+  <exercise>
+    <statement>
+      <p>
+        Use induction to prove that for any <m>k\geq 1</m> <m>5\mid k^5-k</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Suppose <m>a,b,c\in \Z</m> are integers such taht <m>a\mid b</m> and <m>a\mid c</m>. Prove <m>a\mid b^2+c^2</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove for any integers <m>n\geq 1</m>, <m>5^n-1</m> is divisible by 4.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        A perfect number is a positive integer <m>n</m> that is the sum of its proper (non-equal) divisors. For example, <m>6</m> is a perfect number 
+        as <m>1+2+3 = 6</m>. Find the next perfect number.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Let <m>F_n</m> be the <m>n</m>th Fibonacci Number, see <xref ref="fibonacci-numbers"/>. Prove that <m>F_{5n}</m> is divisible by <m>5</m> for all <m>n\geq 1</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove that no partial sum of the harmonic series can be an integer for <m>n>1</m>. Here the <m>n</m>th partial sum of the harmonic series is:
+        <me>1+\frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}.</me>
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Show that B&#xe9;zout coefficients are not unique. Can you find a formula for all of them?
+      </p>
+    </statement>
+  </exercise>
+
+  </exercises>
 </section>

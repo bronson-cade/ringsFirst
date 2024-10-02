@@ -323,6 +323,148 @@
     		Much of the rest of this book seeks to deduce a generalization of this result that relies on structural arithmetic properties enjoyed by <m>\Z</m> and similar objects.
     </p>
 
+
+  <exercises xml:id="exers-primes-factorization">
+    <title>Exercises</title>
+    <exercise xml:id="sec-primes-factorization-tf" label="sec-primes-factorization-tf">
+    <statement>
+      <p>
+        Mark the following as true or false. 
+      </p>
+      <ol>
+        <li>Every even number is composite.</li>
+        <li>The sum of two prime numbers is prime.</li>
+        <li>The product of two prime numbers is prime.</li>
+        <li>Every odd number is composite.</li>
+        <li>If a prime divides the product of two integers, it must divide at least one of the integers.</li>
+        <li>Every composite number has at least two distinct prime factors.</li>
+        <li>The product of two compposite numbers is always composite.</li>
+        <li>There are infinitely many composite numbers.</li>
+      </ol>
+    </statement>
+    </exercise>
+      
+    <exercise>
+      <statement>
+        <p>
+          List the prime numbers between 50 and 100.
+        </p>
+      </statement>
+    </exercise>
+        
+    <exercise xml:id="exer-primes-factorization-factorizations" label="exer-primes-factorization-factorizations">
+      <statement>
+        <p>
+          Compute the prime factorization of:
+        </p>
+        <ol>
+          <li><m>120</m></li>
+          <li><m>252</m></li>
+          <li><m>378</m></li>
+          <li><m>2024</m></li>
+        </ol>
+      </statement>
+    </exercise>
+  
+    <exercise xml:id="exer-primes-factorization-isprime" label="exer-primes-factorization-isprime">
+      <statement>
+        <p>
+          Determine if the following numbers are prime:
+        <ol>
+          <li><m>120</m></li>
+          <li><m>53</m></li>
+          <li><m>91</m></li>
+          <li><m>57</m></li>
+            <li><m>51</m></li>
+            <li><m>100001</m></li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+      
+    <exercise xml:id="sec-divisibility-gcd-bezout-coeff" label="sec-divisibility-gcd-bezout-coeff">
+      <statement>
+        <p>
+          For each of the pairs of integers in <xref ref="sec-divisibility-gcd-quorem" /> find B&#xe9;zout coefficients. That is, find <m>x,y\in \Z</m> such that 
+          <me>ax+by = \gcd(a,b)</me>.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <introduction>
+        <p>
+          Another way of computing the gcd is to compute the prime factorizations of two numbers and seeing what they share. Use this method to compute <m>\gcd(120,252)</m>.
+        </p>
+      </introduction>
+    </exercise>
+  
+    <exercise>
+      <introduction>
+        <p>
+          Find the prime factorization of 100!.
+        </p>
+      </introduction>
+    </exercise>
+  
+  
+    <exercise>
+      <statement>
+        <p>
+          Prove that there are infinitely many prime numbers.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>a,b\in \N</m> are such that <m>a\mid b</m>. Prove <m>1\leq a\leq b</m>.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>a,b\in\N</m> are such that <m>a^2\mid b^2</m>. Prove that <m>a\mid b</m>.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise xml:id="exer-primes-factorization-primeDividingPower">
+      <statement>
+        <p>
+          Suppose <m>p</m> is a prime number and <m>a\in\N</m> is such that <m>p\mid a^n</m> for some <m>n\in\N</m>. Use the Fundamental Theorem of Arithmetic to prove <m>p\mid a</m>. Show this is false if <m>p</m> is not prime.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Find the smallest natural number that has exactly 10 distinct prime factors.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Using <xref ref="def_primeinteger" /> and matehmatical induction, prove that if <m>p</m> is prime and <m>p\mid a^n</m> for some <m>a\in \Z, n\in N</m>, then <m>p\mid a</m>. This is an alternate proof of <xref ref="exer-primes-factorizatoin-primeDividingPower"/>.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Show that if <m>p\mid a^3-b^3</m>, then it is not necessarily true that <m>p\mid a-b</m>. However, prove that if <m>p\mid a-b</m>, then <m>p\mid a^3-b^3</m>.
+        </p>
+      </statement>
+    </exercise>
+  
+    </exercises>
     
     <references>
     	<biblio xml:id="NTI">

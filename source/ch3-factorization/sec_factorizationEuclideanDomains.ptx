@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_factorizationEuclideanDomains" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Factorization in Euclidean Domains</title>
+    
+  <objectives xml:id="obj_factorizationEuclideanDomains">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      <li>What is a unique factorization domain? What examples of UFDs do we possess?</li>
+      <li>What is the ascending chain condition on ideals? What are Noetherian rings?</li>
+      <li>What does the ascending chain condition have to do with unique factorization?</li>
+    </ul>
+  </objectives>
+
+      
+  <introduction>
+    <p>
+    		In this section, our explorations of the structural arithmetic properties that guarantee unique factorization culminate in <xref ref="theorem_everyedisufd" />.
+    		Specifically, we'll see that all Euclidean domains possess the unique factorization property.
+    		To prove this theorem, we will rely in part on an interesting property of <em>chains</em> of ideals in Euclidean domains.
+    		
+    </p>
+    </introduction>
+    
+    <subsection>
+    	<title>Unique Factorization Domains</title>
+    
+    
+    <p>
+   	 	We begin by describing exactly what we mean by unique factorization.
+    		The reader may find it helpful to compare <xref ref="def-ufd" /> to <xref ref="ftarith" text="custom">The Fundamental Theorem of Arithmetic</xref>.
+    	</p>
+
+
+
+    <definition xml:id="def-ufd">
+    <idx>unique factorization domain (UFD)</idx>
+      <statement>
+        <p>
+          An integral domain <m>R</m> is called a
+          <term>unique factorization domain</term>
+          (or <term>UFD</term>)
+          if the following conditions hold.
+          <ol>
+            <li>
+              <p>
+                Every nonzero nonunit element of <m>R</m> is either irreducible or can be written as a finite product of irreducibles in <m>R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Factorization into irreducibles is unique up to associates.
+                That is, if <m>s\in R</m> can be written as
+                <me>
+                  s = p_1 p_2 \cdots p_k \text{ and }  s = q_1 q_2 \cdots q_m
+                </me>
+                for some irreducibles <m>p_i, q_j\in R</m>, then <m>k=m</m> and,
+                after reordering, <m>p_i</m> is an associate of <m>q_i</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+    <activity>
+      <statement>
+        <p>
+          Using <m>\Z</m> as an example,
+          illustrate the definition of UFD by factoring 20 into two sets of <em>different</em>
+          irreducibles which nonetheless can be paired up as associates.
+        </p>
+      </statement>
+    </activity>
+    
+    <p>
+    		We are already familiar with several examples.
+    	</p>
+	<theorem>
+		<statement>
+			<p>
+				The integers <m>\Z</m> form a UFD.
+			</p>
+		</statement>
+		<proof>
+			We have already seen that primes and irreducibles coincide in <m>\Z</m> (see <xref ref="thm-primesareirredindomains" /> and <xref ref="thm-irredisprimeinZ" />).
+			The result follows from the Fundamental Theorem of Algebra.
+		</proof>
+	</theorem>
+
+
+    <theorem>
+      <statement>
+        <p>
+          Every field is a UFD.
+        </p>
+      </statement>
+      <proof>
+      	There are no nonzero nonunits in a field.
+      	The UFD conditions are therefore trivially satisfied.
+      </proof>
+
+    </theorem>
+    
+    </subsection>
+    
+    <subsection>
+    	<title>The Ascending Chain Condition and Noetherian Rings</title>
+
+    <p>
+      We now set our sights on a proof of <xref ref="theorem_everyedisufd" />.
+      In order to prove it, we will make use of an important property of ideals in Euclidean domains.
+      First, a definition.
+    </p>
+    <definition xml:id="def-noetherian">
+      <statement>
+        <p>
+          A commutative ring <m>R</m> is called <term>Noetherian</term>
+          if it satisfies the <term>ascending chain condition</term> on ideals. <aside>
+These rings are named in honor of <url href="https://en.wikipedia.org/wiki/Emmy_Noether">Emmy Noether</url>, one of the preeminent mathematicians of the 20th century. In addition to making substantial contributions to physics, she formalized the axiomatic definition of <em>ring</em> that is still in use today.
+</aside>
+          That is, <m>R</m> is Noetherian if whenever
+          <me>
+            I_1 \subseteq I_2\subseteq I_3\subseteq \cdots
+          </me>
+          is an ascending chain of ideals in <m>R</m>,
+          then there exists some <m>n</m> for which <m>I_n = I_{n+1} = I_{n+2} = \cdots</m>.
+        </p>
+      </statement>
+    </definition>
+    
+    <exploration>
+    		<statement>
+    			<p>
+    				Consider the ideals <m>I_1 = \ideal{30}</m> in <m>\Z</m> and <m>J_1 = \ideal{32}</m>. Find the longest ascending chains of ideals starting first with <m>I_1</m> and then with <m>J_1</m> that you can.
+    				When does each chain stabilize?
+    			</p>
+    		</statement>
+    		<solution>
+    			TBD.
+    		</solution>
+    	</exploration>
+    	
+    	<p>
+    		We next show that every PID is Noetherian.
+    	</p>
+
+
+    
+    <theorem xml:id="theorem-pidisnoetherian">
+      <statement>
+        <p>
+          Every principal ideal domain is Noetherian.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Let <m>I_1\subseteq I_2\subseteq I_3 \subseteq \cdots</m> and set <m>I = \cup I_j</m>.
+          Show that <m>I</m> is an ideal, and use your assumptions!
+        </p>
+      </hint>
+      <proof>
+      <p>
+        It is
+        a straightforward definition check to see
+        that <m>I</m> as defined in the hint is an ideal.
+        That we are in a PID means there exists <m>a</m> such that <m>I=\cup I_j=\ideal{a}</m>.
+        Therefore there exists <m>j</m> such that <m>a\in I_j</m>.
+        It follows that <m>I=I_j</m> and in particular that <m>I=I_k</m> for all <m>k\geq j</m>.
+      </p>
+    </proof>
+    </theorem>
+    
+    <corollary>
+    	<statement>
+    		<p>
+    			Every Euclidean domain is Noetherian.
+    		</p>
+    	</statement>
+    	<proof>
+    		<p>
+    			Every ED is a PID.
+    		</p>
+    	</proof>
+    </corollary>
+    
+    </subsection>
+    
+    
+    <subsection>
+    	<title>Euclidean Domains are UFDs</title>
+
+    
+    <p>
+    	We now begin collecting results to prove that every Euclidean domain is a UFD.
+    	The first condition in the UFD definition is that every nonzero nonunit factors as a product of irreducibles.
+    	We first show that every nonzero nonunit is divisible by at least one irreducible (<xref ref="lem_divisiblebyirred" />), which we apply to show that every nonzero nonunit can be written as a finite product of irreducibles (<xref ref="thm-writeasprodofirred" />).
+    	</p>
+
+
+    
+    <lemma xml:id="lem_divisiblebyirred">
+      <statement>
+        <p>
+          Let <m>R</m> be a principal ideal domain,
+          and <m>r\in R</m> a nonzero nonunit.
+          Then <m>r</m> is divisible by an irreducible.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Let <m>r\in R</m> be reducible and write <m>r = r_1 r_2</m>.
+          Continue to factor reducibles and build an ascending chain of ideals.
+        </p>
+      </hint>
+      <proof>
+      <p>
+        Suppose that <m>r</m> is not irreducible.
+        Write <m>r = r_1 r_2</m>, where the <m>r_i</m> are nonzero nonunits.
+        Then <m>\ideal{r} \subsetneq \ideal{r_1}</m>.
+        If <m>r_1</m> is not irreducible,
+        we may write <m>r_1 = r_{1,1}r_{1,2}</m>,
+        where <m>r_{1,1},r_{1,2}</m> are nonzero nonunits, and observe that
+        <me>
+          \ideal{r} \subsetneq \ideal{r_1}\subsetneq \ideal{r_{1,1}}
+        </me>.
+      </p>
+      <p>
+        (If <m>r_1</m> <em>is</em> irreducible and we nonetheless write <m>r_1 = r_{1,1} r_{1,2}</m>,
+        then either <m>\ideal{r_{1,1}} = R</m> if <m>r_{1,1}</m> is a unit,
+        or <m>\ideal{r_{1,1}} = \ideal{r_1}</m> if <m>r_{1,1}</m> is associate to <m>r_1</m>.)
+      </p>
+      <p>
+        Continuing in this way,
+        we may continue to factor the reducible factors of <m>r_1</m>;
+        since <m>R</m> is a PID and thus has the ascending chain condition,
+        we must eventually reach a point where the chain stabilizes,
+        i.e., that we have found an irreducible factor of <m>r_1</m>.
+      </p>
+    </proof>
+    </lemma>
+    
+    <theorem xml:id="thm-writeasprodofirred">
+      <statement>
+        <p>
+          Let <m>R</m> be a PID. Then every nonzero nonunit element of <m>R</m> is either irreducible or can be written as a finite product of irreducibles in <m>R</m>.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        We may perform the analysis from <xref ref="lem_divisiblebyirred">Lemma</xref> for all factors of <m>r</m>,
+        and thus <m>r</m> can be factored into a product of irreducibles.
+      </p>
+    </proof>
+    </theorem>
+    
+    <p>
+    	The second condition that must be satisfied for a domain to be a UFD is that the product of irreducibles must be unique (up to associates).
+    	In order to prove that, we will make use of <xref ref="thm-primesareirredinPID" />, which states that in PIDs, primes and irreducibles are identical concepts.
+    	</p>
+
+    
+    <lemma>
+      <statement>
+        <p>
+          Let <m>R</m> be a PID and let <m>p\in R</m> be irreducible.
+          Let <m>a\in R</m> be such that <m>p\nmid a</m>.
+          Then <m>1\in I = \setof{ax+py}{x,y\in R}</m> and thus there exist
+          <m>s,t\in R</m> such that <m>1 = as+pt</m>.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        Assume that <m>p</m> is irreducible.
+        Suppose that <m>p</m> divides <m>ab</m> for some
+        <m>a,b \in R</m> and that <m>p</m> does not divide <m>a</m>.
+        Since <m>R</m> is a PID, <m>I = \ideal{\gcd(a,p)} = \ideal{1}</m>.
+        Thus there exists <m>s,t\in R</m> such that <m>1=as+pt</m>.
+      </p>
+    </proof>
+    </lemma>
+    
+    <theorem xml:id="thm-primesareirredinPID">
+      <statement>
+        <p>
+          Let <m>R</m> be a PID and let <m>p\in R</m>.
+          Then <m>p</m> is prime if and only if <m>p</m> is irreducible.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        Assume that <m>p</m> is prime.
+        Suppose that <m>p=ab</m> for some <m>a,b \in R</m>.
+        Then <m>p</m> divides <m>ab</m> which implies that <m>p</m> divides <m>a</m> or <m>p</m> divides <m>b</m>.
+        WLOG, assume that <m>p</m> divides <m>a</m>.
+        Then there exists <m>c\in R</m> such that <m>a=pc</m> which implies that <m>p=pcb</m>.
+        Therefore <m>cb=1</m> and <m>b</m> is a unit which implies that <m>p</m> is irreducible.
+      </p>
+      <p>
+        Assume that <m>p</m> is irreducible.
+        Suppose that <m>p</m> divides <m>ab</m> for some
+        <m>a,b \in R</m> and that <m>p</m> does not divide <m>a</m>.
+        Then <m>\ideal{a,p}=R</m> and there exists
+        <m>x,y\in R</m> such that <m>1=ax+py</m>.
+        Multiplying boths sides by <m>b</m> yiels
+        <m>b=abx+pby=p(cx+by)</m> which implies that <m>p</m> divides <m>b</m> and therefore <m>p</m> is prime.
+      </p>
+    </proof>
+    </theorem>
+    
+    <p>
+    	Observe that <xref ref="thm-primesareirredinPID" /> implies that if <m>R</m> is a PID and <m>p\in R</m> is irreducible with <m>p|ab</m>, then <m>p|a</m> or <m>p|b</m>.
+    </p>
+
+    
+    <!-- 
+<theorem>
+      <statement>
+        <p>
+          Let <m>R</m> be a PID and <m>p\in R</m> be irreducible.
+          If <m>a,b\in R</m> with <m>p\mid ab</m>,
+          then <m>p\mid a</m> or <m>p\mid b</m>.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Irreducible implies prime
+        (use the previous theorem).
+      </p>
+    </proof>
+ -->
+ 	
+ 	<p>
+ 		Our crucial final step on the road to <xref ref="theorem_everyedisufd" /> is the following.
+ 	</p>
+
+ 
+    <theorem xml:id="thm_pidisufd">
+      <statement>
+        <p>
+          Every PID is a UFD.
+        </p>
+      </statement>
+      <hint>
+      	For part 2 of the definition, use induction on the number of irreducible divisors of an arbitrary nonzero nonunit.
+      	Mimic the proof of <xref ref="theorem_FTAuniqueness" />.
+      </hint>
+      <proof>
+      	<p>
+      		Let <m>R</m> be a PID, and observe that by <xref ref="thm-writeasprodofirred" /> every nonzero nonunit can be written as a product of irreducibles.
+      		We thus need only show that this product is unique (up to associates).
+      	</p>
+      	<p>
+      		To that end, we adopt the notation of <xref ref="def-ufd" />.
+      		Let <m>s\in R</m>.
+      		We perform induction on the number of irreducible factors <m>k</m> of <m>s</m>.
+      		If <m>k=0</m>, then <m>s</m> is a unit.
+      		If we had <m>s = pa</m> for some irreducible <m>p</m>, then <m>p</m> divides a unit and would thus be a unit itself, which is a contradiction.
+      		</p>
+			<p>
+			Suppose now that <m>k\ge 1</m> and we write
+			<me>
+                  s = p_1 p_2 \cdots p_k \text{ and }  s = q_1 q_2 \cdots q_m, \ m \ge k,
+                </me>
+            where the <m>p_i</m> and <m>q_j</m> are not necessarily distinct irreducibles.
+            Since <m>p_1 | q_1 q_2 \cdots q_m</m>, we know by <xref ref="thm-primesareirredinPID" /> that <m>p_1</m> must divide one of the factors.
+			</p>
+			<p>
+				Renumbering, we may assume that <m>p_1 | q_1</m>, whence <m>q_1 = p_1 v_1</m>, where <m>v_1</m> must be a unit as <m>q_1</m> is irreducible.
+				Canceling <m>p_1</m> yields
+				<me>
+					p_2 p_3 \cdots p_k = v_1 q_2 q_3 \cdots q_n, m\ge k.
+				</me>
+			By induction on <m>k</m> we conclude that each of the irreducible factors on the left matches with precisely one factor on the right (up to associates).
+			This completes the inductive step, and thus the proof.
+		</p>
+
+      </proof>
+
+ <!-- 
+     <proof>
+      <p>
+        Let <m>R</m> be a PID and suppose that a non-zero non-unit element <m>a\in R</m> can be factored in two different ways as a product of irreducibles.
+        <me>
+          a=p_1p_2\cdots p_r=q_1q_2\cdots q_s
+        </me>
+      </p>
+      <p>
+        Assume that <m>s\geq r</m>.
+        Since <m>p_1</m> is irreducible
+        (and therefore prime),
+        there exists <m>j</m> such that <m>p_1 \mid q_j</m>, so <m>q_j = p_1 v_1</m>.
+        Since <m>q_j</m> and <m>p_1</m> are irreducible,
+        there is a unit <m>u_1 = v_1^{-1}</m> such that <m>p_1=u_1 q_j</m>.
+        Up to reordering we have
+        <me>
+          p_1p_2\cdots p_r=u_1p_1q_2\cdots q_s
+        </me>
+      </p>
+      <p>
+        Therefore
+        <me>
+          p_2\cdots p_r=u_1q_2\cdots q_s
+        </me>
+      </p>
+      <p>
+        We can continue in a similar fashion until we end up with
+        <me>
+          1=u_1\cdots u_rq_{r+1}\cdots q_s
+        </me>
+      </p>
+      <p>
+        Since the <m>q_j</m>'s are non-units,
+        this means that <m>r=s</m> and that the <m>p_i</m>'s are associates of the <m>q_j</m>'s.
+        Therefore <m>R</m> is a UFD.
+      </p>
+    </proof>
+ -->
+
+    </theorem>
+    
+    
+    <theorem xml:id="theorem_everyedisufd">
+      <statement>
+        <p>
+          Every Euclidean domain is a unique factorization domain.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Apply <xref ref="thm_edispid">Theorems</xref>
+        and <xref ref="thm_pidisufd"></xref>.
+      </p>
+    </proof>
+    <theorem>
+      <title>(Unique Factorization of Polynomials)</title>
+      <statement>
+        <p>
+          Let <m>F</m> be a field.
+          Then <m>F[x]</m> is a UFD.
+        </p>
+        <p>
+          That is, if <m>f(x) \in F[x]</m> with <m>\deg(f(x)) \ge 1</m>,
+          then <m>f(x)</m> is either irreducible or a product of irreducibles in <m>F[x]</m>.
+          What is more, if
+          <me>
+            f(x) = p_1(x) p_2(x) \cdots p_k(x) \text{ and }  f(x) = q_1(x) q_2(x) \cdots q_m(x)
+          </me>
+          are two factorizations of <m>f</m> into irreducibles <m>p_i, q_j</m>,
+          then <m>m=k</m> and after reordering,
+          <m>p_j</m> and <m>q_j</m> are associates.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Handle existence and uniqueness separately.
+          For each, (strong) induction on <m>\deg(f(x))</m> will work.
+          Or do something entirely different.
+        </p>
+      </hint>
+    </theorem>
+    <p>
+      Thus, we see that the existence of a well-behaved division algorithm (and a lack of zero divisors) is sufficient to guarantee unique factorization. 
+      However, it is not necessary.
+      The following theorem is included for reference, but is not intended to be proved.
+    </p>
+    <assemblage xml:id="thm-polyringisUFD">
+      <title>Theorem</title>
+
+		<p>     		
+      		If <m>R</m> is a UFD, then <m>R[x]</m> is a UFD.
+      	</p>
+    </assemblage>
+    <!-- 
+<theorem>
+      <statement>
+        <p>
+          If <m>R</m> is a UFD, then <m>R[x]</m> is a UFD.
+        </p>
+      </statement>
+    </theorem>
+     -->
+    <p>
+      Thus, <m>\Z[x]</m> is a UFD. That is, every nonconstant polynomial in <m>\Z[x]</m> is either irreducible or can be factored uniquely into a product of irreducibles.  However,
+      as we will see later, <m>\Z[x]</m> is not a PID.
+    </p>
+
+    </subsection>
+
+</section>

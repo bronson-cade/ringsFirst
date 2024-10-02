@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_quotientRings" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Quotient Rings</title>
+    
+  <objectives xml:id="obj_quotientRings">
+    <title>Guiding Questions</title>
+    <introduction>
+		<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+    </introduction>
+    <ul>
+      			
+      <li>How can we use ideals to build new rings out of old?</li>
+      <li>What sorts of ideals allow us to build domains? Fields?</li>
+      <li>What is the First Isomorphism Theorem?</li>
+    </ul>
+  </objectives>
+  <introduction>
+    <p>
+    		If the only rings that existed were polynomial rings, familiar systems of numbers like <m>\Z, \Q, \R, \C</m>, and matrix rings, there would still be enough to justify defining the concept of a ring and exploring its properties. 
+    		However, these are not the only rings that exist.
+    		In this section, we explore a way of building new rings from old by means of ideals.
+    		To better understand these new rings, we will also define two new classes of ideals: prime ideals, and maximal ideals.
+    		We end by briefly connecting these rings to a familiar problem from high school algebra.
+    </p>
+</introduction>
+
+<subsection>
+	<title>Congruence modulo <m>I</m></title>
+	
+	<p>
+		The major concept of this section is the notion of congruence modulo <m>I</m>.
+		One can reasonably think of this idea as a generalization of congruence modulo <m>m</m> in <m>\Z</m>.
+	</p>
+
+
+    <definition>
+    <idx>congruence mod <m>I</m></idx>
+      <statement>
+        <p>
+          Let <m>R</m> be a ring, <m>I</m> an ideal of <m>R</m>, and <m>a,b\in R</m>.
+          We say <m>a</m> is
+          <term>congruent to <m>b</m> modulo <m>I</m></term> if <m>b-a\in I</m>.
+          If this is the case, we write <m>a + I = b + I</m>.
+        </p>
+      </statement>
+    </definition>
+    
+    <activity>
+    		<statement>
+    			<p>
+    				Determine (with brief justification) whether <m>a + I = b + I</m> in the following rings <m>R</m>.
+    			</p>
+			<ol>
+				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = \ideal{6}</m>, <m>R = \Z</m></li>
+				<li><m>a = 10</m>, <m>b = 4</m>, <m>I = \ideal{7}</m>, <m>R = \Z</m></li>
+				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = \ideal{6}</m>, <m>R = \Z[x]</m></li>
+				<li><m>a = x^2+x-2</m>, <m>b = x-1</m>, <m>I = \ideal{x+1}</m>, <m>R = \Q[x]</m></li>
+				<li> (<em>Challenge.</em>) <m>a = x^3</m>, <m>b = x^2+2x</m>, <m>I = \ideal{y-x^2, y-x-2}</m>, <m>R = \Q[x,y]</m></li>
+			</ol>
+		</statement>
+		<solution>
+			TBD
+			
+			
+			last one: <m>x^3 - x^2 - 2x = x(x-2)(x+1) = -x(y-x^2) + x(y-x-2)</m>.
+		</solution>
+	</activity>
+
+
+    
+    
+    <exploration>
+      <statement>
+        <p>
+          Given a ring <m>R</m>, ideal <m>I</m>,
+          and <m>a\in R</m>, when is it the case that <m>a + I = 0 + I = I</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          When <m>a\in I</m>.
+        </p>
+      </answer>
+    </exploration>
+
+    <p>
+      Observe that if <m>b-a \in I</m>,
+      then there is some <m>x\in I</m> such that <m>b-a = x</m>,
+      and so <m>b = a+x</m>.
+
+    </p>
+    
+    <p>
+    	As was the case in <m>\Z_m</m>, congruence modulo <m>I</m> is an equivalence relation.
+    	</p>
+
+    <theorem>
+      <statement>
+        <p>
+          Let <m>R</m> be a ring and <m>I</m> an ideal of <m>R</m>.
+          Then congruence modulo <m>I</m> is an equivalence relation on <m>R</m>.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        Since <m>0\in I</m>, <m>a-a \in I</m> for all <m>a</m>,
+        so <m>a + I = a+I</m> and the relation is reflexive.
+      </p>
+      <p>
+        Moreover, if <m>b-a \in I</m>,
+        then <m>-1(b-a) = a-b \in I</m>,
+        so the relation is symmetric.
+      </p>
+      <p>
+        If <m>b-a \in I</m> and <m>c-b\in I</m>,
+        then <m>(b-a) + (c-b) = c-a \in I</m>,
+        so the relation is transitive.
+      </p>
+    </proof>
+    </theorem>
+    <p>
+      The set of equivalence classes under this relation is denoted <m>R/I</m>.
+      What is more, this is not merely a set of equivalence classes.
+      As the next two theorems demonstrate, this set possesses two algebraic operations that extend naturally from those of <m>R</m>.
+    </p>
+    
+
+    
+    <theorem xml:id="thm-addition-mod-I">
+      <statement>
+        <p>
+          Let <m>R</m> be a ring and <m>I</m> an ideal of <m>R</m>.
+          If <m>a,b,c,d\in R</m> such that
+          <m>a+I = b+I</m> and <m>c+I = d+I</m>,
+          then <m>(a+c) + I = (b+d) + I</m>.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        Suppose <m>a+I = b+I</m> and <m>c+I = d+I</m>.
+        Then <m>b-a =x \in I</m> and <m>d-c = y \in I</m>.
+        Adding, we have <m>(b-a) + (d-c) = (b+d) - (a+c) = x+y \in I</m>.
+        Thus, <m>(b+d) + I = (a+c) + I</m>.
+      </p>
+    </proof>
+    </theorem>
+    
+    <theorem xml:id="thm-multiplication-mod-I">
+      <statement>
+        <p>
+          Let <m>R</m> be a ring and <m>I</m> an ideal of <m>R</m>.
+          If <m>a,b,c,d\in R</m> such that
+          <m>a+I = b+I</m> and <m>c+I = d+I</m>,
+          then <m>ac + I = bd + I</m>.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        As before, we observe that
+        <m>b-a = x\in I</m> and <m>d-c = y\in I</m>.
+        Write <m>b = x+a</m> and <m>d = c+y</m>.
+        Then <m>bd = (x+a)(c+y) = xc + xy + ac + ay = ac + \underbrace{(xc+xy+ay)}_{\in I}</m>,
+        so <m>bd - ac \in I</m>, and thus <m>bd + I = ac + I</m>.
+      </p>
+    </proof>
+    </theorem>
+    
+    <p>
+      The previous two theorems together show that addition and multiplication on the set <m>R/I</m> is well-defined.
+      As these operations are built on the operations of <m>R</m>, it will likely not surprise you to learn that the usual <xref ref="def_ring" text="custom">axioms defining a ring</xref> also hold.
+    </p>
+    <theorem>
+    <idx>quotient ring</idx>
+      <statement>
+        <p>
+          Let <m>R</m> be a commutative ring with identity <m>1_R</m>, <m>I</m> an ideal of <m>R</m>, and <m>a,b\in R</m>.
+          The set of equivalence classes modulo <m>I</m>, denoted <m>R/I</m>,
+          is a commutative ring (called the <term>quotient ring</term> of <m>R</m> by <m>I</m>) with identity <m>1_R + I</m> under the following operations:
+          <!-- the operations of addition modulo <m>I</m> and multiplication modulo <m>I</m> defined in <xref ref="thm-addition-mod-I" /> and <xref ref="thm-multiplication-mod-I" />. -->
+        </p>
+        <md>
+          <mrow>(a+I) + (b+I) &amp; := (a+b) + I</mrow>
+          <mrow>(a+I) \cdot (b+I) &amp; := (ab) + I.</mrow>
+        </md>
+      </statement>
+      <proof>
+      	These operations were shown to be well-defined in <xref ref="thm-addition-mod-I" /> and <xref ref="thm-multiplication-mod-I" />.
+      </proof>
+
+    </theorem>
+    
+    <p>
+    Thus, given a ring <m>R</m> and ideal <m>I</m> of <m>R</m>, we may build the quotient ring <m>R/I</m>.
+    </p>
+    
+    <activity>
+      <statement>
+        <p>
+          Answer the questions below.
+          Be prepared to give an information justification of your thinking.
+        </p>
+        <ol>
+          <li>Suppose <m>R= \Z</m> and <m>I = \ideal{8}</m>. Calculate <m>(3+I) + (7+I)</m> and <m>(4+I)\cdot (6+I)</m>.</li>
+          <li>Let <m>R = \Z_3[x]</m> and <m>J = \ideal{x^2}</m>. List all elements of <m>R/J</m> (there should be 9 in total).</li>
+          <li>Set <m>R = \R[x]</m> and <m>I = \ideal{x^2-1}</m>. Find an element <m>f + I \in R/I</m> such that <m>(f+I)(2x+2 + I) = I</m>.</li>
+        </ol>
+      </statement>
+    </activity>
+    
+    <p>
+    In <xref ref="subsec-prime-maximal-ideal" />, we will explore the question of when <m>R/I</m> possesses some of the properties we've previously explored, e.g., when is <m>R/I</m> a domain? A field?
+    First, we conclude with two explorations. The first gives us a sense of what these rings can look like. The second connects quotient rings to <em>solution sets</em> of polynomial equations.
+    </p>
+    
+    <exploration>
+	    	<statement>
+	    		<p>
+	    			Consider the ring <m>R=\Z_2[x]</m> and the ideals <m>I = \ideal{x^2-1}</m> and <m>J = \ideal{x^3 -x -1}</m>.
+	    		</p>
+			<ol>
+				<li>List the elements of <m>R/I</m> and <m>R/J</m>.</li>
+				<li>What happens to <m>x^2</m> in <m>R</m> when you pass to the quotient ring <m>R/I</m>? How about <m>x^3</m> as you pass from <m>R</m> to <m>R/J</m>?</li>
+				<li>In view of your answer to the previous question, how does <m>x</m> behave as you <q>mod out</q> by <m>I</m> and <m>J</m>?</li>
+				<li>Build addition and multiplication tables for each of <m>R/I</m> and <m>R/J</m>.</li>
+			</ol>
+		</statement>
+		<solution>
+		TBD
+		</solution>
+
+	</exploration>
+
+
+	<exploration>
+		<idx>graph (of a function)</idx>
+		<idx>zero set</idx>
+		<statement>
+			<p>
+				One of the most useful connections made in high school algebra is the connection between a function <m>f</m> (in particular, a polynomial function) and its <em>graph</em>.
+				We may extend this notion to ideals via the concept of a <em>zero set</em> as follows.
+			</p>
+			<p>
+				Let <m>F</m> be a field and <m>R = F[x,y]</m> with <m>I\subseteq R</m> a nonzero ideal.
+				We define the <term>zero set</term> of <m>I</m>, denoted <m>Z(I)</m>, as the set of all points <m>(a,b)\in F^2</m> for which <m>f(a,b)=0</m> for all <m>f\in I</m>.
+				
+			</p>
+			<ol>
+				<li>Suppose <m>I = \ideal{f_1, f_2, \ldots, f_n}</m>. Prove that <m>(a,b)\in Z(I)</m> if and only if <m>f_j(a,b) = 0</m> for each <m>j\in \set{1,\ldots, n}</m>. Thus, <m>Z(I)</m> can be determined entirely by examining the generators of <m>I</m>.</li>
+				<li>Describe <m>Z(I)</m> given <m>I = \ideal{y-x^2}</m>.</li>
+				<li>(Challenge) Given <m>I = \ideal{y-x^2}</m> and <m>J = \ideal{y-x-2}</m>, describe <m>Z(I+J)</m> and <m>Z(I\cap J)</m>.</li>
+				<li>Given <m>I=\ideal{y-x^2}</m>, describe the relationship between the variables <m>x</m> and <m>y</m> in the quotient <m>R/I</m>. In what way have we restricted our polynomial <q>inputs</q> to the parabola <m>y = x^2</m>?</li>
+			</ol>
+		</statement>
+		<solution>
+			TBD.
+		</solution>
+	</exploration>
+
+    
+    
+    <!-- 
+<exploration>
+      <statement>
+        <p>
+          Let <m>R = \Z</m> and <m>I = \ideal{7}</m>.
+          Find at least three distinct integers <m>x</m> such that <m>9 + I = x + I</m>.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Such <m>x</m> include <m>-5, 2, 16</m>,
+          and anything in <m>\setof{2+7m}{m\in\Z}</m>.
+        </p>
+      </solution>
+    </exploration>
+    
+ -->
+    
+    
+    </subsection>
+
+<subsection xml:id="subsec-prime-maximal-ideal">
+	<title>Prime and Maximal Ideals</title>
+	
+	<p>
+		In this section, we continue our exploration of quotient rings by looking more closely at properties of ideals.
+		We focus on particular properties of ideals that ensure that the quotient <m>R/I</m> is either a domain or a field.
+	</p>
+
+
+    <definition>
+    <idx>prime ideal</idx>
+    <idx>ideal (prime)</idx>
+      <statement>
+        <p>
+          Let <m>R</m> be commutative with identity and <m>P\subsetneq R</m> a nonzero ideal.
+          We say <m>P</m> is <term>prime</term>
+          if whenever <m>a,b\in R</m> such that <m>ab\in P</m>,
+          we have <m>a\in P</m> or <m>b\in P</m>.
+        </p>
+      </statement>
+    </definition>
+    
+    
+
+    
+    <theorem>
+      <statement>
+        <p>
+          Let <m>R</m> be a domain and <m>p\in R</m> be prime.
+          Then <m>\ideal{p}</m> is a prime ideal.
+        </p>
+      </statement>
+      <proof>
+      	TBD
+      </proof>
+    </theorem>
+    
+    
+    <activity>
+      <statement>
+        <p>
+          Which of the following ideals are prime?
+          <ol>
+            <li>
+              <p>
+                <m>\ideal{9}</m> in <m>\Z</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ideal{11}</m> in <m>\Z</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ideal{x^2+1}</m> in <m>\R[x]</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ideal{x^2-1}</m> in <m>\R[x]</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ideal{x^2-5x+6, x^4+2x^3-10x^2+5x-2}</m> in <m>\R[x]</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <solution>
+        <p>
+          <ol>
+            <li>
+              <p>
+                Not prime.
+                <m>3\cdot 3= 9\in \ideal{9}</m>,
+                but <m>3\notin\ideal{9}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prime.
+                If <m>x\in \ideal{11}</m>, then <m>11|x</m> and 11 is prime.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prime.
+                Easy explanation is that <m>R[x]/\ideal{x^2+1}</m> is isomorphic to <m>\C</m>.
+                <m>\ddot\smile</m> For now, though,
+                we know that <m>x^2+1</m> is irreducible,
+                and <m>R[x]</m> is a PID, so irreducibles are prime.
+              </p>
+            </li>
+            <li>
+              <p>
+                Not prime.
+                <m>x^2-1 = (x-1)(x+1)</m>,
+                but <m>x\pm 1\notin \ideal{x^2-1}</m> for degree reasons.
+              </p>
+            </li>
+            <li>
+              <p>
+                One may use the EA to show that <m>\gcd(x^2-5x+6,x^4+2x^3-10x^2+5x-2) = x-2</m>,
+                so <m>\ideal{x^2-5x+6, x^4+2x^3-10x^2+5x-2} = \ideal{x-2}</m>.
+                This is prime.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </solution>
+    </activity>
+    
+    
+    <p>
+    	It is this precise condition that guarantees that the resulting quotient is a domain.
+	</p>
+	
+	<theorem>
+      <statement>
+        <p>
+          Let <m>R</m> be commutative with identity and <m>I</m> an ideal of <m>R</m>.
+          Then <m>I</m> is prime if and only if <m>R/I</m> is an integral domain.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Begin by assuming that <m>I</m> is prime,
+        and suppose <m>(a+I)(b+I) = 0+I = I</m>.
+        Then <m>ab \in I</m>, and since <m>I</m> is prime,
+        either <m>a\in I</m> or <m>b\in I</m>.
+        Thus either <m>a+I = 0+I</m> or <m>b+I = 0+I</m>.
+      </p>
+      <p>
+        Now assume that <m>R/I</m> is a domain.
+        Further, let <m>a,b\in R</m> be such that <m>(a+I)(b+I) = ab+I = 0+I</m>.
+        Then <m>ab\in I</m>, and since <m>R/I</m> is a domain,
+        <m>a+I = 0+I</m> or <m>b+I = 0+I</m>,
+        i.e., <m>a\in I</m> or <m>b\in I</m>.
+        Thus, <m>I</m> is prime.
+      </p>
+    </proof>
+    
+    
+    
+    
+
+    		
+    
+    <p>
+    		We now consider another important class of ideals: the maximal ideals.
+    	</p>
+
+	
+
+    <definition>
+    <idx>maximal ideal</idx>
+    <idx>ideal (maximal)</idx>
+      <statement>
+        <p>
+          Let <m>R</m> be commutative with identity and let <m>M\subsetneq R</m> be a nonzero ideal.
+          We say that <m>M</m> is a <term>maximal ideal</term>
+          if no proper ideal of <m>R</m> properly contains <m>M</m>.
+          That is, if <m>J</m> is an ideal satisfying <m>M\subseteq J\subseteq R</m>,
+          either <m>J=M</m> or <m>J=R</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+    	In other words, an ideal <m>M\ne R</m> is maximal if no <q>larger</q> ideal (with respect to inclusion) properly contains it.
+    	As we will see later, rings can have many maximal ideals.
+    </p>
+
+    <p>
+      It is a fact that any ring <m>R</m> with <m>0_R\ne 1_R</m> has a maximal ideal.
+      This follows from <em>Zorn's Lemma</em>;
+      a rigorous exploration of Zorn's Lemma lies outside of the scope of this text,
+      but suffice it to say that Zorn's Lemma is incredibly useful in all areas of algebra for proving existence theorems.
+      For example,
+      a proof that every vector space has a basis relies on Zorn's Lemma.
+    </p>
+    <p>
+      Rings with only one maximal ideal are said to be <em>local rings</em>,
+      and are actively studied in modern research in commutative algebra
+      (the study of commutative rings and their properties).
+    </p>
+    
+    <p>
+    	The next two results demonstrate that the maximality of <m>I</m> is precisely the condition that guarantees that <m>R/I</m> is a field.
+    </p>
+
+    
+    <lemma>
+      <statement>
+        <p>
+          Let <m>R</m> be commutative with identity and <m>M</m> a maximal ideal of <m>R</m>.
+          Let <m>x\in R\setminus M</m>,
+          and set <m>J = \setof{xr+y}{r\in R, \ y\in M}</m>.
+          Then: <m>J</m> is an ideal of <m>R</m>; <m>M\subsetneq J</m>;
+          and thus there exist <m>r'\in R</m>,
+          <m>y'\in M</m> such that <m>1 = xr'+y'</m>.
+        </p>
+      </statement>
+      <proof>
+       	TBD
+      </proof>
+
+    </lemma>
+    <theorem>
+      <statement>
+        <p>
+          Let <m>R</m> be commutative with identity and <m>I</m> an ideal of <m>R</m>.
+          Then <m>I</m> is maximal if and only if <m>R/I</m> is a field.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          For the forward direction, apply the previous lemma to construct an inverse for <m>x+I</m> given any <m>x\in R\setminus I</m>.
+        </p>
+      </hint>
+      <proof>
+      <p>
+        If <m>R/I</m> is a field,
+        assume <m>J</m> is an ideal of <m>R</m> that properly contains <m>I</m>.
+        Let <m>x\in J\setminus I</m>;
+        then <m>x+I</m> is a nonzero element of <m>R/I</m>,
+        and since <m>R/I</m> is a field,
+        there is some <m>y+I</m> such that <m>(xy)+I = 1+I</m>.
+        Since <m>x\in J</m>, <m>xy\in J</m>.
+        As <m>1+I = (x+I)(y+I) = xy+I</m>,
+        we have <m>1-xy\in I\subsetneq J</m>,
+        and thus <m>1 = (1-xy)+xy \in J</m>, which means <m>J = R</m>.
+        Thus, <m>I</m> is maximal.
+      </p>
+      <p>
+        Now, suppose that <m>I</m> is maximal and let <m>x\in R\setminus I</m>.
+        Apply the previous lemma to obtain
+        <m>1 = xr' + y'</m>, where <m>y'\in I</m>.
+        Then
+        <me>
+          1 + I = xs+y + I = xs + I = (x+I)(y+I).
+        </me>
+      </p>
+    </proof>
+    </theorem>
+    
+    
+    <theorem>
+      <statement>
+        <p>
+          Every maximal ideal is prime.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        All fields are integral domains.
+        Thus, if <m>I</m> is maximal,
+        <m>R/I</m> is a field, thus a domain,
+        and thus <m>I</m> is prime.
+      </p>
+    </proof>
+    </theorem>
+    
+    <p>
+    		In general, the converse is not true (see the <xref ref="challenge-nonmaximal-prime" text="custom">Challenge</xref> below).
+    		However, it holds in sufficiently nice rings.
+    	</p>
+
+    
+    <theorem xml:id="thm-pid-primes-are-maximal">
+      <statement>
+        <p>
+          In a principal ideal domain, every prime ideal is maximal.
+        </p>
+      </statement>
+      <proof>
+      <p>
+        Let <m>R</m> be a PID and <m>\ideal{p}</m> a prime ideal.
+        By previous work, <m>p</m> is prime.
+        Suppose that <m>\ideal{p} \subseteq \ideal{m}</m>.
+        Thus, <m>p\in \ideal{m}</m>, so <m>m|p</m>.
+        That is, <m>p = mk</m>.
+        Since <m>p</m> is prime and <m>R</m> is a domain, it is irreducible.
+        Thus, either <m>m</m> or <m>k</m> is a unit.
+        If <m>m</m> is a unit, then <m>\ideal{m} = R</m>.
+        If <m>k</m> is a unit, then <m>m = k^{-1} p</m>,
+        and thus <m>m\in \ideal{p}</m>,
+        which means that <m>\ideal{m} = \ideal{p}</m>.
+      </p>
+      <p>
+        Thus, <m>\ideal{p}</m> is maximal.
+      </p>
+    </proof>
+    </theorem>
+    
+    <exploration>
+    		<statement>
+    			<p>
+    				Describe the prime and maximal ideals of <m>\Z</m> and <m>\Q[x]</m>.
+    			</p>
+    		</statement>
+
+			<hint>
+				For which ideals <m>I</m> is <m>\Z/I</m> a domain? A field? Similarly for <m>\Q[x]</m>.
+				
+				Or, use <xref ref="thm-pid-primes-are-maximal" />.
+			</hint>
+		<solution>
+			TBD
+		</solution>
+	</exploration>
+
+
+    
+    <assemblage xml:id="challenge-nonmaximal-prime">
+    <title>Challenge</title>
+    <p>
+    <statement>
+      Find a commutative ring with identity, <m>R</m>, and a nonmaximal prime ideal <m>P</m> of <m>R</m>.
+      </statement>
+
+    </p>
+    <solution>
+      <p>
+        In <m>\Z[x]</m>,
+        it is straightforward to see that <m>\ideal{x}</m> is prime (<m>\Z/\ideal{x}\isomorphic \Z</m>).
+        Moreover, <m>\ideal{x}\subsetneq \ideal{2,x}</m>, and thus is not maximal.
+      </p>
+    </solution>
+    </assemblage>
+    
+    
+    
+
+    
+    
+    
+    
+    </subsection>
+    
+    
+    <subsection>
+    	<title>Homomorphisms and Quotient Rings</title>
+    	
+    	<p>
+    		As quotient rings provide fertile soil for building new examples of rings, it should not surprise us to find that homomorphisms interact with quotient rings in interesting and useful ways.
+    		Chief among them are the <em>isomorphism theorems</em>.
+    		In this subsection, we focus primarily on the First Isomorphism Theorem.
+    		
+    	</p>
+    	
+    	<p>
+    		We have seen that any homomorphism <m>\p : R\to S</m> gives rise to an ideal of <m>R</m>, namely <m>\ker\p</m>.
+    		Our next theorem demonstrates that, given a commutative ring with identity <m>R</m>, every ideal is the kernel of some homomorphism defined on <m>R</m>.
+    	</p>
+
+
+    	
+    	<theorem>
+      <statement>
+        <p>
+          Let <m>R</m> be commutative with identity and <m>I</m> an ideal of <m>R</m>.
+          Define <m>\p: R\to R/I</m> by <m>\p(r) = r+I</m>.
+          Then <m>\p</m> is a homomorphism with <m>\ker\p = I</m>.
+        </p>
+      </statement>
+    </theorem>
+    
+    
+    <p>
+      In what follows,
+      we work toward a proof of the First Isomorphism Theorem for Rings.
+    </p>
+    <p>
+      Throughout, let <m>R</m> and <m>S</m> be commutative rings with identity,
+      and let <m>\p : R\to S</m> be a homomorphism.
+      Recall that <m>\im \p = \setof{s\in S}{\p(r) = s\text{ for some } r\in R}</m>.
+    </p>
+    <p>
+      Define <m>f: R/\ker \p \to \im \p</m> by <m>f(r+\ker \p) = \p(r)</m>.
+    </p>
+    <lemma>
+      <statement>
+        <p>
+          Using the notation from above,
+          <m>f</m> is a well-defined function.
+        </p>
+      </statement>
+    </lemma>
+    <proof>
+      <p>
+        Suppose that <m>r_1 + \ker\p = r_2 + \ker\p</m>.
+        Then <m>r_2-r_1 \in \ker\p</m>,
+        so <m>\p(r_2-r_1) = 0_S</m>, and thus <m>\p(r_1) = \p(r_2)</m>.
+        Therefore, <m>f(r_1+\ker\p) = f(r_2+\ker\p)</m>,
+        and <m>f</m> is well-defined.
+      </p>
+    </proof>
+    <lemma>
+      <statement>
+        <p>
+          Using the notation above, <m>f</m> is a homomorphism.
+        </p>
+      </statement>
+    </lemma>
+    <proof>
+      <p>
+        We show that <m>f</m> preserves addition.
+        That it preserves multiplication will follow similarly.
+        Observe that <m>f((x+\ker\p) + (y+\ker\p)) = f((x+y)+\ker\p) = \p(x+y) = \p(x)+\p(y) = f(x+\ker\p) + f(y+\ker\p)</m>.
+      </p>
+    </proof>
+    <lemma>
+      <statement>
+        <p>
+          Using the notation above, <m>f</m> is one-to-one.
+        </p>
+      </statement>
+    </lemma>
+    <proof>
+      <p>
+        Suppose that <m>f(r_1 + \ker\p) = f(r_2 + \ker\p)</m>.
+        That is, <m>\p(r_1) = \p(r_2)</m>.
+        Then <m>\p(r_1 - r_2) = 0_S</m>,
+        so <m>r_1 -r_2 \in \ker\p</m>,
+        and therefore <m>r_1 + \ker\p = r_2 + \ker \p</m>.
+        Thus, <m>f</m> is one-to-one.
+      </p>
+    </proof>
+    <lemma>
+      <statement>
+        <p>
+          Using the notation above, <m>f</m> is onto.
+        </p>
+      </statement>
+    </lemma>
+    <proof>
+      <p>
+        Since <m>\p</m> is onto <m>\im \p</m> by definition,
+        given any <m>s\in \im \p</m> there is some <m>r\in R</m> such that <m>\p(r) = s</m>.
+        Then <m>f(r+\ker\p) = \p(r)</m>.
+      </p>
+    </proof>
+    <p>
+      We thus obtain the following, due to Emmy Noether:
+    </p>
+    <theorem>
+    	<idx>First Isomorphism Theorem</idx>
+      <title>Noether's Isomorphism Theorem</title>
+      <creator>E. Noether</creator>
+      <statement>
+        <p>
+          Let <m>\p : R\to S</m> be a homomorphism of commutative rings.
+          Then <m>R/\ker \p \cong \im \p</m>.
+        </p>
+        <p>
+          In particular,
+          if <m>\p : R\to S</m> is onto, <m>R/\ker \p \cong S</m>.
+        </p>
+      </statement>
+    </theorem>
+    
+    <p>
+    	The First Isomorphism Theorem gives a useful way of establishing an isomorphism between a quotient ring <m>R/I</m> and another ring <m>S</m>: find an onto homomorphism <m>R\to S</m> with kernel <m>I</m>.
+    	
+    	</p>
+
+    
+    <theorem>
+      <statement>
+        <p>
+          We have the following isomorphisms of rings.
+          <ol>
+            <li>
+              <p>
+                <m>\Z/\ideal{m} \cong \Z_m</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\Q[x]/\ideal{x-5} \cong \Q</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\R[x]/\ideal{x^2+1} \cong \C</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+    TBD
+      <p>
+        Define <m>\p: \R[x] \to \C</m> by <m>\p(p(x)) = p(i)</m>.
+        We saw earlier that this evaluation map is a homomorphism.
+        It is easy to see that <m>\p</m> is onto as
+        <m>\p(a+bx) = a+bi</m> for any <m>a,b\in \R</m>.
+        Thus, <m>\R[x]/\ker\p \cong \C</m> by the First Isomorphism Theorem.
+      </p>
+      <p>
+        We claim that <m>\ker\p = \ideal{x^2+1}</m>.
+        Clearly, <m>\ideal{x^2+1} \subseteq \ker\p</m>.
+        Moreover, <m>\ker\p \subsetneq \R[x]</m>.
+        Finally, <m>\ideal{x^2+1}</m> is prime and thus maximal,
+        as <m>\R[x]</m> is a PID. Thus,
+        <m>\ker\p = \ideal{x^2+1}</m>.
+      </p>
+    </proof>
+    
+    <activity>
+    		<statement>
+    			<p>
+    				Let <m>R = \Z_6</m> and define <m>\varphi : \Z_6 \to \Z_2</m> by <m>\p(\overline{x}) = \overline{x}</m>.
+    				That is, <m>\varphi</m> sends an equivalence class <m>\overline{x}\in \Z_6</m> represented by <m>x\in \Z</m> to the equivalence class represented by <m>x</m> in <m>\Z_2</m>.
+    			</p>
+			<ol>
+				<li>Show that <m>\p</m> is a <xref ref="def-well-defined" text="custom">well-defined</xref> function.</li>
+				<li>Prove that <m>\p</m> is a homomorphism.</li>
+				<li>Is <m>\p</m> onto? Justify.</li>
+				<li>Compute <m>\ker\p</m> (that is, list the elements in the set). Is <m>\p</m> one-to-one?</li>
+				<li>Without appealing to the definition, is <m>\ker\p</m> prime? Maximal? Explain.</li>
+			</ol>
+		</statement>
+		<solution>
+			TBD
+		</solution>
+	</activity>
+    
+  </subsection>
+
+
+</section>
