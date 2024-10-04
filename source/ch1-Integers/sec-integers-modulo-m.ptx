@@ -12,14 +12,23 @@
     <ul>
       <li>What are equivalence relations?</li>
       <li>What is congruence modulo <m>m</m>?</li>
-      <li>How does arithmetic in <m>\Z_m</m> compare to arithmetic in <m>\Z</m>?</li>
+      <li>How does arithmetic in <m>\Z/m</m> compare to arithmetic in <m>\Z</m>?</li>
     </ul>
   </objectives>
 
-  <p> The foundation for our exploration of abstract algebra is nearly complete. We need the basics
+  <introduction> 
+    <p>
+    The foundation for our exploration of abstract algebra is nearly complete. We need the basics
     of one more "number system" in order to appreciate the abstract approach developed in subsequent
-    chapters. To build that number system, a brief review of relations and equivalence relations is
-    required. Recall that given sets <m>S</m> and <m>T</m>, the Cartesian product of <m>S</m> with <m>
+    chapters. To build that number system, a brief review of relations and equivalence relations is required. 
+    We then go on to define an algebraic structure for each <m>m\in\Z</m>. This is a process we will revisit in ???Polynomial Rings??? and ???Noether Isomorphism Theorem???
+    </p>
+  </introduction>
+
+  <subsection xml:id="ssec_equivalenceRelations">
+    <title>Equivalence Relations</title>
+  <p>
+    Recall that given sets <m>S</m> and <m>T</m>, the Cartesian product of <m>S</m> with <m>
     T</m>, denoted <m>S\times T</m> ("<m>S</m> cross <m>T</m>"), is the set of all possible ordered
     pairs whose first element is from <m>S</m> and second element is from <m>T</m>. Symbolically, </p>
   <me>
@@ -67,10 +76,11 @@
           </li>
         </ul>
       </p>
-      <p> Given <m>x\in S</m>, the set <me>
-          \overline{x} = \setof{y\in S}{x\sim y}
-        </me> is called the <term>equivalence
-        class of <m>x</m></term>. Any element <m>z\in \overline{x}</m> is called a <term>
+      <p> Given <m>x\in S</m>, the set 
+        <me>
+          \overline{x} = \{y\in S\mid x\sim y\}
+        </me> 
+        is called the <term>equivalence class of <m>x</m></term>. Any element <m>z\in \overline{x}</m> is called a <term>
         representative</term> of the equivalence class. </p>
     </statement>
   </definition>
@@ -106,15 +116,22 @@
         but <m>3\not\le 2</m>. </p>
     </solution>
   </activity>
+</subsection>
 
-  <p> For our purposes, a particularly important equivalence relation is congruence modulo <m>m</m>
-    on the set of integers. </p>
+<subsection xml:id="ssec_congruenceModm">
+  <title>Congruence Modulo <m>m</m></title>
+  <p> 
+    For our purposes, a particularly important equivalence relation is congruence modulo <m>m</m>
+    on the set of integers. 
+  </p>
 
   <definition>
     <idx>congruence modulo <m>m</m></idx>
     <statement>
       <p> Let <m>a,b\in \Z</m> and <m>m \in \N</m>, <m>m > 1</m>. We say <term><m>a</m> is congruent
-        to <m>b</m> modulo <m>m</m></term> if <m>m\mid a-b</m>. We write <m>a \equiv b\mod m</m>. </p>
+        to <m>b</m> modulo <m>m</m></term> if <m>m\mid a-b</m>. We write <m>a \equiv b\mod m</m> or we write
+        <m>a\equiv_m b</m> as shorthand. 
+      </p>
     </statement>
   </definition>
 
@@ -159,6 +176,9 @@
     </proof>
   </theorem>
 
+</subsection>
+<subsection xml:id="ssec_integersModm">
+  <title>Integers Modulo <m>m</m></title>
 
   <definition>
     <notation>
@@ -178,15 +198,15 @@
 
   <exploration>
     <statement>
-      <p> List the elements of <m>\Z_5</m> and <m>\Z_7</m>. </p>
+      <p> List the elements of <m>\Z/5</m> and <m>\Z/7</m>. </p>
     </statement>
     <answer>
-      <p> The equivalence classes of <m>\Z_5</m> are <md>
-          <mrow>\overline{0} \amp = \setof{7k}{k\in\Z} = \set{\ldots, -5, 0, 5, 10, \ldots}</mrow>
-          <mrow>\overline{1} \amp = \setof{7k+1}{k\in\Z} = \set{\ldots, -4, 1, 6, 11, \ldots}</mrow>
-          <mrow>\overline{2} \amp = \setof{7k+2}{k\in\Z} = \set{\ldots, -3, 2, 7, 12, \ldots}</mrow>
-          <mrow>\overline{3} \amp = \setof{7k+3}{k\in\Z} = \set{\ldots, -2, 3, 8, 13, \ldots}</mrow>
-          <mrow>\overline{4} \amp = \setof{7k+4}{k\in\Z} = \set{\ldots, -1, 4, 9, 14, \ldots}</mrow>
+      <p> The equivalence classes of <m>\Z/5</m> are <md>
+          <mrow>\overline{0} \amp = \{7k\mid k\in\Z\} = \{\ldots, -5, 0, 5, 10, \ldots\}</mrow>
+          <mrow>\overline{1} \amp = \{7k+1\mid k\in\Z\} = \{\ldots, -4, 1, 6, 11, \ldots\}</mrow>
+          <mrow>\overline{2} \amp = \{7k+2\mid k\in\Z\} = \{\ldots, -3, 2, 7, 12, \ldots\}</mrow>
+          <mrow>\overline{3} \amp = \{7k+3\mid k\in\Z\} = \{\ldots, -2, 3, 8, 13, \ldots\}</mrow>
+          <mrow>\overline{4} \amp = \{7k+4\mid k\in\Z\} = \{\ldots, -1, 4, 9, 14, \ldots\}</mrow>
         </md>
         Since every integer is in one of the above equivalence classes, we know we have found them
         all. </p>
@@ -232,9 +252,18 @@
   <p>
     The previous exercises justify the following definitions.
   </p>
+  <aside>
+    <title>Notation</title>
+    <p>
+      In some textbooks, the set of integers modulo <m>m</m> is denoted by <m>\Z_m</m>. However, this notation 
+      often conflicts both with the <m>m</m>-adic integers and the usual notation for quotienting discussed in ???Quotient Rings???. 
+      As such, we've opted for the more standard notation of <m>\Z/m</m>.
+    </p>
+    
+  </aside>
   <definition xml:id="def-arithemticmodm">
     <statement>
-      <p> Let <m>m > 1</m> and <m>\overline{a},\overline{b}\in \Z_m</m>. Then the following are
+      <p> Let <m>m > 1</m> and <m>\overline{a},\overline{b}\in \Z/m</m>. Then the following are
         well-defined operations on the equivalence classes: <ol>
           <li>
             <p>
@@ -254,12 +283,12 @@
     </statement>
   </definition>
 
-  <p> Most elementary propositions about <m>\Z_m</m> can be recast as statements about <m>\Z</m>.
+  <p> Most elementary propositions about <m>\Z/m</m> can be recast as statements about <m>\Z</m>.
     For instance, in proving <xref ref="thm-additionmodulom" /> you likely proved that if <m>m|a-c</m>
     and <m>m|b-d</m> that <m>m|(a+b)-(c+d)</m>. However, as the statements become more complex,
-    repeatedly reshaping statements about <m>Z_m</m> as statements about <m>\Z</m> becomes
+    repeatedly reshaping statements about <m>Z/m</m> as statements about <m>\Z</m> becomes
     cumbersome and unhelpful. Instead, you are encouraged to become comfortable doing arithmetic
-    modulo <m>m</m> or, put another way, arithmetic with the equivalence classes of <m>\Z_m</m> as
+    modulo <m>m</m> or, put another way, arithmetic with the equivalence classes of <m>\Z/m</m> as
     defined in <xref ref="def-arithemticmodm" />. </p>
 
   <activity>
@@ -267,11 +296,11 @@
       <p> Without passing back to <m>\Z</m>, find the smallest nonnegative integer representative of
         the resulting equivalence classes. </p>
       <ol>
-        <li><m>\overline{5}+\overline{11}</m> in <m>\Z_{9}</m></li>
-        <li><m>\overline{-3}+\overline{-3}</m> in <m>\Z_{6}</m></li>
-        <li><m>\overline{8}\cdot\overline{3}</m> in <m>\Z_{19}</m></li>
-        <li><m>\overline{-1}\cdot(\overline{3}+\overline{8})</m> in <m>\Z_{7}</m></li>
-        <li><m>\overline{3}\cdot(\overline{5}^2+\overline{3}^3)</m> in <m>\Z_{20}</m></li>
+        <li><m>\overline{5}+\overline{11}</m> in <m>\Z/9</m></li>
+        <li><m>\overline{-3}+\overline{-3}</m> in <m>\Z/6</m></li>
+        <li><m>\overline{8}\cdot\overline{3}</m> in <m>\Z/19</m></li>
+        <li><m>\overline{-1}\cdot(\overline{3}+\overline{8})</m> in <m>\Z/{7}</m></li>
+        <li><m>\overline{3}\cdot(\overline{5}^2+\overline{3}^3)</m> in <m>\Z/{20}</m></li>
       </ol>
     </statement>
     <solution>
@@ -279,20 +308,26 @@
     </solution>
 
   </activity>
+</subsection>
 
-  <p> In the remainder of this section, we investigate fundamental properties of arithmetic in <m>
-    \Z_m</m>. </p>
+<subsection xml:id="ssec_propertiesOfZm">
+  <title>Arithmetic in <m>\Z/m</m></title>
+
+  <p> 
+    In the remainder of this section, we investigate fundamental properties of arithmetic in <m>
+    \Z/m</m>. 
+  </p>
 
 
   <investigation xml:id="q_zmodmcancel">
     <statement>
-      <p> Let <m>\overline{a},\overline{b},\overline{c}\in \Z_m</m> with <m>
+      <p> Let <m>\overline{a},\overline{b},\overline{c}\in \Z/m</m> with <m>
         \overline{c}\ne\overline{0}</m> and <m>m > 1</m>. If <m>\overline{a}\cdot \overline{c} =
         \overline{b}\cdot \overline{c}</m>, is it true that <m>\overline{a} = \overline{b}</m>? If
         so, prove it. If not, find an example of when the statement fails to hold. </p>
     </statement>
     <answer>
-      <p> It is not true. For example, in <m>\Z_{12}</m>, <m>\overline{6}\cdot \overline{3} =
+      <p> It is not true. For example, in <m>\Z/{12}</m>, <m>\overline{6}\cdot \overline{3} =
         \overline{6}\cdot\overline{1}</m>, but <m>\overline{3}\ne \overline{1}</m>. </p>
     </answer>
   </investigation>
@@ -301,7 +336,7 @@
       <p> Let <m>a,b,c</m>, and <m>m</m> be integers with <m>m > 1</m> and <m>\gcd(c,m)=1</m>. Then
         there is some <m>x\in \Z</m> such that <m>\overline{c} \overline{x} = \overline{1}</m>. </p>
       <p> Conclude that if <m>\overline{a} \cdot\overline{c} = \overline{b}\cdot\overline{c}</m> in <m>
-        \Z_m</m> that <m>\overline{a} = \overline{b}</m>. </p>
+        \Z/m</m> that <m>\overline{a} = \overline{b}</m>. </p>
     </statement>
     <proof>
       <p> We know that <m>m|ac-bc</m>, i.e., that <m>m|c(a-b)</m>. By <xref
@@ -311,10 +346,10 @@
 
   <theorem xml:id="theorem_cancelinZp">
     <statement>
-      <p> Let <m>p\in \N</m> be prime and <m>\overline{a},\overline{b},\overline{c}\in \Z_p</m> such
+      <p> Let <m>p\in \N</m> be prime and <m>\overline{a},\overline{b},\overline{c}\in \Z/p</m> such
         that <m>\overline{c}\ne \overline{0}</m>. Then <ol>
           <li>
-            <p> there is some <m>\overline{x}\in \Z_p</m> such that <m>\overline{c}\cdot
+            <p> there is some <m>\overline{x}\in \Z/p</m> such that <m>\overline{c}\cdot
         \overline{x} = \overline{1}</m>; and, </p>
           </li>
           <li>
@@ -325,10 +360,11 @@
       </p>
     </statement>
     <proof>
-      <p> In <m>\Z_p</m>, every nonzero equivalence class is represented by an <m>x</m> for which <m>\gcd(x,p)
+      <p> In <m>\Z/p</m>, every nonzero equivalence class is represented by an <m>x</m> for which <m>\gcd(x,p)
         = 1</m>. Apply <xref ref="theorem_cancelrelprime" />. </p>
     </proof>
   </theorem>
+</subsection>
 
   <exercises xml:id="exers-integers-mod-m">
     <title>Exercises</title>
