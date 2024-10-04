@@ -24,7 +24,7 @@
       polynomials, matrices) into products of other objects.
       One of the most familiar examples of this process involves factoring integers into products of primes.
     </p>
-    <definition xml:id="def-primeinteger">
+    <definition xml:id="def_primeinteger">
       <statement>
       	<idx>prime (integers)</idx>
       	<idx>composite (integers)</idx>
@@ -42,10 +42,10 @@
     </definition>
     <p>
     	This is almost certainly not the definition of prime that you are familiar with from your school days, which likely said something to the effect that a prime <m>p > 1</m> is a natural number only divisible by 1 and itself.
-    	However, <xref ref="def-primeinteger" /> is often more useful than the usual definition.
-    	And, as <xref ref="theorem_euclidslemma" /> demonstrates, the two notions are equivalent.
+    	However, <xref ref="def_primeinteger" /> is often more useful than the usual definition.
+    	And, as <xref ref="thm_euclidslemma" /> demonstrates, the two notions are equivalent.
     </p>
-    <lemma xml:id="theorem_euclidslemma">
+    <lemma xml:id="thm_euclidslemma">
     	<title>Euclid's Lemma</title>
       <statement>
         <p>
@@ -82,7 +82,7 @@
     <exploration xml:id="question_compositecharacterization">
       <statement>
         <p>
-          Using <xref ref="theorem_euclidslemma" /> as a guide,
+          Using <xref ref="thm_euclidslemma" /> as a guide,
           give a biconditional characterization for composite numbers.
           That is, finish the sentence:
           <q>A number <m>m\in\N</m> is composite if and only if ....</q>
@@ -142,7 +142,8 @@
     			</p>
     		</statement>
     		<proof>
-    			TBD.
+          Since <m>p\mid q</m>, we know <m>\gcd(p,q) = p>1</m>. By <xref ref="thm_euclidslemma">Euclid's Lemma</xref>, 
+          the only possible divisors of <m>q</m> are <m>1,q</m>. It follows that <m>p=q</m>.
     		</proof>
     	</theorem>
 
@@ -156,14 +157,14 @@
       and catch glimpses of other ways to think about the
       <em>unique factorization property</em>.
     </p>
-    <assemblage xml:id="ftarith">
+    <theorem xml:id="ftarith">
       <title>Fundamental Theorem of Arithmetic</title>
-		<p>
-      		<statement>
+		  <p>
+      	<statement>
          		 Every natural number greater than 1 is either a prime number or it can be expressed as a finite product of prime numbers where the expression is unique up to the order of the factors.
 	      </statement>
       </p>
-    </assemblage>
+    </theorem>
     
     <p>
     		The proof is broken into two parts: existence (<xref ref="theorem_FTAexistence" />) and uniqueness (<xref ref="theorem_FTAuniqueness" />).
@@ -432,7 +433,7 @@
       </statement>
     </exercise>
   
-    <exercise xml:id="exer-primes-factorization-primeDividingPower">
+    <exercise xml:id="exer_primes-factorization-primeDividingPower">
       <statement>
         <p>
           Suppose <m>p</m> is a prime number and <m>a\in\N</m> is such that <m>p\mid a^n</m> for some <m>n\in\N</m>. Use the Fundamental Theorem of Arithmetic to prove <m>p\mid a</m>. Show this is false if <m>p</m> is not prime.
@@ -451,7 +452,7 @@
     <exercise>
       <statement>
         <p>
-          Using <xref ref="def_primeinteger" /> and matehmatical induction, prove that if <m>p</m> is prime and <m>p\mid a^n</m> for some <m>a\in \Z, n\in N</m>, then <m>p\mid a</m>. This is an alternate proof of <xref ref="exer-primes-factorizatoin-primeDividingPower"/>.
+          Using <xref ref="def_primeinteger" /> and matehmatical induction, prove that if <m>p</m> is prime and <m>p\mid a^n</m> for some <m>a\in \Z, n\in N</m>, then <m>p\mid a</m>. This is an alternate proof of <xref ref="exer_primes-factorization-primeDividingPower"/>.
         </p>
       </statement>
     </exercise>

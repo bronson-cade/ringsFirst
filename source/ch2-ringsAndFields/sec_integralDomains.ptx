@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<section xml:id="sec_integralDomains" xmlns:xi="http://www.w3.org/2001/XInclude">
+<title>Integral Domains</title>
+    
+<objectives xml:id="obj_integralDomains">
+  <title>Guiding Questions</title>
+  <introduction>
+	<p>
+      In this section, we'll seek to answer the questions:
+    </p>
+  </introduction>
+    <ul>
+      <li>What special types of elements do rings have?</li>
+      <li>What are integral domains, and how do they relate to rings and fields?</li>
+    </ul>
+  </objectives>
+    
+  <introduction>
+  <p>
+    Integral Domain noises...
+  </p>
+  </introduction>
+
+  <subsection xml:id="ssec_unitsAssociatesZeroDivisors">
+    <title>Units, Associates, and Zero Divisors</title>
+  <definition xml:id="def-unit">
+  <idx>unit</idx>
+  <idx>associates</idx>
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and let <m>u\in R</m> be nonzero.
+        If there is a <m>v\in R</m> such that <m>uv = vu = 1</m>,
+        we say <m>u</m> is <term>unit</term> of <m>R</m>.
+        We denote the set of units of <m>R</m> by <m>R^\times</m>.
+        We say <m>x,y\in R</m> are <term>associates</term>
+        if there exists some <m>u\in R^\times</m> such that <m>x = uy</m>.
+      </p>
+    </statement>
+  </definition>
+  
+  <exploration>
+    <statement>
+      <p>
+        Explicitly describe the set <m>\Z^\times</m>.
+        What are the associates of 7 in <m>\Z</m>?
+      </p>
+    </statement>
+  </exploration>
+  <p>
+    In other words, a unit in a ring is a nonzero element with a multiplicative inverse.
+    The existence of units is the primary difference between fields and commutative rings with identity: in a field, all nonzero elements are units, while in a commutative ring with identity, no nonzero elements need be units, as <xref ref="thm-cri-field" /> demonstrates.
+  </p>
+  <theorem xml:id="thm-cri-field">
+    <statement>
+      <p>
+        A commutative ring with identity <m>R</m> in which every nonzero element is a unit is a field.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Compare the axioms for a commutative ring with identity and a field.
+      The only thing missing from the ring axioms is the existence of multiplicative inverses for nonzero elements.
+    </p>
+  </proof>
+  
+
+  <p>
+    One of the interesting side effects of our definition of <em>ring</em>
+    is that it allows for behavior that may at first appear unintuitive or downright weird.
+  </p>
+  <definition>
+  <idx>zero divisor</idx>
+    <statement>
+      <p>
+        A <term>zero divisor</term> in a ring <m>R</m> is a nonzero element <m>z\in R</m> such that there is a nonzero <m>x\in R</m> with <m>zx = 0</m> or <m>xz=0</m>.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    Notice that the reason the idea of zero divisors at first appears weird is that they are not something we encounter when working with our familiar sets of numbers, such as <m>\Z</m> or <m>\R</m>.
+    In fact, we specifically use the fact that there are no zero divisors in our familiar numbers systems to solve equations in high school algebra (e.g., if <m>(x-2)(x+5)=0</m>,
+    then <m>x-2=0</m> or <m>x+5=0</m>).
+    The lack of zero divisors is one of the properties that does not persist in our abstraction from the integers to rings in general.
+  </p>
+  <exploration>
+    <statement>
+      <p>
+        Find, with justification, all of
+        the zero divisors in <m>\Z_{10}</m> and <m>\Z_{11}</m>.
+        Make and prove a conjecture about the existence of zero divisors in <m>\Z_m</m>,
+        where <m>m > 1</m>.
+      </p>
+    </statement>
+    <solution>
+      <p>
+        The zero divisors in <m>\Z_{10}</m> are <m>\overline{2}, \overline{4}, \overline{5}, \overline{6},\overline{8}</m>.
+        There are no zero divisors in <m>\Z_{11}</m>.
+      </p>
+      <p>
+        <sc>conjecture.</sc> <m>\overline{x}\in \Z_m</m> is a zero divisor if and only if <m>\gcd(x,m) \ne 1</m>.
+      </p>
+    </solution>
+  </exploration>
+  <investigation>
+    <statement>
+      <p>
+        Are there any other rings in which you've seen zero divisors?
+        Recall your answers to <xref ref="expl-rings-examples" />.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        Matrix rings, if students have had linear algebra (and/or completed <xref ref="table_propertiessandsets" />). Otherwise, this may be a new concept.
+      </p>
+    </answer>
+  </investigation>
+  <theorem>
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and suppose
+        <m>a,b\in R</m> such that <m>ab</m> is a zero divisor.
+        Then either <m>a</m> or <m>b</m> is a zero divisor.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>a,b\in R</m> such that <m>ab</m> is a zero divisor.
+      Then <m>a,b\ne 0</m>
+      (else <m>ab = 0</m>).
+      Since <m>ab</m> is a zero divisor,
+      there is some <m>c\ne 0</m> such that <m>(ab) c = 0</m>.
+      If <m>bc\ne 0</m>,
+      then <m>a</m> is a zero divisor, as <m>a(bc) = 0</m>.
+      On the other hand, if <m>bc=0</m>,
+      then <m>b</m> is a zero divisor, as <m>b,c\ne 0</m>.
+    </p>
+  </proof>
+  <theorem xml:id="theorem_unitnotazd">
+    <statement>
+      <p>
+        Let <m>R</m> be a ring and <m>u\in R^\times</m>.
+        Then <m>u</m> is not a zero divisor.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>u\in R^\times</m> and suppose <m>u</m> is a zero divisor.
+      Then there is some <m>v\ne 0</m> such that <m>uv = 0</m>.
+      But then <m>0_R = u^{-1} 0_R = u^{-1} (uv) = (u^{-1} u) v = 1_R v = v</m>. \Lightning
+    </p>
+  </proof>
+  <investigation>
+    <statement>
+      <p>
+        How can we reinterpret <xref ref="q_zmodmcancel" />
+        in light of our new language of units and zero divisors?
+        State a theorem that uses this new language.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        Answers may vary, but how about this: Let <m>\overline{a},\overline{b},\overline{c}\in \Z_m</m> such that <m>\overline{a}\cdot \overline{c} = \overline{b}\cdot \overline{c}</m>.
+        Then <m>\overline{a} = \overline{b}</m> if 
+        <m>\overline{c}</m> is not a zero divisor.
+      </p>
+    </answer>
+  </investigation>
+</subsection>
+<subsection xml:id="ssec_integralDomains">
+  <title>Integral Domains</title>
+  <p>
+    Moreover, while both commutative and non-commutative rings with identity and zero divisors are of interest to mathematicians,
+    we will focus our study on rings with no zero divisors.
+    As these rings share many
+    properties of the integers, they are known as <term>integral domains</term>.
+  </p>
+  <definition>
+  <idx>integral domain</idx>
+  <idx>domain</idx>
+    <statement>
+      <p>
+        A commutative ring with identity <m>R</m> is an
+        <term>integral domain</term>,
+        or just <term>domain</term>, if <m>R</m> has no zero divisors.
+      </p>
+    </statement>
+  </definition>
+  <p>
+    The next activities and theorems help us identify examples of domains, as well as situate the notion of a domain in its proper place relative to fields and rings in general.
+  </p>
+  <activity>
+    <statement>
+      <p>
+        Which of the following rings are domains?
+        Justify your answers.
+        <ol>
+          <li>
+            <p>
+              <m>\Z</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{8}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z_{19}</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\R</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Q[x]</m>
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+   </activity>
+  <theorem xml:id="theorem_everyfieldisadomain">
+    <statement>
+      <p>
+        Every field is a domain.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      If <m>F</m> is a field, the nonzero elements of <m>F</m> are units,
+      which cannot be zero divisors.
+      Thus, <m>F</m> has no zero divisors.
+    </p>
+  </proof>
+  <theorem>
+    <statement>
+      <p>
+        Let <m>m > 1</m> and <m>R = \Z_m</m>.
+        Then <m>R</m> is a field if and only if <m>R</m> is a domain.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      The forward direction holds by <xref ref="theorem_everyfieldisadomain">Theorem</xref>.
+    </p>
+    <p>
+      For the reverse, assume <m>R</m> is a domain.
+      Then <m>R</m> has no zero divisors.
+      If <m>m</m> is composite,
+      there exist integers <m>a,b</m> satisfying
+      <m>1 \lt a,b \lt m</m> such that <m>m=ab</m>.
+      Then <m>\overline{a},\overline{b}\ne \overline{0}</m> in <m>\Z_m</m>,
+      but <m>\overline{a}\cdot \overline{b} = \overline{0}</m>.
+      Thus, <m>m</m> may not be composite, and is therefore prime.
+      By an earlier theorem, <m>\Z_p</m> is a field.
+    </p>
+  </proof>
+  <theorem xml:id="theorem_subringsaredomains">
+    <statement>
+      <p>
+        If <m>R</m> is a domain and <m>S</m> is a subring of <m>R</m> with identity <m>1_S = 1_R</m>,
+        then <m>S</m> is a domain.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Any zero divisors in <m>S</m> are also zero divisors in <m>R</m>.
+      Since <m>R</m> has no zero divisors, neither does <m>S</m>.
+    </p>
+  </proof>
+  <theorem xml:id="theorem_domainimpliespolynomialdomain">
+    <statement>
+      <p>
+        If <m>R</m> is a domain, then so is <m>R[x]</m>.
+      </p>
+    </statement>
+  </theorem>
+  <proof>
+    <p>
+      Let <m>f(x) = a_i x^i + a_{i+1} x^{i+1} + \cdots a_n x^n</m> and
+      <m>g(x) = b_j x^j + b_{j+1} x^{j+1} + \cdots b_k x^k</m> be nonzero polynomials in <m>R[x]</m>,
+      where <m>a_i, b_j \ne 0</m>.
+      Then the lowest-degree term in
+      <m>f(x) g(x)</m> is <m>a_i b_j x^{i+j}</m>.
+      Since <m>R</m> is a domain, <m>a_i b_j\ne 0</m>,
+      and thus <m>f(x)g(x)</m> is not the zero polynomial.
+    </p>
+  </proof>
+  <investigation>
+    <statement>
+      <p>
+        Is the converse of <xref ref="theorem_domainimpliespolynomialdomain">Theorem</xref> true?
+        If so, give a short proof.
+        If not, find a counterexample.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        Yes.
+        Apply <xref ref="theorem_subringsaredomains">Theorem</xref>.
+      </p>
+    </answer>
+  </investigation>
+ 
+  <corollary>
+          <statement>
+              <p>
+                  Given a field <m>F</m>, the set of polynomials <m>F[x]</m> is a domain.
+              </p>
+          </statement>
+  </corollary>
+  
+  <p>
+    When considering sets of polynomials,
+    as we do in <xref ref="sec-primes-factorization" /> (particularly in <xref ref="SubSec-Factoring-Polynomials" />),
+    the following results will be quite useful.
+  </p>
+
+  <theorem xml:id="theorem_degreeofproductinfield">
+    <statement>
+      <p>
+        Let <m>R</m> be a domain,
+        and let <m>p(x),q(x)\in R[x]</m> be nonzero polynomials.
+        Then <m>\deg(p(x) q(x)) = \deg(p(x)) + \deg(q(x))</m>.
+      </p>
+    </statement>
+    <proof>
+    <p>
+      Let the leading term of <m>p(x)</m> be <m>a_n x^n</m> and the leading term of <m>q(x)</m> be <m>b_m x^m</m>.
+      Then the leading term of <m>p(x) q(x)</m> is <m>a_n b_m x^{n+m}</m>.
+      (Observe that since <m>R</m> is a domain, <m>a_n b_m \ne 0</m>.)
+      Thus, <m>\deg(p(x) q(x)) = n+m = \deg(p(x)) + \deg(q(x))</m>.
+    </p>
+  </proof>
+  </theorem>
+  
+  <exploration>
+          <statement>
+              <p>
+                  Can the hypotheses of <xref ref="theorem_degreeofproductinfield" /> be relaxed? If so, provide more general hypotheses and adapt the proof.
+                  If not, give an illustrative example.
+              </p>
+          </statement>
+          <solution>
+              <p>
+                  No; let <m>p = \overline{1} + \overline{2}x, q = \overline{2} + \overline{3}x\in \Z_6[x]</m>.
+                  Observe that <m>\deg(p) + \deg(q) = 1 + 1</m>, but <m>pq = \overline{2} + \overline{5}x</m> has degree 1. 
+              </p>
+          </solution>
+      </exploration>
+
+  
+  <investigation>
+    <statement>
+      <p>
+        Let <m>R</m> be a domain.
+        What are the units of <m>R[x]</m>?
+        Prove your answer.
+      </p>
+    </statement>
+    <answer>
+      <p>
+        The units are <m>R^\times</m>.
+        Clearly, <m>R^\times\subseteq R[x]^\times</m>.
+      </p>
+      <p>
+        Suppose <m>p(x),q(x)\in R[x]^\times</m> such that <m>p(x) q(x) = 1</m>.
+        Then <m>\deg p(x) + \deg q(x) = \deg(p(x) q(x)) = \deg(1) = 0</m>.
+        Thus <m>\deg p(x) = \deg q(x) = 0</m>, and consequently, <m>p(x),q(x)\in R^\times</m>.
+      </p>
+    </answer>
+  </investigation>
+  </subsection>
+  <references>
+      <biblio xml:id="Curto2013">
+          C. Curto, V. Itskov, A. Veliz-Cuba, N. Youngs, <em>The Neural Ring: An Algebraic Tool for Analyzing the Intrinsic Structure of Neural Codes</em>, Bull. Math. Bio. 75 (2013), 1571-1611, <url href="https://doi.org/10.1007/s11538-013-9860-3">DOI 10.1007/s11538-013-9860-3</url>
+      </biblio>
+  </references>
+</section>

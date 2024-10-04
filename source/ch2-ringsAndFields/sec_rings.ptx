@@ -552,7 +552,7 @@
     for more on the historical development of the proof of Fermat's Last Theorem).
     Most modern definitions of <em>ring</em>
     agree with our <xref ref="def_ring">Definition</xref>
-    and allow for rings with noncommutative multiplication and no multiplicative identity.
+    and allow for rings with noncommutative multiplication.
   </p>
   </historical>
   <figure>
@@ -568,17 +568,19 @@
     (especially of, e.g., the associativity of polynomial multiplication)
     is tedious, and thus is omitted.
   </p>
-  <assemblage>
+  <theorem xml:id="thm_polynomialsFormRing">
   <title>Theorem</title>
-   <p>
-    <statement>
-        If <m>R</m> is a (commutative) ring
-        (with identity <m>1_R</m>),
-        then <m>R[x]</m> is a (commutative) ring
-        (with identity <m>1_{R[x]} = 1_R</m>).
-    </statement>
-   </p>
-  </assemblage>
+  <statement>
+    <p>
+      If <m>R</m> is a (commutative) ring<m>1_R</m>, then <m>R[x]</m> is a (commutative) ring <m>1_{R[x]} = 1_R</m>.
+    </p>
+  </statement>
+  </theorem>
+  <proof>
+    <p>
+      TBD.
+    </p>
+  </proof>
 
   <definition>
   <idx>subring</idx>
