@@ -23,7 +23,5 @@
   <xi:include href="sec_rings.ptx" />
   <xi:include href="sec_integralDomains.ptx"/>
   <xi:include href="sec_divisibilityIntegralDomains.ptx" />
-  <xi:include href="sec_principalIdealsEuclideanDomains.ptx" />
-
 
 </chapter>

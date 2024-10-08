@@ -14,8 +14,7 @@
     <!-- Include chapters -->
     <xi:include href="./ch1-Integers/ch1-integers.ptx" />
     <xi:include href="./ch2-ringsAndFields/ch2-ringsAndFields.ptx" />
-    <xi:include href="./ch3-factorization/ch3-factorization.ptx" />
-    <xi:include href="./ch4-idealsAndHomomorphisms/ch4-idealsAndHomomorphisms.ptx" />
+    <xi:include href="./ch3-homomorphismsAndIdeals/ch3-homomorphismsAndIdeals.ptx" />
 
 
     <!-- Include backmatter -->

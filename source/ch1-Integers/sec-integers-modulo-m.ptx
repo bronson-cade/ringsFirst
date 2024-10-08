@@ -310,8 +310,163 @@
   </activity>
 </subsection>
 
+<subsection xml:id="ssec_additionMultiplicationTablesZm">
+  <title>Addition and Multiplication Tables in <m>\Z/m</m></title>
+  
+
+  <p> 
+    A useful tool for analyzing addition and multiplication in <m>\Z/m</m> are addition and multiplication tables. 
+    As an example, consider the addition and multiplication tables for <m>\Z/3</m> shown in <xref ref="table-z3addition" /> and <xref ref="table-z3multiplication" />.
+  </p>
+  <table xml:id="table-z3addition">
+  <title>Addition table for <m>R=\Z_3</m></title>
+  <tabular>
+  <row bottom="medium">
+    <cell right="medium">
+      <m>​+</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>​\overline{2}</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{1}</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{2}</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+  </row>
+</tabular>
+</table>
+
+<table xml:id="table-z3multiplication">
+<title>
+  Multiplication table for <m>\Z/3</m>.
+</title>>
+<tabular>
+  <row>
+    <cell right="medium">
+      <m>​\cdot</m>
+    </cell>
+    <cell bottom="medium">
+      <m>\overline{0}​</m>
+    </cell>
+    <cell bottom="medium">
+      <m>\overline{1}​</m>
+    </cell>
+    <cell bottom="medium">
+      <m>\overline{2}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>​\overline{0}</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>​\overline{0}</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{1}</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+  </row>
+  <row>
+    <cell right="medium">
+      <m>​\overline{2}</m>
+    </cell>
+    <cell>
+      <m>\overline{0}​</m>
+    </cell>
+    <cell>
+      <m>\overline{2}​</m>
+    </cell>
+    <cell>
+      <m>\overline{1}​</m>
+    </cell>
+  </row>
+</tabular>
+</table>
+
+
+<investigation xml:id="invest-tables">
+  <statement>
+      <p>
+          Calculate addition and multiplication tables for the following rings.
+      </p>
+      <ol>
+          <li> <m>\Z/5</m></li>
+          <li> <m>\Z/6</m></li>
+      </ol>
+      <p>List 2-3 observations about your tables.</p>
+      </statement>	
+  <solution>
+      <p>
+          TBD.
+      </p>
+  </solution>
+</investigation>
+
+</subsection>
+
 <subsection xml:id="ssec_propertiesOfZm">
-  <title>Arithmetic in <m>\Z/m</m></title>
+  <title>Arithmetic Properties of <m>\Z/m</m></title>
 
   <p> 
     In the remainder of this section, we investigate fundamental properties of arithmetic in <m>

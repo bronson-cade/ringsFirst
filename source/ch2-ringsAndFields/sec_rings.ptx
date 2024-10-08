@@ -607,7 +607,7 @@
       <p>
         Consider the sets given in <xref ref="table_propertiessandsets">Table</xref>.
         Which are rings?
-        Which are commutative rings with identity?
+        Which are commutative rings?
       </p>
     </statement>
   </exploration>
@@ -776,7 +776,7 @@
 <subsection xml:id="ssec_unitsAndAssociates">
   <title>Units and Associates in a Ring</title>
 
-  <definition xml:id="def-unit">
+  <definition xml:id="def_unit">
   <idx>unit</idx>
   <idx>associates</idx>
     <statement>
@@ -801,174 +801,22 @@
   </exploration>
   <p>
     In other words, a unit in a ring is a nonzero element with a multiplicative inverse.
-    The existence of units is the primary difference between fields and commutative rings with identity: in a field, all nonzero elements are units, while in a commutative ring with identity, no nonzero elements need be units, as <xref ref="thm-cri-field" /> demonstrates.
+    The existence of units is the primary difference between fields and commutative rings: in a field, all nonzero elements are units, while in a commutative ring, no nonzero elements need be units, as <xref ref="thm-cri-field" /> demonstrates.
   </p>
   <theorem xml:id="thm-cri-field">
     <statement>
       <p>
-        A commutative ring with identity <m>R</m> in which every nonzero element is a unit is a field.
+        A commutative ring <m>R</m> in which every nonzero element is a unit is a field.
       </p>
     </statement>
   </theorem>
   <proof>
     <p>
-      Compare the axioms for a commutative ring with identity and a field.
+      Compare the axioms for a commutative ring and a field.
       The only thing missing from the ring axioms is the existence of multiplicative inverses for nonzero elements.
     </p>
   </proof>
   
-
-  <p> 
-    A useful tool for analyzing the structure of rings with finitely many elements are addition and multiplication tables. As an example, consider the addition and multiplication tables for <m>R = \Z_3</m> shown in <xref ref="table-z3addition" /> and <xref ref="table-z3multiplication" />.
-  </p>
-      
-      <table xml:id="table-z3addition">
-<title>
-  Addition table for <m>R=\Z_3</m>.
-</title>
-<tabular>
-  <row bottom="medium">
-    <cell right="medium">
-      <m>​+</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>​\overline{2}</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{1}</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{2}</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-  </row>
-</tabular>
-</table>
-
-<table xml:id="table-z3multiplication">
-<title>
-  Multiplication table for <m>R=\Z_3</m>.
-</title>>
-<tabular>
-  <row>
-    <cell right="medium">
-      <m>​\cdot</m>
-    </cell>
-    <cell bottom="medium">
-      <m>\overline{0}​</m>
-    </cell>
-    <cell bottom="medium">
-      <m>\overline{1}​</m>
-    </cell>
-    <cell bottom="medium">
-      <m>\overline{2}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>​\overline{0}</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{1}</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{2}</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-  </row>
-</tabular>
-</table>
-
-
-<investigation xml:id="invest-tables">
-  <statement>
-      <p>
-          Calculate addition and multiplication tables for the following rings.
-      </p>
-      <ol>
-          <li> <m>R = \Z_5</m></li>
-          <li> <m>R = \Z_6</m></li>
-      </ol>
-      <p>List 2-3 observations about your tables.</p>
-      </statement>	
-  <solution>
-      <p>
-          TBD.
-      </p>
-  </solution>
-</investigation>
-
 </subsection>
   <references>
       <biblio xml:id="Curto2013">

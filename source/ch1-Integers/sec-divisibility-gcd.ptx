@@ -317,7 +317,7 @@
 
     
     
-    <definition xml:id="gcd-definition">
+    <definition xml:id="def_gcdZ">
     		<idx>greatest common divisor (<m>\Z</m>)</idx>
       <statement>
         <p>
@@ -352,7 +352,7 @@
     </definition>
     <p>
       This definition may be different than the one you are used to,
-      which likely stated that <m>d \ge e</m> rather than condition 2 in <xref ref="gcd-definition" />.
+      which likely stated that <m>d \ge e</m> rather than condition 2 in <xref ref="def_gcdZ" />.
       It can be proved using the order relations of <m>\Z</m> that the definition given here is equivalent to that one.
       However, we will prefer this definition,
       as it generalizes naturally to other number systems which do not have an order relation like <m>\Z</m>.

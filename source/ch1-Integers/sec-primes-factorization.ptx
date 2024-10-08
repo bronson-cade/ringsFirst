@@ -24,7 +24,7 @@
       polynomials, matrices) into products of other objects.
       One of the most familiar examples of this process involves factoring integers into products of primes.
     </p>
-    <definition xml:id="def_primeinteger">
+    <definition xml:id="def_primeInteger">
       <statement>
       	<idx>prime (integers)</idx>
       	<idx>composite (integers)</idx>
@@ -42,10 +42,10 @@
     </definition>
     <p>
     	This is almost certainly not the definition of prime that you are familiar with from your school days, which likely said something to the effect that a prime <m>p > 1</m> is a natural number only divisible by 1 and itself.
-    	However, <xref ref="def_primeinteger" /> is often more useful than the usual definition.
-    	And, as <xref ref="thm_euclidslemma" /> demonstrates, the two notions are equivalent.
+    	However, <xref ref="def_primeInteger" /> is often more useful than the usual definition.
+    	And, as <xref ref="thm_euclidsLemma" /> demonstrates, the two notions are equivalent.
     </p>
-    <lemma xml:id="thm_euclidslemma">
+    <lemma xml:id="thm_euclidsLemma">
     	<title>Euclid's Lemma</title>
       <statement>
         <p>
@@ -82,7 +82,7 @@
     <exploration xml:id="question_compositecharacterization">
       <statement>
         <p>
-          Using <xref ref="thm_euclidslemma" /> as a guide,
+          Using <xref ref="thm_euclidsLemma" /> as a guide,
           give a biconditional characterization for composite numbers.
           That is, finish the sentence:
           <q>A number <m>m\in\N</m> is composite if and only if ....</q>
@@ -142,7 +142,7 @@
     			</p>
     		</statement>
     		<proof>
-          Since <m>p\mid q</m>, we know <m>\gcd(p,q) = p>1</m>. By <xref ref="thm_euclidslemma">Euclid's Lemma</xref>, 
+          Since <m>p\mid q</m>, we know <m>\gcd(p,q) = p>1</m>. By <xref ref="thm_euclidsLemma">Euclid's Lemma</xref>, 
           the only possible divisors of <m>q</m> are <m>1,q</m>. It follows that <m>p=q</m>.
     		</proof>
     	</theorem>
@@ -452,7 +452,7 @@
     <exercise>
       <statement>
         <p>
-          Using <xref ref="def_primeinteger" /> and matehmatical induction, prove that if <m>p</m> is prime and <m>p\mid a^n</m> for some <m>a\in \Z, n\in N</m>, then <m>p\mid a</m>. This is an alternate proof of <xref ref="exer_primes-factorization-primeDividingPower"/>.
+          Using <xref ref="def_primeInteger" /> and matehmatical induction, prove that if <m>p</m> is prime and <m>p\mid a^n</m> for some <m>a\in \Z, n\in N</m>, then <m>p\mid a</m>. This is an alternate proof of <xref ref="exer_primes-factorization-primeDividingPower"/>.
         </p>
       </statement>
     </exercise>

@@ -18,19 +18,25 @@
    
   <introduction>
     <p>
-      Central to modern mathematics is the notion of <em>function</em><fn>This section assumes a familiarity with the idea of function from a set-theoretic point of view, as well as the concepts of injective (one-to-one), surjective (onto), and bijective functions (one-to-one correspondences).</fn>.
+      Central to modern mathematics is the notion of <em>function</em><fn>. This section assumes a familiarity with the idea of function from a set-theoretic 
+      point of view, as well as the concepts of injective (one-to-one), surjective (onto), and bijective functions (one-to-one correspondences).</fn>.
       Functions arise in all areas of mathematics, each subdiscipline concerned with certain types of functions.
       In algebra, our concern is with <em>operation-preserving</em> functions, such as the linear transformations <m>L : V\to W</m> of vector spaces you have seen in a course in linear algebra.
       Those linear transformations had the properties that <m>L(\mathbf{v}+\mathbf{u}) = L(\mathbf{v})+L(\mathbf{u})</m> (addition is preserved) and <m>L(c\mathbf{u}) = c L(\mathbf{u})</m> (scalar multiplication is preserved).
     </p>
-    <p>
-    We find something similar at work in the study of homomorphisms of rings, which we define to be functions that preserve both addition and multiplication.
-    </p>
   </introduction>
+
+  <subsection xml:id="subsec-homomorphisms">
+    <title>Homomorphisms</title>
+    
+  <p>
+    We find something similar at work in the study of homomorphisms of rings, which we define to be 
+    functions that preserve both addition and multiplication.
+  </p>
 
   
   <definition xml:id="def_ringHomomorphism">
-    <idx><h>ring homomorphism</h></idx>
+    <idx><h>homomorphism</h></idx>
     <idx><h>monomorphism</h></idx>
     <idx><h>epimorphism</h></idx>
     <idx><h>isomorphism</h></idx>
@@ -47,7 +53,7 @@
           <li><m>\varphi(1_R) = 1_S</m>.</li>
         </ul>
         If <m>\varphi</m> is injective (one-to-one), we say that <m>\varphi</m> is a <term>monomorphism</term>. If <m>\varphi</m> is surjective (onto), 
-        we say that <m>\varphi</m> is an <term>epimorphism</term>. If <m>\varphi</m> is a bijection (both injective and surjective), we say that <m>\p</m> is an <term>isomorphism</term>
+        we say that <m>\varphi</m> is an <term>epimorphism</term>. If <m>\varphi</m> is a bijection (both injective and surjective), we say that <m>\varphi</m> is an <term>isomorphism</term>
         and write <m>R\cong S</m>.
         If <m>\varphi : R\to R</m> is an isomorphism, we say <m>\varphi</m> is an <term>automorphism</term> of <m>R</m>.
       </p>
@@ -137,24 +143,123 @@
   </exploration>
 -->
 
+<p>
+  The sequence of results that follows shows that homomorphisms preserve several of our ring-theoretic 
+  notions. This means <xref ref="def_ringHomomorphism"/> is the <em>right</em>. That is, of all the possible functions between rings 
+  we isolated a good class to call structure preserving. We begin by showing that homomorphisms preserve the additive identity.
+</p>
+
+<theorem xml:id="thm_homomorphismsPreserveZero">
+  <statement>
+    <p>
+      Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. Then <m>\varphi(0_R) = 0_S</m>.
+    </p>
+  </statement>
+</theorem>
+<proof>
+  <p>
+    Supppose <m>\varphi\colon R\to S</m> is a ring homomorphism. Note that <m>0_R+0_R=0_R</m> and in particular this tells us
+    <md>
+      <mrow>\varphi(0_R+0_R) \amp= \varphi(0_R)</mrow>
+      <mrow>\varphi(0_R)+\varphi(0_R) \amp= \varphi(0_R)</mrow>
+      <mrow>\varphi(0_R)+\varphi(0_R) + (-\varphi(0_R))\amp= \varphi(0_R) + (-\varphi(0_R))</mrow>
+      <mrow>\varphi(0_R) \amp= 0_S</mrow>
+    </md>
+    as desired.
+  </p>
+</proof>
+
+<p>
+  We now show that homomorphisms preserve units.
+</p>
+
+<theorem xml:id="thm_homomorphismsPreserveUnits">
+  <statement>
+    <p>
+      Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. If <m>u\in R^\times </m>, then <m>\varphi(u)\in S^\times</m>.
+    </p>
+  </statement>
+</theorem>
+
+<proof>
+  <p>
+    Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>u\in R^\times </m>. Then there exists <m>v\in R</m> with 
+    <m>uv=1_R</m>. We compute:
+    <md>
+      <mrow>\varphi(uv) \amp= \varphi(1_R) </mrow>
+      <mrow>\varphi(u)\varphi(v) \amp= 1_S </mrow>
+    </md>
+    and hence <m>\varphi(u)\in S^\times</m>.
+  </p>
+</proof>
+
+<activity>
+  <statement>
+    <p>
+      Show that a homomorphism sends a zero-divisor to either zero or a zero-divisor.
+    </p>
+  </statement>
+  <hint>
+    <p>
+      Mimic the ideas in <xref ref="thm_homomorphismsPreserveUnits"/>.
+    </p>
+  </hint>
+  <solution>
+    TBD
+  </solution>
+</activity>
+
+<p>
+  Since homomorphisms are compatible with multiplication, and powers of elements are defined with multiplication, they must preserve powers as the next theorem shows.
+</p>
+
+<theorem xml:id="thm_homomorphismsPreservePowers">
+  <statement>
+    <p>
+      Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. For any <m>a\in R</m> and <m>n\in\N</m>, we have <m>\varphi(a)^n = \varphi(a^n)</m> in <m>S</m>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>a\in R</m>. We now proceed by induction. The base case is <m>\varphi(a) = \varphi(a)</m> which 
+      certainly true.
+    </p>
+    <p>
+      For the inductive step, suppose that <m>\varphi(a)^n =\varphi(a^n)</m>. We show <m>\varphi(a)^{n+1} = \varphi(a^{n+1})</m>:
+      <md>
+        <mrow> \varphi(a)^{n+1}\amp= \varphi(a)\cdot \varphi(a)^n </mrow>
+        <mrow> \amp= \varphi(a)\cdot \varphi(a^n) </mrow>
+        <mrow> \amp= \varphi(a\cdot a^n) </mrow>
+        <mrow> \amp= \varphi(a\cdot a^{n+1}) </mrow>
+      </md>
+      as desired. This equality completes the proof.
+    </p>
+  </proof>
+</theorem>
+
+</subsection>
+<subsection xml:id="ssec_kernelOfAHomomorphism">
+  <title>Kernel of a Homomorphism</title>
+  
 
   <p>
-      Homomorphisms give rise to a particularly important class of subsets: kernels.
-    </p>
-    
+    Homomorphisms give rise to a particularly important class of subsets: kernels.
+  </p>
     
   <definition>
+    <idx><h>kernel</h></idx>
     <statement>
       <p>
-        Let <m>\p : R \to S</m> be a ring homomorphism.
-        Then <m>\ker \p =\setof{r\in R}{\p(r)=0_S}</m> is the
-        <term>kernel</term> of <m>\p</m>.
+        Let <m>\varphi\colon R \to S</m> be a ring homomorphism. Then <m>\ker \varphi =\{r\in R \mid \varphi(r)=0_S\}</m> is the
+        <term>kernel</term> of <m>\varphi</m>.
       </p>
     </statement>
   </definition>
-
-
  
+  <p>
+    Note that by <xref ref="thm_homomorphismsPreserveZero"/> we know <m>0_R\in \ker\varphi</m> always. In particular, the kernel of 
+    a ring homomorphism is always a non-empty subset.
+  </p>
 
   <activity>
     <statement>
@@ -167,7 +272,7 @@
     </solution>
   </activity>
   
-
+<!--
 <p>
   In fact, kernels are not just important subsets of rings; they are ideals.
 </p>
@@ -189,24 +294,65 @@
     </p>
   </proof>
   </theorem>
+-->
   
   <p>
-      Kernels also give a useful way of determining whether their defining homomorphisms are one-to-one.
-    </p>
+    Kernels are a fundamental structure when studying rings. As a first glimpse of their importance, we show that they give a useful way of 
+    determining whether their defining homomorphisms are monomorphisms.
+  </p>
 
   
   <theorem xml:id="thm_zeroKernelIsInto">
     <statement>
       <p>
         Let <m>\varphi \colon R\to S</m> be a homomorphism.
-        Then <m>\varphi</m> is injective if and only if <m>\ker\varphi = \{0\}</m>.
+        Then <m>\varphi</m> is a monomorphism if and only if <m>\ker\varphi = \{0\}</m>.
       </p>
     </statement>
+  </theorem>
     <proof>
-      TBD
+      <p>
+      Supppose <m>\varphi</m> is a monomomorphism. Since <m>\varphi</m> is a homomorphism we know <m>\varphi(0) = 0</m>. 
+      Suppose now that <m>x\in\ker\varphi</m> so that <m>\varphi(x)=0</m>. Since <m>\varphi</m> is injective and <m>\varphi(x)=\varphi(0)</m>, 
+      we conclude that <m>x=0</m>. In particular, <m>\ker\varphi=\{0\}</m>.
+      </p>
+      <p>
+        For the converse, suppose that <m>\ker\varphi=\{0\}</m>. Suppose <m>x,y\in R</m> are such that <m>\varphi(x) = \varphi(y)</m>. Then we have: 
+        <md>
+          <mrow> \varphi(x)\amp= \varphi(y)</mrow>
+          <mrow> 0\amp=\varphi(y) -\varphi(x)</mrow>
+          <mrow> 0\amp=\varphi(y-x)</mrow>
+        </md>
+        and so <m>y-x\in\ker\varphi</m>. Since the only element here is <m>0</m>, we conclude that <m>y-x=0</m> or that <m>y=x</m>. Thus <m>\varphi</m> 
+        is a monomorphism.
+      </p>
     </proof>
 
-  </theorem>
+    <p>
+      A nice application of this theorem is the following result that shows that homomorphisms from a field are always monomorphisms. They will never fail to 
+      be injective!
+    </p>
+
+    <theorem xml:id="thm-homomorphismsFromFieldsInjective">
+      <statement>
+        <p>
+          Suppose <m>\varphi\colon F\to S</m> is a ring homomorphism where <m>F</m> is a field. Then <m>\varphi</m> is a monomorphism.
+        </p>
+      </statement>
+    </theorem>
+    <proof>
+      <p>
+        Suppose <m>\varphi\colon F\to S</m> is a ring homomorphism where <m>F</m> is a field. We show <m>\varphi</m> is a monomorphism by applying 
+        <xref ref="thm_zeroKernelIsInto"/>. Suppose that there is <m>x\in F</m>, with <m>\varphi(x) = 0</m>. If <m>x\neq 0</m>, then  
+        there <m>x</m> is a unit. By <xref ref="thm_homomorphismsPreserveUnits"/>, <m>\varphi(x)</m> is also a unit and in particular is not <m>0</m>. Thus 
+        the only element of <m>\ker\varphi</m> is <m>0</m>.
+      </p>
+    </proof>
+    
+
+</subsection>
+
+
   <exercises xml:id="exers-homomorphisms">
     <title>Exercises</title>
     <exercise xml:id="sec-homomorphisms-tf" label="sec-homomorphisms-tf">
@@ -296,50 +442,5 @@
         </p>
       </statement>
     </exercise>
-  
-    <exercise xml:id="exer_centerIsARing">
-      <statement>
-        <p>
-          Let <m>R</m> be a ring. Define the set <em>center</em> of <m>R</m> to be the subset
-          <me>Z(R) = \{r\in R\mid rs = sr, \forall s\in R\}.</me>
-          That is, the center of a ring is the set of elements that commute with every element in the ring. Prove that <m>Z(R)</m> is a subring.
-        </p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>
-          Find the center of <m>M_n(\R)</m>.
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-          Consider the polynomial ring <m>\mathbb{Z}[x]</m>. Define <m>S = \{p(x)\in \Z[x]\mid p(x)\text{ only has monomials of even degree}\}</m>. Prove that <m>S</m> is a subring and argue why <m>\Z[x^2]</m> might be good notation for this subring.
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-          Let <m>V</m> be a real vector space. Let <m>F(V) = \{T\colon V\to V\mid T\text{ is linear and has finite dimensional image}\}</m>. Show that <m>F(V)</m> is a non-unital ring (a rng).
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-          Show that if <m>p\mid a^3-b^3</m>, then it is not necessarily true that <m>p\mid a-b</m>. However, prove that if <m>p\mid a-b</m>, then <m>p\mid a^3-b^3</m>.
-        </p>
-      </statement>
-    </exercise>
-  
-    </exercises>
-   
-  
+  </exercises>
 </section>

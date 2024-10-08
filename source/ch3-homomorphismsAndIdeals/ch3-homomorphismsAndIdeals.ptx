@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<chapter xml:id="ch4-idealsAndHomomorphisms" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Ideals and Homomorphisms</title>
+<chapter xml:id="ch3-homomorphismsAndIdeals" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Homomorphisms and Ideals</title>
 
   <introduction>
   	<p>
@@ -17,8 +17,8 @@
   </introduction>
 
   <!-- include sections -->
-  <xi:include href="sec_ideals.ptx" />
   <xi:include href="sec_homomorphisms.ptx" />
+	<xi:include href="sec_ideals.ptx" />
   <xi:include href="sec_quotientRings.ptx" />
 
 
