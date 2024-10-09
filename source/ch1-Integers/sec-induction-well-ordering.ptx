@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="sec-induction-wellordering" xmlns:xi="http://www.w3.org/2001/XInclude">
+<section xml:id="sec_inductionWellOrdering" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Induction and the Well-Ordering Property</title>
 
-  <objectives xml:id="obj_induction_wellordering">
-  <introduction>
-    <p>
-      In this section, we'll seek to answer the following questions:
-    </p>
-  </introduction>
+  <objectives xml:id="obj_InductionWellordering">
+    <introduction>
+      <p>
+        In this section, we'll seek to answer the following questions:
+      </p>
+    </introduction>
     <ul>
       <li>What is the Well-Ordering Principle?</li>
       <li>What is mathematical induction, and how can we use it to prove statements about <m>\N</m>?</li>
@@ -16,13 +16,12 @@
   </objectives>
 
   <introduction>
-  <p>
-    In this section we will assume the basic algebraic/arithmetic properties of the integers such as closure under
-    addition, subtraction, and multiplication, most of which we will formalize via axioms in subsequent sections.
-    <xref ref="axiom_wellordering" /> formalizes the familiar notion that nonempty subsets of the positive integers
-    have a smallest element, which will be used repeatedly throughout the text.  We then explore a closely related
-    idea, mathematical induction, via an example and exercises.
-  </p>
+    <p> In this section we will assume the basic algebraic/arithmetic properties of the integers
+      such as closure under addition, subtraction, and multiplication, most of which we will
+      formalize via axioms in subsequent sections. <xref ref="axiom_wellordering" /> formalizes the
+      familiar notion that nonempty subsets of the positive integers have a smallest element, which
+      will be used repeatedly throughout the text. We then explore a closely related idea,
+      mathematical induction, via an example and exercises. </p>
 
   </introduction>
 
@@ -31,605 +30,540 @@
     <definition xml:id="def_naturalnumbers">
       <statement>
         <p>
-              <idx><h>natural numbers</h></idx>
-              <idx><h><m>\N</m></h></idx>
-          The collection of <term>natural numbers</term> is denoted by <m>\N</m>, and is the set
-          <me>
+          <idx>
+            <h>natural numbers</h>
+          </idx>
+          <notation>
+            <usage>\N</usage>
+            <description>Natural Numbers</description>
+          </notation>
+
+          The collection of <term>natural numbers</term>
+          is denoted by <m>\N</m>, and is the set <me>
             \N = \set{1, 2, 3, \ldots}
-          </me>.
-        </p>
-        <p>
-          By <m>\N_0</m> we mean the set <m>\N\cup \set{0} = \set{0, 1, 2, 3, \ldots}</m>.
+          </me>. </p>
+        <p> 
+          <notation>
+            <usage>\N_0</usage>
+            <description>Natural Numbers including <m>0</m></description>
+          </notation>
+          By <m>\N_0</m> we mean the set <m>\N\cup \set{0} = \set{0, 1, 2, 3, \ldots}</m>. 
         </p>
       </statement>
     </definition>
-    <p>
-      In some sense, the fundamental properties of <m>\N</m> are 
-      <ul>
+    <p> In some sense, the fundamental properties of <m>\N</m> are <ul>
         <li>A beginning: there is a smallest natural number</li>
         <li>Succession: there is always a next natural number</li>
       </ul>
     </p>
     <aside>
-    <title>Peano Axioms</title>
-    <p>
-      In fact, one can build a model of <m>\N</m> with set theory and the Peano axioms, which utilize the notion of a <em>successor</em>--the next natural number. 
-    </p>
+      <title>Peano Axioms</title>
+      <p> In fact, one can build a model of <m>\N</m> with set theory and the Peano axioms, which
+        utilize the notion of a <em>successor</em>--the next natural number. </p>
     </aside>
 
-    <p>
-		A consequence of the Peano postulates is the
-      <em>well-ordering principle</em>, which we state as an axiom.
-    </p>
+    <p> A consequence of the Peano postulates is the <em>well-ordering principle</em>, which we
+      state as an axiom. </p>
     <axiom xml:id="axiom_wellordering">
       <title>Well-Ordering Principle</title>
       <statement>
         <p>
-              <idx><h>Well-Ordering Principle</h></idx>
-          Every nonempty subset of <m>\N_0</m> contains a least (smallest) element under the usual ordering, <m>\le</m><fn>
-Our word choice is suggestive. In fact, other orderings do exist, and while the set of nonnegative real numbers <m>\mathbb{R}</m> does not satisfy the well-ordering principle under the usual ordering <m>\le</m>, the Well Ordering Axiom asserts that there exists a well ordering on <em>any</em> set, including <m>\mathbb{R}</m>. Accepting this axiom is equivalent to accepting the <url href="https://plato.stanford.edu/entries/axiom-choice/">axiom of choice</url>.
-</fn>.
-        </p>
+          <idx>
+            <h>Well-Ordering Principle</h>
+          </idx> Every nonempty subset of <m>\N_0</m>
+          contains a least (smallest) element under the usual ordering, <m>\le</m><fn> Our word
+          choice is suggestive. In fact, other orderings do exist, and while the set of nonnegative
+          real numbers <m>\mathbb{R}</m> does not satisfy the well-ordering principle under the
+          usual ordering <m>\le</m>, the Well Ordering Axiom asserts that there exists a well
+          ordering on <em>any</em> set, including <m>\mathbb{R}</m>. Accepting this axiom is
+          equivalent to accepting the <url href="https://plato.stanford.edu/entries/axiom-choice/">axiom
+          of choice</url>.</fn>. </p>
       </statement>
     </axiom>
 
     <p>
-    		The Well-Ordering Principle is useful for producing smallest elements of nonempty subsets defined to have certain properties, as the following example demonstrates.
+      The Well-Ordering Principle is useful for producing smallest elements of nonempty subsets
+      defined to have certain properties, as the following example demonstrates.
+    </p>
 
-    	</p>
+    <exploration>
+      <statement>
+        <p> In this exploration, we investigate polynomials with real coefficients, as well as their
+          degrees. We will define these terms more formally in <xref ref="def_polynomial" />, but
+          for now you may use your intuition from previous courses in algebra. </p>
+        <p> Let <m>S</m> be the set of all polynomials <m>f</m> in the variable <m>x</m> with real
+          coefficients such that <m>f(2) = f(-2) = 0</m> and <m>f(0) = -4</m>. </p>
+        <ol>
+          <li>Give an example of an <m>f\in S</m> and <m>g\notin S</m>.</li>
+          <li>Let <m>D = \{\deg f\mid f\in S\}</m> be the set of possible degrees of polynomials in <m>
+            S</m>. Show that <m>D\ne \emptyset</m> and <m>D\subseteq \N_0</m>.</li>
+          <li>Apply the Well-Ordering Principle to argue that <m>D</m> has a least element. To what
+            does this correspond in <m>S</m>?</li>
+        </ol>
+      </statement>
+      <solution>
+        <ol>
+          <li>Examples vary, but <m>f(x) = x^2-4</m> and <m>g(x) = x+1</m> suffice.</li>
+          <li>Since <m>f(x) = x^2 - 4\in S</m>, we see that <m>2\in D</m>. Furthermore, the zero
+            polynomial is not in <m>S</m>, so the degrees of polynomials in <m>S</m> are all
+            nonnegative integers. Thus, <m>D\subseteq \N_0</m>.</li>
+          <li>We see that <m>D</m> meets the conditions of the well-ordering principle, and so it
+            has a least element. This least element is the degree of the polynomial of least degree
+            satisfying <m>f(2) = f(-2) = 0</m> and <m>f(0) = -4</m>.</li>
+        </ol>
+      </solution>
+    </exploration>
 
-    	<exploration>
-    		<statement>
-    			<p>
-    				In this exploration, we investigate polynomials with real coefficients, as well as their degrees.
-    				We will define these terms more formally in <xref ref="def-polynomial" />, but for now you may use your intuition from previous courses in algebra.
-    			</p>
-    			<p>
-    				Let <m>S</m> be the set of all polynomials <m>f</m> in the variable <m>x</m> with real coefficients such that <m>f(2) = f(-2) = 0</m> and <m>f(0) = -4</m>.
-    			</p>
-			    <ol>
-				    <li>Give an example of an <m>f\in S</m> and <m>g\notin S</m>.</li>
-				    <li>Let <m>D = \setof{\deg f}{f\in S}</m> be the set of possible degrees of polynomials in <m>S</m>. Show that <m>D\ne \emptyset</m> and <m>D\subseteq \N_0</m>.</li>
-				    <li>Apply the Well-Ordering Principle to argue that <m>D</m> has a least element. To what does this correspond in <m>S</m>?</li>
-			    </ol>
-		    </statement>
-		    <solution>
-			    <ol>
-				    <li>Examples vary, but <m>f(x) = x^2-4</m> and <m>g(x) = x+1</m> suffice.</li>
-				    <li>Since <m>f(x) = x^2 - 4\in S</m>, we see that <m>2\in D</m>. Furthermore, the zero polynomial is not in <m>S</m>, so the degrees of polynomials in <m>S</m> are all nonnegative integers. Thus, <m>D\subseteq \N_0</m>.</li>
-				    <li>We see that <m>D</m> meets the conditions of the well-ordering principle, and so it has a least element. This least element is the degree of the polynomial of least degree satisfying <m>f(2) = f(-2) = 0</m> and <m>f(0) = -4</m>.</li>
-			    </ol>
-		    </solution>
-	    </exploration>
+    <p> We will use this principle throughout the text, next in <xref ref="thm_divisionAlgorithm" />. </p>
+  </subsection>
 
-	    <p>
-        We will use this principle throughout the text, next in <xref ref="thm_divalg" />.
-      </p>
-    </subsection>
-
-
-      <definition xml:id="def_integers">
-        <statement>
-          <p>
-            <idx><h>integers</h></idx>
-            <idx><h><m>\Z</m></h></idx>
-            The set of integers consists of the positive and negative natural numbers, together with zero, and is denoted by <m>\Z</m>:
-            <me>
-              \Z = \set{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots}
-            </me>.
-          </p>
-        </statement>
-      </definition>
+  <definition xml:id="def_integers">
+    <idx>
+      <h>integers</h>
+    </idx>
+    <notation>
+      <usage>\Z</usage>
+      <description>Integers</description>
+    </notation>
+    <statement>
+      <p>
+        The set of integers consists of the positive and
+        negative natural numbers, together with zero, and is denoted by <m>\Z</m>: <me>
+          \Z = \set{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots}
+        </me>. </p>
+    </statement>
+  </definition>
 
   <subsection xml:id="ssec_induction">
     <title>Principle of Mathematical Induction</title>
     <theorem xml:id="thm_mathematical_induction">
       <title>Principle of Mathematical Induction</title>
-      <statement>
-        Let <m>P(m)</m> be a statement for each <m>m\in \N</m>.
-			  Suppose that
-        <ol>
+      <statement> Let <m>P(m)</m> be a statement for each <m>m\in \N</m>. Suppose that <ol>
           <li><m>P(1)</m> is true.</li>
           <li>For all <m>k\geq 0</m>, if <m>P(k)</m> is true, then <m>P(k+1)</m> is true.</li>
         </ol>
-        Then <m>P(m)</m> is true for all <m>m\in\N_0</m>.
-      </statement>
+        Then <m>P(m)</m> is true for all <m>m\in\N_0</m>. </statement>
       <proof>
-        <p>
-        Suppose <m>P(m)</m> is a statement for each <m>m\in\N</m> satisfying both properties above. 
-        Suppose, for a contradiction, that there exists some <m>m_0\in\N</m> such that <m>P(m_0)</m> is not true. 
-        Let <m>S = \{m\in\N\mid P(m)\text{ is not true}\}</m>. Then <m>m_0\in S</m> by assumption so that <m>S</m> is a 
-        nonempty subset of <m>\N</m>. By the Well-Ordering Principle <xref ref="axiom_wellordering" />, <m>S</m> has 
-        a least element. 
-        </p>
+        <p> Suppose <m>P(m)</m> is a statement for each <m>m\in\N</m> satisfying both properties
+          above. Suppose, for a contradiction, that there exists some <m>m_0\in\N</m> such that <m>
+          P(m_0)</m> is not true. Let <m>S = \{m\in\N\mid P(m)\text{ is not true}\}</m>. Then <m>m_0\in
+          S</m> by assumption so that <m>S</m> is a nonempty subset of <m>\N</m>. By the
+          Well-Ordering Principle <xref ref="axiom_wellordering" />, <m>S</m> has a least element. </p>
 
-        <p>
-          Let <m>k_0\in S</m> be the least element. Since <m>P(1)</m> is true, we know <m>k_0> 1</m> and so <m>k_0-1\in\N</m>. 
-          Since <m>k_0</m> was the least element we know that <m>k_0-1\notin S</m>. Thus <m>P(k_0-1)</m> is true. 
-          Since <m>P(k_0-1)</m> is true, the second hypothesis tells us <m>P(k_0)</m> is true. This contradicts that <m>P(k_0)</m> is false. 
-          Since we have arrived at a contradiction, we conclude that <m>P(m)</m> is true for all <m>m\in\N</m>.
+        <p> Let <m>k_0\in S</m> be the least element. Since <m>P(1)</m> is true, we know <m>k_0> 1</m>
+          and so <m>k_0-1\in\N</m>. Since <m>k_0</m> was the least element we know that <m>k_0-1\notin
+          S</m>. Thus <m>P(k_0-1)</m> is true. Since <m>P(k_0-1)</m> is true, the second hypothesis
+          tells us <m>P(k_0)</m> is true. This contradicts that <m>P(k_0)</m> is false. Since we
+          have arrived at a contradiction, we conclude that <m>P(m)</m> is true for all <m>m\in\N</m>
+          .
         </p>
       </proof>
     </theorem>
     <aside>
-    <title>Sample Statements for <m>P(m)</m></title>
-    <p>
-      Sample statements could include
-			  <q><m>m</m> is really interesting</q>
-			  or
-			  <q><m>3m^2 + m + 2</m> is even</q>.
-    </p>
+      <title>Sample Statements for <m>P(m)</m></title>
+      <p> Sample statements could include <q><m>m</m> is really interesting</q> or <q><m>3m^2 + m +
+        2</m> is even</q>. </p>
     </aside>
 
-    <p>
-      Mathematical induction is like climbing an infinite staircase.
-      The <em>base case</em> tells us that we can take a first step on the staircase
-      (<m>k_0</m>).
-      In the <em>inductive hypothesis</em>,
-      we assume we can take all the steps up to a certain height
-      (<m>n</m>).
-      In the <em>inductive step</em>,
-      we prove that this allows us to take the <m>(n+1)</m>st step.
-    </p>
-    <p>
-      Thus, if we can take step <m>k_0</m>, we can
-      (by the inductive step)
-      take step <m>k_0 + 1</m>.
-      And since we can take step <m>k_0 + 1</m>, we can
-      (again by the inductive step)
-      take step <m>k_0 + 2</m>.
-      And so on, forever
-      (or, if the notion of actual infinity makes you uncomfortable,
-      as far as we want to go).
-    </p>
-  <aside>
+    <p> Mathematical induction is like climbing an infinite staircase. The <em>base case</em> tells
+      us that we can take a first step on the staircase. In the <em>inductive
+      hypothesis</em>, we assume we can take all the steps up to a certain height (<m>n</m>). In the <em>inductive
+      step</em>, we prove that this allows us to take the <m>(n+1)</m>st step. </p>
+    <p> Thus, if we can take step <m>1</m>, we can (by the inductive step) take step <m>2</m>.
+      And since we can take step <m>2</m>, we can (again by the inductive step) take step <m>3
+      </m>. And so on, forever (or, if the notion of actual infinity makes you uncomfortable, as
+      far as we want to go). </p>
+    <aside>
     <title>Induction vs Well-Ordering</title>
-    <p>
-      It can be proved that the principle of mathematical induction is logically equivalent to the well-ordering principle.
-      That is, if we assume either one to be true, we can deduce the other.
-      We will generally take the well-ordering principle on <m>\N</m> to be an axiom,
-      and treat induction as a theorem.
-    </p>
-  </aside>
-  <p>
-  The following proposition is often referred to as the Gauss Summation Formula. 
-  We will employ two proof techniques. The first will be a proof using <xref ref="thm_mathematical_induction"/> and the second 
-  will be a direct proof. In the inductive proof we will introduce some language that is typically used 
-  when performing a proof by induction.
-  </p>
-  <proposition xml:id="prop_gauss_summation">
-    <title>Gauss Summation Formula</title>
-    <statement>
-		<p>
-      For all <m>n \ge 1</m>,
-      <me>
-        1+ 2 + 3 + \cdots + n = \frac{n(n+1)}{2}
-      </me>.
-    </p>
-    </statement>
-
-    <proof>
-    <title>Inductive Proof</title>
-    <p>
-      <em>Base case</em>: When <m>n = 1</m>,
-      the equation <m>1 = \frac{1\cdot (1+1)}{2}</m> is true.
-    </p>
-
-    <p>
-      <em>Inductive Hypothesis:</em> Assume that there exists a <m>n</m> such that whenever <m>k \le n</m>,
-      the equation
-      <men xml:id="ex_indhyp">
-        1+ 2 + 3 + \cdots + k = \frac{k(k+1)}{2}
-      </men>
-      is true.
-    </p>
-
-    <p>
-      <em>Inductive Step:</em> Our goal is to show that <m>P(n+1)</m> is true.
-      That is, we wish to establish that
-      <men xml:id="ex_indgoal">
-        1+ 2 + 3 + \cdots + n + (n+1) = \frac{(n+1)((n+1)+1)}{2}
-      </men>.
-    </p>
-
-    <p>
-      We begin on the left-hand side of <xref ref="ex_indhyp" />,
-      where we may apply the inductive hypothesis to see that
-      <men xml:id="ex_indstep1">
-        1+ 2 + 3 + \cdots + n + (n+1) = \left[\frac{n(n+1)}{2}\right] + (n+1)
-      </men>.
-
-      Through the use of straightforward algebra,
-      the right-hand side becomes
-      <men xml:id="ex_indstep2">
-        \frac{n(n+1)}{2} + \frac{2(n+1)}{2} = \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2}
-      </men>.
-    </p>
-
-    <p>
-      Putting <xref ref="ex_indstep1" /> and <xref ref="ex_indstep2" /> together,
-      we obtain
-      <me>
-        1+ 2 + 3 + \cdots + n + (n+1) = \frac{(n+1)((n+1)+1)}{2}
-      </me>,
-      which is exactly the goal we stated in <xref ref="ex_indgoal" />.
-     </p>
-     </proof>
-
-     <proof>
-     <title>Direct Proof</title>
-     <p> Let <m>n\in\N</m> and consider the summation 
-     <me>
-      S = 1+2+3+\cdots +(n-2)+ (n-1) + n
-     </me>
-     and the same summation written in reverse:
-     <me>
-      S = n+(n-1)+(n-2) + \cdots + 3 + 2 + 1.
-     </me>
-     Add these together termise:
-     <me>
-     2S = (n+1) + (n+2) + (n+1)+\cdots + (n+1)+(n+1) + (n+1).
-     </me>
-     There are <m>n</m> total terms so we arrive at <m>2S = n(n+1)</m> and so <m>S = \frac{n(n+1)}{2}</m>. Thus 
-     <me>
-      1+2+3+\cdots + n = \frac{n(n+1)}{2}.
-     </me>
-     </p>
-     </proof>
-  </proposition>
-
-  <p>
-    We choose to give two proofs of the Gauss Summation Formula to illustrate 
-    that induction is not always the easiest way to prove statements about natural numbers. 
-    However, it is a crucial tool in algebra and it's important to learn how to use our tools.
-  </p>
-  <p>
-    With the goal of understanding how to use our tools, we continue with another example of induction. 
-    This example shows how to manipulate inequalities within proofs.
-  </p>
-
-  <proposition xml:id="basic_induction_inequality">
-    <statement>
-    	<p>
-    		For all <m>k\ge 1</m>, <m>3^k > k</m>.
-    	</p>
-    </statement>
-    <proof>
-      <p>
-    		Let's start by labelling <m>P(m)</m>. By looking at the statement, 
-        <m>P(m)</m> should be: 
-        <me>
-        P(m)\colon 3^m>m.
-        </me>
-    	</p>
-      <p>
-        Now that <m>P(m)</m> is clearly labelled, we will prove the base case which is <m>P(1)</m>.
-        With our description, we have <m>P(1)</m> is the statement <m>3^1>1</m> which is certainly true.
-        This completes the proof of the base case.
-      </p>
-    	<p>
-        For the inductive step, we suppose <m>P(k)</m> is true and prove that <m>P(k+1)</m> is also true. 
-        Given our description of the statements <m>P(m)</m>, assuming <m>P(k)</m> is true is assuming
-        <me>
-          3^k>k.
-        </me>
-        We now need to use this to show that <m>P(k+1)</m> is true. That is, we need to show 
-        <m>3^{k+1}>k+1</m>. Before we perform computations let's also notice that <m>k\ge 1</m>. Now we compute: 
-        <md>
-          <mrow>3^{k+1} \amp = 3^k\cdot 3^1</mrow>
-          <mrow> \amp > k\cdot 3</mrow>
-          <mrow> \amp = k + 2k </mrow>
-          <mrow> \amp > k + 1</mrow>
-        </md>
-        where the last inequality follows from <m>k\ge 1</m> implies <m>2k\ge 2>1</m>. We 
-        conclude <m>3^{k+1}>k+1</m> as desired. 
-    	</p>
-      <p>
-        This completes the proof by induction and we conclude <m>3^m>m</m> for all <m>m\in \N</m>.
-      </p>
-		</proof>
-	</proposition>
-
-  <theorem>
-    <title>Sum of Cubes Formula</title>
+      <p> It can be proved that the principle of mathematical induction is logically equivalent to
+        the well-ordering principle. That is, if we assume either one to be true, we can deduce the
+        other. We will generally take the well-ordering principle on <m>\N</m> to be an axiom, and
+        treat induction as a theorem. </p>
+    </aside>
+    <p> The following proposition is often referred to as the Gauss Summation Formula. We will
+      employ two proof techniques. The first will be a proof using <xref
+        ref="thm_mathematical_induction" /> and the second will be a direct proof. In the inductive
+      proof we will introduce some language that is typically used when performing a proof by
+      induction. </p>
+    <proposition xml:id="prop_gauss_summation">
+      <title>Gauss Summation Formula</title>
       <statement>
-      <p>
-        Prove that the sum of the first <m>n</m> cubes is <m>\dfrac{n^2(n+1)^2}{4}</m>.
-        That is,
+        <p> For all <m>n \ge 1</m>, <me>
+            1+ 2 + 3 + \cdots + n = \frac{n(n+1)}{2}
+          </me>. </p>
+      </statement>
+
+      <proof>
+        <title>Inductive Proof</title>
+        <p>
+          <em>Base case</em>: When <m>n = 1</m>, the equation <m>1 = \frac{1\cdot (1+1)}{2}</m> is
+          true. </p>
+
+        <p>
+          <em>Inductive Hypothesis:</em> Assume that there exists a <m>n</m> such that whenever <m>k
+          \le n</m>, the equation <men xml:id="ex_indhyp">
+            1+ 2 + 3 + \cdots + k = \frac{k(k+1)}{2}
+          </men> is true. </p>
+
+        <p>
+          <em>Inductive Step:</em> Our goal is to show that <m>P(n+1)</m> is true. That is, we wish
+          to establish that <men xml:id="ex_indgoal">
+            1+ 2 + 3 + \cdots + n + (n+1) = \frac{(n+1)((n+1)+1)}{2}
+          </men>. </p>
+
+        <p> We begin on the left-hand side of <xref ref="ex_indhyp" />, where we may apply the
+          inductive hypothesis to see that <men xml:id="ex_indstep1">
+            1+ 2 + 3 + \cdots + n + (n+1) = \left[\frac{n(n+1)}{2}\right] + (n+1)
+          </men>.
+          Through the use of straightforward algebra, the right-hand side becomes <men
+            xml:id="ex_indstep2">
+            \frac{n(n+1)}{2} + \frac{2(n+1)}{2} = \frac{n(n+1) + 2(n+1)}{2} = \frac{(n+1)(n+2)}{2}
+          </men>
+          .
+    </p>
+
+        <p> Putting <xref ref="ex_indstep1" /> and <xref ref="ex_indstep2" /> together, we obtain <me>
+          1+ 2 + 3 + \cdots + n + (n+1) = \frac{(n+1)((n+1)+1)}{2}
+          </me>, which is
+          exactly the goal we stated in <xref ref="ex_indgoal" />. </p>
+      </proof>
+
+      <proof>
+        <title>Direct Proof</title>
+        <p> Let <m>n\in\N</m> and consider the summation <me>
+            S = 1+2+3+\cdots +(n-2)+ (n-1) + n
+          </me> and the same summation written in
+          reverse: <me>
+            S = n+(n-1)+(n-2) + \cdots + 3 + 2 + 1.
+          </me> Add these together termise: <me>
+          2S = (n+1) + (n+2) + (n+1)+\cdots + (n+1)+(n+1) + (n+1).
+          </me> There are <m>n</m>
+          total terms so we arrive at <m>2S = n(n+1)</m> and so <m>S = \frac{n(n+1)}{2}</m>. Thus <me>
+          1+2+3+\cdots + n = \frac{n(n+1)}{2}.
+          </me>
+        </p>
+      </proof>
+    </proposition>
+
+    <p>
+      We choose to give two proofs of the Gauss Summation Formula to illustrate
+      that induction is not always the easiest way to prove statements about natural numbers.
+      However, it is a crucial tool in algebra and it's important to learn how to use our tools.
+    </p>
+    <p>
+      With the goal of understanding how to use our tools, we continue with another example of
+      induction.
+      This example shows how to manipulate inequalities within proofs.
+    </p>
+
+    <proposition xml:id="basic_induction_inequality">
+      <statement>
+        <p> For all <m>k\ge 1</m>, <m>3^k > k</m>. </p>
+      </statement>
+      <proof>
+        <p> Let's start by labelling <m>P(m)</m>. By looking at the statement, <m>P(m)</m> should
+          be: <me>
+            P(m)\colon 3^m>m.
+          </me>
+        </p>
+        <p> Now that <m>P(m)</m> is clearly labelled, we will prove the base case which is <m>P(1)</m>.
+          With our description, we have <m>P(1)</m> is the statement <m>3^1>1</m> which is certainly
+          true. This completes the proof of the base case. </p>
+        <p> For the inductive step, we suppose <m>P(k)</m> is true and prove that <m>P(k+1)</m> is
+          also true. Given our description of the statements <m>P(m)</m>, assuming <m>P(k)</m> is
+          true is assuming <me>
+            3^k>k.
+          </me> We now need to use this to show that <m>P(k+1)</m> is
+          true. That is, we need to show <m>3^{k+1}>k+1</m>. Before we perform computations let's
+          also notice that <m>k\ge 1</m>. Now we compute: <md>
+            <mrow>3^{k+1} \amp = 3^k\cdot 3^1</mrow>
+            <mrow> \amp > k\cdot 3</mrow>
+            <mrow> \amp = k + 2k </mrow>
+            <mrow> \amp > k + 1</mrow>
+          </md> where the last inequality follows from <m>k\ge
+          1</m> implies <m>2k\ge 2>1</m>. We conclude <m>3^{k+1}>k+1</m> as desired. </p>
+        <p> This completes the proof by induction and we conclude <m>3^m>m</m> for all <m>m\in \N</m>
+          .
       </p>
-      <me>
-        1^3 + 2^3 + 3^3 + \cdots + n^3 = \dfrac{n^2(n+1)^2}{4}.
-      </me>
+      </proof>
+    </proposition>
+
+    <theorem>
+      <title>Sum of Cubes Formula</title>
+      <statement>
+        <p> Prove that the sum of the first <m>n</m> cubes is <m>\dfrac{n^2(n+1)^2}{4}</m>. That is, </p>
+        <me>
+          1^3 + 2^3 + 3^3 + \cdots + n^3 = \dfrac{n^2(n+1)^2}{4}.
+        </me>
       </statement>
       <proof>
         <title>Inductive Proof</title>
-      	<p>
-      	  We wish to prove that
-				<me>
-				  1^3 + 2^3 + 3^3 + \cdots + n^3 = \frac{n^2(n+1)^2}{4}.
-				</me>
-		    </p>
-		    <p>
-			    <em>Base Case:</em> When <m>n=1</m>, the theorem clearly holds.
-		    </p>
-		    <p>
-			    <em>Inductive Hypothesis:</em> Assume for all <m>k\le n</m> that we have
-				  <men xml:id="eq-sum-of-cubes-ind-hyp">
-					1^3 + 2^3 + 3^3 + \cdots + k^3 = \frac{k^2(k+1)^2}{4}.
-				  </men>
-		    </p>
-		    <p>
-			  <em>Inductive Step:</em> We wish to prove that
-				<me>
-					1^3 + 2^3 + 3^3 + \cdots + n^3 +(n+1)^3 = \frac{(n+1)^2((n+1)+1)^2}{4} = \frac{(n+1)^2(n+2)^2}{4}.
-				</me>
-			  We apply <xref ref="eq-sum-of-cubes-ind-hyp" /> to obtain
-				<md>
-					<mrow> 1^3 + 2^3 + 3^3 + \cdots + n^3 +(n+1)^3 \amp = \frac{n^2(n+1)^2}{4} + (n+1)^3 </mrow>
-					<mrow> \amp = \frac{n^2(n+1)^2}{4} + \frac{4(n+1)^3}{4}</mrow>
-					<mrow> \amp = \frac{n^2(n+1)^2 + 4(n+1)^3}{4}</mrow>
-					<mrow> \amp = \frac{(n+1)^2 (n^2+4(n+1))}{4}</mrow>
-					<mrow> \amp = \frac{(n+1)^2 (n^2+4n+4)}{4}</mrow>
-					<mrow> \amp = \frac{(n+1)^2 (n+2)^2}{4}.</mrow>
-				</md>
-			  The theorem is proved.
-		    </p>
+        <p> We wish to prove that <me>
+            1^3 + 2^3 + 3^3 + \cdots + n^3 = \frac{n^2(n+1)^2}{4}.
+          </me>
+        </p>
+        <p>
+          <em>Base Case:</em> When <m>n=1</m>, the theorem clearly holds. </p>
+        <p>
+          <em>Inductive Hypothesis:</em> Assume for all <m>k\le n</m> that we have <men
+            xml:id="eq-sum-of-cubes-ind-hyp">
+            1^3 + 2^3 + 3^3 + \cdots + k^3 = \frac{k^2(k+1)^2}{4}.
+          </men>
+        </p>
+        <p>
+          <em>Inductive Step:</em> We wish to prove that <me>
+            1^3 + 2^3 + 3^3 + \cdots + n^3 +(n+1)^3 = \frac{(n+1)^2((n+1)+1)^2}{4} =
+          \frac{(n+1)^2(n+2)^2}{4}.
+          </me>
+          We apply <xref ref="eq-sum-of-cubes-ind-hyp" /> to obtain <md>
+            <mrow> 1^3 + 2^3 + 3^3 + \cdots + n^3 +(n+1)^3 \amp = \frac{n^2(n+1)^2}{4} + (n+1)^3 </mrow>
+            <mrow> \amp = \frac{n^2(n+1)^2}{4} + \frac{4(n+1)^3}{4}</mrow>
+            <mrow> \amp = \frac{n^2(n+1)^2 + 4(n+1)^3}{4}</mrow>
+            <mrow> \amp = \frac{(n+1)^2 (n^2+4(n+1))}{4}</mrow>
+            <mrow> \amp = \frac{(n+1)^2 (n^2+4n+4)}{4}</mrow>
+            <mrow> \amp = \frac{(n+1)^2 (n+2)^2}{4}.</mrow>
+          </md> The theorem is proved. </p>
       </proof>
     </theorem>
 
     <theorem>
-	    <title>(Bernoulli's Inequality)</title>
-		  <statement>
-				Given a real number <m>b > -1</m>, <m>(1+b)^n \ge 1 + bn</m> for all <m>n\in \N_0</m>.
+      <title>(Bernoulli's Inequality)</title>
+      <statement> Given a real number <m>b > -1</m>, <m>(1+b)^n \ge 1 + bn</m> for all <m>n\in \N_0</m>
+        .
 		  </statement>
-		  <proof>
-			  <p>
-				  When <m>n=0</m> the inequality becomes <m>1 \ge 1</m>, which is clearly true.
-			  </p>
-			  <p>
-				  Assume <m>n > 0</m>. Then <m>(1+b)^{n+1} = (1+b)(1+b)^{n+1} \ge (1+b)(1+bn) = 1 +bn + b+b^2 n = 1 + b(n+1) + b^2 n	\ge 1+b(n+1)</m>.
-			  </p>
-		  </proof>
-	  </theorem>
+      <proof>
+        <p> When <m>n=0</m> the inequality becomes <m>1 \ge 1</m>, which is clearly true. </p>
+        <p> Assume <m>n > 0</m>. Then <m>(1+b)^{n+1} = (1+b)(1+b)^{n+1} \ge (1+b)(1+bn) = 1 +bn +
+          b+b^2 n = 1 + b(n+1) + b^2 n \ge 1+b(n+1)</m>. </p>
+      </proof>
+    </theorem>
   </subsection>
   <exercises>
-  <title>Exercises</title>
+    <title>Exercises</title>
     <exercise xml:id="sec-induction-tf" label="sec-induction-tf">
-    <statement>
-      <p>
-        Please mark the following as true or false. An ordered set is <em>well-ordered</em> if every non-empty subset has a least element.
-      </p>
-      <ol>
-        <li>The Well-Ordering Axioms says every subset of <m>\N</m> has a least element.</li>
-        <li>The set of negative numbers is well-ordered.</li>
-        <li>The Well-Ordering Axioms says every non-empty subset of <m>\N</m> has a least element.</li>
-        <li>The set of rational numbers is well-ordered.</li>
-        <li>The Principle of Mathematical induction can be used to prove statements about all positive integers.</li>
-        <li>The base case of a proof by induction (or inductive proof) is to show the statement is true for a specific natural number.</li>
-        <li>The inductive step in a proof by induction is to show that if the statement is true for a natural number <m>k</m>, then it is true for the next natural number <m>k+1</m>.</li>
-        <li>To use mathematical induction to prove a statement about all non-negative integers, the base case is <m>n=1</m>.</li>
-        <li>The principle of mathematical induction can be use to prove the statement <m>\forall x\in\R, x^2\ge 0</m>.</li>
-      </ol>
-    </statement>
+      <statement>
+        <p> Please mark the following as true or false. An ordered set is <em>well-ordered</em> if
+          every non-empty subset has a least element. </p>
+        <ol>
+          <li>The Well-Ordering Axioms says every subset of <m>\N</m> has a least element.</li>
+          <li>The set of negative numbers is well-ordered.</li>
+          <li>The Well-Ordering Axioms says every non-empty subset of <m>\N</m> has a least element.</li>
+          <li>The set of rational numbers is well-ordered.</li>
+          <li>The Principle of Mathematical induction can be used to prove statements about all
+            positive integers.</li>
+          <li>The base case of a proof by induction (or inductive proof) is to show the statement is
+            true for a specific natural number.</li>
+          <li>The inductive step in a proof by induction is to show that if the statement is true
+            for a natural number <m>k</m>, then it is true for the next natural number <m>k+1</m>.</li>
+          <li>To use mathematical induction to prove a statement about all non-negative integers,
+            the base case is <m>n=1</m>.</li>
+          <li>The principle of mathematical induction can be use to prove the statement <m>\forall
+            x\in\R, x^2\ge 0</m>.</li>
+        </ol>
+      </statement>
     </exercise>
 
     <exercise xml:id="sec-induction-smallest-elements1" label="sec-induction-smallest-elements1">
       <statement>
-        <p>
-          Find the smallest element of these subsets of <m>\N</m>
+        <p> Find the smallest element of these subsets of <m>\N</m>
         </p>
         <ol>
-          <li><m>\{n\in\mathbb{N}\mid n = m^2-10m+28\text{ for some integer }m\}</m></li>
-          <li><m>\{n\in\mathbb{N}\mid n = 5q+3\text{ for some integer }q\}</m></li>
-          <li><m>\{n\in\mathbb{N}\mid n = -150-17d\text{ for some integer }d\}</m></li>
-          <li><m>\{n\in\mathbb{N}\mid n = 4s+9t\text{ for some integers }s,t\}</m></li>
+          <li>
+            <m>\{n\in\mathbb{N}\mid n = m^2-10m+28\text{ for some integer }m\}</m>
+          </li>
+          <li>
+            <m>\{n\in\mathbb{N}\mid n = 5q+3\text{ for some integer }q\}</m>
+          </li>
+          <li>
+            <m>\{n\in\mathbb{N}\mid n = -150-17d\text{ for some integer }d\}</m>
+          </li>
+          <li>
+            <m>\{n\in\mathbb{N}\mid n = 4s+9t\text{ for some integers }s,t\}</m>
+          </li>
         </ol>
       </statement>
     </exercise>
 
     <exercise xml:id="sec-induction-smallest-elements2" label="sec-induction-smallest-elements2">
       <statement>
-        <p>
-          Find the smallest element of these subsets of <m>\N</m>
+        <p> Find the smallest element of these subsets of <m>\N</m>
         </p>
         <ol>
-          <li><m>\{r\in\mathbb{N}_0\mid 2 = 5q+r\text{ for some integer }q\}</m></li>
-          <li><m>\{r\in\mathbb{N}_0\mid 10 = 5q+r\text{ for some integer }q\}</m></li>
-          <li><m>\{r\in\mathbb{N}_0\mid 18 = 12q+r\text{ for some integer }q\}</m></li>
+          <li>
+            <m>\{r\in\mathbb{N}_0\mid 2 = 5q+r\text{ for some integer }q\}</m>
+          </li>
+          <li>
+            <m>\{r\in\mathbb{N}_0\mid 10 = 5q+r\text{ for some integer }q\}</m>
+          </li>
+          <li>
+            <m>\{r\in\mathbb{N}_0\mid 18 = 12q+r\text{ for some integer }q\}</m>
+          </li>
         </ol>
       </statement>
     </exercise>
 
 
     <exercise>
-    <introduction>
-      <p>
-        Here you will try out an inductive proof on your own. You'll be guided through a proof of the statement: For every <m>n\in \N</m>
-        <me>1^2+2^2+3^2+\cdots + (n-1)^2+n^2 = \frac{n(n+1)(2n+1)}{6}.</me>
-        That is, the sum of the first <m>n</m> squares can be computed as <m>\frac{n(n+1)(2n+1)}{6}</m>.
-      </p>
-    </introduction>
+      <introduction>
+        <p> Here you will try out an inductive proof on your own. You'll be guided through a proof
+          of the statement: For every <m>n\in \N</m>
+        <me>1^2+2^2+3^2+\cdots + (n-1)^2+n^2 =
+          \frac{n(n+1)(2n+1)}{6}.</me> That is, the sum of the first <m>n</m> squares can be
+          computed as <m>\frac{n(n+1)(2n+1)}{6}</m>. </p>
+      </introduction>
 
-    <task>
-    <statement>
-      <p>
-        Identify what <m>P(n)</m> is and verify <m>P(1)</m> is true.
-      </p>
-    </statement>
-    <hint>
-      <p>
-        The statement <m>P(n)</m> is the equation in the statement for a given <m>n</m>.
-      </p>
-    </hint>
-    <answer>
-      <p>
-        <m>P(n)</m> is the statement <m>1^2+2^2+\cdots + n^2 = \frac{n(n+1)(2n+1)}{6}</m>. 
-      </p>
-      <p>
-        Thus <m>P(1)</m> is the statement <m>1^2 = \frac{1(1+1)(2+1)}{6}</m> which is certainly true.
-      </p>
-    </answer>
-    <solution>
-      <p>
-        All the glorious details about how to do the first step.
-      </p>
-    </solution>
-  </task>
+      <task>
+        <statement>
+          <p> Identify what <m>P(n)</m> is and verify <m>P(1)</m> is true. </p>
+        </statement>
+        <hint>
+          <p> The statement <m>P(n)</m> is the equation in the statement for a given <m>n</m>. </p>
+        </hint>
+        <answer>
+          <p>
+            <m>P(n)</m> is the statement <m>1^2+2^2+\cdots + n^2 = \frac{n(n+1)(2n+1)}{6}</m>. </p>
+          <p> Thus <m>P(1)</m> is the statement <m>1^2 = \frac{1(1+1)(2+1)}{6}</m> which is
+            certainly true. </p>
+        </answer>
+        <solution>
+          <p>
+            All the glorious details about how to do the first step.
+          </p>
+        </solution>
+      </task>
 
-  <task>
-    <statement>
-      <p>
-        Verify that if <m>P(k)</m> is true, then so is <m>P(k+1)</m> must also be true.
-      </p>
-    </statement>
-    <hint>
-      <p>
-        Write out both statements <m>P(k)</m> and <m>P(k+1)</m>. Try to manipulate <m>P(k)</m> to get <m>P(k+1)</m>.
-      </p>
-    </hint>
-    <solution>
-      <p>
-        We first assume that <m>P(k)</m> is true. This means 
-        <men xml:id="sum-of-squares">
-          1^2+2^2+\cdots + k^2 = \frac{k(k+1)(2k+1)}{6}.
-        </men>
-        We need to show somehow that 
-        <me>
-          1^2+2^2+\cdots + k^2+(k+1)^2 = \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}.
-        </me> 
-      </p>
-      <p>
-        Starting with <xref ref="sum-of-squares" />, we 
-      </p>
-    </solution>
-  </task>
+      <task>
+        <statement>
+          <p> Verify that if <m>P(k)</m> is true, then so is <m>P(k+1)</m> must also be true. </p>
+        </statement>
+        <hint>
+          <p> Write out both statements <m>P(k)</m> and <m>P(k+1)</m>. Try to manipulate <m>P(k)</m>
+            to get <m>P(k+1)</m>. </p>
+        </hint>
+        <solution>
+          <p> We first assume that <m>P(k)</m> is true. This means <men xml:id="sum-of-squares">
+            1^2+2^2+\cdots + k^2 = \frac{k(k+1)(2k+1)}{6}.
+            </men> We need to show
+            somehow that <me>
+              1^2+2^2+\cdots + k^2+(k+1)^2 = \frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}.
+            </me>
+          </p>
+          <p> Starting with <xref ref="sum-of-squares" />, we </p>
+        </solution>
+      </task>
 
-  <conclusion>
-    <p>
-      A little wrap up.
-    </p>
-  </conclusion>
-  </exercise>
+      <conclusion>
+        <p>
+          A little wrap up.
+        </p>
+      </conclusion>
+    </exercise>
 
-  <exercise>
-    <introduction>
-      <p>
-        Find a formula for the sum of the first <m>n</m> odd numbers by following the steps below.
-      </p>
-    </introduction>
+    <exercise>
+      <introduction>
+        <p> Find a formula for the sum of the first <m>n</m> odd numbers by following the steps
+          below. </p>
+      </introduction>
 
-    <task>
-    <statement>
-      <p>
-        Show by summing the first one, two, and three odd numbers, that a formula cannot be a linear function of <m>n</m>. That is, it cannot be of the form <m>an+b</m> for some <m>a,b</m>.
-      </p>
-    </statement>
-    </task>
+      <task>
+        <statement>
+          <p> Show by summing the first one, two, and three odd numbers, that a formula cannot be a
+            linear function of <m>n</m>. That is, it cannot be of the form <m>an+b</m> for some <m>
+            a,b</m>. </p>
+        </statement>
+      </task>
 
-    <task>
-    <statement>
-      <p>
-        Argue that a formula could possibly be a quadratic function of <m>n</m>. Use your computations in the previous part to determine coefficients <m>a,b,c</m> so that <m>an^2+bn+c</m> agrees with your sums for <m>n=1,2,3</m>.
-      </p>
-    </statement>
-    </task>
+      <task>
+        <statement>
+          <p> Argue that a formula could possibly be a quadratic function of <m>n</m>. Use your
+            computations in the previous part to determine coefficients <m>a,b,c</m> so that <m>
+            an^2+bn+c</m> agrees with your sums for <m>n=1,2,3</m>. </p>
+        </statement>
+      </task>
 
-    <task>
-    <statement>
-      <p>
-        Prove your conjecture is correct.
-      </p>
-    </statement>
-    </task>
-  </exercise>
+      <task>
+        <statement>
+          <p>
+            Prove your conjecture is correct.
+          </p>
+        </statement>
+      </task>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Do the same as the previous exercise but with the summation
-        <me>
-          1+4+7+\cdots + (3n-2).
-        </me>
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Do the same as the previous exercise but with the summation <me>
+            1+4+7+\cdots + (3n-2).
+          </me>
+        </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Prove for all <m>k\geq 1</m>, we have <m>2^k>k</m>.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Prove for all <m>k\geq 1</m>, we have <m>2^k>k</m>. </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Prove for all <m>k\geq 3</m>, we have <m>2^k-2>k</m>.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Prove for all <m>k\geq 3</m>, we have <m>2^k-2>k</m>. </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Prove for all <m>k>2</m>, we have <m>3^k>k^2</m>.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Prove for all <m>k>2</m>, we have <m>3^k>k^2</m>. </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Formulate a problem similar to the previous three and prove it.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Formulate a problem similar to the previous three and prove it.
+        </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <title>AM-GM Inequality</title>
-    <statement>
-      <p>
-        Given numbers <m>x_1,x_2,\ldots,x_n</m>. Prove that the arithmetic mean is at least the geometric mean:
-        <me>
-          \frac{x_1+x_2+\cdots+x_n}{n}\ge (x_1\cdot x_2\cdots x_n)^{1/n}.
-        </me>
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <title>AM-GM Inequality</title>
+      <statement>
+        <p> Given numbers <m>x_1,x_2,\ldots,x_n</m>. Prove that the arithmetic mean is at least the
+          geometric mean: <me>
+            \frac{x_1+x_2+\cdots+x_n}{n}\ge (x_1\cdot x_2\cdots x_n)^{1/n}.
+          </me>
+        </p>
+      </statement>
+    </exercise>
 
-  <exercise xml:id="fibonacci-numbers">
-    <statement>
-      <p>
-        Let <m>F_n</m> be the Fibonacci numbers defined with initial values <m>F_1=F_2=1</m> and recursion relation <m>F_{n+2}=F_{n+1}+F_n</m> for all integers <m>n\geq 1</m>
-        Prove that <m>F_n\le 2^n</m> for all <m>n\geq 1</m>.
-      </p>
-    </statement>
-  </exercise>
+    <exercise xml:id="fibonacci-numbers">
+      <statement>
+        <p> Let <m>F_n</m> be the Fibonacci numbers defined with initial values <m>F_1=F_2=1</m> and
+          recursion relation <m>F_{n+2}=F_{n+1}+F_n</m> for all integers <m>n\geq 1</m> Prove that <m>F_n\le
+          2^n</m> for all <m>n\geq 1</m>. </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Find the first instance where <m>n!\geq 3^n</m>. Then find <m>n_0\in\N</m> such that <m>n!\geq 3^n</m> for all <m>n\geq n_0</m>.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Find the first instance where <m>n!\geq 3^n</m>. Then find <m>n_0\in\N</m> such that <m>n!\geq
+          3^n</m> for all <m>n\geq n_0</m>. </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Find the maximum number of regions <m>R(n)</m> into which the plane can be divided using <m>n</m> lines.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Find the maximum number of regions <m>R(n)</m> into which the plane can be divided using <m>
+          n</m> lines. </p>
+      </statement>
+    </exercise>
 
-  <exercise>
-    <statement>
-      <p>
-        Prove that if <m>n\geq 44</m>, then <m>n</m> cents of postage can be made using only 5 cent and 12 cent stamps.
-      </p>
-    </statement>
-  </exercise>
+    <exercise>
+      <statement>
+        <p> Prove that if <m>n\geq 44</m>, then <m>n</m> cents of postage can be made using only 5
+          cent and 12 cent stamps. </p>
+      </statement>
+    </exercise>
 
   </exercises>
 </section>

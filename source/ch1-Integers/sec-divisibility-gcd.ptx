@@ -4,7 +4,6 @@
 <title>Divisibility and GCDs in the Integers</title>
     
 <objectives xml:id="obj_divisibility-gcd">
-<title>Guiding Questions</title>
   <introduction>
     <p>
       In this section, we'll seek to answer the questions:
@@ -31,6 +30,10 @@
     </p>
     <definition>
       <statement>
+        <notation>
+          <usage>\mid</usage>
+          <description>Divides</description>
+        </notation>
       <idx>divides (integers)</idx>
       <idx>factor (integers)</idx>
         <p>
@@ -202,7 +205,7 @@
       The following theorem formalizes this idea for <m>a,b\in \N</m>.
     </p>
     
-    <theorem xml:id="thm_division-algorithm">
+    <theorem xml:id="thm_divisionAlgorithm">
       <title>The Division Algorithm for <m>\N</m></title>
       <idx>Division Algorithm (<m>\N</m>)</idx>
       <statement>
@@ -222,7 +225,7 @@
       </hint>
       <hint>
       	<p>
-      		Let <m>S = \setof{a-bs}{s\in \N_0, a-bs\ge 0}</m>.
+      		Let <m>S = \{a-bs\mid s\in \N_0, a-bs\ge 0\}</m>.
       	</p>
 
       </hint>
@@ -235,7 +238,7 @@
       </p>
       <p>
         Now, assume that <m>a > b</m>.
-        Then the set <m>S = \setof{s\in\N}{a-bs \ge 0}</m> is nonempty, as <m>a-b\in S</m>.
+        Then the set <m>S = \{s\in\N\mi0d a-bs \ge 0\}</m> is nonempty, as <m>a-b\in S</m>.
         By <xref ref="axiom_wellordering" />, <m>S</m> has a least element, which we will call <m>r</m>.
         Let <m>q\in \N_0</m> be such that <m>r = a-bq</m>; then <m>a = bq + r</m>.
       </p>
@@ -295,7 +298,7 @@
         	</statement>
         	<hint>
         		<p>
-        			Consider cases, and apply <xref ref="thm_divalg" /> wherever possible.
+        			Consider cases, and apply <xref ref="thm_divisionAlgorithm" /> wherever possible.
         		</p>
         	</hint>
         <proof>
@@ -319,6 +322,10 @@
     
     <definition xml:id="def_gcdZ">
     		<idx>greatest common divisor (<m>\Z</m>)</idx>
+        <notation>
+          <usage>\gcd(a,b)</usage>
+          <description>Greatest Common Divisor of <m>a,b</m></description>
+        </notation>
       <statement>
         <p>
           Let <m>a,b\in \Z</m> such that <m>a</m> and <m>b</m> are not both 0.
@@ -494,7 +501,7 @@
 	    <title>(Euclidean Algorithm)</title>
 	    <idx>Euclidean Algorithm</idx>
       <statement>
-        <p> Let <m>a,b\in \N</m>. Use <xref ref="thm_divalg" /> and <xref ref="invest_gcdremainder" /> to determine an algorithm for computing <m>\gcd(a,b)</m>.
+        <p> Let <m>a,b\in \N</m>. Use <xref ref="thm_divisionAlgorithm" /> and <xref ref="invest_gcdremainder" /> to determine an algorithm for computing <m>\gcd(a,b)</m>.
         How could your method be modified to compute <m>\gcd(a,b)</m> for <m>a,b\in\Z</m>?
         </p>
       </statement>
@@ -559,13 +566,13 @@
       </hint>
       
       <hint>
-      	<p>Apply <xref ref="axiom_wellordering" /> to <m>S = \setof{as+bt}{s,t\in\Z, \ as+bt \gt 0}</m>.</p>
+      	<p>Apply <xref ref="axiom_wellordering" /> to <m>S = \{as+bt\mid s,t\in\Z, \ as+bt \gt 0\}</m>.</p>
       </hint>
 
       <proof>
       
       	<p>
-      		Consider the set <m>S = \setof{as+bt}{s,t\in\Z, \ as+bt \gt 0}</m>.
+      		Consider the set <m>S = \{as+bt\mid s,t\in\Z, \ as+bt \gt 0\}</m>.
       		We first show that <m>S\ne \emptyset</m>.
       	</p>
 		<p>      		
@@ -664,7 +671,7 @@
     <exercise xml:id="sec-divisibility-gcd-quorem" label="sec-divisibility-gcd-quorem">
       <statement>
         <p>
-          Apply the <xref ref="thm_division-algorithm">Division Algorithm</xref> to determine the quotient and remainder for the following pairs of integers:
+          Apply the <xref ref="thm_divisionAlgorithm">Division Algorithm</xref> to determine the quotient and remainder for the following pairs of integers:
         </p>
         <ol>
           <li><m>a = 56, b = 7</m></li>

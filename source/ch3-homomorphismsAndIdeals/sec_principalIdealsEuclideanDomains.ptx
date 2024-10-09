@@ -291,9 +291,8 @@
         </li>
       </ol>
       <p>
-        We have <m>\ideal{0}\subsetneq \ideal{27}\subsetneq \ideal{-9} = \ideal{9} \subsetneq \ideal{3}</m>.
-        The ideal <m>\ideal{2}</m> only contains <m>\ideal{0}</m>,
-        which is a subset of all ideals.
+        We have <m>(0)\subsetneq (27)\subsetneq (-9) = (9) \subsetneq (3)</m>.
+        The ideal <m>(2)</m> only contains <m>(0)</m>, which is a subset of all ideals.
       </p>
     </solution>
   </activity>

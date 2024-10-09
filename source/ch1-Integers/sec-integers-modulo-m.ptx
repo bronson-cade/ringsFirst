@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<section xml:id="sec-integers-modulo-m" xmlns:xi="http://www.w3.org/2001/XInclude">
+<section xml:id="sec_integersModuloM" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>The Integers modulo <m>m</m></title>
   <objectives xml:id="obj_integers-modulo-m">
-    <title>Guiding Questions</title>
     <introduction>
       <p>
-      In this section, we'll seek to answer the questions:
+        In this section, we'll seek to answer the questions:
       </p>
     </introduction>
     <ul>
@@ -16,510 +15,506 @@
     </ul>
   </objectives>
 
-  <introduction> 
-    <p>
-    The foundation for our exploration of abstract algebra is nearly complete. We need the basics
-    of one more "number system" in order to appreciate the abstract approach developed in subsequent
-    chapters. To build that number system, a brief review of relations and equivalence relations is required. 
-    We then go on to define an algebraic structure for each <m>m\in\Z</m>. This is a process we will revisit in ???Polynomial Rings??? and ???Noether Isomorphism Theorem???
-    </p>
+  <introduction>
+    <p> The foundation for our exploration of abstract algebra is nearly complete. We need the
+      basics of one more "number system" in order to appreciate the abstract approach developed in
+      subsequent chapters. To build that number system, a brief review of relations and equivalence
+      relations is required. We then go on to define an algebraic structure for each <m>m\in\Z</m>.
+      This is a process we will revisit in ???Polynomial Rings??? and ???Noether Isomorphism
+      Theorem??? </p>
   </introduction>
 
   <subsection xml:id="ssec_equivalenceRelations">
     <title>Equivalence Relations</title>
-  <p>
-    Recall that given sets <m>S</m> and <m>T</m>, the Cartesian product of <m>S</m> with <m>
-    T</m>, denoted <m>S\times T</m> ("<m>S</m> cross <m>T</m>"), is the set of all possible ordered
-    pairs whose first element is from <m>S</m> and second element is from <m>T</m>. Symbolically, </p>
-  <me>
-    S\times T = \{(s,t)\mid s\in S, \ t\in T\}.
-  </me>
+    <p> Recall that given sets <m>S</m> and <m>T</m>, the Cartesian product of <m>S</m> with <m>
+        T</m>, denoted <m>S\times T</m> ("<m>S</m> cross <m>T</m>"), is the set of all possible
+      ordered pairs whose first element is from <m>S</m> and second element is from <m>T</m>.
+      Symbolically, </p>
+    <me>
+      S\times T = \{(s,t)\mid s\in S, \ t\in T\}.
+    </me>
 
-  <definition>
-    <idx>relation</idx>
-    <statement>
-      <p> Let <m>S</m> be a nonempty set. A <term>relation</term> <m>R</m> on <m>S</m> is a subset of <m>S\times
-        S</m>. If <m>x,y\in S</m> such that <m>(x,y)\in R</m>, we usually write <m>x\sim_R y</m> and
-        say that <m>x</m> and <m>y</m> are <term>related under <m>R</m></term>. If <m>R</m> is understand, we may simply write <m>x\sim y</m>.</p>
-    </statement>
-  </definition>
+    <definition>
+      <notation>
+        <usage>\sim</usage>
+        <description>Relation</description>
+      </notation>
+      <idx>relation</idx>
+      <statement>
+        <p> Let <m>S</m> be a nonempty set. A <term>relation</term> <m>R</m> on <m>S</m> is a subset
+          of <m>S\times
+            S</m>. If <m>x,y\in S</m> such that <m>(x,y)\in R</m>, we usually write <m>x\sim_R y</m>
+          and say that <m>x</m> and <m>y</m> are <term>related under <m>R</m></term>. If <m>R</m> is
+          understand, we may simply write <m>x\sim y</m>.</p>
+      </statement>
+    </definition>
 
-  <p> 
-    The notion of a relation as presented above is extremely open-ended. <em>Any</em> subset of
-    ordered pairs of <m>S\times S</m> describes a relation on the set <m>S</m>. Of course, some
-    relations are more meaningful than others; the branch of mathematics known as <url
-      href="https://en.wikipedia.org/wiki/Order_theory">order theory</url> studies <em>order</em>
-    relations (such as the familiar <m>\lt</m>). Our focus will be on <em>equivalence relations</em>,
-    which isolate the important features of <m>=</m>. 
-  </p>
+    <p> The notion of a relation as presented above is extremely open-ended. <em>Any</em> subset of
+      ordered pairs of <m>S\times S</m> describes a relation on the set <m>S</m>. Of course, some
+      relations are more meaningful than others; the branch of mathematics known as <url
+        href="https://en.wikipedia.org/wiki/Order_theory">order theory</url> studies <em>order</em>
+      relations (such as the familiar <m>\lt</m>). Our focus will be on <em>equivalence relations</em>,
+      which isolate the important features of <m>=</m>. </p>
 
-  <definition xml:id="def-eqrel">
-    <idx>equivalence relation</idx>
-    <idx>equivalence class</idx>
-    <idx>equivalence class, representative of</idx>
-    <statement>
-      <p> Let <m>S</m> be a nonempty set. We say a relation <m>\sim</m> on <m>S</m> is an <term>equivalence
-        relation</term> if the following properties hold: <ul>
-          <li>
-            <p>
-              <m>\sim</m> is <em>reflexive</em>: if <m>a\in S</m>, then <m>a\sim a</m>. </p>
-          </li>
-          <li>
-            <p>
-              <m>\sim</m> is <em>symmetric</em>: if <m>a,b\in S</m> with <m>a\sim b</m>, then <m>b\sim
-        a</m>. </p>
-          </li>
-          <li>
-            <p>
-              <m>\sim</m> is <em>transitive</em>: if <m>a,b,c\in S</m> with <m>a\sim b</m> and <m>b\sim
-        c</m>, then <m>a\sim c</m>. </p>
-          </li>
-        </ul>
-      </p>
-      <p> Given <m>x\in S</m>, the set 
-        <me>
-          \overline{x} = \{y\in S\mid x\sim y\}
-        </me> 
-        is called the <term>equivalence class of <m>x</m></term>. Any element <m>z\in \overline{x}</m> is called a <term>
-        representative</term> of the equivalence class. </p>
-    </statement>
-  </definition>
-  <activity>
-    <statement>
-      <p> Prove that <q>has the same birthday as</q> is an equivalence relation on the set <m>P</m>
-        of all people. </p>
-    </statement>
-    <solution>
-      <p> Given any <m>x\in P</m>, clearly <m>x</m> has the same birthday as <m>x</m>. </p>
-      <p> Moreover, if <m>x,y\in P</m> such that <m>x</m> has the same birthday as <m>y</m>, then it
-        is clear that <m>y</m> has the same birthday as <m>x</m>. </p>
-      <p> Finally, if <m>x,y,z\in P</m> such that <m>x</m> has the same birthday as <m>y</m> and <m>
-        y</m> has the same birthday as <m>z</m>, then <m>x</m> must have the same birthday as <m>z</m>
-        .
+    <definition xml:id="def-eqrel">
+      <idx>equivalence relation</idx>
+      <idx>equivalence class</idx>
+      <idx>equivalence class, representative of</idx>
+      <statement>
+        <p> Let <m>S</m> be a nonempty set. We say a relation <m>\sim</m> on <m>S</m> is an <term>equivalence
+          relation</term> if the following properties hold: <ul>
+            <li>
+              <p>
+                <m>\sim</m> is <em>reflexive</em>: if <m>a\in S</m>, then <m>a\sim a</m>. </p>
+            </li>
+            <li>
+              <p>
+                <m>\sim</m> is <em>symmetric</em>: if <m>a,b\in S</m> with <m>a\sim b</m>, then <m>b\sim
+          a</m>. </p>
+            </li>
+            <li>
+              <p>
+                <m>\sim</m> is <em>transitive</em>: if <m>a,b,c\in S</m> with <m>a\sim b</m> and <m>b\sim
+          c</m>, then <m>a\sim c</m>. </p>
+            </li>
+          </ul>
         </p>
-    </solution>
-  </activity>
-  <exploration>
-    <statement>
-      <p>
-        What other relations can you think of?
-        Write down one example and one non-example of an equivalence relation.
-      </p>
-    </statement>
-  </exploration>
-  <activity>
-    <statement>
-      <p> Prove that <m>\le</m> is <em>not</em> an equivalence relation on <m>\Z</m>. </p>
-    </statement>
-    <solution>
-      <p> The relation <m>\le</m> fails the symmetry condition. As an example, note that <m>2 \le 3</m>,
-        but <m>3\not\le 2</m>. </p>
-    </solution>
-  </activity>
-</subsection>
+        <p> Given <m>x\in S</m>, the set <me>
+            \overline{x} = \{y\in S\mid x\sim y\}
+          </me> is called the <term>equivalence
+          class of <m>x</m></term>. Any element <m>z\in \overline{x}</m> is called a <term>
+          representative</term> of the equivalence class. </p>
+      </statement>
+    </definition>
+    <activity>
+      <statement>
+        <p> Prove that <q>has the same birthday as</q> is an equivalence relation on the set <m>P</m>
+          of all people. </p>
+      </statement>
+      <solution>
+        <p> Given any <m>x\in P</m>, clearly <m>x</m> has the same birthday as <m>x</m>. </p>
+        <p> Moreover, if <m>x,y\in P</m> such that <m>x</m> has the same birthday as <m>y</m>, then
+          it is clear that <m>y</m> has the same birthday as <m>x</m>. </p>
+        <p> Finally, if <m>x,y,z\in P</m> such that <m>x</m> has the same birthday as <m>y</m> and <m>
+          y</m> has the same birthday as <m>z</m>, then <m>x</m> must have the same birthday as <m>z</m>
+          . </p>
+      </solution>
+    </activity>
+    <exploration>
+      <statement>
+        <p>
+          What other relations can you think of?
+          Write down one example and one non-example of an equivalence relation.
+        </p>
+      </statement>
+    </exploration>
+    <activity>
+      <statement>
+        <p> Prove that <m>\le</m> is <em>not</em> an equivalence relation on <m>\Z</m>. </p>
+      </statement>
+      <solution>
+        <p> The relation <m>\le</m> fails the symmetry condition. As an example, note that <m>2 \le
+          3</m>, but <m>3\not\le 2</m>. </p>
+      </solution>
+    </activity>
+  </subsection>
 
-<subsection xml:id="ssec_congruenceModm">
-  <title>Congruence Modulo <m>m</m></title>
-  <p> 
-    For our purposes, a particularly important equivalence relation is congruence modulo <m>m</m>
-    on the set of integers. 
-  </p>
+  <subsection xml:id="ssec_congruenceModm">
+    <title>Congruence Modulo <m>m</m></title>
+    <p> For our purposes, a particularly important equivalence relation is congruence modulo <m>m</m>
+      on the set of integers. </p>
 
-  <definition>
-    <idx>congruence modulo <m>m</m></idx>
-    <statement>
-      <p> Let <m>a,b\in \Z</m> and <m>m \in \N</m>, <m>m > 1</m>. We say <term><m>a</m> is congruent
-        to <m>b</m> modulo <m>m</m></term> if <m>m\mid a-b</m>. We write <m>a \equiv b\mod m</m> or we write
-        <m>a\equiv_m b</m> as shorthand. 
-      </p>
-    </statement>
-  </definition>
+    <definition>
+      <idx>congruence modulo <m>m</m></idx>
+      <statement>
+        <p> Let <m>a,b\in \Z</m> and <m>m \in \N</m>, <m>m > 1</m>. We say <term><m>a</m> is
+          congruent to <m>b</m> modulo <m>m</m></term> if <m>m\mid a-b</m>. We write <m>a \equiv
+          b\mod m</m> or we write <m>a\equiv_m b</m> as shorthand. </p>
+      </statement>
+    </definition>
 
 
-  <activity>
-    <statement>
-      <p> Justify the following congruences. <ol>
-          <li>
-            <m>18 \equiv 6\mod 12</m>
-          </li>
-          <li>
-            <m>47 \equiv 8\mod 13</m>
-          </li>
-          <li>
-            <m>71 \equiv 1\mod 5</m>
-          </li>
-          <li>
-            <m>21 \equiv -1 \mod 11</m>
-          </li>
-          <li>
-            <m>24 \equiv 0\mod 6</m>
-          </li>
-        </ol>
-      </p>
-    </statement>
-  </activity>
-  <theorem>
-    <statement>
-      <p> Given an integer <m>m > 1</m>, congruence modulo <m>m</m> is an equivalence relation on <m>
-        \Z</m>. </p>
-    </statement>
+    <activity>
+      <statement>
+        <p> Justify the following congruences. <ol>
+            <li>
+              <m>18 \equiv 6\mod 12</m>
+            </li>
+            <li>
+              <m>47 \equiv 8\mod 13</m>
+            </li>
+            <li>
+              <m>71 \equiv 1\mod 5</m>
+            </li>
+            <li>
+              <m>21 \equiv -1 \mod 11</m>
+            </li>
+            <li>
+              <m>24 \equiv 0\mod 6</m>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </activity>
+    <theorem>
+      <statement>
+        <p> Given an integer <m>m > 1</m>, congruence modulo <m>m</m> is an equivalence relation on <m>
+          \Z</m>. </p>
+      </statement>
+      <proof>
+        <p> Let <m>a\in \Z</m>. Then <m>m|a-a</m>, so <m>a \equiv_m a</m>. Thus, <m>\equiv_m</m> is
+          reflexive. </p>
+        <p> Let <m>a,b\in \Z</m> such that <m>a\equiv_m b</m>. This means that <m>m|a-b</m>, so
+          there is some <m>k\in \Z</m> such that <m>mk = a-b</m>. Then <m>m(-k) = b-a</m>, so <m>
+          m|b-a</m> and <m>b \equiv_m a</m>. Thus, <m>\equiv_m</m> is symmetric. </p>
+        <p> Finally, let <m>a,b,c\in \Z</m> such that <m>a\equiv_m b</m> and <m>b\equiv_m c</m>.
+          Then <m>
+            m|a-b</m> and <m>m|b-c</m>, so there are integers <m>k_1, k_2</m> such that <m>m k_1 =
+          a-b</m> and <m>m k_2 = b-c</m>. Summing these equations yields <m>m(k_1 + k_2) = (a-b) +
+          (b-c) = a-c</m>, so <m>m|a-c</m> and <m>a\equiv_m c</m>. </p>
+      </proof>
+    </theorem>
+
+  </subsection>
+  <subsection xml:id="ssec_integersModm">
+    <title>Integers Modulo <m>m</m></title>
+
+    <definition>
+      <notation>
+        <usage>\Z/m</usage>
+        <description>Integers modulo <m>m</m></description>
+      </notation>
+      <idx>
+        <m>\Z/m</m>
+      </idx>
+      <statement> The set of equivalence classes of <m>\Z</m> under the equivalence relation <em>congruence
+        modulo <m>m</m></em> is called <term>the integers modulo <m>m</m></term>, and is denoted <m>
+        \Z/m</m> (pronounced "Z mod m"). </statement>
+    </definition>
+
+
+    <exploration>
+      <statement>
+        <p> List the elements of <m>\Z/5</m> and <m>\Z/7</m>. </p>
+      </statement>
+      <answer>
+        <p> The equivalence classes of <m>\Z/5</m> are <md>
+            <mrow>\overline{0} \amp = \{7k\mid k\in\Z\} = \{\ldots, -5, 0, 5, 10, \ldots\}</mrow>
+            <mrow>\overline{1} \amp = \{7k+1\mid k\in\Z\} = \{\ldots, -4, 1, 6, 11, \ldots\}</mrow>
+            <mrow>\overline{2} \amp = \{7k+2\mid k\in\Z\} = \{\ldots, -3, 2, 7, 12, \ldots\}</mrow>
+            <mrow>\overline{3} \amp = \{7k+3\mid k\in\Z\} = \{\ldots, -2, 3, 8, 13, \ldots\}</mrow>
+            <mrow>\overline{4} \amp = \{7k+4\mid k\in\Z\} = \{\ldots, -1, 4, 9, 14, \ldots\}</mrow>
+          </md>
+          Since every integer is in one of the above equivalence classes, we know we have found them
+          all. </p>
+      </answer>
+    </exploration>
+
+
+    <theorem xml:id="thm-additionmodulom">
+      <statement>
+        <p> Let <m>a,b, c,d\in \Z</m> and <m>m > 1</m> such that <m>a\equiv c\mod m</m> and <m>b\equiv
+          d\mod m</m>. Then <m>a+b \equiv c + d \mod m</m>. </p>
+      </statement>
+      <proof>
+        <p> Write <m>mk_1 = a-c</m> and <m>m k_2 = b-d</m> for some <m>k_1,k_2\in \Z</m>. Then <m>m(k_1
+          + k_2) = (a-c) + (b-d) = (a+b) - (c+d)</m>, so <m>a+b \equiv c+d\mod m</m>. </p>
+      </proof>
+    </theorem>
+
+    <theorem>
+      <statement>
+        <p> Let <m>a,b, c,d\in \Z</m> and <m>m > 1</m> such that <m>a\equiv c\mod m</m> and <m>b\equiv
+          d\mod m</m>. Then <m>ab \equiv c d\mod m</m>. </p>
+      </statement>
+    </theorem>
     <proof>
-      <p> Let <m>a\in \Z</m>. Then <m>m|a-a</m>, so <m>a \equiv_m a</m>. Thus, <m>\equiv_m</m> is
-        reflexive. </p>
-      <p> Let <m>a,b\in \Z</m> such that <m>a\equiv_m b</m>. This means that <m>m|a-b</m>, so there
-        is some <m>k\in \Z</m> such that <m>mk = a-b</m>. Then <m>m(-k) = b-a</m>, so <m>m|b-a</m>
-        and <m>b \equiv_m a</m>. Thus, <m>\equiv_m</m> is symmetric. </p>
-      <p> Finally, let <m>a,b,c\in \Z</m> such that <m>a\equiv_m b</m> and <m>b\equiv_m c</m>. Then <m>
-        m|a-b</m> and <m>m|b-c</m>, so there are integers <m>k_1, k_2</m> such that <m>m k_1 = a-b</m>
-        and <m>m k_2 = b-c</m>. Summing these equations yields <m>m(k_1 + k_2) = (a-b) + (b-c) = a-c</m>,
-        so <m>m|a-c</m> and <m>a\equiv_m c</m>. </p>
+      <p> Write <m>mk_1 = a-c</m> and <m>m k_2 = b-d</m> for some <m>k_1,k_2\in \Z</m>. Observe <md>
+          <mrow>ab -cd \amp = ab - bc + bc - cd</mrow>
+          <mrow>\amp = b(a-c) + c(b-d)</mrow>
+          <mrow>\amp = bmk_1 + cmk_2</mrow>
+          <mrow>\amp = m(bk_1 + ck_2)</mrow>
+        </md>. </p>
+      <p> Thus, <m>m|ab-cd</m> and <m>ab \equiv cd\mod m</m>. </p>
     </proof>
-  </theorem>
-
-</subsection>
-<subsection xml:id="ssec_integersModm">
-  <title>Integers Modulo <m>m</m></title>
-
-  <definition>
-    <notation>
-      <usage>\Z/m</usage>
-      <description>Integers modulo <m>m</m></description>
-    </notation>
-    <idx>
-      <m>\Z/m</m>
-    </idx> 
-    <statement>
-    The set of equivalence classes of <m>\Z</m> under the equivalence
-    relation <em>congruence modulo <m>m</m></em> is called <term>the integers modulo <m>m</m></term>,
-    and is denoted <m>\Z/m</m> (pronounced "Z mod m"). 
-    </statement>
-  </definition>
-
-
-  <exploration>
-    <statement>
-      <p> List the elements of <m>\Z/5</m> and <m>\Z/7</m>. </p>
-    </statement>
-    <answer>
-      <p> The equivalence classes of <m>\Z/5</m> are <md>
-          <mrow>\overline{0} \amp = \{7k\mid k\in\Z\} = \{\ldots, -5, 0, 5, 10, \ldots\}</mrow>
-          <mrow>\overline{1} \amp = \{7k+1\mid k\in\Z\} = \{\ldots, -4, 1, 6, 11, \ldots\}</mrow>
-          <mrow>\overline{2} \amp = \{7k+2\mid k\in\Z\} = \{\ldots, -3, 2, 7, 12, \ldots\}</mrow>
-          <mrow>\overline{3} \amp = \{7k+3\mid k\in\Z\} = \{\ldots, -2, 3, 8, 13, \ldots\}</mrow>
-          <mrow>\overline{4} \amp = \{7k+4\mid k\in\Z\} = \{\ldots, -1, 4, 9, 14, \ldots\}</mrow>
-        </md>
-        Since every integer is in one of the above equivalence classes, we know we have found them
-        all. </p>
-    </answer>
-  </exploration>
-
-
-  <theorem xml:id="thm-additionmodulom">
-    <statement>
-      <p> Let <m>a,b, c,d\in \Z</m> and <m>m > 1</m> such that <m>a\equiv c\mod m</m> and <m>b\equiv
-        d\mod m</m>. Then <m>a+b \equiv c + d \mod m</m>. </p>
-    </statement>
-    <proof>
-      <p> Write <m>mk_1 = a-c</m> and <m>m k_2 = b-d</m> for some <m>k_1,k_2\in \Z</m>. Then <m>m(k_1
-        + k_2) = (a-c) + (b-d) = (a+b) - (c+d)</m>, so <m>a+b \equiv c+d\mod m</m>. </p>
-    </proof>
-  </theorem>
-
-  <theorem>
-    <statement>
-      <p> Let <m>a,b, c,d\in \Z</m> and <m>m > 1</m> such that <m>a\equiv c\mod m</m> and <m>b\equiv
-        d\mod m</m>. Then <m>ab \equiv c d\mod m</m>. </p>
-    </statement>
-  </theorem>
-  <proof>
-    <p> Write <m>mk_1 = a-c</m> and <m>m k_2 = b-d</m> for some <m>k_1,k_2\in \Z</m>. Observe <md>
-        <mrow>ab -cd \amp = ab - bc + bc - cd</mrow>
-        <mrow>\amp = b(a-c) + c(b-d)</mrow>
-        <mrow>\amp = bmk_1 + cmk_2</mrow>
-        <mrow>\amp = m(bk_1 + ck_2)</mrow>
-      </md>. </p>
-    <p> Thus, <m>m|ab-cd</m> and <m>ab \equiv cd\mod m</m>. </p>
-  </proof>
-  <definition xml:id="def-well-defined">
-    <idx>well-defined statement</idx>
-    <statement>
-      <p> Let <m>S</m> be a set and <m>\sim</m> an equivalence relation on <m>S</m>. Then a
-        statement <m>P</m> about the equivalence classes of <m>S</m> is <term>well-defined</term> if
-        the representative of the equivalence class does not matter. That is, whenever <m>\overline{x}
-        = \overline{y}</m>, <m>P(\overline{x}) = P(\overline{y})</m>. </p>
-    </statement>
-  </definition>
-  <p>
-    The previous exercises justify the following definitions.
-  </p>
-  <aside>
-    <title>Notation</title>
+    <definition xml:id="def-well-defined">
+      <idx>well-defined statement</idx>
+      <statement>
+        <p> Let <m>S</m> be a set and <m>\sim</m> an equivalence relation on <m>S</m>. Then a
+          statement <m>P</m> about the equivalence classes of <m>S</m> is <term>well-defined</term>
+          if the representative of the equivalence class does not matter. That is, whenever <m>\overline{x}
+          = \overline{y}</m>, <m>P(\overline{x}) = P(\overline{y})</m>. </p>
+      </statement>
+    </definition>
     <p>
-      In some textbooks, the set of integers modulo <m>m</m> is denoted by <m>\Z_m</m>. However, this notation 
-      often conflicts both with the <m>m</m>-adic integers and the usual notation for quotienting discussed in ???Quotient Rings???. 
-      As such, we've opted for the more standard notation of <m>\Z/m</m>.
+      The previous exercises justify the following definitions.
     </p>
-    
-  </aside>
-  <definition xml:id="def-arithemticmodm">
-    <statement>
-      <p> Let <m>m > 1</m> and <m>\overline{a},\overline{b}\in \Z/m</m>. Then the following are
-        well-defined operations on the equivalence classes: <ol>
-          <li>
-            <p>
-              <em>Addition modulo <m>m</m></em>: <m>\overline{a} + \overline{b} := \overline{a+b}</m>
-        .
-                <aside>The symbol <m>:=</m> is often used to indicate that we are <em>
-        defining</em> the expression on the left to equal the expression on the right. </aside>
-            </p>
-          </li>
-          <li>
-            <p>
-              <em>Multiplication modulo <m>m</m></em>: <m>\overline{a}\cdot \overline{b} :=
-        \overline{a\cdot b}</m>. </p>
-          </li>
+    <aside>
+      <title>Notation</title>
+      <p> In some textbooks, the set of integers modulo <m>m</m> is denoted by <m>\Z_m</m>. However,
+        this notation often conflicts both with the <m>m</m>-adic integers and the usual notation
+        for quotienting discussed in ???Quotient Rings???. As such, we've opted for the more
+        standard notation of <m>\Z/m</m>. </p>
+
+    </aside>
+    <definition xml:id="def-arithemticmodm">
+      <statement>
+        <p> Let <m>m > 1</m> and <m>\overline{a},\overline{b}\in \Z/m</m>. Then the following are
+          well-defined operations on the equivalence classes: <ol>
+            <li>
+              <p>
+                <em>Addition modulo <m>m</m></em>: <m>\overline{a} + \overline{b} := \overline{a+b}</m>
+          . <aside>The symbol <m>:=</m> is often used to indicate that we are <em>
+                    defining</em> the expression on the left to equal the expression on the right. </aside>
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Multiplication modulo <m>m</m></em>: <m>\overline{a}\cdot \overline{b} :=
+          \overline{a\cdot b}</m>. </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <p> Most elementary propositions about <m>\Z/m</m> can be recast as statements about <m>\Z</m>.
+      For instance, in proving <xref ref="thm-additionmodulom" /> you likely proved that if <m>m|a-c</m>
+      and <m>m|b-d</m> that <m>m|(a+b)-(c+d)</m>. However, as the statements become more complex,
+      repeatedly reshaping statements about <m>Z/m</m> as statements about <m>\Z</m> becomes
+      cumbersome and unhelpful. Instead, you are encouraged to become comfortable doing arithmetic
+      modulo <m>m</m> or, put another way, arithmetic with the equivalence classes of <m>\Z/m</m> as
+      defined in <xref ref="def-arithemticmodm" />. </p>
+
+    <activity>
+      <statement>
+        <p> Without passing back to <m>\Z</m>, find the smallest nonnegative integer representative
+          of the resulting equivalence classes. </p>
+        <ol>
+          <li><m>\overline{5}+\overline{11}</m> in <m>\Z/9</m></li>
+          <li><m>\overline{-3}+\overline{-3}</m> in <m>\Z/6</m></li>
+          <li><m>\overline{8}\cdot\overline{3}</m> in <m>\Z/19</m></li>
+          <li><m>\overline{-1}\cdot(\overline{3}+\overline{8})</m> in <m>\Z/{7}</m></li>
+          <li><m>\overline{3}\cdot(\overline{5}^2+\overline{3}^3)</m> in <m>\Z/{20}</m></li>
         </ol>
-      </p>
-    </statement>
-  </definition>
+      </statement>
+      <solution>
+        TBD
+      </solution>
 
-  <p> Most elementary propositions about <m>\Z/m</m> can be recast as statements about <m>\Z</m>.
-    For instance, in proving <xref ref="thm-additionmodulom" /> you likely proved that if <m>m|a-c</m>
-    and <m>m|b-d</m> that <m>m|(a+b)-(c+d)</m>. However, as the statements become more complex,
-    repeatedly reshaping statements about <m>Z/m</m> as statements about <m>\Z</m> becomes
-    cumbersome and unhelpful. Instead, you are encouraged to become comfortable doing arithmetic
-    modulo <m>m</m> or, put another way, arithmetic with the equivalence classes of <m>\Z/m</m> as
-    defined in <xref ref="def-arithemticmodm" />. </p>
+    </activity>
+  </subsection>
 
-  <activity>
-    <statement>
-      <p> Without passing back to <m>\Z</m>, find the smallest nonnegative integer representative of
-        the resulting equivalence classes. </p>
-      <ol>
-        <li><m>\overline{5}+\overline{11}</m> in <m>\Z/9</m></li>
-        <li><m>\overline{-3}+\overline{-3}</m> in <m>\Z/6</m></li>
-        <li><m>\overline{8}\cdot\overline{3}</m> in <m>\Z/19</m></li>
-        <li><m>\overline{-1}\cdot(\overline{3}+\overline{8})</m> in <m>\Z/{7}</m></li>
-        <li><m>\overline{3}\cdot(\overline{5}^2+\overline{3}^3)</m> in <m>\Z/{20}</m></li>
-      </ol>
-    </statement>
-    <solution>
-      TBD
-    </solution>
-
-  </activity>
-</subsection>
-
-<subsection xml:id="ssec_additionMultiplicationTablesZm">
-  <title>Addition and Multiplication Tables in <m>\Z/m</m></title>
-  
-
-  <p> 
-    A useful tool for analyzing addition and multiplication in <m>\Z/m</m> are addition and multiplication tables. 
-    As an example, consider the addition and multiplication tables for <m>\Z/3</m> shown in <xref ref="table-z3addition" /> and <xref ref="table-z3multiplication" />.
-  </p>
-  <table xml:id="table-z3addition">
-  <title>Addition table for <m>R=\Z_3</m></title>
-  <tabular>
-  <row bottom="medium">
-    <cell right="medium">
-      <m>​+</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>​\overline{2}</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{1}</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{2}</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-  </row>
-</tabular>
-</table>
-
-<table xml:id="table-z3multiplication">
-<title>
-  Multiplication table for <m>\Z/3</m>.
-</title>>
-<tabular>
-  <row>
-    <cell right="medium">
-      <m>​\cdot</m>
-    </cell>
-    <cell bottom="medium">
-      <m>\overline{0}​</m>
-    </cell>
-    <cell bottom="medium">
-      <m>\overline{1}​</m>
-    </cell>
-    <cell bottom="medium">
-      <m>\overline{2}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>​\overline{0}</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>​\overline{0}</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{1}</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-  </row>
-  <row>
-    <cell right="medium">
-      <m>​\overline{2}</m>
-    </cell>
-    <cell>
-      <m>\overline{0}​</m>
-    </cell>
-    <cell>
-      <m>\overline{2}​</m>
-    </cell>
-    <cell>
-      <m>\overline{1}​</m>
-    </cell>
-  </row>
-</tabular>
-</table>
+  <subsection xml:id="ssec_additionMultiplicationTablesZm">
+    <title>Addition and Multiplication Tables in <m>\Z/m</m></title>
 
 
-<investigation xml:id="invest-tables">
-  <statement>
-      <p>
+    <p> A useful tool for analyzing addition and multiplication in <m>\Z/m</m> are addition and
+      multiplication tables. As an example, consider the addition and multiplication tables for <m>
+      \Z/3</m> shown in <xref ref="table-z3addition" /> and <xref ref="table-z3multiplication" />. </p>
+    <table xml:id="table-z3addition">
+      <title>Addition table for <m>R=\Z_3</m></title>
+      <tabular>
+        <row bottom="medium">
+          <cell right="medium">
+            <m>​+</m>
+          </cell>
+          <cell>
+            <m>\overline{0}​</m>
+          </cell>
+          <cell>
+            <m>\overline{1}​</m>
+          </cell>
+          <cell>
+            <m>\overline{2}​</m>
+          </cell>
+        </row>
+        <row>
+          <cell right="medium">
+            <m>​\overline{0}</m>
+          </cell>
+          <cell>
+            <m>​\overline{0}</m>
+          </cell>
+          <cell>
+            <m>\overline{1}​</m>
+          </cell>
+          <cell>
+            <m>​\overline{2}</m>
+          </cell>
+        </row>
+        <row>
+          <cell right="medium">
+            <m>​\overline{1}</m>
+          </cell>
+          <cell>
+            <m>\overline{1}​</m>
+          </cell>
+          <cell>
+            <m>\overline{2}​</m>
+          </cell>
+          <cell>
+            <m>\overline{0}​</m>
+          </cell>
+        </row>
+        <row>
+          <cell right="medium">
+            <m>​\overline{2}</m>
+          </cell>
+          <cell>
+            <m>\overline{2}​</m>
+          </cell>
+          <cell>
+            <m>\overline{0}​</m>
+          </cell>
+          <cell>
+            <m>\overline{1}​</m>
+          </cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="table-z3multiplication">
+      <title> Multiplication table for <m>\Z/3</m>. </title>> <tabular>
+        <row>
+          <cell right="medium">
+            <m>​\cdot</m>
+          </cell>
+          <cell bottom="medium">
+            <m>\overline{0}​</m>
+          </cell>
+          <cell bottom="medium">
+            <m>\overline{1}​</m>
+          </cell>
+          <cell bottom="medium">
+            <m>\overline{2}​</m>
+          </cell>
+        </row>
+        <row>
+          <cell right="medium">
+            <m>​\overline{0}</m>
+          </cell>
+          <cell>
+            <m>​\overline{0}</m>
+          </cell>
+          <cell>
+            <m>\overline{0}​</m>
+          </cell>
+          <cell>
+            <m>​\overline{0}</m>
+          </cell>
+        </row>
+        <row>
+          <cell right="medium">
+            <m>​\overline{1}</m>
+          </cell>
+          <cell>
+            <m>\overline{0}​</m>
+          </cell>
+          <cell>
+            <m>\overline{1}​</m>
+          </cell>
+          <cell>
+            <m>\overline{2}​</m>
+          </cell>
+        </row>
+        <row>
+          <cell right="medium">
+            <m>​\overline{2}</m>
+          </cell>
+          <cell>
+            <m>\overline{0}​</m>
+          </cell>
+          <cell>
+            <m>\overline{2}​</m>
+          </cell>
+          <cell>
+            <m>\overline{1}​</m>
+          </cell>
+        </row>
+      </tabular>
+    </table>
+
+
+    <investigation xml:id="invest-tables">
+      <statement>
+        <p>
           Calculate addition and multiplication tables for the following rings.
-      </p>
-      <ol>
-          <li> <m>\Z/5</m></li>
-          <li> <m>\Z/6</m></li>
-      </ol>
-      <p>List 2-3 observations about your tables.</p>
-      </statement>	
-  <solution>
-      <p>
-          TBD.
-      </p>
-  </solution>
-</investigation>
-
-</subsection>
-
-<subsection xml:id="ssec_propertiesOfZm">
-  <title>Arithmetic Properties of <m>\Z/m</m></title>
-
-  <p> 
-    In the remainder of this section, we investigate fundamental properties of arithmetic in <m>
-    \Z/m</m>. 
-  </p>
-
-
-  <investigation xml:id="q_zmodmcancel">
-    <statement>
-      <p> Let <m>\overline{a},\overline{b},\overline{c}\in \Z/m</m> with <m>
-        \overline{c}\ne\overline{0}</m> and <m>m > 1</m>. If <m>\overline{a}\cdot \overline{c} =
-        \overline{b}\cdot \overline{c}</m>, is it true that <m>\overline{a} = \overline{b}</m>? If
-        so, prove it. If not, find an example of when the statement fails to hold. </p>
-    </statement>
-    <answer>
-      <p> It is not true. For example, in <m>\Z/{12}</m>, <m>\overline{6}\cdot \overline{3} =
-        \overline{6}\cdot\overline{1}</m>, but <m>\overline{3}\ne \overline{1}</m>. </p>
-    </answer>
-  </investigation>
-  <theorem xml:id="theorem_cancelrelprime">
-    <statement>
-      <p> Let <m>a,b,c</m>, and <m>m</m> be integers with <m>m > 1</m> and <m>\gcd(c,m)=1</m>. Then
-        there is some <m>x\in \Z</m> such that <m>\overline{c} \overline{x} = \overline{1}</m>. </p>
-      <p> Conclude that if <m>\overline{a} \cdot\overline{c} = \overline{b}\cdot\overline{c}</m> in <m>
-        \Z/m</m> that <m>\overline{a} = \overline{b}</m>. </p>
-    </statement>
-    <proof>
-      <p> We know that <m>m|ac-bc</m>, i.e., that <m>m|c(a-b)</m>. By <xref
-          ref="theorem_relprimecancel">Theorem</xref>, <m>m|a-b</m>. </p>
-    </proof>
-  </theorem>
-
-  <theorem xml:id="theorem_cancelinZp">
-    <statement>
-      <p> Let <m>p\in \N</m> be prime and <m>\overline{a},\overline{b},\overline{c}\in \Z/p</m> such
-        that <m>\overline{c}\ne \overline{0}</m>. Then <ol>
+        </p>
+        <ol>
           <li>
-            <p> there is some <m>\overline{x}\in \Z/p</m> such that <m>\overline{c}\cdot
-        \overline{x} = \overline{1}</m>; and, </p>
+            <m>\Z/5</m>
           </li>
           <li>
-            <p> if <m>\overline{a} \cdot\overline{c} = \overline{b}\cdot\overline{c}</m>, <m>\overline{a}
-        = \overline{b}</m>. </p>
+            <m>\Z/6</m>
           </li>
         </ol>
-      </p>
-    </statement>
-    <proof>
-      <p> In <m>\Z/p</m>, every nonzero equivalence class is represented by an <m>x</m> for which <m>\gcd(x,p)
-        = 1</m>. Apply <xref ref="theorem_cancelrelprime" />. </p>
-    </proof>
-  </theorem>
-</subsection>
+        <p>List 2-3 observations about your tables.</p>
+      </statement>
+      <solution>
+        <p>
+          TBD.
+        </p>
+      </solution>
+    </investigation>
+
+  </subsection>
+
+  <subsection xml:id="ssec_propertiesOfZm">
+    <title>Arithmetic Properties of <m>\Z/m</m></title>
+
+    <p> In the remainder of this section, we investigate fundamental properties of arithmetic in <m>
+      \Z/m</m>. </p>
+
+
+    <investigation xml:id="q_zmodmcancel">
+      <statement>
+        <p> Let <m>\overline{a},\overline{b},\overline{c}\in \Z/m</m> with <m>
+          \overline{c}\ne\overline{0}</m> and <m>m > 1</m>. If <m>\overline{a}\cdot \overline{c} =
+          \overline{b}\cdot \overline{c}</m>, is it true that <m>\overline{a} = \overline{b}</m>? If
+          so, prove it. If not, find an example of when the statement fails to hold. </p>
+      </statement>
+      <answer>
+        <p> It is not true. For example, in <m>\Z/{12}</m>, <m>\overline{6}\cdot \overline{3} =
+          \overline{6}\cdot\overline{1}</m>, but <m>\overline{3}\ne \overline{1}</m>. </p>
+      </answer>
+    </investigation>
+    <theorem xml:id="theorem_cancelrelprime">
+      <statement>
+        <p> Let <m>a,b,c</m>, and <m>m</m> be integers with <m>m > 1</m> and <m>\gcd(c,m)=1</m>.
+          Then there is some <m>x\in \Z</m> such that <m>\overline{c} \overline{x} = \overline{1}</m>
+          . </p>
+        <p> Conclude that if <m>\overline{a} \cdot\overline{c} = \overline{b}\cdot\overline{c}</m>
+          in <m>
+            \Z/m</m> that <m>\overline{a} = \overline{b}</m>. </p>
+      </statement>
+      <proof>
+        <p> We know that <m>m|ac-bc</m>, i.e., that <m>m|c(a-b)</m>. By <xref
+            ref="theorem_relprimecancel">Theorem</xref>, <m>m|a-b</m>. </p>
+      </proof>
+    </theorem>
+
+    <theorem xml:id="theorem_cancelinZp">
+      <statement>
+        <p> Let <m>p\in \N</m> be prime and <m>\overline{a},\overline{b},\overline{c}\in \Z/p</m>
+          such that <m>\overline{c}\ne \overline{0}</m>. Then <ol>
+            <li>
+              <p> there is some <m>\overline{x}\in \Z/p</m> such that <m>\overline{c}\cdot
+          \overline{x} = \overline{1}</m>; and, </p>
+            </li>
+            <li>
+              <p> if <m>\overline{a} \cdot\overline{c} = \overline{b}\cdot\overline{c}</m>, <m>\overline{a}
+          = \overline{b}</m>. </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+      <proof>
+        <p> In <m>\Z/p</m>, every nonzero equivalence class is represented by an <m>x</m> for which <m>\gcd(x,p)
+          = 1</m>. Apply <xref ref="theorem_cancelrelprime" />. </p>
+      </proof>
+    </theorem>
+  </subsection>
 
   <exercises xml:id="exers-integers-mod-m">
     <title>Exercises</title>
@@ -531,7 +526,8 @@
         <ol>
           <li>For any integer <m>a</m>, <m>a\equiv a</m> modulo <m>m</m>.</li>
           <li>If <m>a\equiv b</m> modulo <m>m</m>, then <m>b\equiv a</m> modulo <m>m</m>.</li>
-          <li>If <m>a\equiv b</m> modulo <m>m</m> and <m>b\equiv c</m> modulo <m>m</m>, then <m>a\equiv c</m> modulo <m>m</m>.</li>
+          <li>If <m>a\equiv b</m> modulo <m>m</m> and <m>b\equiv c</m> modulo <m>m</m>, then <m>a\equiv
+            c</m> modulo <m>m</m>.</li>
           <li>If <m>a^2\equiv b^2</m> modulo <m>m</m>, then <m>a\equiv b</m> modulo <m>m</m>.</li>
           <li>If <m>a\equiv b</m> modulo <m>m</m>, then <m>a=b</m>.</li>
           <li>If <m>a\equiv_mb</m>, then <m>ca\equiv_m cb</m> for any <m>c\in\Z</m>.</li>
@@ -541,16 +537,16 @@
 
     <exercise>
       <statement>
-        <p>
-          List the elements in <m>\mathbb{Z}/4</m> and <m>\mathbb{Z}/10</m>. Use the convention that conjugacy class representatives start with <m>\bar{0}</m>.
-        </p>
+        <p> List the elements in <m>\mathbb{Z}/4</m> and <m>\mathbb{Z}/10</m>. Use the convention
+          that conjugacy class representatives start with <m>\bar{0}</m>. </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
         <p>
-          Carry out the modular arithmetic. That is, find the smallest nonnegative integer representative of the resulting equivalence class.
+          Carry out the modular arithmetic. That is, find the smallest nonnegative integer
+          representative of the resulting equivalence class.
         </p>
         <ol>
           <li>
@@ -574,94 +570,86 @@
 
     <exercise>
       <statement>
-        <p>
-          Write out the addition and multiplication tables for <m>\mathbb{Z}/3</m>.
-        </p>
+        <p> Write out the addition and multiplication tables for <m>\mathbb{Z}/3</m>. </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p> 
-          Write out the addition and multiplication tables for <m>\mathbb{Z}/4</m>. What do you notice here that isn't true in <m>\mathbb{Z}/3</m>?
-        </p>
+        <p> Write out the addition and multiplication tables for <m>\mathbb{Z}/4</m>. What do you
+          notice here that isn't true in <m>\mathbb{Z}/3</m>? </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p>
-          Prove that if <m>m>1</m> and <m>\gcd(a,m) = 1</m>. Then there exists <m>b\in\Z</m> such that <m>ab\equiv_m 1</m>.
-        </p>
+        <p> Prove that if <m>m>1</m> and <m>\gcd(a,m) = 1</m>. Then there exists <m>b\in\Z</m> such
+          that <m>ab\equiv_m 1</m>. </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p>
-          Suppose <m>p</m> is prime. Use the previous problem to prove that if <m>\bar{a}\neq \bar{0}</m> in <m>\Z/p</m>, then there is <m>\bar{b}\in\Z</m> such that <m>\bar{a}\cdot \bar{b} = \bar{1}</m>. In other words, show that all non-zero elements in <m>\Z/p</m> have a multiplicative inverse.
-        </p>
+        <p> Suppose <m>p</m> is prime. Use the previous problem to prove that if <m>\bar{a}\neq
+          \bar{0}</m> in <m>\Z/p</m>, then there is <m>\bar{b}\in\Z</m> such that <m>\bar{a}\cdot
+          \bar{b} = \bar{1}</m>. In other words, show that all non-zero elements in <m>\Z/p</m> have
+          a multiplicative inverse. </p>
       </statement>
     </exercise>
 
 
     <exercise>
       <statement>
-        <p>
-          For each non-zero element in <m>\Z/5</m>, determine its multiplicative inverse in the sense of the previous exercise.
+        <p> For each non-zero element in <m>\Z/5</m>, determine its multiplicative inverse in the
+          sense of the previous exercise. </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p> Show that if <m>m</m> is not prime, then it is possible that <m>\bar{a}\bar{b} = \bar{0}</m>
+          in <m>\Z/m</m> but neither term is zero: <m>\bar{a},\bar{b}\neq 0</m>. Such <m>
+          \bar{a},\bar{b}</m> are called zero-divisors. </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p> Show that the function <m>f\colon\Z/2\to \Z</m> defined by <m>f(\bar{a}) = a</m> is not
+          well-defined. </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p> Prove that addition and multiplication is commutative in <m>\mathbb{Z}/m</m>. That is: <me>\bar{a}
+          + \bar{b} = \bar{b}+\bar{a}\text{ and } \bar{a}\cdot \bar{b}=\bar{b}\cdot\bar{a}.</me>
         </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p>
-          Show that if <m>m</m> is not prime, then it is possible that <m>\bar{a}\bar{b} = \bar{0}</m> in <m>\Z/m</m> but neither term is zero: <m>\bar{a},\bar{b}\neq 0</m>. Such <m>\bar{a},\bar{b}</m> are called zero-divisors.
+        <p> Prove that addition and multiplication is associative in <m>\mathbb{Z}/m</m>. That is: <me>\bar{a}
+          + (\bar{b}+\bar{c}) = (\bar{a}+\bar{b})+\bar{c}\text{ and } \bar{a}\cdot
+          (\bar{b}\cdot\bar{c}) = (\bar{a}\cdot\bar{b})\cdot\bar{c}.</me>
         </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p>
-          Show that the function <m>f\colon\Z/2\to \Z</m> defined by <m>f(\bar{a}) = a</m> is not well-defined.
-        </p>
+        <p> Prove that <m>\bar{0}+\bar{a} = \bar{a}</m> and <m>\bar{1}\cdot\bar{a} = \bar{a}</m> in <m>
+          \Z/m</m>. </p>
       </statement>
     </exercise>
 
     <exercise>
       <statement>
-        <p>
-          Prove that addition and multiplication is commutative in <m>\mathbb{Z}/m</m>. That is:
-          <me>\bar{a} + \bar{b} = \bar{b}+\bar{a}\text{ and } \bar{a}\cdot \bar{b}=\bar{b}\cdot\bar{a}.</me>
-        </p>
+        <p> Prove that for any <m>\bar{a}\in\Z/m</m> there is <m>\bar{b}\in\Z/m</m> such that <m>\bar{a}+\bar{b}
+          = \bar{0}</m>. </p>
       </statement>
     </exercise>
 
-    <exercise>
-      <statement>
-        <p>
-          Prove that addition and multiplication is associative in <m>\mathbb{Z}/m</m>. That is:
-          <me>\bar{a} + (\bar{b}+\bar{c}) = (\bar{a}+\bar{b})+\bar{c}\text{ and } \bar{a}\cdot (\bar{b}\cdot\bar{c}) = (\bar{a}\cdot\bar{b})\cdot\bar{c}.</me>
-        </p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>
-          Prove that <m>\bar{0}+\bar{a} = \bar{a}</m> and <m>\bar{1}\cdot\bar{a} = \bar{a}</m> in <m>\Z/m</m>.
-        </p>
-      </statement>
-    </exercise>
-
-    <exercise>
-      <statement>
-        <p>
-          Prove that for any <m>\bar{a}\in\Z/m</m> there is <m>\bar{b}\in\Z/m</m> such that <m>\bar{a}+\bar{b} = \bar{0}</m>.
-        </p>
-      </statement>
-    </exercise>
-    
   </exercises>
 </section>

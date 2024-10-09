@@ -82,7 +82,7 @@
       theorem="no"
       proof="yes"
       definition="no"
-      example="yes"
+      example="no"
       example-solution="yes"
       project="no"
       task="no"
@@ -104,8 +104,8 @@
     <!-- See also                                              -->
     <!-- https://pretextbook.org/doc/guide/html/publication-file-online.html#online-style-options -->
     <css
-        style="default"
-        colors="blue_red"
+        style="oscarlevin"
+        colors="blue_grey"
         knowls="default"
         toc="default"
         banner="default"
