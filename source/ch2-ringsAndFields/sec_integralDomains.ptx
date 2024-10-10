@@ -144,7 +144,7 @@
   <idx>domain</idx>
     <statement>
       <p>
-        A commutative ring <m>R</m> is an <term>integral domain</term>,
+        A non-zero commutative ring <m>R</m> is an <term>integral domain</term>,
         or just <term>domain</term>, if <m>R</m> has no zero divisors.
       </p>
     </statement>

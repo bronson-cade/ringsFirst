@@ -4,7 +4,6 @@
   <title>Fields</title>
 
   <objectives xml:id="obj_fields">
-    <title>Guiding Questions</title>
     <introduction>
       <p>
         In this section, we'll seek to answer the questions:
@@ -26,28 +25,65 @@
       concept of a <em>field</em>. First, we need to formally define some familiar sets of numbers. 
     </p>
 
-    <definition>
+    <definition xml:id="def_rationalNumbers">
       <notation>
         <usage>\Q</usage>
         <description>Rational Numbers</description>
       </notation>
       <idx><h>Rational Numbers</h></idx>
       <statement>
-        <p> The rational numbers, denoted by <m>\Q</m>, is the set <me>
+        <p> The <em>rational numbers</em>, denoted by <m>\Q</m>, is the set <me>
             \Q = \left\{\frac{a}{b}\mid a,b\in \Z, \ b\ne 0\right\}
-          </me>. </p>
+          </me>. 
+          The symbol is <m>\frac{a}{b}</m> is a <em>fraction</em> and we regard two symbols 
+          <m>\frac{a}{b},\frac{c}{d}\in \Q</m> as defining the same element if and only if 
+          <m>ad = bc</m>.
+        </p>
       </statement>
     </definition>
 
-    <p> Recall that in elementary school, you learned that two fractions <m>\frac{a}{b}, \frac{c}{d}
-      \in \Q</m> are equivalent if and only if <m>ad=bc</m>. </p>
 
     <activity>
       <statement>
-        <p> Prove that our elementary school definition of equivalent fractions is an equivalence
-          relation. Recall <xref ref="def-eqrel" />. </p>
+        <p> Prove that the relation defined in <xref ref="def_rationalNumbers"/>
+          is an equivalence relation. Recall <xref ref="def-eqrel" />. </p>
       </statement>
     </activity>
+
+    <proposition xml:id="prop_arithmeticInQ">
+      <statement>
+        <p>
+          For <m>\frac{a}{b},\frac{c}{d}\in\Q</m>, the sum and product: 
+          <me>\frac{a}{b}+\frac{c}{d} = \frac{ad+bc}{bd}\text{ and }\frac{a}{b}\cdot \frac{c}{d} = \frac{ac}{bd}</me>
+          is well-defined.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          We only show the product is well-defined, while the sum is left as an exercise. To be well-defined, 
+          we need to argue that for any equivalent ways of representing both fractions in the product, the result is unchanged. 
+          To that end, take <m>\frac{a}{b},\frac{a'}{b'},\frac{c}{d},\frac{c'}{d'}\in\Q</m>. Suppose that <m>ab'=a'b</m> and <m>cd' = c'd</m>. 
+        </p>
+        <p>
+          Then 
+          <md>
+            <mrow> \frac{a}{b}\cdot \frac{c}{d}\amp= \frac{ac}{bd}</mrow>
+            <mrow> \frac{a'}{b'}\cdot \frac{c'}{d'}\amp= \frac{a'c'}{b'd'}</mrow>
+          </md>
+          and we need to show that <m>\frac{ac}{bd}</m> is equivalent to <m>\frac{a'c'}{b'd'}</m> or that <m> acb'd' = a'c'bd</m>. 
+        </p>
+        <p>
+          We have
+          <md>
+            <mrow> acb'd' \amp= (ab')(cd') </mrow>
+            <mrow> \amp= (a'b)(c'd) </mrow>
+            <mrow> \amp= a'c'bd </mrow>
+          </md>
+          as desired.
+        </p>
+      </proof>
+    </proposition>
+
     <p>
       <idx>real numbers</idx> We likely have an intuitive idea of what is meant by <m>\R</m>, the
       set of real numbers. Defining <m>\R</m> rigorously is actually quite difficult, and occupies a
@@ -59,7 +95,7 @@
 
     <p> Out of <m>\R</m> we may build the complex numbers. </p>
 
-    <definition>
+    <definition xml:id="def_complexNumbers">
       <notation>
         <usage>\C</usage>
         <description>Complex Numbers</description>
@@ -71,9 +107,19 @@
             \R</m> and <m>i^2 = -1</m>. Given <m>z = a+bi</m>, we say <m>a</m> is the <term>real
           part</term> of <m>z</m> and <m>b</m> is the <term>imaginary part</term>. The set of
           complex numbers is denoted <m>\C</m>. </p>
+          <p>
+            Addition and multiplication in <m>\C</m> is defined in the usual way:
+            <md>
+              <mrow>(a_1+b_1i)+(a_2+b_2i)\amp= (a_1+a_2)+(b_1+b_2)i </mrow>
+              <mrow>(a_1+b_1i)\cdot (a_2+b_2i)\amp= (a_1a_2-b_1b_2)+(a_1b_2+a_2b_1)i</mrow>
+            </md>
+          </p>
       </statement>
     </definition>
-
+    <p>
+      Unlike <m>\Q</m>, the elements of <m>\C</m> are not equivalence classes and so we do not need an analogue of 
+      <xref ref="prop_arithmeticInQ"/> here.
+    </p>
   </subsection>
 
   <subsection xml:id="ssec_binaryOperations">
@@ -144,7 +190,7 @@
 
   </subsection>
 
-  <subsection xml:id="subsec-fields">
+  <subsection xml:id="ssec_fields">
     <title>Fields</title>
 
     <p> The hallmark of modern pure mathematics is the use of <em>axioms</em>. An axiom is
@@ -268,7 +314,7 @@
             </li>
             <li>
               <p>
-                <m>\Q</m> under the usual addition and multiplication operations </p>
+                <m>\Q</m> under the usual addition and multiplication operations defined in <xref ref="prop_arithmeticInQ"/></p>
             </li>
             <li>
               <p>
@@ -285,13 +331,12 @@
             <li>
               <p>
                 <m>\C</m> under the complex addition and multiplication defined in <xref
-                  ref="invest-binop" />
+                  ref="def_complexNumbers" />
               </p>
             </li>
             <li>
               <p>
-                <m>\mathcal{M}_2(\R) := \setof{\left(\begin{matrix}a \amp b \\ c \amp d \end{matrix}
-          \right)}{a,b,c,d\in\R}</m><fn>
+                <m>\mathcal{M}_2(\R) := \left\{\begin{bmatrix}a \amp b \\ c \amp d \end{bmatrix} \mid a,b,c,d\in\R\right\}</m><fn>
                   For students who have taken a linear algebra course.
                 </fn>,
           the set of <m>2\times 2</m> matrices with real coefficients using the usual definition of
