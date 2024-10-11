@@ -406,6 +406,239 @@
       the common features at the same time - it is inefficient to prove the same statement about
       every single field when we can prove it once and for all about fields in general. </p>
   </subsection>
+
+  <subsection xml:id="ssec_examplesOfFields">
+    <title>Examples of Fields</title>
+    <p>
+      We will now provide more rigorous arguments that the fields investigated are in fact fields.
+      We will do so by checking, for a handful of the fields investigated, each of the axioms hold. 
+      At the end of the section we will introduce a way of simplyfying some of our work.
+    </p>
+
+    <example>
+      <title>Rational Numbers are a Field</title>
+      <statement>
+        <p>
+          Having already shown that addition and multiplication are well-defined in <xref ref="prop_arithmeticInQ"/>. We show that, equipped 
+          with these binary operations, <m>\Q</m> forms a field. Take <m>\frac{a}{b}, \frac{c}{d}, \frac{e}{f}\in \Q</m>.
+        </p>
+        <p>
+          We start with the additive checks: associativity, commutativity, additive identity, and additive inverses. For associativity we have:
+          <md>
+            <mrow>\frac{a}{b} + \left(\frac{c}{d}+\frac{e}{f}\right) \amp= \frac{a}{b} + \left(\frac{cf+de}{cf}\right)</mrow>
+            <mrow> \amp= \frac{a(cf)+b(cf+de)}{b(cf)}</mrow>
+            <mrow> \amp= \frac{acf + bcf+bde}{bcf} </mrow>
+          </md>
+          where we have dropped the parentheses in the numerator as multiplication in <m>\Z</m> is associative. We also have
+          <md>
+            <mrow>\left(\frac{a}{b} + \frac{c}{d}\right)+\frac{e}{f} \amp= \frac{ac+bd}{bd} + \frac{e}{f}</mrow>
+            <mrow> \amp= \frac{(ac+bd)f+bd(e)}{b(cf)}</mrow>
+            <mrow> \amp= \frac{acf+bcf+bde}{bcf} </mrow>
+          </md>
+          and this is the same as the other association.
+        </p>
+        <p>
+          For commutativity we have:
+          <md>
+            <mrow>\frac{a}{b} +\frac{c}{d} \amp= \frac{ad+bc}{bd} </mrow>
+            <mrow>\frac{c}{d} +\frac{a}{b} \amp= \frac{cb+da}{db} </mrow>
+          </md>
+          But in <m>\Z</m> we know that <m>db = bd</m> and <m>ad+bc=cb+da</m>. 
+        </p>
+        <p>
+          The element <m>\frac{0}{1}\in\Q</m> is the additive identity as 
+          <me>\frac{0}{1}+\frac{a}{b} = \frac{0\cdot b + 1\cdot a}{1\cdot b} = \frac{a}{b}</me>.
+        </p>
+        <p>
+          The additive inverse of <m>\frac{a}{b}</m> is <m>\frac{-a}{b}</m> as:
+          <me>\frac{a}{b} + \frac{-a}{b} = \frac{ab+b(-a)}{b^2} = \frac{0}{b^2}.</me>
+          And <m>\frac{0}{1} = \frac{0}{b^2}</m> as <m>0\cdot b^2=1\cdot 0</m>.
+        </p>
+        <p>
+          We now turn to the multiplicative axioms: associativity, commutativity, identity, inverses of non-zero elements. 
+          For associativity:
+          <md>
+            <mrow>\frac{a}{b}\cdot\left(\frac{c}{d}\cdot \frac{e}{f}\right) \amp= \frac{a}{b}\cdot \frac{ce}{df} </mrow>
+            <mrow> \amp= \frac{a(ce)}{b(df)}</mrow>
+            <mrow> \left(\frac{a}{b}\cdot\frac{c}{d}\right) \cdot \frac{e}{f} \amp= \frac{ac}{bd}\cdot \frac{e}{f} </mrow>
+            <mrow> \amp= \frac{(ac)e)}{(bd)f}</mrow>
+            <mrow> \amp= \frac{a(ce)}{b(df)}</mrow>
+          </md>
+          where the last line uses associativity of multiplication in <m>\Z</m>. 
+        </p>
+        <p>
+          For commutativity we again use that the property holds in <m>\Z</m>:
+          <me>\frac{a}{b}\cdot \frac{c}{d} = \frac{ac}{bd} = \frac{ca}{db} = \frac{c}{d}\cdot \frac{a}{b}.</me>
+        </p>
+        <p>
+          The multiplicative identity is <m>\frac{1}{1}</m> as 
+          <me>\frac{1}{1}\cdot \frac{a}{b} = \frac{1\cdot a}{1\cdot b} = \frac{a}{b}.</me>
+        </p>
+        <p>
+          Lastly we have the left and right-distributive axioms. For the left-distributive axiom we have:
+          <md>
+            <mrow>\frac{a}{b}\cdot\left(\frac{c}{d}+\frac{e}{f}\right) \amp= \frac{a}{b}\cdot \frac{cf+de}{df} </mrow>
+            <mrow> \amp=\frac{a(cf+de)}{b(df)} </mrow>
+            <mrow> \amp= \frac{acf+ade}{bdf} </mrow>
+            <mrow>\frac{a}{b}\cdot \frac{c}{d} + \frac{a}{b}\cdot \frac{e}{f} \amp= \frac{ac}{bd} + \frac{ae}{bf} </mrow>
+            <mrow> \amp= \frac{acbf+bdae}{b^2df}</mrow>
+          </md>
+          Now notice that <m>\frac{acbf + bdae}{b^2df} = \frac{acf+ade}{bdf}</m> as 
+          <me>(acbf+bdae)(bdf) = b^2df(acf+ade).</me>
+        </p>
+        <p>
+          It is a consequence of the axioms that left and right-distributivity are equivalent, see exercise ????. We show how 
+          to prove this exercise in this example:
+          <md>
+            <mrow> \left(\frac{a}{b} + \frac{c}{d}\right)\cdot \frac{e}{f}\amp= \frac{e}{f}\cdot\left(\frac{a}{b} + \frac{c}{d}\right) </mrow>
+            <mrow> \amp= \frac{e}{f}\cdot \frac{a}{b} + \frac{e}{f}\cdot \frac{c}{d} </mrow>
+            <mrow> \amp= \frac{a}{b}\cdot \frac{e}{f} + \frac{c}{d}\cdot \frac{e}{d} </mrow>
+          </md>
+          where the first and third equality is commutativity of multiplication and the second is the left-distributive property.
+        </p>
+      </statement>
+    </example>
+
+    <p>
+      This was quite involved but we managed it. This was our first check that a set with one or more binary operations satisfied a sequence of axioms.
+      These types of checks will continue throughout the course and so we will spend quite some time developing procedural fluency in carrying out definition checks.
+    </p>
+
+    <example>
+      <title>Complex Numbers Form a Field</title>
+      <statement>
+        <p>
+          The Complex Numbers <xref ref="def_complexNumbers"/> form a field under their usual multiplication and addition. The operations are well-defined and 
+          so now we need to check all ten axioms. We leave a handful of them to the reader as they are not necessarily difficult but they are tedious.
+          Take <m>a+bi, c+di, e+fi\in\C</m>.
+        </p>
+        <p>
+          We leave the proof of associativity as an exercise, as well as the proof that the additive identity is <m>0+0i</m> and the additive inverse of <m>a+bi</m> is 
+          <m>(-a)+(-b)i</m>. We will prove that addition is commutative:
+          <md>
+            <mrow>(a+bi) + (c+di) \amp= (a+c) + (b+d)i </mrow>
+            <mrow>(c+di) + (a+bi) \amp= (c+a) + (d+b)i </mrow>
+            <mrow> \amp= (a+c) + (b+d)i</mrow>
+          </md>
+          as <m>a,b,c,d\in \R</m> and addition of real numbers is commutative.
+        </p>
+        <p>
+          We leave the proof of associativity as a worthy yet tedious exercise. We will prove the remaining axioms. For commutativity:
+          <md>
+            <mrow>(a+bi)\cdot(c+di) \amp= (ac-bd) + (ad+bc)i </mrow>
+            <mrow> (c+di)\cdot (a+bi) \amp= (ca-db) + (cb+da)i </mrow>
+            <mrow> \amp= (ac-bd) + (ad+bc)i </mrow>
+          </md>
+          where have used the multiplication of real numbers is commutative.
+        </p>
+        <p>
+          The multiplicative identity is <m>1+0i</m>:
+          <me>(a+bi)\cdot(1+0i) = (a\cdot 1-b\cdot 0) + (a\cdot 0 + b\cdot 1)i = a+bi</me>
+        </p>
+        <p>
+          The multiplicative inverse of a non-zero <m>a+bi</m> is <m>\frac{a}{a^2+b^2} + \frac{-b}{a^2+b^2}i</m>.
+          Since <m>a+bi\neq 0+0i</m>, <m>a^2+b^2>0</m> and so this complex number is well-defined. We leave it as an exercise to verify:
+          <me>(a+bi)\cdot \left(\frac{a}{a^2+b^2} + \frac{-b}{a^2+b^2}i\right) = 1 + 0i</me>
+        </p>
+        <p>
+          We've already seen an instance of the left-distributive property implying the right-distributive property. Since you will 
+          prove this in Exer???? we only show the left-distributive property:
+          <md>
+            <mrow> \amp (a+bi)\cdot( (c+di) + (e+fi))</mrow>
+            <mrow> \amp= (a+bi)\cdot( (c+e)+(d+f)i)</mrow>
+            <mrow> \amp= (a(c+e)-b(d+f)) + (a(d+f)+b(c+e))i</mrow>
+            <mrow> \amp= (ac+ae-bd-bf) + (ad+af+bc+be)i</mrow>
+          </md>
+          and
+          <md>
+             <mrow> \amp (a+bi)\cdot (c+di) + (a+bi)\cdot (e+fi)</mrow>
+            <mrow> \amp= ((ac-bd)+(ad+bc)i) + ((ae-bf) + (af+be)i)</mrow>
+            <mrow> \amp= (ac-bd) + (ae-bf) + ( (ad+bc) + (af+be))i</mrow>
+            <mrow> \amp= (ac+ae-bd-bf) + (ad+af+bc+be)i</mrow>
+          </md>
+          These agree and completes the proof of the left-distributive property and that <m>\C</m> is a field.
+        </p>
+      </statement>
+    </example>
+
+
+    <p>
+      The next example is a finite example. In particular, we will return to <xref ref="def_integersModm"/> and prove that 
+      the integers modulo <m>m</m> form a field if and only if <m>m</m> is prime.
+    </p>
+    <p>
+      Before the proof, we recall that addition and multiplication is associative and commutative was done in exercises ????. The additive 
+      identity is <m>\bar{0}</m> as <m>\bar{0}+\bar{a} = \overline{0+a} = \bar{a}</m>. The additive inverse of <m>\bar{a}</m> is <m>\overline{-a}</m>.
+      The multiplicative identity is <m>\bar{1}</m> as <m>\bar{1}\cdot \bar{a} = \overline{1\cdot a} = \bar{a}</m>. That multiplication 
+      distributes over addition was also done in exercise???. 
+    </p>
+    <p>
+      In particular, <m>\Z/m</m> satisfies all the axioms of being a field with the exception of multiplicative inverses for non-zero elements.
+      In the proof that follows we show this happens if and only if <m>m</m> is prime.
+    </p>
+
+
+    <theorem xml:id="thm-integersModmField">
+      <statement>
+        <p>
+          Fix <m>p>1</m> in <m>\N</m>. Then <m>\Z/p</m>, with modular addition and multiplication, is a field if and only if <m>p</m> is prime.
+        </p>
+      </statement>
+      <proof>
+        <p>
+          By the discussion preceeding the theorem statement, we need only check that multiplicative inverses exist to see that <m>\Z/p</m> is a field. 
+          To that end, suppose <m>p</m> is prime. Take <m>\bar{0}\ne \bar{a}\in\Z/p</m>. Since <m>p</m> is prime, <m>\gcd(a,p) = 1,p</m>. If <m>\gcd(a,p) = p</m>, 
+          then <m>\bar{a} = \bar{0}</m> which isn't true. Thus <m>\gcd(a,p) = 1</m>. By <xref ref="thm_bezoutIdentity"/>, there exists <m>x,y\in\Z</m> with
+          <me>
+            ax+py=1.
+          </me>
+        </p>
+        <p>
+          Since <m>\bar{p} = \bar{0}</m>, after reducing modulo <m>p</m> we have 
+          <me>\bar{a}\cdot \bar{x} = \bar{1}</me>
+          and in particular <m>\bar{x}</m> is the multiplicative inverse of <m>\bar{a}</m>.
+        </p>
+
+        <p>
+          If <m>p</m> is not prime, then there exists <m>a,b\in\mathbb{N}</m> with <m>p=ab</m> and <m>1\le a,b\le p</m>. 
+          Then <m>\bar{a}\cdot \bar{b} = \bar{p} = \bar{0}</m>. And since <m>1\leq a,b\leq p</m>, we have <m>\bar{a},\bar{b}\neq \bar{0}</m>.
+          If <m>\Z/p</m> was a field, then <m>\bar{a}</m> has a multiplicative inverse, say <m>\bar{a}^{-1}</m>. Then
+          <md>
+            <mrow>\bar{a}\bar{b} \amp= \bar{0} </mrow>
+            <mrow>\bar{a}^{-1}\cdot(\bar{a}\bar{b}) \amp= \bar{a}^{-1}\cdot \bar{0} </mrow>
+            <mrow>(\bar{a}^{-1}\cdot\bar{a})\bar{b} \amp= \bar{0} </mrow>
+            <mrow> \bar{1}\cdot \bar{b}\amp= \bar{0} </mrow>
+            <mrow> \bar{b}\amp= \bar{0} </mrow>
+          </md>
+          which contradicts <m>\bar{b}\ne \bar{0}</m>. We conclude the non-zero element <m>\bar{a}</m> does not have a multiplicative inverse and 
+          so when <m>p</m> is not prime <m>\Z/p</m> is not a field.
+        </p>
+      </proof>
+    </theorem>
+
+    <p>
+      Notice that when <m>p</m> is prime <m>\Z/p</m> is a field and it has only finitely many elements. This is such an important field, we will give a 
+      proper definition.
+    </p>
+    <definition xml:id="def_Fp">
+      <notation>
+        <usage>\mathbb{F}_p</usage>
+        <description>Finite Field of Order <m>p</m></description>
+      </notation>
+      <statement>
+        <p>
+          For <m>p</m> a prime, we denote by <m>\mathbb{F}_p</m> the finite field <m>\Z/p</m> and call it the <em>finite field of order</em> <m>p</m>.
+        </p>
+      </statement>
+    </definition>
+    <p>
+      The symbol <m>\mathbb{F}_p</m> means the same as <m>\Z/p</m> in terms of field arithmetic. The notation <m>\mathbb{F}_p</m>
+      is often used to emphasize that we are thinking about <m>\Z/p</m> as a field.
+    </p>
+    
+  </subsection>
+
+
   <subsection xml:id="subsec-propertiesOfFields">
     <title>Properties of Fields</title>
 
@@ -539,7 +772,7 @@
     field.
     </p>
   <theorem
-      xml:id="thm-subfieldTest">
+      xml:id="thm_subfieldTest">
       <title>Subfield Test</title>
       <statement>
         <p> Let <m>K</m> be a field and <m>F\subseteq K</m> be a subset of <m>K</m> such that: <ul>
@@ -576,25 +809,56 @@
     F</m> is closed under taking multiplicative inverses. This completes the checks of each of the
     10 axioms. </p>
     </proof>
-  
-  <investigation>
-      <title>Quadratic Extensions of the Rationals</title>
-      <statement>
-        <p> Suppose <m>d\in\mathbb{Q}</m> is any rational number such that <m>\sqrt{d}\notin\Q</m>.
-    Define the set of rationals <em>adjoin</em> <m>\sqrt{d}</m> by: <me>
-            \Q(\sqrt{d}) = \{a+b\sqrt{d}\mid a,b\in\mathbb{Q}\}.
-          </me> This is a
-    subset of <m>\mathbb{C}</m>. We claim that <m>\Q(\sqrt{d})</m> is a <em>subfield</em> of <m>
-    \mathbb{C}</m>
-        </p>
-      </statement>
-    </investigation>
 
-  <investigation>
-      <statement>
-        <p> For which <m>n > 1</m> is <m>\Z_n</m> a field? Compute some examples, form a conjecture,
-    and prove your conjecture. </p>
-      </statement>
-    </investigation>
+  <p>
+    We end this section with another interesting example of a field. We also illustrate how to use the Subfield Test.
+  </p>
+  
+  <example xml:id="ex_qAdjoinNegative5">
+    <title>Adjoining <m>\sqrt{-5}</m> to the Rationals</title>
+    <statement>
+      <p> 
+        Define the set of rationals <em>adjoin</em> <m>\sqrt{-5}</m> by: <me>
+        \Q(\sqrt{-5}) = \{a+b\sqrt{-5}\mid a,b\in\mathbb{Q}\}.
+        </me> This is a subset of <m>\mathbb{C}</m>. We claim that <m>\Q(\sqrt{d})</m> is a <em>subfield</em> 
+        of <m>\mathbb{C}</m>
+      </p>
+
+      <p>
+        We apply the <xref ref="thm_subfieldTest" text="title"/>. In particular, <m>\mathbb{Q}(\sqrt{-5})\subset \C</m> and the latter is a field. We
+        first show that <m>1+0i\in\Q(\sqrt{-5})</m> but this is just the element <m>1+0\sqrt{d}\in\Q(\sqrt{-5})</m>.
+      </p>
+      <p>
+        We now show closure under subtraction. Take <m>a+b\sqrt{-5},c+d\sqrt{-5}\in\Q</m>, then 
+        <me>(a+b\sqrt{-5}) - (c+d\sqrt{-5}) = (a-c) + (b-d)\sqrt{-5}.</me>
+        Since <m> (a-c),(b-d)\in \Q</m>, we conclude that <m>\Q(\sqrt{-5})</m> is closed under subtraction.
+      </p>
+      <p> 
+        We now show closure under division. Suppose <m>a+b\sqrt{-5},c+d\sqrt{-5}\in\Q(\sqrt{-5})</m>. Writing <m>c+d\sqrt{-5} = c+d\sqrt{5}i</m>, we know that 
+        <me>(c+d\sqrt{5}i)^{-1} = \frac{c}{c^2+5d^2} + \frac{-d\sqrt{5}}{c^2+5d^2}i</me>
+        which we can recombine the <m>i</m> and <m>\sqrt{5}</m>:
+        <me>(c+d\sqrt{5}i)^{-1} = \frac{c}{c^2+5d^2} + \frac{-d}{c^2+5d^2}\sqrt{-5}.</me>
+        Note that <m>c^2+5d^2=0</m> would say <m>(c/d)^2 = -5</m> which is absurd so the inverse is well-defined.
+      </p>
+      <p>
+        Now we divide:
+        <md>
+          <mrow>\amp(a+b\sqrt{-5})\cdot (c+d\sqrt{-5})^{-1} </mrow>
+          <mrow>=\amp(a+b\sqrt{-5})\cdot \left(\frac{c}{c^2+5d^2} + \frac{-d}{c^2+5d^2}\sqrt{-5} \right) </mrow>
+          <mrow>=\amp \left(\frac{ac}{c^2+5d^2} + \frac{5bd}{c^2+5d^2}\right) + \left(\frac{-ad}{c^2+5d^2}+ \frac{bc}{c^2+5d^2}\right)\sqrt{-5}</mrow>
+          <mrow>=\amp \frac{ac+5bd}{c^2+5d^2} + \frac{-ad+bc}{c^2+5d^2}\sqrt{-5}</mrow>
+        </md>
+        and since <m>\Q</m> is a field it is closed under arithmetic. In particular <m>\frac{ac+5bd}{c^2+5d^2}, \frac{-ad+bc}{c^2+5d^2}\in \Q</m>. 
+        Thus <m>\Q(\sqrt{-5})</m> is closed under division.
+      </p>
+      <p>
+        We conclude, by the Subfield Test, that <m>\Q(\sqrt{-5})</m> is a subfield of <m>\C</m>.
+      </p>
+    </statement>
+  </example>
+  <p>
+    The reader should take note that the importance of using <m>-5</m> under the radical was only that <m>\sqrt{-5}\notin \Q</m>. In particular, 
+    for any <m>d\in\Q</m> such that <m>\sqrt{d}\notin\Q</m> the proof will go through exactly the same. You will carry this out in Exercise????
+  </p>
   </subsection>
 </section>

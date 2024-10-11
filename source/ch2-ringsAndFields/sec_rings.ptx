@@ -48,6 +48,7 @@
         <me>
           \Z[x] := \{a_0 + a_1 x + a_2 x + \cdots + a_n x^n\mid n\in \N_0, \ a_i\in \mathbb{Z}\}.
         </me>
+        Lastly, two polynomials are <em>equal</em> if and only if they have the same coefficients.
       </p>
     </statement>
   </definition>
@@ -125,10 +126,12 @@
       </md>
       Then 
       <md>
-        <mrow>p(x)+q(x)\amp= (a_0+a_1x+a_2x^2+\cdots + a_nx^n) + (b_0+b_1x+b_2x^2+\cdots + b_nx^n)</mrow>
+        <mrow> p(x)+q(x)\amp= (a_0+a_1x+a_2x^2+\cdots + a_nx^n) </mrow>
+        <mrow> \amp+ (b_0+b_1x+b_2x^2+\cdots + b_nx^n)</mrow>
         <mrow> \amp= (a_0+b_0)+(a_1+b_1)x+(a_2+b_2)x^2+\cdots + (a_n+b_n)x^n </mrow>
         <mrow> \amp= (b_0+a_0)+(b_1+a_1)x+(b_2+a_2)x^2+\cdots + (b_n+a_n)x^n </mrow>
-        <mrow> \amp= (b_0+b_1x+b_2x^2+\cdots + b_nx^n) + (a_0+a_1x+a_2x^2+\cdots + a_nx^n)</mrow>
+        <mrow> \amp= (b_0+b_1x+b_2x^2+\cdots + b_nx^n) </mrow>
+        <mrow> \amp+ (a_0+a_1x+a_2x^2+\cdots + a_nx^n)</mrow>
         <mrow> \amp = q(x)+p(x)</mrow>
       </md>
     </p>
@@ -147,11 +150,420 @@
     </statement>
   </exploration>
 
+  <p>
+    We now handle polynomial multiplication. We first recall how polynomial multiplication works with the goal of writing a definition down.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Consider the integral polynomials <m>p(x) = 1+x+2x^2+3x^3</m> and <m>q(x) = 3+2x+x^2</m>. Let's compute their product 
+        using distribution:
+        <md>
+          <mrow> p(x)\cdot q(x)\amp=(1+x+2x^2+3x^3)\cdot(3+2x+x^2) </mrow>
+          <mrow> \amp= 3+2x+x^2 </mrow>
+          <mrow> \amp+ 3x+2x^2+x^3 </mrow>
+          <mrow> \amp+ 6x^2+4x^3+2x^4 </mrow>
+          <mrow> \amp+ 9x^3+6x^4+3x^5 </mrow>
+          <mrow> \amp=3+5x+7x^2+14x^3+8x^4+3x^5 </mrow>
+        </md>
+      </p>
+      
+    </statement>
+  </example>
+
+  <p>
+    In particular, to compute the produce we needed to be able to: compute all pairwise products between terms of <m>p(x)</m> and terms of <m>q(x)</m> 
+    and then combine like terms. The following definition will be a formalization of this and in particular is somewhat involved due to the nature 
+    of poynomial multiplication.
+  </p>
+
+  <definition xml:id="def_polynomialMultiplication">
+    <statement>
+      <p>
+        Given two polynomials <m>p(x),q(x)\in\Z[x]</m>, we define their sum <m>p(x)+q(x)\in\Z[x]</m> as follows. Write 
+      <md>
+        <mrow>p(x)\amp= a_0+a_1x+a_2x^2+\cdots + a_nx^n</mrow>
+        <mrow>q(x)\amp= b_0+b_1x+b_2x^2+\cdots + b_mx^m.</mrow>
+      </md>
+      Extend both <m>p(x)</m> and <m>q(x)</m> by <m>0</m> so that:
+      <me>
+        p(x) = a_0+a_1x+a_2x^2+\cdots + a_nx^n + a_{n+1}x^{n+1}+\cdots + a_{n+m}x^{n+m},
+      </me>
+      where <m>a_{n+1} = \cdots = a_{n+m} = 0</m>. Then 
+      <me>
+        q(x) = b_0+b_1x+b_2x^2+\cdots + b_mx^m + b_{m+1}x^{m+1}+\cdots + b_{m+n}x^{m+n}
+      </me>
+      where <m>b_{m+1}=\cdots = b_{m+n} = 0</m> and 
+
+      <me>
+        p(x)\cdot q(x) = c_0+c_1x+\cdots +c_ix^i+\cdots + c_{m+n}x^{n+m}
+      </me>
+      where 
+      <md>
+        <mrow>c_i \amp= \sum_{k=0}^ia_kb_{i-k}</mrow>
+        <mrow>\amp= a_0b_i + a_1b_{i-1}+\cdots + a_{i-1}b_1 + a_ib_0.</mrow>
+      </md>
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    As was the case with polynomial addition, this definition is aimed to make proving 
+    statements about polynomial muliplication easier. 
+  </p>
+
+  <proposition xml:id="prop_polynomialMultiplicationIsCommutative">
+    <statement>
+      <p>
+        Multplication of integral polynomials is commutative. That is, for any <m>p(x),q(x)\in\Z[x]</m>, we have 
+        <m>p(x)\cdot q(x) = q(x)\cdot p(x)</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Take <m>p(x),q(x)\in\Z[x]</m> of degrees <m>m,n</m>, respectively. Extend both by zero so that 
+        <md>
+          <mrow>p(x) \amp= a_0+a_1x+\cdots +a_{m+n}x^{m+n} </mrow>
+          <mrow>q(x) \amp= b_0+b_1x+\cdots +b_{m+n}x^{m+n} </mrow>
+        </md>
+        where <m>a_{m+1} = \cdots = a_{m+n} = 0</m> and <m>b_{n+1} = \cdots = b_{m+n} = 0</m>.
+      </p>
+      <p>
+        Then 
+        <me> p(x)\cdot q(x) = c_0+c_1x+\cdots + c_{m+n}x^{m+n} </me>
+        where 
+        <me>c_i = a_0b_i+a_1b_{i-1}+\cdots + a_{i-1}b_1+a_ib_0.</me>
+        We also have 
+        <me>q(x)\cdot p(x) = d_0 + d_1x + \cdots + d_{m+n}x^{m+n}</me>
+        where 
+        <me>d_i = b_0a_i + b_1a_{i-1}+\cdots + b_{i-1}a_1+b_ia_0.</me>
+        We need to show <m>c_i=d_i</m>.
+      </p>
+      <p>
+        To that end, recall that addition in <m>\Z</m> is commutative and multiplication is commutative too:
+        <md>
+          <mrow> c_i \amp= a_0b_i+a_1b_{i-1}+\cdots + a_{i-1}b_1+a_ib_0 </mrow>
+          <mrow> \amp= b_ia_0 + b_{i-1}a_1+\cdots + b_1a_{i-1}+b_0a_i </mrow>
+          <mrow> \amp= b_0a_i + b_1a_{i-1}+\cdots + b_{i-1}a_1+b_ia_0</mrow>
+          <mrow> \amp= d_i </mrow>
+        </md>
+        Since the coefficients of <m>p(x)\cdot q(x)</m> and <m>q(x)\cdot p(x)</m> agreee they are equal polynomials.
+      </p>
+    </proof>
+  </proposition>
+
+  <p>
+    The preceeding proof was necessarily long and somewhat complicated because polynomial multiplication is long and complicated. 
+    It's also worth noting that we very much relied on arithmetic properties of <m>\Z</m>, particular commutative multiplication.
+  </p>
+
+  <p>
+    We leave our discussion of integral polynomials to introduce the main course: <em>rings</em>. We will then return to them as important examples or rings.
+  </p>
+
 </subsection>
 
 <subsection xml:id="ssec_rings">
   <title>Rings</title>
+  <definition xml:id="def_ring">
+    <idx>ring</idx>
+    <idx>unity</idx>
+    <statement>
+      <p>
+        A <term>ring</term> <m>R</m> is a nonempty set,
+        together with binary operations <m>+</m> and <m>\cdot</m>, denoted <m>(R,+,\cdot)</m>, and satisfying the following axioms.
+        <ol>
+          <li>
+            <p>
+              Given any <m>a,b,c\in R</m>, <m>(a+b)+c = a+(b+c)</m>. (Associativity of addition)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a,b\in R</m>, <m>a+b= b+a</m>. (Commutativity of addition)
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an element <m>0_R\in R</m> such that for all <m>a\in R</m>,
+              <m>a+0_R = 0_R + a = a</m>. (Additive identity)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a\in R</m> there exists a <m>b\in R</m> such that <m>a+b = b + a =0_R</m>. (Additive inverses)
+            </p>
+          </li>
+          <li>
+            <p>
+              Given any <m>a,b,c\in R</m>, <m>(a\cdot b)\cdot c = a\cdot (b\cdot c)</m>. (Associativity of multiplication)
+            </p>
+          </li>
+          <li>
+            <p>
+              There exists an element <m>1_R\in R</m>, such that <m>a\cdot 1_R = 1_R\cdot a=a</m> for all <m>a\in R</m>. (Multiplicative identity)
+            </p>
+          </li>
+          <li>
+            <p>
+              For all <m>a,b,c\in R</m>, <m>a\cdot (b+c) = a\cdot b + a\cdot c</m>. (Left-distributive property)
+            </p>
+          </li>
+          <li>
+            <p>
+              For all <m>a,b,c\in R</m>, <m>(a+b)\cdot c = a\cdot c + b\cdot c</m>. (Right-distributive property)
+            </p>
+          </li>
+        </ol>
+        As with fields, when the ring <m>R</m> is clear from context, we will often write <m>0</m> in place of <m>0_R</m> and <m>1</m> in place of <m>1_R</m>. The element <m>1_R</m> is also referred to as the <em>unity</em>.
+      </p>
+    </statement>
+  </definition>
 
+  <aside>
+    <title>Non-Unital Rings</title>
+    <p>
+      Most rings of interest in modern algebra, particularly commutative algebra, have a multiplicative identity. Algebraic structures that satisfy all the ring axioms except for the multiplicative identity are called <em>non-unital rings</em> and are sometimes referred to as rngs (without the i).
+    </p>
+  </aside>
+
+  <investigation>
+    <statement>
+      <p>
+        Compare and contrast <xref ref="def_field">Definitions</xref>
+        and <xref ref="def_ring"></xref>.
+        What are the similarities?
+        What are the differences?
+      </p>
+    </statement>
+  </investigation>
+
+  <p>
+    While rings do not enjoy all the properties of fields,
+    they are incredibly useful even in applied mathematics
+    (see, e.g., <xref ref="Curto2013" /> for one recent example).
+  </p>
+
+  <definition>
+    <statement>
+    <idx>commutative ring</idx>
+      <p>
+        A ring <m>R</m> is said to be <term>commutative</term> if,
+        for all <m>a,b\in R</m>, <m>ab = ba</m>.
+      </p>
+    </statement>
+  </definition>
+
+ <example>
+    <statement>
+      <p>
+        The integers form a ring. We have actually assumed all the ring axioms for the majority of this text and will continue to assume them. A proof 
+        of the ring axioms requires a deeper dive on the natural numbers and is more suited to an introduction to proof course. Nevertheless, 
+        we will continue to freely use that <m>\Z</m> is a commutative ring. The unity is <m>1_{\mathbb{Z}} = 1</m> and the additive identity is <m>0_{\Z} = 0</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        All fields are rings. Fields satisfy all eight rings axioms plus an additional two: commutative multiplication and every non-zero element has a multiplicative inverse.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    We now return to polynomials. First, we will define polynomials over general rings.
+  </p>
+
+  <definition xml:id="def_polynomialGeneralRing">
+    <statement>
+      <p>
+        Let <m>R</m> be a ring. A <term>polynomial in <m>x</m> with coefficients in <m>R</m></term>
+        is an expression of the form
+        <me>
+          p(x) = a_0 + a_1 x + a_2 x^2 + \cdots + a_n x^n
+        </me>,
+        where <m>a_0,a_1,a_1,\ldots,a_n\in R</m> and <m>a_n\ne 0</m>. We will sometimes omit the function notation and denote 
+        <m>p(x)</m> simply by <m>p</m>.
+
+        The set of all polynomials over <m>R</m> is:
+        <me>
+          R[x] := \{a_0 + a_1 x + a_2 x + \cdots + a_n x^n\mid n\in \N_0, \ a_i\in R\}.
+        </me>
+        The general definitions of equality, degree, terms, coefficients, extension by 0, addition, and multiplication carry over directly 
+        to polynomials over <m>R</m>.
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    Unlike fields, rings need not be commutative. In fact, an important class of examples of non-commutative rings are matrix rings. We'll see 
+    a first example in <xref ref="ex_M2R"/>.
+  </p>
+
+
+  <!--
+  <exploration xml:id="expl-rings-examples">
+    <statement>
+      <p>
+        Consider the sets given in <xref ref="table_propertiessandsets">Table</xref>.
+        Which are rings?
+        Which are commutative rings?
+      </p>
+    </statement>
+  </exploration>
+-->
+
+  <exploration>
+    <statement>
+      <p>
+        Which properties of fields in <xref ref="thm_fieldproperties">Theorem</xref> hold for (commutative) rings?
+      </p>
+    </statement>
+  </exploration>
+  <investigation>
+    <statement>
+      <p>
+        Are all rings fields?
+        Are all fields rings?
+        Justify.
+      </p>
+    </statement>
+  </investigation>
+
+
+  <historical>
+  <title>Emmy Noether</title>
+  <p>
+  <figure>
+  <image source="../../images/Noether.jpg" width="50%">
+    <shortdescription>Portrait of Emmy Noether</shortdescription>
+  </image>
+  </figure>
+
+    In the 1920s, Emmy Noether was the first to explicitly describe the ring axioms as we know them today,
+    and her definition of a (not-necessarily-commutative) ring has led to a great deal of interesting work in algebra,
+    number theory, and geometry, including the
+    (see <xref ref="SubSec-Nonunique-Factorization" />
+    for more on the historical development of the proof of Fermat's Last Theorem).
+    Most modern definitions of <em>ring</em>
+    agree with our <xref ref="def_ring">Definition</xref>
+    and allow for rings with noncommutative multiplication.
+  </p>
+  </historical>
+
+  <p>
+    The following theorem states that the set of polynomials with coefficients in a ring <m>R</m> is itself a ring under the usual 
+    operations of polynomial addition of like terms, and multiplication via distribution.
+    The proof is not tricky, but a rigorous justification (especially of, e.g., the associativity of polynomial multiplication)
+    is tedious, and thus is omitted.
+  </p>
+  <theorem xml:id="thm_polynomialsFormRing">
+  <title>Theorem</title>
+  <statement>
+    <p>
+      If <m>R</m> is a (commutative) ring, then <m>R[x]</m> is a (commutative) ring.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      As in the proof of <xref ref="prop_polynomialMultiplicationIsCommutative"/>, we see that if <m>R[x]</m> is a ring and <m>R</m> is commutative, then 
+      <m>R[x]</m> must also be commutative. The proof carries over <em>mutatis mutandis</em>.
+    </p>
+    <p>
+      To see that <m>R[x]</m> is a ring, we need to check all eight axioms. Before we do that, recall in <xref ref="prop_polynomialAdditionIsCommutative"/> 
+      that we have already seen polynomial addition is commutative provided the addition of coefficients is commutative. That proof therefore carries over 
+      <em>mutatis mutandis</em>.
+    </p>
+    <p>
+      We check associativity. Take <m>p(x),q(x),r(x)\in R[x]</m> and, by extending by 0, we can assume 
+      <md>
+        <mrow> p(x)\amp= a_0+a_1x+\cdots +a_nx^n </mrow>
+        <mrow> q(x)\amp= b_0+b_1x+\cdots +b_nx^n </mrow>
+        <mrow> r(x)\amp= c_0+r_1x+\cdots +r_nx^n </mrow>
+      </md>
+      where <m>a_i,b_i,c_i\in R</m> for <m>i=0,\ldots,n</m>. Then the coefficient of <m>x^i</m> in <m>p(x)+(q(x)+r(x))</m> 
+      is <m>a_i+(b_i+c_i)</m>. The coefficient of <m>x^i</m> in <m>(p(x)+q(x)) + r(x)</m> is <m> (a_i+b_i)+c_i</m>. 
+      Since <m>R</m> is a ring and addition is associative in <m>R</m> we have <m>a_i+(b_i+c_i) = (a_i+b_i) + c_i</m>. Since 
+      the coefficients of <m>p(x)+(q(x)+r(x))</m> and <m>(p(x)+q(x)) + r(x)</m> are equal, they are equal polynomials.
+    </p>
+
+    <p>
+      We claim <m>z(x) = 0_R</m> is the additive identity. Take <m>p(x)\in R[x]</m> and write 
+      <me>p(x)=a_0+a_1x+\cdots +a_nx^n.</me>
+      Then extend <m>z(x)</m> by zero:
+      <me>z(x) = 0_R + 0_Rx+\cdots + 0_Rx^n.</me>
+      The sum is then:
+      <md>
+        <mrow> z(x)+p(x)\amp= (0_R+a_0) + (0_R+a_1)x+\cdots + (0_R+a_n)x^n </mrow>
+        <mrow> \amp= a_0 + a_1x+\cdots + a_nx^n </mrow>
+        <mrow> \amp= p(x) </mrow>
+      </md>
+      as <m>0_R</m> is the additive identity in <m>R</m> so that <m>0_R+a_i = a_i</m> for all <m>i</m>. 
+      Similarly, <m>p(x) + z(x) = p(x)</m>.
+    </p>
+    <p>
+      For additive inverses, suppose <m>p(x)</m> is as before. Then define <m>-p(x)\in R[x]</m> by:
+      <m>-p(x) = (-a_0) + (-a_1)x + \cdots + (-a_n)x^n</m>
+      where <m>-a_i</m> is the additive inverse of the coefficient <m>a_i</m> in <m>p(x)</m>. Then 
+      <md>
+        <mrow> \amp p(x)+(-p)(x)</mrow>
+        <mrow> \amp= (a_0+(-a_0)) + (a_1+(-a_1))x + \cdots + (a_n+(-a_n))x^n </mrow>
+        <mrow> \amp= 0_R + 0_Rx + \cdots + 0_Rx^n </mrow>
+        <mrow> \amp= z(x) </mrow>
+      </md>
+      Similarly <m>(-p)(x)+p(x) = z(x)</m>.
+    </p>
+
+    <p>
+      The proof that multiplication is associative is particularly notationally dense and we leave it as an exercise.
+      For the multiplicative identity, set <m>i(x) = 1_R</m>. Take a polynomial <m>p(x)</m> as before. We extend <m>i(x)</m> 
+      by zero via:
+      <me>
+        i(x) = b_0+\cdots +b_nx^n
+      </me>
+      where <m>b_0=1_R</m> and <m>b_i=0_R</m> for <m>i>0</m>. Then the product
+      <me>
+        p(x)\cdot i(x)= c_0+c_1x+\cdots +c_nx^n
+      </me>
+      where
+      <me>
+        c_i = a_0b_i+\cdots + a_ib_0.
+      </me>
+      However, <m>b_j=0</m> for <m>j>0</m> so for <m>k\neq i</m> we have <m>a_kb_{i-k}=0_R</m> by Exercise???? In particular, <m>c_i = a_ib_0 = a_i\cdot 1_R = a_i</m>.
+      Since the coefficients of <m>p(x)\cdot i(x)</m> and <m>p(x)</m> are equal, the polynomials are equal: <m>p(x)\cdot i(x) = p(x)</m>. 
+      Similarly <m>i(x)\cdot p(x)= p(x)</m>.
+    </p>
+    <p>
+      The remaining two proofs are left- and right-distributive properties. As they are similar, we only prove the left-distributive property. TBD.
+    </p>
+  </proof>
+</theorem>
+<p>
+  The preceeding theorem says that whenever we have a ring, polynomials with coefficients in that ring again form a ring. In particular, if <m>R</m> is a ring, then 
+  so is <m>R[x]</m>, and hence so is <m>(R[x])[y]</m> and so on. This leads us to the corollary:
+</p>
+<corollary xml:id="cor_multivariatePolynomialRingIsARing">
+  <statement>
+    <p>
+      Let <m>R</m> be a (commutative) ring and <m>x_1,\ldots,x_n</m> be indeterminates. Then the set of 
+      polynomials in <m>x_1,\ldots,x_n</m> with coefficients in <m>R</m>, <m>R[x_1,\ldots,x_n]</m>, is a (commutative) ring.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      We proceed by induction. The base case is <m>n=1</m>. This is the content of <xref ref="thm_polynomialsFormRing"/>.
+    </p>
+    <p>
+      For the inductive step, suppose <m>R[x_1,\ldots,x_n]</m> is a (commutative) ring. By <xref ref="thm_polynomialsFormRing"/>, 
+      <m>R[x_1,\ldots,x_n][x_{n+1}]</m> is again a (commutative) ring. But the latter is the <m>R[x_1,\ldots,x_{n+1}]</m>.
+    </p>
+  </proof>
+</corollary>
+
+<!-- 
   <exploration>
     <statement>
       <p>
@@ -513,163 +925,75 @@
     we make the following definition.
   </p>
 
-  <definition xml:id="def_ring">
-    <idx>ring</idx>
-    <idx>unity</idx>
-    <statement>
-      <p>
-        A <term>ring</term> <m>R</m> is a nonempty set,
-        together with binary operations <m>+</m> and <m>\cdot</m>, denoted <m>(R,+,\cdot)</m>, and satisfying the following axioms.
-        <ol>
-          <li>
-            <p>
-              Given any <m>a,b,c\in R</m>, <m>(a+b)+c = a+(b+c)</m>. (Associativity of addition)
-            </p>
-          </li>
-          <li>
-            <p>
-              Given any <m>a,b\in R</m>, <m>a+b= b+a</m>. (Commutativity of addition)
-            </p>
-          </li>
-          <li>
-            <p>
-              There exists an element <m>0_R\in R</m> such that for all <m>a\in R</m>,
-              <m>a+0_R = 0_R + a = a</m>. (Additive identity)
-            </p>
-          </li>
-          <li>
-            <p>
-              Given any <m>a\in R</m> there exists a <m>b\in R</m> such that <m>a+b = b + a =0_R</m>. (Additive inverses)
-            </p>
-          </li>
-          <li>
-            <p>
-              Given any <m>a,b,c\in R</m>, <m>(a\cdot b)\cdot c = a\cdot (b\cdot c)</m>. (Associativity of multiplication)
-            </p>
-          </li>
-          <li>
-            <p>
-              There exists an element <m>1_R\in R</m>, such that <m>a\cdot 1_R = 1_R\cdot a=a</m> for all <m>a\in R</m>. (Multiplicative identity)
-            </p>
-          </li>
-          <li>
-            <p>
-              For all <m>a,b,c\in R</m>, <m>a\cdot (b+c) = a\cdot b + a\cdot c</m>. (Left-distributive property)
-            </p>
-          </li>
-          <li>
-            <p>
-              For all <m>a,b,c\in R</m>, <m>(a+b)\cdot c = a\cdot c + b\cdot c</m>. (Right-distributive property)
-            </p>
-          </li>
-        </ol>
-        As with fields, when the ring <m>R</m> is clear from context, we will often write <m>0</m> in place of <m>0_R</m> and <m>1</m> in place of <m>1_R</m>. The element <m>1_R</m> is also referred to as the <em>unity</em>.
-      </p>
-    </statement>
-  </definition>
+-->
 
-  <aside>
-    <title>Non-Unital Rings</title>
-    <p>
-      Most rings of interest in modern algebra, particularly commutative algebra, have a multiplicative identity. Algebraic structures that satisfy all the ring axioms except for the multiplicative identity are called <em>non-unital rings</em> and are sometimes referred to as rngs (without the i).
-    </p>
-  </aside>
+<p>
+  We now have some great examples of commutative rings. Namely polynomial rings in some number of variables over any of <m>\Z,\Q,\R,</m> or <m>\C</m>. 
+  As we have yet to see an example of a non-commutative ring we remedy this now.
+</p>
 
-  <investigation>
-    <statement>
-      <p>
-        Compare and contrast <xref ref="def_field">Definitions</xref>
-        and <xref ref="def_ring"></xref>.
-        What are the similarities?
-        What are the differences?
-      </p>
-    </statement>
-  </investigation>
-
-  <p>
-    While rings do not enjoy all the properties of fields,
-    they are incredibly useful even in applied mathematics
-    (see, e.g., <xref ref="Curto2013" /> for one recent example).
-  </p>
-
-  <definition>
-    <statement>
-    <idx>commutative ring</idx>
-      <p>
-        A ring <m>R</m> is said to be <term>commutative</term> if,
-        for all <m>a,b\in R</m>, <m>ab = ba</m>.
-      </p>
-    </statement>
-  </definition>
-
-  <exploration xml:id="expl-rings-examples">
-    <statement>
-      <p>
-        Consider the sets given in <xref ref="table_propertiessandsets">Table</xref>.
-        Which are rings?
-        Which are commutative rings?
-      </p>
-    </statement>
-  </exploration>
-  <exploration>
-    <statement>
-      <p>
-        Which properties of fields in <xref ref="thm_fieldproperties">Theorem</xref> hold for (commutative) rings?
-      </p>
-    </statement>
-  </exploration>
-  <investigation>
-    <statement>
-      <p>
-        Are all rings fields?
-        Are all fields rings?
-        Justify.
-      </p>
-    </statement>
-  </investigation>
-
-
-  <historical>
-  <title>Emmy Noether</title>
-  <p>
-  <figure>
-  <image source="../../images/Noether.jpg" width="50%">
-    <shortdescription>Portrait of Emmy Noether</shortdescription>
-  </image>
-  </figure>
-
-    In the 1920s, Emmy Noether was the first to explicitly describe the ring axioms as we know them today,
-    and her definition of a (not-necessarily-commutative) ring has led to a great deal of interesting work in algebra,
-    number theory, and geometry, including the
-    (see <xref ref="SubSec-Nonunique-Factorization" />
-    for more on the historical development of the proof of Fermat's Last Theorem).
-    Most modern definitions of <em>ring</em>
-    agree with our <xref ref="def_ring">Definition</xref>
-    and allow for rings with noncommutative multiplication.
-  </p>
-  </historical>
-
-  <p>
-    The following theorem states that the set of polynomials with coefficients in a ring <m>R</m> is itself a ring under the usual operations of polynomial addition of like terms,
-    and multiplication via distribution.
-    The proof is not tricky, but a rigorous justification
-    (especially of, e.g., the associativity of polynomial multiplication)
-    is tedious, and thus is omitted.
-  </p>
-  <theorem xml:id="thm_polynomialsFormRing">
-  <title>Theorem</title>
+<example xml:id="ex_M2R">
+  <title>Square Matrices</title>
   <statement>
     <p>
-      If <m>R</m> is a (commutative) ring<m>1_R</m>, then <m>R[x]</m> is a (commutative) ring <m>1_{R[x]} = 1_R</m>.
+      Consider the set <m>M_2(\R)</m> of square <m>2\times 2</m> matrices over <m>\R</m> (or whatever ring or field you like to work with). 
+      We recall matrix addition and multiplication:
+      <me>
+        \begin{bmatrix}a_1 \amp b_1 \\ c_1 \amp d_1 \end{bmatrix} 
+        + \begin{bmatrix}a_2 \amp b_2 \\ c_2 \amp d_2 \end{bmatrix}
+        = \begin{bmatrix}(a_1+a_2) \amp (b_1+b_2) \\ (c_1+c_2) \amp (d_1+d_2) \end{bmatrix}
+      </me>
+      and 
+      <me>
+        \begin{bmatrix}a_1 \amp b_1 \\ c_1 \amp d_1 \end{bmatrix} 
+        \cdot \begin{bmatrix}a_2 \amp b_2 \\ c_2 \amp d_2 \end{bmatrix}
+        = \begin{bmatrix} a_1a_2+b_1c_2 \amp a_1b_2+b_1d_2 \\ c_1a_2+d_1c_2 \amp c_1b_2+d_1d_2 \end{bmatrix}
+      </me>
+    </p>
+    <p>
+      In Exercise???? you will check this is a ring. We show that multiplication is not commutative. To that end, consider:
+      <me>
+        A=\begin{bmatrix}1 \amp 1 \\ 1 \amp 1 \end{bmatrix},
+        B =\begin{bmatrix}0 \amp 1 \\ 0 \amp 0 \end{bmatrix}.
+      </me>
+      Then 
+      <me>
+        A\cdot B = \begin{bmatrix}0 \amp 1 \\ 0 \amp 1 \end{bmatrix},
+        B\cdot A = \begin{bmatrix}1 \amp 1 \\ 0 \amp 0 \end{bmatrix}.
+      </me>
+      In particular, <m>A\cdot B\ne B\cdot A</m> and so matrix multiplication is not commutative.
     </p>
   </statement>
-  </theorem>
-  <proof>
-    <p>
-      TBD.
-    </p>
-  </proof>
+</example>
 
+<p>
+  In the previous example, we observed that matrix multiplication failed to be commutative for matrices with real entries. What about 
+  for entries in a general ring? If you review that example, you will notice the only reason the products did not agree is because <m>0\ne 1</m> in <m>\R</m>.
+  The next example shows that the multiplicative identity and additive identity sometimes agree.
+</p>
+
+<example>
+  <title>The Zero Ring</title>
+  <statement>
+    <p>
+      Let <m>R=\{0\}</m>. That is, a set with one element. Define addition and multiplication by 
+      <m>0+0 = 0</m> and <m>0\cdot 0 = 0</m>. We claim that addition and multiplication define a ring structure 
+      on <m>R</m>.
+    </p>
+    <p>
+      Almost all of the checks are straightforward. For example, to check associativity of addition we 
+      only have one element so we just check <m>0+(0+0) = (0+0)+0</m>. But there is only one thing both sides can be: <m>0</m>. 
+      So addition is associative.
+    </p>
+    <p>
+      The only property that warrants inspection is the multiplicative identity. We claim that in this ring <m>1_R = 0</m>. Indeed, 
+      we need to show that for every <m>r\in R = \{0\}</m> that <m>0\cdot r= r</m>. But there's only element to check this on: <m>r=0</m> where it is true.
+    </p>
+    <p>
+      We conclude that the zero ring is a ring!
+    </p>
+  </statement>
+</example>
 </subsection>
 
 <subsection xml:id="ssec_subrings">
@@ -692,6 +1016,7 @@
     The following theorem provides a easy-to-apply test to check if a given subset <m>S</m> of a ring <m>R</m> is in fact a subring of <m>R</m>.
   </p>
   <theorem xml:id="thm_subringTest">
+    <title>Subring Test</title>
   <idx>subring test</idx>
     <statement>
       <p>
@@ -737,6 +1062,42 @@
       </p>
     </proof>
   </theorem>
+
+  <example>
+    <statement>
+      <p>
+        In <xref ref="ex_qAdjoinNegative5"/>, we saw that <m>\Q(\sqrt{-5})</m> was a field and so it is a commutative ring. 
+        Let's define a subset of this field by taking 
+        those elements with integral real and imaginary part:
+        <me>
+          \Z[\sqrt{-5}] = \{a+b\sqrt{-5}\mid a,b\in\Z\}.
+        </me>
+        We claim that <m>\Z[\sqrt{-5}]</m> is a subring of <m>\Q(\sqrt{-5})</m>. To that end we apply the subring test. That is,
+        <m>1_{\Q(\sqrt{-5})}\in\Z[\sqrt{-5}]</m>, it is closed under subtraction and multiplication.
+      </p>
+      <p>
+        We see that <m>1+0\sqrt{-5}\in\Z[\sqrt{-5}]</m> and so our subset has the multiplicative identity.
+      </p>
+      <p>
+        For closure under subtraction, take <m>a+b\sqrt{-5}, c+d\sqrt{-5}\in\Z[\sqrt{-5}]</m>. Then 
+        <me>
+          (a+b\sqrt{-5})-(c+d\sqrt{-5}) = (a-c) + (b-d)\sqrt{-5}
+        </me>
+        and <m>a-c,b-d\in\Z</m>. We conclude <m>\Z[\sqrt{-5}]</m> is closed under subtraction.
+      </p>
+      <p>
+        For closure under multiplication we compute:
+        <me>
+          (a+b\sqrt{-5})\cdot (c+d\sqrt{-5}) = (ac+5bd) + (ad+bc)\sqrt{-5}
+        </me>
+        and again <m>ac+5bd,ad+bc\in\Z</m>. 
+      </p>
+      <p>
+        By the <xref ref="thm_subringTest" text="title"/>, we conclude <m>\Z[\sqrt{-5}]</m> is a subring of <m>\Q(\sqrt{-5})</m>. In particular, 
+        it is a ring.
+      </p>
+    </statement>
+  </example>
   
   <activity>
     <statement>
@@ -803,6 +1164,15 @@
     In other words, a unit in a ring is a nonzero element with a multiplicative inverse.
     The existence of units is the primary difference between fields and commutative rings: in a field, all nonzero elements are units, while in a commutative ring, no nonzero elements need be units, as <xref ref="thm-cri-field" /> demonstrates.
   </p>
+
+  <example>
+    <statement>
+      <p>
+        We describe the units in <m>\Z[x]</m>. Notice that for <m>p(x)q(x)\in\Z[x]</m> the leading coefficient of <m>p(x)\cdot q(x)</m> is
+        <m>c_{m+n} = a_0b_{m+n} +a_1b_{m+n-1}+\dots + a_nb_m</m>
+      </p>
+    </statement>
+  </example>
   <theorem xml:id="thm-cri-field">
     <statement>
       <p>

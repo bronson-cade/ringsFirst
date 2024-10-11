@@ -550,7 +550,7 @@
       not both zero.
       We will return to this idea several times, even after we have left the familiar realm of the integers.
     </p>
-    <theorem xml:id="theorem_bezoutint">
+    <theorem xml:id="thm_bezoutIdentity">
       <title>B&#xe9;zout's Identity</title>
       <idx>B&#xe9;zout's Identity</idx>
       <statement>
@@ -613,7 +613,7 @@
       <proof>
       <p>
         Suppose <m>\gcd(a,b) = 1</m>.
-        By <xref ref="theorem_bezoutint">Theorem</xref>,
+        By <xref ref="thm_bezoutIdentity">Theorem</xref>,
         there are integers <m>x</m> and <m>y</m> such that
         <me>
           ax+by = 1
