@@ -487,7 +487,7 @@
           <me>(acbf+bdae)(bdf) = b^2df(acf+ade).</me>
         </p>
         <p>
-          It is a consequence of the axioms that left and right-distributivity are equivalent, see exercise ????. We show how 
+          It is a consequence of the axioms that left and right-distributivity are equivalent, see <xref ref="exer_leftDistributiveIFFRightDistributive"/>. We show how 
           to prove this exercise in this example:
           <md>
             <mrow> \left(\frac{a}{b} + \frac{c}{d}\right)\cdot \frac{e}{f}\amp= \frac{e}{f}\cdot\left(\frac{a}{b} + \frac{c}{d}\right) </mrow>
@@ -820,7 +820,7 @@
       <p> 
         Define the set of rationals <em>adjoin</em> <m>\sqrt{-5}</m> by: <me>
         \Q(\sqrt{-5}) = \{a+b\sqrt{-5}\mid a,b\in\mathbb{Q}\}.
-        </me> This is a subset of <m>\mathbb{C}</m>. We claim that <m>\Q(\sqrt{d})</m> is a <em>subfield</em> 
+        </me> This is a subset of <m>\mathbb{C}</m>. We claim that <m>\Q(\sqrt{-5})</m> is a <em>subfield</em> 
         of <m>\mathbb{C}</m>
       </p>
 
@@ -861,4 +861,186 @@
     for any <m>d\in\Q</m> such that <m>\sqrt{d}\notin\Q</m> the proof will go through exactly the same. You will carry this out in Exercise????
   </p>
   </subsection>
+
+
+  <exercises xml:id="exers_primesFactorization">
+    <title>Exercises</title>
+    <exercise xml:id="exer_primesFactorizationTF" label="exer_primesFactorizationTF">
+      <statement>
+        <p>
+          Mark the following as true or false.
+        </p>
+        <ol>
+          <li>In a field, every element has a multiplicative inverse. </li>
+          <li><m>\mathbb{Z}/5</m> is a field. </li>
+          <li><m>\mathbb{Z}/6</m> is a field. </li>
+          <li>In a field, every non-zero element has a multiplicative inverse. </li>
+          <li>In a field, the additive identity is also the multiplicative identity. </li>
+          <li>In a field, the distributive laws hold. </li>
+          <li>In a field, addition is commutative.</li>
+          <li>TIn a field, multiplication is commutative. </li>
+          <li><m>\mathbb{Z}</m> is a field with the usual operations of addition and multiplication.</li>
+          <li><m> \mathbb{Q}</m> is a field with the usual operations of addition and multiplication.</li>
+          <li><m> \mathbb{R}</m> is a field with the usual operations of addition and multiplication.</li>
+          <li><m> \mathbb{C}</m> is a field with the usual operations of addition and multiplication.</li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Consider the set <me>\Q(i) = \{a+bi\mid a,b\in\mathbb{Q}\}</me> where <m>i^2=-1</m> and 
+          addition and multiplication are defined in the usual way: 
+          <md>
+            <mrow>(a+bi) + (c+di) \amp= (a+c)+(b+d)i</mrow>
+            <mrow>(a+bi)\cdot (c+di)\amp= (ac-bd)+(ad+bc)i.</mrow>
+          </md>
+        </p>
+        <ol>
+          <li>
+            <p>
+              Prove <m>\Q(i)</m> is a field only using <xref ref="def_field"/>.
+            </p>
+            <p>
+              Prove <m>\Q(i)</m> is a field using the <xref ref="thm_subfieldTest"/>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Consider the set 
+          <me>L = \left\{\begin{bmatrix} a \amp -b \\ b \amp a \end{bmatrix}\mid a,b\in\mathbb{R}\right\}.</me> 
+          Prove that \(L\) is a field with the usual addition and multiplication of matrices. 
+        </p>
+        <ol>
+          <li>
+            Prove that \(L\) is a field with the usual addition and multiplication of matrices. 
+          </li>
+          <li>
+            Is there an element <m>A\in L</m> such that <m>A^2=-I_2</m> (the <m>2\times2</m> identity matrix)? That is, 
+            can you solve the equation <m>x^2+1=0</m> in <m>L</m>?
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that in a field, the additive identity is unique. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p> 
+          Prove that in a field, the multiplicative identity is unique.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p> 
+          Prove that in a field, the product of the additive identity and any element is <m>0</m>. Does your proof handle the edge case <m>0\cdot 0</m>?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="exer_leftDistributiveIFFRightDistributive">
+      <statement>
+        <p>
+          Prove that if additive and multiplicative axioms of a field hold, then the left distributive law:
+          <me>a\cdot(b+c)  = a\cdot b+a\cdot c</me> 
+          holds if and only if the right distributive law:
+          <me>(a+b)\cdot c = a\cdot c + b\cdot c</me> 
+          holds. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <title>Cancellation Law for Fields</title>
+      <statement>
+        <p>
+          Prove that the cancellation law holds in a field: If <m>ab=ac</m> and <m>a\ne 0</m>, then <m>b=c</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p> Let
+          <me>L = \{a+b\alpha\mid a,b\in\mathbb{F}_2, \alpha^2 = 1+\alpha\}.</me> 
+          Define an addition and multiplication by 
+          <md>
+            <mrow>(a+b\alpha) + (c+d\alpha) \amp= (a+c) + (b+d)\alpha </mrow>
+            <mrow>(a+b\alpha)\cdot (c+d\alpha) \amp= (ac+bd) + (ad+bc+bd)\alpha</mrow>
+          </md>
+        </p>
+        <ol>
+          <li>
+            <p>
+              List all of the elements of <m>L</m>. Keep in mind <xref ref="def_Fp"/>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Compute the addition and multiplication tables for <m>L</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>L</m> is a field.
+            </p>
+          </li>
+          <li>
+            <p>
+              We often write <m>\mathbb{F}_{2^2}</m> for this field. Explain why we might do that.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <notation>
+        <usage>\Q(\sqrt{d})</usage>
+        <description>Rationals Adjoin <m>\sqrt{d}</m></description>
+      </notation>
+      <idx><h>Quadratic Extensions of <m>\Q</m></h></idx>
+      <statement>
+        <p>
+          Suppose that <m>d\in\Q</m> is such that <m>\sqrt{d}\notin \Q</m>. Define the rationals adjoin <m>\sqrt{d}</m> by 
+          <me>\Q(\sqrt{d})=\{a+b\sqrt{d}\mid a,b\in\Q\}</me>
+          where addition and multiplication are defined by
+          <md>
+            <mrow>(a_1+b_1\sqrt{d})+(a_2+b_2\sqrt{d}) \amp= (a_1+a_2) + (b_1+b_2)\sqrt{d}</mrow>
+            <mrow> (a_1+b_1\sqrt{d})\cdot(a_2+b_2\sqrt{d})\amp= (a_1a_2+db_1b_2) + (a_1b_2+a_2b_1)\sqrt{d}. </mrow>
+          </md>
+        </p>
+        <ol>
+          <li>
+            <p>
+              Prove <m>\Q(\sqrt{d})</m> is a field. You may appeal to <xref ref="thm_subfieldTest" text="title"/> as in <xref ref="ex_qAdjoinNegative5"/>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>\Q(\sqrt{d})</m> has <m>\Q</m> as a subfield or equivalently that <m>\Q(\sqrt{d})</m> is an extension of <m>\Q</m>. 
+              This type of extension is called a <term>quadratic extension</term>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+      
+    </exercise>
+
+  </exercises>
 </section>

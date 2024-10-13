@@ -438,7 +438,7 @@
   <title>Emmy Noether</title>
   <p>
   <figure>
-  <image source="../../images/Noether.jpg" width="50%">
+  <image source="../images/Noether.jpg" width="50%">
     <shortdescription>Portrait of Emmy Noether</shortdescription>
   </image>
   </figure>
@@ -1168,8 +1168,28 @@
   <example>
     <statement>
       <p>
-        We describe the units in <m>\Z[x]</m>. Notice that for <m>p(x)q(x)\in\Z[x]</m> the leading coefficient of <m>p(x)\cdot q(x)</m> is
-        <m>c_{m+n} = a_0b_{m+n} +a_1b_{m+n-1}+\dots + a_nb_m</m>
+        We describe the units in <m>\Z[x]</m>. Notice that for <m>p(x)q(x)\in\Z[x]</m>, of degrees <m>m,n</m> respectively, 
+        the leading coefficient of <m>p(x)\cdot q(x)</m> is
+        <me>c_{m+n} = a_0b_{m+n} +a_1b_{m+n-1}+\dots + a_nb_m.</me>
+        But <m>a_i = 0</m> for <m>i\ge </m> and <m>b_j=0</m> for <m>j\ge n</m>. Using this observation, we can conclude that <m>c_{m+n}=a_mb_n</m>, 
+        see Exercise???? Since <m>a_m,b_n\ne 0</m> and the product of two non-zero integers remains non-zero, we conclude that <m>c_{m+n}\ne 0</m>. 
+        In particular, 
+        <me>
+          \deg(p\cdot q) = \deg(p)+\deg(q).
+        </me>
+      </p>
+      <p>
+        Now suppose that <m>p\cdot q = 1</m> in <m>\Z[x]</m>. Then 
+        <md>
+          <mrow> 0\amp=\deg(1) </mrow>
+          <mrow> \amp=\deg(p\cdot q) </mrow>
+          <mrow> \amp=\deg(p) + \deg(q). </mrow>
+        </md>
+        Since <m>\deg(p),\deg(q)\geq 0</m>, the only way this can happen is if <m>\deg(p) = \deg(q) = 0</m> so that <m>p,q</m> are constant polynomials. 
+        Thus <m>p,q</m> are units in <m>\Z</m>. We conclude
+        <me>
+          \Z[x]^\times = \Z^\times = \{\pm 1\}.
+        </me>
       </p>
     </statement>
   </example>
@@ -1186,7 +1206,212 @@
       The only thing missing from the ring axioms is the existence of multiplicative inverses for nonzero elements.
     </p>
   </proof>
+
+  <exercises xml:id="exer_rings">
+    <exercise>
+      <statement>
+        <p>
+          Mark the following as true or false.
+        </p>
+        <ol>
+          <li>
+            <p>
+              All fields are rings.
+            </p>
+          </li>
+          <li>
+            <p>
+              All rings are fields.
+            </p>
+          </li>
+          <li>
+            <p>
+              All rings are commutative.
+            </p>
+          </li>
+          <li>
+            <p>
+              Addition in any ring is commutative and associative.
+            </p>
+          </li>
+          <li>
+            <p>
+              Multiplication in any ring is commutative and associative.
+            </p>
+          </li>
+          <li>
+            <p>
+              In a ring, the left- and right-distibutive laws hold.
+            </p>
+          </li>
+          <li>
+            <p>
+              In a ring, only the left-distributive law is guaranteed to hold.
+            </p>
+          </li>
+          <li>
+            <p>
+              All rings are rngs, but not all rngs are rings.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z</m> is a ring with the usual operations of addition and multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Q</m> is a ring with the usual operations of addition and multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\R</m> is a ring with the usual operations of addition and multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>M_2(\Q)</m> is a ring with the usual operations of addition and multiplication.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Consider the polynomial ring with integer coefficients <m>\mathbb{Z}[x]</m>. Prove that the left- and right-distributive laws hold. 
+          You can use that polynomial multiplication is commutative to simplify some of your work.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <title>Gaussian Integers</title>
+      <statement>
+        <p>
+          The <term>Gaussian Integers</term> are the subset of <m>\C</m> given by
+          <me>\Z[i] = \{a+bi\in \C\mid a,b,\in\Z\}.</me>
+        </p>
+        <ol>
+          <li>
+            <p>
+              Using the usual addition and multiplication in <m>\C</m>, prove that the Gaussian Integers are a ring (don't appeal to <xref ref="thm_subringTest"/>).
+            </p>
+          </li>
+          <li>
+            <p>
+              Use the <xref ref="thm_subringTest"/> to prove that the Gaussian Integers are a ring.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <notation>
+        <usage>M_n(R)</usage>
+        <description>Square Matrices over a Ring</description>
+      </notation>
+      <statement>
+        <p>
+          Consider the set of <m>2\times 2</m> matrices with real entries, <m>M_2(\mathbb{R})</m>, as in <xref ref="ex_M2R"/>. 
+        </p>
+        <ol>
+          <li>
+            <p>
+              Prove <m>M_2(\mathbb{R})</m> is a ring with the usual matrix addition and matrix multiplication.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is special about <m>\R</m>? Does your proof work if <m>\R</m> is replaced by an arbitrary ring <m>R</m>?
+            </p>
+          </li>
+          <li>
+            <p>
+              What is special about <m>2</m>? What about the set of <m>n\times n</m> matrices with entries in a ring <m>R</m>, denoted <m>M_n(R)</m>?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove the set of integer multiples of <m>3</m>: 
+          <me>3\mathbb{Z} = \{3k\mid k\in\mathbb{Z}\}</me> 
+          is a rng but not a ring. You can appeal to the subrng test but also be able to do it straight from the definition.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that in a ring (or rng), the additive identity is unique.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that in a ring (or rng), the multiplicative identity is unique.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that in a ring (or rng), the product of the additive identity and any element is 0.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Upper Triangular Matrices</title>
+      <notation>
+        <usage>UT_n(R)</usage>
+        <description>Upper Triangular Matrices</description>
+      </notation>
+      <idx><h>Upper Triangular Matrices</h></idx>
+      <statement>
+        <p>
+          Use the subring test to prove that the collection of upper triangular matrices <m>2\times 2</m>-matrices over a general ring 
+          <m>R</m>, denoted <m>UT_2(R)</m> forms a ring. An upper triangular <m>2\times2</m>-matrix looks like 
+          <me>\begin{bmatrix}
+            a \amp b \\ 0_R \amp c
+            \end{bmatrix}
+          </me>
+          where <m>a,b,c\in R</m>. 
+        </p>
+      </statement>
+    </exercise>
+
+  <exercise>
+    <idx><h>Lower Triangular Matrices</h></idx>
+    <statement>
+      <p>
+        How would the previous proof change with Lower Triangular Matrices?
+      </p>
+    </statement>
+  </exercise>
   
+  <exercise>
+    <statement>
+      <p>
+        Explain why the set of <m>2\times 2</m> upper uni-triangular matrices with coefficients in a ring <m>R</m> is not a ring. A <m>2\times2</m>
+        upper uni-triangular matrix is a matrix of the form:
+        <me>\begin{bmatrix}
+          1_R \amp a \\ 0_R \amp 1_R
+          \end{bmatrix}
+        </me>
+        where <m>a\in R</m>. 
+      </p>
+    </statement>
+  </exercise>
+  
+</exercises>
 </subsection>
   <references>
       <biblio xml:id="Curto2013">
