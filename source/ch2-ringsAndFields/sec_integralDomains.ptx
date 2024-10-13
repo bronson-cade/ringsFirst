@@ -63,6 +63,7 @@
       </p>
     </solution>
   </exploration>
+  <!--
   <investigation>
     <statement>
       <p>
@@ -76,6 +77,7 @@
       </p>
     </answer>
   </investigation>
+-->
   <theorem>
     <statement>
       <p>
@@ -187,6 +189,40 @@
       </p>
     </statement>
    </activity>
+   <example xml:id="ex_gaussianIntegersAreDomain">
+    <title>Gaussian Integers are a Domain</title>
+    
+    <statement>
+      <p>
+        The Gaussian Integers <m>\Z[i]</m> are a domain. Indeed, they  
+        are a subring of the field <m>\C</m>. We will see in <xref ref="thm_subringOfDomainIsDomain"/> 
+        that this is sufficient to deduce they are a domain.
+      </p>
+      <p>
+        For now, we know that as a subring of a commutative ring, the multiplication in <m>\Z[i]</m> is commutative.
+        Suppose there are <m>a+bi,c+di\in \Z[i]</m> such that their product is zero:
+        <md>
+          <mrow>0 \amp= (a+bi)\cdot (c+di)</mrow>
+          <mrow> \amp=(ac-bd) + (ad+bc)i </mrow>
+        </md>
+        which tells us <m>ac-bd=0</m> and <m>ad+bc=0</m>. 
+      </p>
+      <p>
+        Let's look at <m>ac=bd</m>. One of two cases happend: <m>a=0</m> or <m>a\ne 0</m>. If <m>a=0</m>, then 
+        either <m>b=0</m> or <m>d=0</m> as <m>\Z</m> is a domain. If <m>b=0</m>, then <m>a+bi=0</m> as desired. 
+        If <m>d=0</m>, then <m>ad+bc=0</m> tells us <m>bc=0</m>. Again, <m>b=0</m> or <m>c=0</m>. If <m>b=0</m>, 
+        then <m>a+bi=0</m> and we are finished. Otherwise <m>c=0</m> and <m>c+di=0</m> and we are finished.
+      </p>
+      <p>
+        If <m>a\ne 0</m>, then a similar analysis shows that none of <m>b,c,d</m> can be zero. Multiply <m>ac=bd</m> through by 
+        <m>d</m> and multiply <m>ad=-bc</m> through by <m>c</m> we get: <m>acd = bd^2</m> and <m>acd=-bc^2</m>. Hence, 
+        <m>bd^2=-bc^2</m> and since <m>b\ne 0</m> we can cancel it to get <m>d^2=-c^2</m>. The left hand side is positive while the right hand side 
+        is negative, a contradiction. We conclude that <m>\Z[i]</m> does not have zero-divisors and it is therefore a domain.
+      </p>
+
+    </statement>
+    
+   </example>
   <theorem xml:id="theorem_everyfieldisadomain">
     <statement>
       <p>
@@ -316,7 +352,7 @@
   
   <p>
     When considering sets of polynomials,
-    as we do in <xref ref="sec-primes-factorization" /> (particularly in <xref ref="SubSec-Factoring-Polynomials" />),
+    as we do in <xref ref="sec-primesFactorization" /> (particularly in <xref ref="SubSec-Factoring-Polynomials" />),
     the following results will be quite useful.
   </p>
 
@@ -382,6 +418,179 @@
       </answer>
     </investigation>
   </subsection>
+
+  <exercises xml:id="exers_integralDomains">
+    <exercise>
+      <statement>
+        <p>
+          Mark the following as true or false.
+        </p>
+        <ol>
+          <li>
+            <p>
+              All fields are integral domains.
+            </p>
+          </li>
+          <li>
+            <p>
+              All rings are domains.
+            </p>
+          </li>
+          <li>
+            <p>
+              All domains are fields
+            </p>
+          </li>
+          <li>
+            <p>
+              All integral domains are rings
+            </p>
+          </li>
+          <li>
+            <p>
+              All integral domains are commutative.
+            </p>
+          </li>
+          <li>
+            <p>
+              In an integral domain, there are no zero divisors.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z</m> is an integral domain.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>M_2(\R)</m> is an integral domain.
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z/6</m> is an integral domain
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>\Z/5</m> is a domain.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Find two factorizations of <m>2024</m> into products of irreducibles. Why does this not contradict the <xref ref="thm_fundamentalTheoremOfArithmetic" text="title"/>?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that the <xref ref="exer_gaussianIntegers" text="title"/> are a domain.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Find all the units in the Gaussian Integers. THat is, compute <m>\Z[i]^\times</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Square matrices over a ring are never an integral domain (unless the coefficient rings is and <m>n=1</m>). Prove for a general ring 
+          that <m>M_n(R)</m> is not a domain for <m>n>1</m>. 
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          The <xref ref="thm_subringTest" text="title"/> is a convenient way to test if a subring is a ring. Formulate and prove a sub-domain test.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          In the Gaussian Integers, we can factor <m>2+2i</m> in at least two ways: 
+          <me>2+2i = 2\cdot(1+i) = 2i\cdot(1-i).</me>
+          Clearly <m>2\ne 2i,(1-i)</m> and <m>1+i\ne 2i,(1-i)</m>. Use the definition of units and associates to explain what is happening here.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Verify that 
+          <me>\Z[\sqrt{-2}]=\{a+b\sqrt{-2}\mid a,b\in\Z\}</me>
+          is a subring of <m>\C</m>. Is it a sub-domain?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Verify that
+          <me>\Z[\sqrt[3]{2}]=\{a+b\sqrt[3]{2}+c\sqrt[3]{4}\mid a,b,c\in\Z\}</me>
+          is a subring of <m>\C</m>. Is it a sub-domain?
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that any subring of an integral domain is an integral domain.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="exer_nilpotent">
+      <idx><h>Nilpotent Elements</h></idx>
+      <title>Nilpotent Elements</title>
+      <statement>
+        <p>
+          An element <m>a\in R</m> is called <term>nilpotent</term> if there exists <m>n\in\N</m> such that <m>a^n = 0_R</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Verify that <m>A = \begin{bmatrix} 0 \amp 1 \\ 0 \amp 0 \end{bmatrix}</m> is a nilpotent element (of whatever coefficient ring you want).
+            </p>
+          </li>
+          <li>
+            <p>
+              Verify that <m>\bar{2}</m> is a nilpotent element of <m>\Z/8</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove that a non-zero nilpotent element is a zero-divisor.
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that <m>\bar{2}\in\Z/6</m> is a zero-divisor but not nilpotent. That is, the converse to the previous part is false in general.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that if <m>a\in R</m> is nilpotent, then <m>1-a\in R^\times</m>. 
+        </p>
+      </statement>
+      
+    </exercise>
+  </exercises>
+
+
   <references>
     <biblio xml:id="Curto2013"> C. Curto, V. Itskov, A. Veliz-Cuba, N. Youngs, <em>The Neural Ring:
       An Algebraic Tool for Analyzing the Intrinsic Structure of Neural Codes</em>, Bull. Math. Bio.

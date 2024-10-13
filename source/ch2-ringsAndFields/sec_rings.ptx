@@ -1207,7 +1207,7 @@
     </p>
   </proof>
 
-  <exercises xml:id="exer_rings">
+  <exercises xml:id="exers_rings">
     <exercise>
       <statement>
         <p>
@@ -1287,7 +1287,7 @@
       </statement>
     </exercise>
 
-    <exercise>
+    <exercise xml:id="exer_gaussianIntegers">
       <title>Gaussian Integers</title>
       <statement>
         <p>
@@ -1306,6 +1306,13 @@
             </p>
           </li>
         </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Compute the units in <m>\Z[i]</m>. 
+        </p>
       </statement>
     </exercise>
     <exercise>

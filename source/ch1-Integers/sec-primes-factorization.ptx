@@ -126,7 +126,7 @@
     be factored into products of primes, and that this factorization can happen in only one way. As
     the semester progresses, we will see other theorems like this one, and catch glimpses of other
     ways to think about the <em>unique factorization property</em>. </p>
-  <theorem xml:id="ftarith">
+  <theorem xml:id="thm_fundamentalTheoremOfArithmetic">
     <idx><h>Fundamental Theorem of Arithmetic</h></idx>
     <title>Fundamental Theorem of Arithmetic</title>
     <p>
