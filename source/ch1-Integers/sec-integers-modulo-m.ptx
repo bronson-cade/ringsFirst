@@ -128,7 +128,7 @@
       <idx>congruence modulo <m>m</m></idx>
       <statement>
         <p> Let <m>a,b\in \Z</m> and <m>m \in \N</m>, <m>m > 1</m>. We say <term><m>a</m> is
-          congruent to <m>b</m> modulo <m>m</m></term> if <m>m\mid a-b</m>. We write <m>a \equiv
+          congruent to <m>b</m> modulo <m>m</m></term> if <m>m\mid b-a</m>. We write <m>a \equiv
           b\mod m</m> or we write <m>a\equiv_m b</m> as shorthand. </p>
       </statement>
     </definition>

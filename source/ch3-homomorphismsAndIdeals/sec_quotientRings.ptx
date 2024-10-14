@@ -19,17 +19,16 @@
   </objectives>
   <introduction>
     <p>
-    		If the only rings that existed were polynomial rings, familiar systems of numbers like <m>\Z, \Q, \R, \C</m>, and matrix rings, there would still be enough to justify defining the concept of a ring and exploring its properties. 
-    		However, these are not the only rings that exist.
-    		In this section, we explore a way of building new rings from old by means of ideals.
+    		If the only rings that existed were polynomial rings, familiar systems of numbers like <m>\Z/m, \Z, \Q, \R, \C</m>, polynomial rings, and matrix rings, 
+        there would still be enough to justify defining the concept of a ring and exploring its properties. 
+    		However, these are not the only rings that exist. In this section, we explore a way of building new rings from old by means of ideals.
     		To better understand these new rings, we will also define two new classes of ideals: prime ideals, and maximal ideals.
     		We end by briefly connecting these rings to a familiar problem from high school algebra.
     </p>
 </introduction>
 
-<subsection>
+<subsection xml:id="ssec_congruenceModuloI">
 	<title>Congruence modulo <m>I</m></title>
-	
 	<p>
 		The major concept of this section is the notion of congruence modulo <m>I</m>.
 		One can reasonably think of this idea as a generalization of congruence modulo <m>m</m> in <m>\Z</m>.
@@ -47,30 +46,55 @@
         </p>
       </statement>
     </definition>
-    
+
     <activity>
     		<statement>
     			<p>
     				Determine (with brief justification) whether <m>a + I = b + I</m> in the following rings <m>R</m>.
     			</p>
 			<ol>
-				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = \ideal{6}</m>, <m>R = \Z</m></li>
-				<li><m>a = 10</m>, <m>b = 4</m>, <m>I = \ideal{7}</m>, <m>R = \Z</m></li>
-				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = \ideal{6}</m>, <m>R = \Z[x]</m></li>
-				<li><m>a = x^2+x-2</m>, <m>b = x-1</m>, <m>I = \ideal{x+1}</m>, <m>R = \Q[x]</m></li>
-				<li> (<em>Challenge.</em>) <m>a = x^3</m>, <m>b = x^2+2x</m>, <m>I = \ideal{y-x^2, y-x-2}</m>, <m>R = \Q[x,y]</m></li>
+				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = (6)</m>, <m>R = \Z</m></li>
+				<li><m>a = 10</m>, <m>b = 4</m>, <m>I = (7)</m>, <m>R = \Z</m></li>
+				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = (6)</m>, <m>R = \Z[x]</m></li>
+				<li><m>a = x^2+x-2</m>, <m>b = x-1</m>, <m>I = (x+1)</m>, <m>R = \Q[x]</m></li>
+				<li> (<em>Challenge.</em>) <m>a = x^3</m>, <m>b = x^2+2x</m>, <m>I = (y-x^2, y-x-2)</m>, <m>R = \Q[x,y]</m></li>
 			</ol>
 		</statement>
 		<solution>
-			TBD
 			
-			
-			last one: <m>x^3 - x^2 - 2x = x(x-2)(x+1) = -x(y-x^2) + x(y-x-2)</m>.
+      <ol>
+        <li>
+          <p>
+            We have <m>3-9 = -6 = (-1)\cdot 6\in (6)</m> so <m>9+(6) = 3+ (6)</m> in <m>\Z</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            We have <m>4-10 = -6\notin (7)</m> as <m>-6\neq 7k</m> for any <m>k\in\Z</m>. Thus 
+            <m>10+(7)\neq 4+(7)</m> in <m>\Z</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>3-9 = -6 = (-1)\cdot 6\in (6)</m>. Thus <m>9+(6) = 3+(6)</m> in <m>\Z[x]</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>x-1-(x^2+x-2) = -x^2+1 = -(x-1)(x+1)\in (x+1)</m>. Thus <m>x-1+(x+1) = x^2+x-2 + (x+1)</m> 
+            in <m>\Q[x]</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>x^3 - x^2 - 2x = x(x-2)(x+1) = -x(y-x^2) + x(y-x-2)</m>. Thus
+            <me>x^3+(y-x^2,y-x-2) = x^2+x+ (y-x^2,y-x-2)</me>
+            in <m>\Q[x,y]</m>.
+          </p>
+        </li>
+      </ol>
 		</solution>
 	</activity>
-
-
-    
     
     <exploration>
       <statement>
@@ -90,12 +114,68 @@
       Observe that if <m>b-a \in I</m>,
       then there is some <m>x\in I</m> such that <m>b-a = x</m>,
       and so <m>b = a+x</m>.
-
     </p>
+
+    <p>
+      The notation <m>a+I = b+I</m> is more than just notation. It is an equality of sets. 
+      Given any ideal <m>I\subseteq R</m> and any <m>a\in R</m>, define 
+      <me>a+I = \{a+i\mid i\in I\}</me>
+      to be the set of all translates of <m>I</m> under <m>a</m>.
+    </p>
+
+    <theorem xml:id="thm_congruenceIsEquality">
+      <statement>
+        <p>
+          Let <m>I\subseteq R</m> be an ideal and <m>a,b\in R</m>. Then <m>a</m> is congruent to <m>b</m> modulo <m>I</m> if and 
+          only if we have equality of sets <m>a+I = b+I</m>.  
+        </p>
+      </statement>
+      <proof>
+        <p>
+          Suppose <m>a</m> is congruent to <m>b</m> modulo <m>I</m>. Then <m>b-a\in I</m> so that <m> b = a+x</m> for some <m>x\in I</m>.
+          Take any <m>i\in I</m>, then <m>b+i = a+(x+i)\in a+I</m> as <m>x+i\in I</m>. Thus <m>b+I\subseteq a+I</m>. Using instead <m>a = b+(-x)</m> 
+          we have, similarly, that <m>a+I\subseteq b+I</m>. Thus <m>a+I = b+I</m>.
+        </p>
+        <p>
+          Suppose <m>a+I = b+I</m>. Since <m>0\in I</m>, we know that <m>b = b+0\in b+I</m>. Since <m>a+I = b+I</m>, we have that <m>b\in a+I</m>. 
+          Thus <m>b = a + x</m> for some <m>x\in I</m>. Equivalently <m>b-a=x\in I</m>. Thus <m>a</m> is congruent to <m>b</m> modulo <m>I</m>.
+        </p>
+      </proof>
+    </theorem>
+    
+    <definition xml:id="def_cosetsIdeal">
+       <notation>
+        <usage>a+I</usage>
+        <description>Coset (ideal)</description>
+      </notation>
+      <idx><h>coset (ideal)</h></idx>
+
+      <statement>
+        <p>
+          Given an ideal <m>I\subseteq R</m> in a commutative ring <m>R</m>. A <term>coset</term> of <m>I</m> is a set of the form 
+          <me>a+I = \{a+i\mid i\in I\}.</me>
+          The collection of all cosets is denoted <m>R/I</m> or <m>\bar{R}</m> if <m>I</m> is understood:
+          <me>R/I = \{a+I\mid a\in R\}.</me>
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>
+          We take a minute to observe that in <m>\Z</m> the notion of congruence: <m>a\equiv b</m> modulo <m>m</m> is equivalent to the definition here. 
+          Indeed, any <m>m\in\Z</m> defines a principal ideal <m>(m)</m>. If <m>a\equiv_m b</m>, then <m>b-a = mk</m> for some <m>k\in \Z</m>. Hence, <m>b-a\in (m)</m>.
+          And conversely, if <m>a+(m) = b+(m)</m>, then <m>b-a\in (m)</m>. Thus there exists <m>k\in\Z</m> with <m>b-a = mk</m> and so <m>a\equiv_mb</m>.
+        </p>
+        <p>
+          In particular, this is a successful generalization of the notion of congruence modulo <m>m</m>.
+        </p>
+      </statement>
+    </example>
     
     <p>
     	As was the case in <m>\Z_m</m>, congruence modulo <m>I</m> is an equivalence relation.
-    	</p>
+    </p>
 
     <theorem>
       <statement>
@@ -121,65 +201,90 @@
       </p>
     </proof>
     </theorem>
+  
+  </subsection>
+
+    <subsection xml:id="ssec_quotientRings">
+      <title>Quotient Rings</title>
+      
+      <aside>
+        <title>Notation for Integers Modulo <m>m</m></title>
+        
+        <p>
+          It's standard practice to identify the principal ideal <m>(r)</m> with <m>r</m> when no confusion can arise.  
+          In <m>\Z</m>, the set of equivalence classes modulo <m>(m)</m> is denoted by <m>\Z/m</m> instead of <m>\Z/(m)</m>. 
+        </p>
+      </aside>
+
     <p>
-      The set of equivalence classes under this relation is denoted <m>R/I</m>.
-      What is more, this is not merely a set of equivalence classes.
+      The set of equivalence classes under this relation is denoted <m>R/I</m>. In particular, What is more, this is not merely a set of equivalence classes.
       As the next two theorems demonstrate, this set possesses two algebraic operations that extend naturally from those of <m>R</m>.
     </p>
     
-
-    
-    <theorem xml:id="thm-addition-mod-I">
+    <theorem xml:id="thm_additionModI">
       <statement>
         <p>
-          Let <m>R</m> be a ring and <m>I</m> an ideal of <m>R</m>.
-          If <m>a,b,c,d\in R</m> such that
-          <m>a+I = b+I</m> and <m>c+I = d+I</m>,
-          then <m>(a+c) + I = (b+d) + I</m>.
+          Let <m>R</m> be a ring and <m>I</m> an ideal of <m>R</m>. If <m>a_1,a_2,b_1,b_2\in R</m> such that
+          <m>a_1+I = a_2+I</m> and <m>b_1+I = b_2+I</m>, then <m>(a_1+b_1) + I = (a_2+b_2) + I</m>.
         </p>
       </statement>
       <proof>
       <p>
-        Suppose <m>a+I = b+I</m> and <m>c+I = d+I</m>.
-        Then <m>b-a =x \in I</m> and <m>d-c = y \in I</m>.
-        Adding, we have <m>(b-a) + (d-c) = (b+d) - (a+c) = x+y \in I</m>.
-        Thus, <m>(b+d) + I = (a+c) + I</m>.
+        Suppose <m>a_1+I = a_2+I</m> and <m>b_1+I = b_2+I</m>.
+        Then <m>a_2-a_1 = x \in I</m> and <m>b_2-b_1 = y \in I</m>.
+        Adding, we have 
+        <me>(a_2+b_2) - (a_1+b_1) =(a_2-a_1) + (b_2-b_1) =  x+y \in I.</me>
+        Thus, <m>(a_1+b_1) + I = (a_2+b_2) + I</m>.
       </p>
     </proof>
     </theorem>
+
+    <p>
+      Note that the only requirement in the proof of this theorem is that <m>I</m> is closed under addition.
+    </p>
     
-    <theorem xml:id="thm-multiplication-mod-I">
+    <theorem xml:id="thm_multiplicationModI">
       <statement>
         <p>
-          Let <m>R</m> be a ring and <m>I</m> an ideal of <m>R</m>.
-          If <m>a,b,c,d\in R</m> such that
-          <m>a+I = b+I</m> and <m>c+I = d+I</m>,
-          then <m>ac + I = bd + I</m>.
+          Let <m>R</m> be a commutative ring and <m>I</m> an ideal of <m>R</m>.
+          If <m>a_1,a_2,b_1,b_2\in R</m> such that
+          <m>a_1+I = a_2+I</m> and <m>b_1+I = b_2+I</m>,
+          then <m>a_1b_1 + I = a_2b_2 + I</m>.
         </p>
       </statement>
       <proof>
       <p>
         As before, we observe that
-        <m>b-a = x\in I</m> and <m>d-c = y\in I</m>.
-        Write <m>b = x+a</m> and <m>d = c+y</m>.
-        Then <m>bd = (x+a)(c+y) = xc + xy + ac + ay = ac + \underbrace{(xc+xy+ay)}_{\in I}</m>,
-        so <m>bd - ac \in I</m>, and thus <m>bd + I = ac + I</m>.
+        <m>a_2-a_1 = x\in I</m> and <m>b_2-b_1 = y\in I</m>.
+        Write <m>a_2 = a_1+x</m> and <m>b_2 = b_1+y</m>.
+        Then 
+        <md>
+          <mrow>  a_2b_2 =\amp (a_1+x)(b_1+y) </mrow> 
+          <mrow> \amp= a_1b_1+a_1y +xb_1+xy</mrow>
+          <mrow> \amp= a_1b_1 + \underbrace{(a_1y+xb_1+xy)}_{\in I}</mrow>
+        </md>,
+        so <m>a_2b_2-a_1b_1 = a_1y+xb_1+xy \in I</m>. Therefore <m>a_1b_1 + I = a_1b_1 + I</m>.
       </p>
     </proof>
     </theorem>
+
+    <p>
+      The preceeding proof used two properties of <m>I</m>: closure under addition and closure under multiplication by <m>R</m>.
+    </p>
     
     <p>
       The previous two theorems together show that addition and multiplication on the set <m>R/I</m> is well-defined.
-      As these operations are built on the operations of <m>R</m>, it will likely not surprise you to learn that the usual <xref ref="def_ring" text="custom">axioms defining a ring</xref> also hold.
+      As these operations are built on the operations of <m>R</m>, it will likely not surprise you to learn that the usual 
+      <xref ref="def_ring" text="custom">axioms defining a ring</xref> also hold.
     </p>
     <theorem>
     <idx>quotient ring</idx>
       <statement>
         <p>
-          Let <m>R</m> be a commutative ring with identity <m>1_R</m>, <m>I</m> an ideal of <m>R</m>, and <m>a,b\in R</m>.
-          The set of equivalence classes modulo <m>I</m>, denoted <m>R/I</m>,
-          is a commutative ring (called the <term>quotient ring</term> of <m>R</m> by <m>I</m>) with identity <m>1_R + I</m> under the following operations:
-          <!-- the operations of addition modulo <m>I</m> and multiplication modulo <m>I</m> defined in <xref ref="thm-addition-mod-I" /> and <xref ref="thm-multiplication-mod-I" />. -->
+          Let <m>R</m> be a commutative ring, <m>I</m> an ideal of <m>R</m>, and <m>a,b\in R</m>.
+          The set of cosets of <m>I</m>, denoted <m>\bar{R} = R/I</m>,
+          is a commutative ring (called the <term>quotient ring</term> of <m>R</m> by <m>I</m>) with additive identity <m>0_R+I</m> and 
+          multiplicative identity <m>1_R + I</m> under the following operations:
         </p>
         <md>
           <mrow>(a+I) + (b+I) &amp; := (a+b) + I</mrow>
@@ -187,9 +292,73 @@
         </md>
       </statement>
       <proof>
-      	These operations were shown to be well-defined in <xref ref="thm-addition-mod-I" /> and <xref ref="thm-multiplication-mod-I" />.
+        <p>
+      	  These operations were shown to be well-defined in <xref ref="thm_additionModI" /> and <xref ref="thm_multiplicationModI" />. We need to show 
+          that, with these operations, all eight ring axioms hold and that multiplication is commutative. Take <m>a+I,b+I,c+I\in R/I</m>.
+        </p>
+        <p>
+          We begin with the additive axioms. For associativity:
+          <md>
+            <mrow>(a+I) + ((b+I)+(c+I)) \amp= (a+I) + ((b+c)+I) </mrow>
+            <mrow> \amp= (a+(b+c))+I</mrow>
+            <mrow>((a+I) + (b+I))+(c+I) \amp= ((a+b)+I) + (c+I) </mrow> 
+            <mrow> \amp= ((a+b)+c)+I.</mrow>
+          </md>
+          Since <m>R</m> has associative addition we have <m>a+(b+c) = (a+b)+c</m> and so 
+          <me>
+            a+(b+c) +I = (a+b)+c + I
+          </me>
+          the cosets are equal.
+        </p>
+        <p>
+          For commutativity:
+          <me>(a+I) + (b+I) = (a+b) + I = (b+a)+I = (b+I)+(a+I).</me>
+        </p>
+        <p>
+          For identity:
+          <me>(0_R+I)+(a+I) = (0_R+a) + I = a+I</me>
+          as <m>0_R</m> is the additive identity in <m>R</m>.
+        </p>
+        <p>
+          For inverses:
+          <me>(a+I) + ((-a)+I) = (a+(-a)) + I = 0_R + I</me>
+          and so the additive inverse of <m>a+I</m> is <m>-a+I</m>.
+        </p>
+        <p>
+          We now turn to the multiplicative axioms plus commutativity. For associativity:
+          <md>
+            <mrow> (a+I)((b+I)(c+I))\amp= (a+I)(bc+I) </mrow>
+            <mrow> \amp= a(bc) + I </mrow>
+            <mrow> ((a+I)(b+I))(c+I) \amp= (ab+I)(c+I) </mrow>
+            <mrow> \amp= (ab)c+I </mrow>
+          </md>
+          But multiplication in <m>R</m> is associative so that <m>a(bc) = (ab)c</m>. Hence,
+          <me>a(bc)+I = (ab)c+I.</me>
+        </p>
+        <p>
+          For commutativity:
+          <me>(a+I)(b+I) = (ab)+I = (ba)+I = (b+I)(a+I).</me>
+        </p>
+        <p>
+          For identity:
+          <me>(1_R+I)(a+I) = (1_R\cdot a)+I = a+I</me>
+          as <m>1_R</m> is the multiplicative identity in <m>R</m>.
+        </p>
+        <p>
+          Since <m>R/I</m> has commutative multiplication we only need to check the left-distributive axiom. 
+          <md>
+            <mrow>(a+I)( (b+I) + (c+I)) \amp= (a+I)( (b+c) + I) </mrow>
+            <mrow> \amp= (a(b+c)) + I </mrow>
+            <mrow> \amp= (ab+ac) + I</mrow>
+            <mrow>(a+I)(b+I)+ (a+I)(c+I) \amp= (ab)+I + (ac)+I </mrow>
+            <mrow> \amp= (ab+ac) + I </mrow>
+          </md>
+          where we have used that multiplication in <m>R</m> has the left-distributive property in line 3.
+        </p>
+        <p>
+          We conclude that <m>R/I</m> is a commutative ring.
+        </p>
       </proof>
-
     </theorem>
     
     <p>
@@ -203,9 +372,9 @@
           Be prepared to give an information justification of your thinking.
         </p>
         <ol>
-          <li>Suppose <m>R= \Z</m> and <m>I = \ideal{8}</m>. Calculate <m>(3+I) + (7+I)</m> and <m>(4+I)\cdot (6+I)</m>.</li>
-          <li>Let <m>R = \Z_3[x]</m> and <m>J = \ideal{x^2}</m>. List all elements of <m>R/J</m> (there should be 9 in total).</li>
-          <li>Set <m>R = \R[x]</m> and <m>I = \ideal{x^2-1}</m>. Find an element <m>f + I \in R/I</m> such that <m>(f+I)(2x+2 + I) = I</m>.</li>
+          <li>Suppose <m>R= \Z</m> and <m>I = (8)</m>. Calculate <m>(3+I) + (7+I)</m> and <m>(4+I)\cdot (6+I)</m>.</li>
+          <li>Let <m>R = \Z_3[x]</m> and <m>J = (x^2)</m>. List all elements of <m>R/J</m> (there should be 9 in total).</li>
+          <li>Set <m>R = \R[x]</m> and <m>I = (x^2-1)</m>. Find an element <m>f + I \in R/I</m> such that <m>(f+I)(2x+2 + I) = I</m>.</li>
         </ol>
       </statement>
     </activity>
@@ -218,7 +387,7 @@
     <exploration>
 	    	<statement>
 	    		<p>
-	    			Consider the ring <m>R=\Z_2[x]</m> and the ideals <m>I = \ideal{x^2-1}</m> and <m>J = \ideal{x^3 -x -1}</m>.
+	    			Consider the ring <m>R=\Z_2[x]</m> and the ideals <m>I = (x^2-1)</m> and <m>J = (x^3 -x -1)</m>.
 	    		</p>
 			<ol>
 				<li>List the elements of <m>R/I</m> and <m>R/J</m>.</li>
@@ -248,10 +417,10 @@
 				
 			</p>
 			<ol>
-				<li>Suppose <m>I = \ideal{f_1, f_2, \ldots, f_n}</m>. Prove that <m>(a,b)\in Z(I)</m> if and only if <m>f_j(a,b) = 0</m> for each <m>j\in \set{1,\ldots, n}</m>. Thus, <m>Z(I)</m> can be determined entirely by examining the generators of <m>I</m>.</li>
-				<li>Describe <m>Z(I)</m> given <m>I = \ideal{y-x^2}</m>.</li>
-				<li>(Challenge) Given <m>I = \ideal{y-x^2}</m> and <m>J = \ideal{y-x-2}</m>, describe <m>Z(I+J)</m> and <m>Z(I\cap J)</m>.</li>
-				<li>Given <m>I=\ideal{y-x^2}</m>, describe the relationship between the variables <m>x</m> and <m>y</m> in the quotient <m>R/I</m>. In what way have we restricted our polynomial <q>inputs</q> to the parabola <m>y = x^2</m>?</li>
+				<li>Suppose <m>I = (f_1, f_2, \ldots, f_n)</m>. Prove that <m>(a,b)\in Z(I)</m> if and only if <m>f_j(a,b) = 0</m> for each <m>j\in \set{1,\ldots, n}</m>. Thus, <m>Z(I)</m> can be determined entirely by examining the generators of <m>I</m>.</li>
+				<li>Describe <m>Z(I)</m> given <m>I = (y-x^2)</m>.</li>
+				<li>(Challenge) Given <m>I = (y-x^2)</m> and <m>J = (y-x-2)</m>, describe <m>Z(I+J)</m> and <m>Z(I\cap J)</m>.</li>
+				<li>Given <m>I= (y-x^2)</m>, describe the relationship between the variables <m>x</m> and <m>y</m> in the quotient <m>R/I</m>. In what way have we restricted our polynomial <q>inputs</q> to the parabola <m>y = x^2</m>?</li>
 			</ol>
 		</statement>
 		<solution>
@@ -289,33 +458,47 @@
 		In this section, we continue our exploration of quotient rings by looking more closely at properties of ideals.
 		We focus on particular properties of ideals that ensure that the quotient <m>R/I</m> is either a domain or a field.
 	</p>
-
+  
+  <aside>
+      <title>Fraktur Font</title>
+      <p>
+        The Fraktur font is a German typeface from the 16th century. It was long known as the <q>German typeface</q>. 
+        In 1941 it was banned by the Nazi government. It is usually used when denoting prime (<m>\mathfrak{p}</m>) and maximal (<m>\mathfrak{m}</m>) ideals. TBD
+      </p>
+    </aside>
 
     <definition>
     <idx>prime ideal</idx>
     <idx>ideal (prime)</idx>
       <statement>
         <p>
-          Let <m>R</m> be commutative with identity and <m>P\subsetneq R</m> a nonzero ideal.
-          We say <m>P</m> is <term>prime</term>
-          if whenever <m>a,b\in R</m> such that <m>ab\in P</m>,
-          we have <m>a\in P</m> or <m>b\in P</m>.
+          Let <m>R</m> be commutative with identity and <m>\mathfrak{p}\subsetneq R</m> a non-zero proper ideal.
+          We say <m>\mathfrak{p}</m> is <term>prime</term> if whenever <m>a,b\in R</m> such that <m>ab\in \mathfrak{p}</m>,
+          we have <m>a\in \mathfrak{p}</m> or <m>b\in \mathfrak{p}</m>.
         </p>
       </statement>
     </definition>
-    
-    
 
+    <p>
+      This definition arises by replacing <em>divides</em> with <em>is contained in</em> in the usual definition of prime element???
+      The following theorem shows that these definitions agree to the extent they can: prime elements generate prime ideals.
+    </p>
     
-    <theorem>
+    <theorem xml:id="thm_primeElementGeneratesPrimeIdeal">
       <statement>
         <p>
-          Let <m>R</m> be a domain and <m>p\in R</m> be prime.
-          Then <m>\ideal{p}</m> is a prime ideal.
+          Let <m>R</m> be a domain and <m>p\in R</m> be prime. Then <m>\mathfrak{p} = (p)</m> is a prime ideal.
         </p>
       </statement>
       <proof>
-      	TBD
+        <p>
+        Suppose <m>p</m> is a prime element of a domain and <m>\mathfrak{p} = (p)</m>. Suppose a product is in <m>\mathfrak{p}</m>, 
+        say <m>ab\in\mathfrak{p}</m>. Then there exists <m>r\in R</m> with <m>rp = ab</m>. Thus <m>p\mid ab</m>. Since <m>p</m> is prime, 
+        either <m>p\mid a</m> or <m>p\mid b</m>.
+        </p>
+        <p>
+          Without loss of generality assume <m>p\mid a</m>. Then there exists <m>s\in R</m> with <m>a = sp</m>. Hence, <m>a\in (p) = \mathfrak{p}</m>.
+        </p>
       </proof>
     </theorem>
     
@@ -327,27 +510,27 @@
           <ol>
             <li>
               <p>
-                <m>\ideal{9}</m> in <m>\Z</m>
+                <m>(9)</m> in <m>\Z</m>
               </p>
             </li>
             <li>
               <p>
-                <m>\ideal{11}</m> in <m>\Z</m>
+                <m>(11)</m> in <m>\Z</m>
               </p>
             </li>
             <li>
               <p>
-                <m>\ideal{x^2+1}</m> in <m>\R[x]</m>
+                <m>(x^2+1)</m> in <m>\R[x]</m>
               </p>
             </li>
             <li>
               <p>
-                <m>\ideal{x^2-1}</m> in <m>\R[x]</m>
+                <m>(x^2-1)</m> in <m>\R[x]</m>
               </p>
             </li>
             <li>
               <p>
-                <m>\ideal{x^2-5x+6, x^4+2x^3-10x^2+5x-2}</m> in <m>\R[x]</m>
+                <m>(x^2-5x+6, x^4+2x^3-10x^2+5x-2)</m> in <m>\R[x]</m>
               </p>
             </li>
           </ol>
@@ -359,20 +542,20 @@
             <li>
               <p>
                 Not prime.
-                <m>3\cdot 3= 9\in \ideal{9}</m>,
-                but <m>3\notin\ideal{9}</m>.
+                <m>3\cdot 3= 9\in (9)</m>,
+                but <m>3\notin(9)</m>.
               </p>
             </li>
             <li>
               <p>
                 Prime.
-                If <m>x\in \ideal{11}</m>, then <m>11|x</m> and 11 is prime.
+                If <m>x\in (11)</m>, then <m>11|x</m> and 11 is prime.
               </p>
             </li>
             <li>
               <p>
                 Prime.
-                Easy explanation is that <m>R[x]/\ideal{x^2+1}</m> is isomorphic to <m>\C</m>.
+                Easy explanation is that <m>R[x]/(x^2+1)</m> is isomorphic to <m>\C</m>.
                 <m>\ddot\smile</m> For now, though,
                 we know that <m>x^2+1</m> is irreducible,
                 and <m>R[x]</m> is a PID, so irreducibles are prime.
@@ -382,13 +565,13 @@
               <p>
                 Not prime.
                 <m>x^2-1 = (x-1)(x+1)</m>,
-                but <m>x\pm 1\notin \ideal{x^2-1}</m> for degree reasons.
+                but <m>x\pm 1\notin (x^2-1)</m> for degree reasons.
               </p>
             </li>
             <li>
               <p>
                 One may use the EA to show that <m>\gcd(x^2-5x+6,x^4+2x^3-10x^2+5x-2) = x-2</m>,
-                so <m>\ideal{x^2-5x+6, x^4+2x^3-10x^2+5x-2} = \ideal{x-2}</m>.
+                so <m>(x^2-5x+6, x^4+2x^3-10x^2+5x-2) = (x-2)</m>.
                 This is prime.
               </p>
             </li>
@@ -441,20 +624,23 @@
 	
 
     <definition>
+      <notation>
+        <usage>\mathfrak{m}</usage>
+        <description>Maximal ideal</description>
+      </notation>
     <idx>maximal ideal</idx>
     <idx>ideal (maximal)</idx>
       <statement>
         <p>
-          Let <m>R</m> be commutative with identity and let <m>M\subsetneq R</m> be a nonzero ideal.
-          We say that <m>M</m> is a <term>maximal ideal</term>
-          if no proper ideal of <m>R</m> properly contains <m>M</m>.
-          That is, if <m>J</m> is an ideal satisfying <m>M\subseteq J\subseteq R</m>,
-          either <m>J=M</m> or <m>J=R</m>.
+          Let <m>R</m> be commutative with identity and let <m>\mathfrak{m}\subsetneq R</m> be a non-zero proper ideal.
+          We say that <m>\mathfrak{m}</m> is a <term>maximal ideal</term> if no proper ideal of <m>R</m> properly contains <m>M</m>.
+          That is, if <m>J</m> is an ideal satisfying <m>\mathfrak{m}\subseteq J\subseteq R</m>,
+          either <m>J=\mathfrak{m}</m> or <m>J=R</m>.
         </p>
-      </statement>
+    </statement>
     </definition>
     <p>
-    	In other words, an ideal <m>M\ne R</m> is maximal if no <q>larger</q> ideal (with respect to inclusion) properly contains it.
+    	In other words, an ideal <m>\mathfrak{m}\ne R</m> is maximal if no <q>larger</q> ideal (with respect to inclusion) properly contains it.
     	As we will see later, rings can have many maximal ideals.
     </p>
 
@@ -482,7 +668,7 @@
         <p>
           Let <m>R</m> be commutative with identity and <m>M</m> a maximal ideal of <m>R</m>.
           Let <m>x\in R\setminus M</m>,
-          and set <m>J = \setof{xr+y}{r\in R, \ y\in M}</m>.
+          and set <m>J = \{xr+y\mid r\in R, \ y\in M}</m>.
           Then: <m>J</m> is an ideal of <m>R</m>; <m>M\subsetneq J</m>;
           and thus there exist <m>r'\in R</m>,
           <m>y'\in M</m> such that <m>1 = xr'+y'</m>.
@@ -562,9 +748,9 @@
       </statement>
       <proof>
       <p>
-        Let <m>R</m> be a PID and <m>\ideal{p}</m> a prime ideal.
+        Let <m>R</m> be a PID and <m>\mathfrak{p}=(p)</m> a prime ideal.
         By previous work, <m>p</m> is prime.
-        Suppose that <m>\ideal{p} \subseteq \ideal{m}</m>.
+        Suppose that <m>\mathfrak{p} \subseteq \mathfrak{m}</m>.
         Thus, <m>p\in \ideal{m}</m>, so <m>m|p</m>.
         That is, <m>p = mk</m>.
         Since <m>p</m> is prime and <m>R</m> is a domain, it is irreducible.
@@ -661,7 +847,7 @@
     <p>
       Throughout, let <m>R</m> and <m>S</m> be commutative rings with identity,
       and let <m>\p : R\to S</m> be a homomorphism.
-      Recall that <m>\im \p = \setof{s\in S}{\p(r) = s\text{ for some } r\in R}</m>.
+      Recall that <m>\im \p = \{s\in S\mid \p(r) = s\text{ for some } r\in R}</m>.
     </p>
     <p>
       Define <m>f: R/\ker \p \to \im \p</m> by <m>f(r+\ker \p) = \p(r)</m>.
