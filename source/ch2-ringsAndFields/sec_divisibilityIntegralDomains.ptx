@@ -338,4 +338,199 @@
 
 
 </subsection>
+<exercises xml:id="exers_divisibilityIntegralDomains">
+
+  <exercise>
+    <statement>
+      <p>
+        Mark the following as true or false.
+      </p>
+      <ol>
+        <li>
+          <p>
+            In a domain, the cancellation law holds.
+          </p>
+        </li>
+        <li>
+          <p>
+            In a ring, the cancellation law holds.
+          </p>
+        </li>
+        <li>
+          <p>
+            In a <m>\Z[x]</m>, the cancellation law holds.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\bar{2}</m> is a factor of <m>\bar{4}</m> in <m>\Z/10</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\bar{4}</m> is a factor of <m>\bar{3}</m> in <m>\Z/12</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\bar{2}</m> is a prime element of <m>\Z/4</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\bar{2}</m> is a prime element of <m>\Z/6</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            In a domain, the greatest common divisor of two non-zero elements is unique.
+          </p>
+        </li>
+        <li>
+          <p>
+            In a domain, the greatest common divisor of two non-zero elements is unique up to associates.
+          </p>
+        </li>
+        <li>
+          <p>
+            A domain is a commutative ring where the cancellation law holds.
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>z</m> is a zero-divisor in a commutative ring, then <m>z</m> is a factor of <m>0</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            In a domain every irreducible element is prime.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Find two factorizations of <m>2024</m> into products of irreducibles. Why does this not contradict the <xref ref="thm_fundamentalTheoremOfArithmetic" text="title"/>?
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Let's investigate prime and irreducible elements of the <xref ref="exer_gaussianIntegers" text="title"/>.
+      </p>
+      <ol>
+        <li>
+          <p>
+            Prove that <m>1+i</m> is a prime element.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove that <m>2-i</m> is a prime element.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Find all the units in the Gaussian Integers. THat is, compute <m>\Z[i]^\times</m>.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Square matrices over a ring are never an integral domain (unless the coefficient rings is and <m>n=1</m>). Prove for a general ring 
+        that <m>M_n(R)</m> is not a domain for <m>n>1</m>. 
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        The <xref ref="thm_subringTest" text="title"/> is a convenient way to test if a subring is a ring. Formulate and prove a sub-domain test.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        In the Gaussian Integers, we can factor <m>2+2i</m> in at least two ways: 
+        <me>2+2i = 2\cdot(1+i) = 2i\cdot(1-i).</me>
+        Clearly <m>2\ne 2i,(1-i)</m> and <m>1+i\ne 2i,(1-i)</m>. Use the definition of units and associates to explain what is happening here.
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Verify that 
+        <me>\Z[\sqrt{-2}]=\{a+b\sqrt{-2}\mid a,b\in\Z\}</me>
+        is a subring of <m>\C</m>. Is it a sub-domain?
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Verify that
+        <me>\Z[\sqrt[3]{2}]=\{a+b\sqrt[3]{2}+c\sqrt[3]{4}\mid a,b,c\in\Z\}</me>
+        is a subring of <m>\C</m>. Is it a sub-domain?
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove that any subring of an integral domain is an integral domain.
+      </p>
+    </statement>
+  </exercise>
+  <exercise xml:id="exer_nilpotent">
+    <idx><h>Nilpotent Elements</h></idx>
+    <title>Nilpotent Elements</title>
+    <statement>
+      <p>
+        An element <m>a\in R</m> is called <term>nilpotent</term> if there exists <m>n\in\N</m> such that <m>a^n = 0_R</m>.
+      </p>
+      <ol>
+        <li>
+          <p>
+            Verify that <m>A = \begin{bmatrix} 0 \amp 1 \\ 0 \amp 0 \end{bmatrix}</m> is a nilpotent element (of whatever coefficient ring you want).
+          </p>
+        </li>
+        <li>
+          <p>
+            Verify that <m>\bar{2}</m> is a nilpotent element of <m>\Z/8</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            Prove that a non-zero nilpotent element is a zero-divisor.
+          </p>
+        </li>
+        <li>
+          <p>
+            Show that <m>\bar{2}\in\Z/6</m> is a zero-divisor but not nilpotent. That is, the converse to the previous part is false in general.
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Prove that if <m>a\in R</m> is nilpotent, then <m>1-a\in R^\times</m>. 
+      </p>
+    </statement>
+    
+  </exercise>
+  
+</exercises>
 </section>

@@ -40,9 +40,10 @@
     </p>
   </introduction>
 
-<subsection xml:id="ssec_kernelIsAnIdeal">
-  <title>Kernel Is An Ideal</title>
-  
+<subsection xml:id="ssec_ideals">
+  <title>Ideals</title>
+
+
 <p>
   We first return to the kernel of a ring homomorphism introduced in <xref ref="ssec_kernelOfAHomomorphism"/>. While the following proposition might seem odd, 
   it will lead us to the definition of an ideal.
@@ -92,16 +93,21 @@
   </statement>
 </activity>
 
-</subsection>
-
-<subsection xml:id="ssec_ideals">
-  <title>Ideals</title>
-
   <p>
     The following definition of an <em>ideal</em> is an attempt to generalize 
     the properties that kernels have.
   </p>
+
+  <aside>
+    <title>Two-Sided Ideals</title>
+    <p>
+      Our definition is that of a two-sided ideal. There are left and right ideals; however, 
+      we will not need this generality.
+    </p>
+  </aside>
+
   <definition xml:id="def_ideal">
+    <idx><h>Ideal</h></idx>
     <statement>
       <p>
         A subset <m>I</m> of a (not necessarily commutative) ring <m>R</m> is called an <term>ideal</term> if:
@@ -138,7 +144,7 @@
   <theorem>
     <statement>
       <p>
-        Let <m>R</m> be a ring. Then <m>R</m> and <m>\{0\}</m> are ideals of <m>R</m>.
+        Let <m>R</m> be a ring. Then <m>R</m> and <m>\{0\}</m> are ideals of <m>R</m>. 
       </p>
     </statement>
     <proof>
@@ -153,6 +159,15 @@
       </p>
     </proof>
   </theorem>
+
+  <p>
+    <idx><h>ideal (proper)</h></idx>
+    <idx><h>ideal (trivial)</h></idx>
+    <idx><h>ideal (non-trivial)</h></idx>
+    An ideal <m>I\subseteq R</m> is called <term>proper</term> if <m>I\neq R</m>. The ideals 
+    <m>\{0\},R</m> are called <term>trivial ideals</term>. 
+    If <m>I\subseteq R</m> is not equal to <m>\{0\},R</m>, it is called <term>non-trivial</term>.
+  </p>
   
   <p>
     The following theorem provides a useful characterization of when an ideal <m>I</m> is in fact the whole ring.
@@ -176,14 +191,13 @@
   </proof>
   </theorem>
 </subsection>
-<subsection xml:id="ssec_idealsFromReductionModuloM">
-  <title>Ideals from Reduction Modulo m</title>
+<subsection xml:id="ssec_examplesOfIdeals">
+  <title>Ideals of the Integers Modulo m</title>
   <p>
-    We now illustrate how ideals and kernels are related by revisiting
-    <xref ref="sec_integersModuloM"/>.
+    We collect some examples of ideals. Let's first investigate the relationship between <m>\Z</m> and <m>\Z/m</m>.
   </p>
 
-  <proposition xml:id="prop_reductionModuloMIsHomomorphism">
+  <theorem xml:id="thm_reductionModuloMIsHomomorphism">
     <statement>
       <p>
         Pick <m>m\in\mathbb{N}</m> with <m>m>1</m>. Then the reduction modulo <m>m</m> map
@@ -212,24 +226,117 @@
         But <m>\bar{0} = m\Z</m> and so <m>\bar{a} = m\Z</m>.
       </p>
     </proof>
-  </proposition>
+  </theorem>
 
-  By <xref ref="prop_kernelIsIdeal" /> we know that <m>m\Z</m> is an ideal. We could have; however, proved this directly. 
-  We do this now as a prelude to the more general result in 
+  <p>
+    By <xref ref="prop_kernelIsIdeal" /> we know that <m>m\Z</m> is an ideal. We could have proved this directly. 
+    We do this now as it is an important skill to develop.
+  </p>
 
   <example>
-    Here it is
+    <statement>
+      <p>
+        Fix any <m>m\in\Z</m>, then the set of multiples of <m>m</m> is an ideal. That is, <m>m\Z</m> is an ideal. We prove this 
+        directly from the definition.
+      </p>
+      <p>
+        We have <m>0 = m\cdot 0\in\Z</m>. For closure under addition, take <m>mk, ml\in m\Z</m> for some <m>k,l\in\Z</m>. Then 
+        <me>mk + ml = m(k+l)\in m\Z</me>
+      </p>
+      <p>
+        Since <m>\Z</m> is commutative, we just have to show <m>m\Z</m> absorbs left-multiplication. For that, take <m>mk\in m\Z</m> and 
+        arbitrary <m>a\in\Z</m>. Then 
+        <me>a(mk) = m(ak)\in \Z.</me>
+        Thus we have reproved <xref ref="thm_reductionModuloMIsHomomorphism"/>: <m>m\Z</m> is an ideal of <m>\Z</m>.
+      </p>
+      <p>
+        If <m>m=0</m>, then <m>0\Z = \{0\}</m> is the zero ideal. If <m>m=\pm 1</m>, then <m>m\Z = \Z</m> is the other extreme. For <m>|m|>1</m>, 
+        the ideals <m>m\Z</m> are proper.
+      </p>
+    </statement>
   </example>
-  
+
+  <example>
+    <statement>
+      <p>
+        Let's consider our non-commutative example: <m>M_2(\R)</m>. What are the ideals here? It turns out, that this ring is <em>simple</em> in that it 
+        only has trivial ideals. 
+      </p>
+      <p>
+        Recall, the standard basis for <m>M_2(\R)</m> consists of the sparse matrices <m>e_{ij}</m> which have a <m>1</m> in row <m>i</m> and column <m>j</m> and zero 
+        elsewhere. For any matrix <m>A = (a_{ij})</m> we have:
+        <me>e_{11}\cdot \begin{bmatrix} a_{11} \amp a_{12} \\ a_{21} \amp a_{22}\end{bmatrix}e_{11} = \begin{bmatrix}  a_{11}\amp 0\\ 0 \amp 0\end{bmatrix}</me>
+      </p>
+      <p>
+        Similarly <m>e_{12}\cdot A e_{12}</m> is the matrix with <m>a_{12}</m> in the <m>(1,2)</m> entry and zero elsewhere. Likewise for <m>e_{21}\cdot A\cdot e_{21}</m> 
+        and <m>e_{22}\cdot A\cdot e_{22}</m>. 
+      </p>
+      <p>
+        Now take any ideal <m>I\subseteq M_2(\R)</m>. We know that <m>\{0\}, M_2(\R)</m> are two ideals. What we want to show is that if <m>I\neq \{0\}</m>, then 
+        <m>I=M_2(\R)</m>. To that end, suppose <m>I\neq\{0\}</m> so there is a non-zero <m>A\in I</m>.
+      </p>
+      <p>
+        At least one of the entries of <m>A</m> is non-zero, say <m>a_{i,j}\neq 0</m>. Then <m>e_{ij}\cdot A\cdot e_{ij}\in I</m> is the matrix with <m>a_{ij}</m>
+        in the <m>(i,j)</m> spot and zero elsehwere. Multiply by the scalar matrix <m>\frac{1}{a_{ij}}</m> so that we know <m>I</m> has a matrix with <m>1</m> in exactly 
+        one entry and zero elsewhere. That is, we know that one of the standard basis elements is in <m>I</m>.
+      </p>
+      <p>
+        We now show that if one of the standard basis elements is in <m>I</m>, then <m>I</m> has all of the standard basis elements. The proof for each case is similar so we assume that 
+        <m>I</m> has <m>e_{11} = \begin{bmatrix} 1 \amp 0 \\ 0 \amp 0 \end{bmatrix}</m>. Since <m>I</m> absorbs multiplication, every product we compute will be an 
+        element of <m>I</m>. We have: 
+        <me>e_{11}\cdot e_{12} = e_{12}\in I.</me>
+        and
+        <me>\begin{bmatrix} 0 \amp 1 \\ 1 \amp 0 \end{bmatrix}\cdot e_{12} = e_{22}\in I</me>
+        and lastly <m>e_{22}\cdot e_{12} = e_{12}\in I</m>. Thus <m>I</m> has all of the elements in the standard basis.
+      </p>
+      <p>
+        To see now that <m>I</m> has any matrix, we take a random <m>B = (b_{ij})</m>. We can write
+        <me>B = b_{11}I_2\cdot e_{11} + b_{12}I\cdot e_{12} + b_{21}I\cdot e_{21} + b_{22}I\cdot e_{22}</me>
+        Each one of the terms in this sum is in <m>I</m> since <m>I</m> absorbs multiplication. Since <m>I</m> is closed under 
+        addition, <m>B\in I</m>. But <m>B</m> was arbitrary so that <m>I = M_2(\R)</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Let's now consider the polynomial ring over <m>\C</m>: <m>\C[x]</m>. Define the homomorphism 
+        <m>\mathrm{ev}_0\colon\C[x]\to \C</m> given by <m>\mathrm{ev}_0(p(x)) = p(0)</m>. We've already see that 
+        <m>\mathrm{ev}_0</m> is a homomorphism. From <xref ref="prop_kernelIsIdeal"/>, the kernel of this mapping is an ideal.
+      </p>
+      <p>
+        Suppose <m>\mathrm{ev}_0(p(x)) = 0</m> or equivalently <m>p(0) = 0</m>. We will revisit evaluation later but for now 
+        recall that this means that <m>x</m> is a factor of <m>p(x)</m>. That is, there exists <m>p'(x)</m> such that 
+        <m>p(x) = xp'(x)</m>. 
+      </p>
+      <p>
+        On the other hand, suppose <m>f(x)\in\C[x]</m>, then <m>\mathrm{ev}_0(xf(x)) = 0f(0) = 0</m>. We can therefore describe 
+        the kernel of the multiplication map as the multiples of <m>x</m>:
+        <me>\ker\mathrm{ev}_0 = x\C[x] = \{xp(x)\mid p(x)\in \C[x]\}.</me>
+      </p>
+    </statement>
+  </example>
 </subsection>
+
 <subsection xml:id="ssec_principalIdeals">
   <title>Principal Ideals</title>
   <p>
     The most important type of ideals (for our work, at least),
-    are those which are the sets of all multiples of a single element 
-    in the ring. Such ideals are called <em>principal ideals</em>.
+    are those which are the sets of all multiples of a single element
+    in the ring. We saw this with <m>m\Z\subseteq \Z</m>. Such 
+    ideals are called <em>principal ideals</em>.
   </p>
-  <theorem>
+  <p>
+    For the following theorem/definition, we require commutative rings. The interested reader
+    is invited to formalize a definition for non-commutative rings.
+  </p>
+  <theorem xml:id="thm_principalIdealsAreIdeals">
+    <notation>
+      <usage>(a))</usage>
+      <description>Principal Ideal Generated by <m>a</m></description>
+    </notation>
+    <idx><h>Principal Ideal</h></idx>
     <statement>
       <p>
         Let <m>R</m> be commutative with identity and let <m>a\in R</m>.
@@ -237,7 +344,7 @@
         <me>
           (a) = \{ra\mid r\in R\}
         </me>
-        is an ideal (called the <em>principal ideal generated by <m>a</m></em>).
+        is an ideal (called the <term>principal ideal generated by <m>a</m></term>).
       </p>
     </statement>
   <proof>
@@ -404,7 +511,90 @@
       </p>
     </solution>
   </activity>
+</subsection>
+<subsection xml:id="ssec_idealsGeneratedByASet">
+  <title>Ideals Generated by a Set</title>
+  <p>
+    A good chunk of rings of interest are infinite and so their ideals are also usually infinite. We saw that in some cases
+    ideals can be described by a single element, a principal generator. Ideals that are always generated by a single elements 
+    are called <term>principal ideal rings</term>. We will return to those later when we discuss factorization in general rings. 
+  </p>
+  <p>
+    Although we will primarily focus on such principal ideal rings. It is important to understand what happens when you cannot 
+    generate the whole ideal with a single element. We introduce ideals generated by finitel many elements now.
+    Note, ideals that are always guaranteed to be generated by finitely many elements are called <term>Noetherian rings</term>. 
+  </p>
+  <definition xml:id="def_idealGeneratedByFinitelyManyElements">
+    <notation>
+      <usage>(a_1,a_2,\ldots,a_n)</usage>
+      <description>Ideal Generated by <m>a_1,\ldots,a_n</m></description>
+    </notation>
+    <statement>
+      <p>
+        Let <m>R</m> be a commutative ring and <m>a_1,a_2,\ldots,a_n\in R</m>. The <term>ideal generated by</term> <m>a_1,\ldots,a_n</m> is the subset:
+        <me>
+          (a_1,a_2,\ldots,a_n) = \{r_1a_1+r_2a_2+\cdots + r_na_n\mid r_1,r_2,\ldots,r_n\in R\}.
+        </me> 
+      </p>
+    </statement>
+  </definition>
 
+  <p>
+    Let's verify it is an ideal.
+  </p>
 
+  <theorem xml:id="thm_idealGeneratedByFinitelyManyElementsIsIdeal">
+    <statement>
+      <p>
+        Suppose <m>R</m> is a commutative ring and <m>a_1,a_2,\ldots,a_n\in R</m>. Then <m>(a_1,a_2,\ldots,a_n)</m> is an ideal.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Set <m>I = (a_1,\ldots,a_n)</m>. Then 
+        <me>0 = 0\cdot a_1 + \cdots + 0\cdot a_n \in I.</me>
+      </p>
+      <p>
+        For closure under addition:
+        <md>
+          <mrow> \amp (a_1r_1+\cdots + a_nr_n) + (b_1r_1+\cdots +b_nr_n)</mrow>
+          <mrow> \amp= (a_1+b_1)r_1 + \cdots + (a_n+b_n)r_n </mrow> 
+        </md>
+        which is in <m>I</m>.
+      </p>
+      <p>
+        For closure under left-multiplication:
+        <me>
+          r(r_1a_1+\cdots + r_na_n) = (rr_1)a_1 + \cdots + (rr_n)a_n
+        </me>
+        which is in <m>I</m>. We conclude that <m>I</m> is an ideal.
+      </p>
+    </proof>
+  </theorem>
+  
+  <example xml:id="ex_nonPrincipalIdeal">
+    <title>A Non-Principal Ideal</title>
+    <statement>
+      <p>
+        Take <m>(2,x)\subseteq\Z[x]</m>. We claim that <m>(2,x)</m> cannot be generated by a single element. 
+        Indeed, suppose <m>(2,x) = (f(x))</m> for some polynomial <m>f(x)\in\Z[x]</m>.
+      </p>
+      <p>
+        Since <m>2 = 1\cdot 2 + 0\cdot x\in (2,x)</m>, we know that <m>2\in (f(x))</m>. Hence, <m>2 = f(x)\cdot q(x)</m> for some 
+        polynomial <m>q(x)</m>. By comparing degrees, <m>\deg(f(x)) = 0</m>. In particular, <m>f(x)</m> is a constant that is divides <m>2</m>.
+        This means that <m>f(x) = \pm 1</m> or <m>\pm 2</m>. 
+      </p>
+      <p>
+        It cannot be that <m>f(x) = \pm 1</m> (Exercise???). There will be an easier way to prove this when we learn the Noether Isomorphism Theorem.
+        It follows then that <m>f(x) = \pm 2</m>. This means that <m>(2,x) = (2)</m>. But this is impossible. Indeed, notice that <m>x\in (2,x) = (2)</m> but every element 
+        of <m>(2)</m> has even coefficients. This contradiction shows that <m>(2,x)</m> is not a principal ideal. In particular, <m>\Z[x]</m> is not a principal
+        ideal domain.
+      </p>
+    </statement>
+  </example>
+  <p>
+    It turns out that any ideal in <m>\Z[x]</m> can be generated by at most two elements. The proof of this is beyond the scope of this textbook.
+  </p>
+  
 </subsection>
 </section>

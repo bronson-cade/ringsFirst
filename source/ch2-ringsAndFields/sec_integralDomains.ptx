@@ -482,13 +482,6 @@
     <exercise>
       <statement>
         <p>
-          Find two factorizations of <m>2024</m> into products of irreducibles. Why does this not contradict the <xref ref="thm_fundamentalTheoremOfArithmetic" text="title"/>?
-        </p>
-      </statement>
-    </exercise>
-    <exercise>
-      <statement>
-        <p>
           Prove that the <xref ref="exer_gaussianIntegers" text="title"/> are a domain.
         </p>
       </statement>

@@ -13,6 +13,8 @@
     <ul>
       <li>What is a ring homomorphism?</li>
       <li>What are some examples of ring homomorphisms?</li>
+      <li>What is the kernel and image of a homomorphism?</li>
+      <li>What are the initial and terminal rings?</li>
     </ul>
   </objectives>
    
@@ -74,11 +76,11 @@
           <li><m>\psi\colon R\to R</m> defined by <m>\psi(x)=-x</m></li>
           <li><m>\alpha\colon \Z\to \Z</m> defined by <m>\alpha(x)=5x</m></li>
           
-          <li><m>Fr\colon \Z_2[x]\to \Z_2[x]</m> defined by <m>Fr(p) = p^2</m></li>
+          <li><m>\mathrm{Fr}\colon \mathbb{F}_2[x]\to \mathbb{F}_2[x]</m> defined by <m>\mathrm{Fr}(p) = p^2</m></li>
           <li><m>\iota\colon \mathbb{C}\to \mathbb{C}</m> defined by <m>\iota(a+bi)=a-bi</m>, where <m>a,b\in \R, i^2 = -1</m></li>
-          <li><m>\beta\colon\Z\to \Z_{5}</m> defined by <m>\beta(x) = \overline{x}</m></li>
+          <li><m>\beta\colon\Z\to \Z/5</m> defined by <m>\beta(x) = \overline{x}</m></li>
           <li><m>\epsilon_r\colon F[x] \to F</m> defined by <m>\epsilon_r(p(x)) = p(r)</m>, where if <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m>, <m>p(r)</m> is the expression obtained by <q>plugging <m>r</m> into <m>p</m></q>: <m>p(r) = a_0 + a_1 r + \cdots + a_n r^n</m> (this is known as the <m>r</m>-evaluation map)</li>
-          <li><m>\xi\colon \Z_5 \to \Z_{10}</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m></li>
+          <li><m>\xi\colon \Z/5 \to \Z/10</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m></li>
       </ol>
 
     </statement>
@@ -99,25 +101,89 @@
         <li>
           <m>Fr\colon \Z_2[x]\to \Z_2[x]</m> defined by <m>Fr(p) = p^2</m> is sometimes called the Frobenius mapping. It is in fact a ring homomorphism in this case. For the unity and multiplicative compatibility we have 
           <m>Fr(1) = 1^2 = 1</m> and <m>Fr(pq) = (pq)^2 = p^2q^2=Fr(p)Fr(q)</m>. For compatibility with addition we remind the reader that <m>2\equiv_20</m>:
-          <me>Fr(p+q) = (p+q)^2 = p^2+2pq+q^2 = p^2+q^2 = Fr(p)+Fr(q).</me>
+          <md>
+            <mrow>Fr(p+q) \amp= (p+q)^2</mrow> 
+            <mrow> \amp= p^2+2pq+q^2 </mrow>
+            <mrow> \amp= p^2+q^2 </mrow>
+            <mrow> \amp= Fr(p)+Fr(q).</mrow>
+          </md>
           It is not an automorphism; however, it is a homomorphism. Homomorphisms from a ring to itself are called <term>endomorphisms</term>.
         </li>
         <li>
           <m>\iota\colon \mathbb{C}\to \mathbb{C}</m> defined by <m>\iota(a+bi)=a-bi</m>, where <m>a,b\in \R, i^2 = -1</m> TBD
         </li>
         <li>
-          <m>\beta\colon\Z\to \Z_{5}</m> defined by <m>\beta(x) = \overline{x}</m> TBD
+          <m>\beta\colon\Z\to \Z/5</m> defined by <m>\beta(x) = \overline{x}</m> TBD
         </li>
         <li>
           <m>\epsilon_r\colon F[x] \to F</m> defined by <m>\epsilon_r(p(x)) = p(r)</m>, where if <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m>, <m>p(r)</m> is the expression obtained by <q>plugging <m>r</m> into <m>p</m></q>: <m>p(r) = a_0 + a_1 r + \cdots + a_n r^n</m> (this is known as the <m>r</m>-evaluation map) TBD
         </li>
         <li>
-          <m>\xi\colon \Z_5 \to \Z_{10}</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m> TBD.
+          <m>\xi\colon \Z/5 \to \Z/10</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m> TBD.
         </li>
       </ol>
     </solution>
   </exploration>
-
+  <historical>
+    <title>Ferdinand Georg Frobenius</title>
+    <p>
+    <figure>
+    <image source="../images/Frobenius.jpg" width="50%">
+      <shortdescription>Portrait of Ferdinand Georg Frobenius</shortdescription>
+    </image>
+    </figure>
+    Ferdinand Georg Frobenius, a student of Weierstrass, (1849-1917) was a German mathematician known for contributions 
+    to number theory, group theory, differential equations, and elliptic functions. 
+    </p>
+    </historical>
+  
+  <example xml:id="ex_frobeniusAffineLine">
+    <title>The Frobenius Homomorphism</title>
+    <idx><h>Frobenius Homomorphism</h></idx>
+    <statement>
+      <p>
+        The Frobenius Homomorphism (or just Frobenius) is a homomorphism
+        that exists whenever we are working with a prime. In this example, we look at the 
+        Frobenius on a polynomial ring.
+      </p>
+      <p>
+        Let <m>p</m> be a prime. Consider the function:
+        <me>\mathrm{Fr}\colon \mathbb{F}_p[x]\to \mathbb{F}_p[x]</me>
+        defined by <m>\mathrm{Fr}(f(x)) = (f(x))^2</m>. 
+      </p>
+      <p>
+        Before we prove that the Frobenius is a homomorphism, let's recall that whenever <m>k\neq 0,p</m> the 
+        binomial coefficient <m>{p\choose k}</m> is divisible by <m>p</m>. Indeed, using the usual formula:
+        <me>{p\choose k} = \frac{p!}{(p-k)!k!} = \frac{p(p-1)!}{(p-k)!k!}.</me>
+        All of the terms in the denominator are strictly less than <m>p</m> provided <m>k\ne 0,p</m>. Thus there is no term 
+        in the denominator that will cancel the <m>p</m> in the numerator. In particular, the binomial 
+        coefficients <m>{p\choose k}</m> are <m>0</m> in <m>\mathbb{F}_p</m> whenever <m>k\ne 0,p</m>.
+      </p>
+      <p>
+        With that done, let's show <m>\mathrm{Fr}</m> is a homomorphism. It preserves unity: <m>\mathrm{Fr}(1) = 1^p = 1</m>.
+      </p>
+      <p>
+        For compatibility with addition, suppose <m>f(x),g(x)\in\mathbb{F}_2[x]</m>:
+        <md>
+          <mrow>\amp\mathrm{Fr}(f(x)+g(x)) </mrow>
+          <mrow>\amp= (f(x)+g(x))^2 </mrow>
+          <mrow> \amp= f(x)^p +{p\choose 1}f(x)^{p-1}g(x) + \cdots + {p\choose p-1}f(x)g(x)^{p-1} + g(x)^p</mrow>
+          <mrow> \amp = f(x)^p + 0 + g(x)^p </mrow>
+          <mrow> \amp = \mathrm{Fr}(f(x)) + \mathrm{Fr}(g(x)) </mrow>
+        </md>
+        as the cross terms are zero.
+      </p>
+      <p>
+        For compatibility with multiplication:
+        <me>\mathrm{Fr}(f(x)\cdot g(x)) = (f(x)\cdot g(x))^p = f(x)^p\cdot g(x)^p = \mathrm{Fr}(f(x))\cdot \mathrm{Fr}g(x).</me>
+        We conclude that the Frobenius is a homomorphism.
+      </p>
+      <p>
+        The following checks will be left as an exercise: The Frobenius is a monomorphism, it is not an epimorphism, and hence not an automorphism.
+      </p>
+    </statement>
+    
+  </example>
   
   
 
@@ -143,9 +209,12 @@
   </exploration>
 -->
 
+</subsection>
+<subsection xml:id="ssec_propertiesOfHomomorphisms">
+  <title>Properties of Homomorphisms</title>
 <p>
   The sequence of results that follows shows that homomorphisms preserve several of our ring-theoretic 
-  notions. This means <xref ref="def_ringHomomorphism"/> is the <em>right</em>. That is, of all the possible functions between rings 
+  notions. This means <xref ref="def_ringHomomorphism"/> is the <em>right</em> definition. That is, of all the possible functions between rings 
   we isolated a good class to call structure preserving. We begin by showing that homomorphisms preserve the additive identity.
 </p>
 
@@ -155,7 +224,6 @@
       Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. Then <m>\varphi(0_R) = 0_S</m>.
     </p>
   </statement>
-</theorem>
 <proof>
   <p>
     Supppose <m>\varphi\colon R\to S</m> is a ring homomorphism. Note that <m>0_R+0_R=0_R</m> and in particular this tells us
@@ -168,6 +236,7 @@
     as desired.
   </p>
 </proof>
+</theorem>
 
 <p>
   We now show that homomorphisms preserve units.
@@ -179,8 +248,6 @@
       Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. If <m>u\in R^\times </m>, then <m>\varphi(u)\in S^\times</m>.
     </p>
   </statement>
-</theorem>
-
 <proof>
   <p>
     Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>u\in R^\times </m>. Then there exists <m>v\in R</m> with 
@@ -192,6 +259,7 @@
     and hence <m>\varphi(u)\in S^\times</m>.
   </p>
 </proof>
+</theorem>
 
 <activity>
   <statement>
@@ -250,7 +318,7 @@
     <idx><h>kernel</h></idx>
     <statement>
       <p>
-        Let <m>\varphi\colon R \to S</m> be a ring homomorphism. Then <m>\ker \varphi =\{r\in R \mid \varphi(r)=0_S\}</m> is the
+        Let <m>\varphi\colon R \to S</m> be a ring homomorphism. Then <me>\ker \varphi =\{r\in R \mid \varphi(r)=0_S\}</me> is the
         <term>kernel</term> of <m>\varphi</m>.
       </p>
     </statement>
@@ -349,9 +417,166 @@
       </p>
     </proof>
     
+</subsection>
+<subsection xml:id="ssec_imageOfAHomomorphism">
+  <title>Image of a Homomorphism</title>
+  <p>
+    The image of a homomorphism <m>\varphi\colon R\to S</m> is just different terminology for the range. 
+    One reason to use different language is that we will see the image is not just a subset of <m>S</m>, it is a 
+    subring of <m>S</m>!
+  </p>
 
+  <definition xml:id="def_imageOfAHomomorphism">
+    <statement>
+      <p>
+        Suppose <m>\varphi\colon R\to S</m>, the image of the <m>\varphi</m>, denoted <m>\mathrm{im}\varphi</m> is the 
+        range of <m>\varphi</m>:
+        <me>\mathrm{im}\varphi = \{\varphi(r)\mid r\in R\}.</me>
+      </p>
+    </statement>
+  </definition>
+
+  <activity>
+    <statement>
+      <p>
+        Compute the image of the homomorphisms <xref ref="expl-homomorphism-examples"/>.
+      </p>
+    </statement>
+  </activity>
+
+  <p>
+    Before we prove that the image of a homomorphism is a subring, let's note that homomorphisms preserve 
+    most ring-axioms. In particular, we have defined subtraction of two ring elements <m>a,b\in R</m> as <m>a-b:=a+(-b)</m>, 
+    where <m>-b</m> is the additive inverse of <m>b</m>. In <xref ref="exer_homomorphismPreserveAdditiveInverse"/> you will 
+    prove that homorphisms preserve additive inverses, namely: <m>\varphi(-r) =-\varphi(r)</m>. In particular,
+    <me>\varphi(a)-\varphi(b) = \varphi(a)+\varphi(-b) = \varphi(a-b).</me>
+  </p>
+
+  <theorem xml:id="thm_imageIsASubring">
+    <statement>
+      <p>
+        Suppose <m>\varphi\colon R\to S</m> is a homomorphism. Then <m>\mathrm{im}\varphi</m> is a subring of <m>S</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Since <m>\varphi(1_R) = 1_S</m>, we know that <m>1_S\in\mathrm{im}\varphi</m>. We just need to show it is closed under 
+        subtraction and multiplication:
+      </p>
+      <p>
+        For subtraction, take <m>\varphi(r_1),\varphi(r_2)\in\mathrm{im}\varphi</m>. Then 
+        <me>\varphi(r_1)-\varphi(r_2) = \varphi(r_1-r_2)\in\mathrm{im}\varphi.</me>
+      </p>
+      <p>
+        For multiplication, we have 
+        <me>\varphi(r_1)\cdot \varphi(r_2) = \varphi(r_1\cdot r_2)\in\mathrm{im}\varphi.</me>
+        We conclude that <m>\mathrm{im}\varphi</m> is a subring of <m>S</m>.
+      </p>
+    </proof>
+  </theorem>
+  
+  
 </subsection>
 
+<subsection xml:id="ssec_initialRing">
+  <title>The Initial Ring</title>
+
+  <p>
+    <idx><h>Initial Ring</h></idx>
+    We now return to <m>\Z</m> and investigate homomorphisms <m>\varphi\colon \Z\to R</m>, where <m>R</m> is an arbitrary ring.
+    We will prove that there is one and only one homomorphism. This shows that <m>\Z</m> is the <term>initial ring</term>. It is the
+    unique ring (up to isomorphism) that has this property.
+  </p>
+
+  <p>
+    <notation>
+      <usage>n\cdot 1_R</usage>
+      <description>Action of Integers</description>
+    </notation>
+
+    Before we prove this, let's introduce some notation. Take a ring element <m>a\in R</m>. For <m>n\in\N</m> we can
+    define
+    <me>
+      n\cdot a = a + a + \cdots + a
+    </me>
+    where the right hand sum has <m>n</m> terms. Similarly, 
+    <me>
+      (-n)\cdot a = -a + (-a) + \cdots + (-a)
+    </me>
+    where the right hand sum has <m>n</m> terms. And <m>0\cdot a=0</m>. We leave it to the reader to check that 
+    this is well-defined.
+  </p>
+
+
+  <theorem xml:id="thm_initialRing">
+    <statement>
+      <p>
+        For any ring <m>R</m>, there is a unique homomorphism <m>\varphi\colon \Z\to R</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        Let <m>\varphi\colon \Z\to R</m> be an arbitrary homomorphism. Since the image of unity 
+        is unity we have <m>\varphi(1) = 1_R</m>. Since the image of the additive identity is the 
+        additive identity, we have <m>\varphi(0) = 0_R</m>. By induction, we conclude that <m>\varphi(n) = n\cdot 1_R</m> 
+        for any <m>n\in\N_0</m>. Similarly <m>\varphi(-n) = (-n)\cdot 1_R</m> for any <m>n\in\N</m>. 
+      </p>
+      <p>
+        Since <m>\varphi</m> was arbitrary, we have seen that any homomorphism is the homomorphism <m>\varphi(a) = a\cdot 1_R</m>. This 
+        proves uniqueness.
+      </p>
+    </proof>
+  </theorem>
+</subsection>
+
+<subsection xml:id="ssec_terminalRing">
+  <title>The Terminal Ring</title>
+  <p>
+    <idx><h>Terminal Ring</h></idx>
+    In this last part of the section, we ask the question: Is there a ring <m>S</m> such that for any ring <m>R</m>, there exists one and only one 
+    homomorphism <m>\varphi\colon R\to S</m>. That is to say, is there a <m>terminal ring</m>? One guess might be <m>\Z</m>. It turns out this is not the case!
+  </p>
+
+  <activity>
+    <statement>
+      <p>
+        Verify the terminal ring, if it exists, cannot be <m>\Z</m>. Do so by showing there is no homomorphism <m>\varphi\colon \Z/2\to \Z</m>. What about 
+        <m>\Z/2</m>? Can it be terminal?
+      </p>
+    </statement>
+  </activity>
+
+  <p>
+    The right choice happens to be zero!
+  </p>
+
+  <theorem xml:id="thm_terminalRing">
+    <statement>
+      <p>
+        For any ring <m>R</m>, there is one and only one homomorphism <m>\varphi\colon R\to \{0\}</m>.
+      </p>
+    </statement>
+    <proof>
+      <p>
+        This is an exercise. There is only one set-theoretic mapping: the zero map. In this case, we just need to see that the 
+        zero map is a homomorphism. This is the case if and only if the codomain is <m>\{0\}</m>.
+      </p>
+    </proof>
+  </theorem>
+  
+  <p>
+    We now have two very special rings: <m>\Z</m> and <m>\{0\}</m>. A natural question is to ask how they interact with each other. 
+    In particular, we know there exists a unique homomorphism <m>\Z\to\{0\}</m>. What about the other way around?
+  </p>
+  <exploration>
+    <statement>
+      <p>
+        How many homomorphisms are there <m>\{0\}\to\Z</m>?
+      </p>
+    </statement>
+  </exploration>
+  
+</subsection>
 
   <exercises xml:id="exers-homomorphisms">
     <title>Exercises</title>
@@ -426,6 +651,15 @@
         </p>
       </statement>
     </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\mathrm{Fr}\colon \mathbb{F}_p[x]\to \mathbb{F}_p[x]</m> be the Frobenius of <xref ref="ex_frobeniusAffineLine"/>. Show that <m>\mathrm{Fr}</m> is a 
+          monomorphism. Show it is not an epimorphism. Describe <m>\mathrm{im}\mathrm{Fr}</m> as a subring of <m>\mathbb{F}_p[x]</m>.
+        </p>
+      </statement>
+    </exercise>
   
     <exercise>
       <statement>
@@ -435,10 +669,49 @@
       </statement>
     </exercise>
   
+    <exercise xml:id="exer_homomorphismPreserveAdditiveInverse">
+      <statement>
+        <p>
+          Let <m>\varphi\colon R\to S</m> is a homomorphism, prove that <m>\varphi(-r) = -\varphi(r)</m>. That is, the additive 
+          inverse of the image is the image of the additive inverse.
+        </p>
+      </statement>
+    </exercise>
+    
     <exercise>
       <statement>
         <p>
-          Let <m>\varphi\colon R\to S</m> be a ring homomorphism. Prove that the image of <m>\varphi</m> is a subring of <m>S</m>.
+          Suppose <m>R</m> is a ring satisfying the initial property: For all rings <m>S</m>, there is a unique homomorphism <m>\varphi\colon R\to S</m>. 
+          Prove <m>R</m> is isomorphic to <m>\Z</m> as follows.
+        </p>
+        <ol>
+          <li>
+            <p>
+             Show that there are unique homomorphisms <m>\varphi_\Z\colon R\to \Z</m> and <m>\varphi_R\colon \Z\to R</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              Use <xref ref="thm_initialRing"/> to prove that <m>\varphi_\Z\circ \varphi_R = \mathrm{Id}_\Z</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Use that <m>R</m> satisfies the initial property to prove <m>\varphi_R\circ \varphi_\Z = \mathrm{Id}_R</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Deduce that <m>\Z\cong R</m>. How might your proof change if you were to show that there is a unique terminal ring instead?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Prove that the zero map <m>0\colon R\to S</m> is a homomorphism if and only <m>S</m> is the zero ring.
         </p>
       </statement>
     </exercise>
