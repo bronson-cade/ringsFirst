@@ -15,26 +15,7 @@
     </date>
   </titlepage>
 
-  <colophon>
-    <p>
-      This textbook aims to provide a rings first introduction to abstract algebra. At my institution, 
-      we teach ring and field theory before group theory. There are great inquiry based books available 
-      that follow this path; however, there are not many options for more traditional courses. This textbook 
-      is an attempt to provide such an option. 
-    </p>
-
-    <p>
-      I always enjoy telling my students the parable of the <url href="https://en.wikipedia.org/wiki/Blind_men_and_an_elephant">blind people and the elephant</url>. 
-      In these notes, I attempt to describe my part of the elephant. It is, however, only my part of the elephant. If you feel like something could be said differently or 
-      better please reach out.
-    </p>
-
-    <p>
-      This work is adapted from <url href="https://ringswithinquiry.org/">Rings with Inquiry</url>.
-      However, it is not an inquiry based learning textbook. Additionally, any mistakes 
-      are my own.
-    </p>
-
+    <colophon>
     <website>
       <url href="https://pretextbook.org">My Website</url>
     </website>
@@ -45,6 +26,40 @@
       <shortlicense> This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <url href="http://creativecommons.org/licenses/by-sa/4.0/" visual="creativecommons.org/licenses/by-sa/4.0"> CreativeCommons.org</url>
       </shortlicense>
     </copyright>
-  </colophon>
+    </colophon>
+    <dedication>
+      <p>
+      For my dogs, Dana and Milla.
+      </p>
+    </dedication>
+    <acknowledgement>
+      <p>
+      This work is adapted from <url href="https://ringswithinquiry.org/">Rings with Inquiry</url>. I am tremendously grateful for Michael Janssen 
+      and Melissa Lindsey for sharing their source material with me. 
+      </p>
+      <p>
+      However, this textbook is not an inquiry based learning textbook and any mistakes are my own.
+      </p>
+    </acknowledgement>
+    <preface>
+    <p>
+      This textbook aims to provide a rings first introduction to abstract algebra. At my institution, 
+      we teach ring and field theory before group theory. There are great inquiry based books available 
+      that follow this path; however, there are not many options for more traditional courses. This textbook 
+      is an attempt to provide such an option. 
+    </p>
+    <p>
+      It is, moreover, written with the students at California State University San Bernardino in mind, particularly 
+      those that continue on to our graduate algebra course. These students need to have a good working knowledge of 
+      polynomial rings, the Noether Isomorphism Theorem, and quotient rings.
+    </p>
+
+    <p>
+      I always enjoy telling my students the parable of the <url href="https://en.wikipedia.org/wiki/Blind_men_and_an_elephant">blind people and the elephant</url>. 
+      In these notes, I attempt to describe my part of the elephant. It is, however, only my part of the elephant. If you feel like something could be said differently or 
+      better please reach out.
+    </p>
+
+    </preface>
 </frontmatter>
 
