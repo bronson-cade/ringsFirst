@@ -18,8 +18,9 @@
 
   <!-- include sections -->
   <xi:include href="sec_homomorphisms.ptx" />
-	<xi:include href="sec_ideals.ptx" />
+  <xi:include href="sec_ideals.ptx" />
   <xi:include href="sec_quotientRings.ptx" />
+  <xi:include href="sec_principalIdealsEuclideanDomains.ptx"/>
 
 
 </chapter>

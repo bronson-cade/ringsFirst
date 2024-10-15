@@ -451,424 +451,89 @@
     
     </subsection>
 
-<subsection xml:id="subsec-prime-maximal-ideal">
-	<title>Prime and Maximal Ideals</title>
-	
-	<p>
-		In this section, we continue our exploration of quotient rings by looking more closely at properties of ideals.
-		We focus on particular properties of ideals that ensure that the quotient <m>R/I</m> is either a domain or a field.
-	</p>
-  
-  <aside>
-      <title>Fraktur Font</title>
-      <p>
-        The Fraktur font is a German typeface from the 16th century. It was long known as the <q>German typeface</q>. 
-        In 1941 it was banned by the Nazi government. It is usually used when denoting prime (<m>\mathfrak{p}</m>) and maximal (<m>\mathfrak{m}</m>) ideals. TBD
-      </p>
-    </aside>
-
-    <definition>
-    <idx>prime ideal</idx>
-    <idx>ideal (prime)</idx>
-      <statement>
-        <p>
-          Let <m>R</m> be commutative with identity and <m>\mathfrak{p}\subsetneq R</m> a non-zero proper ideal.
-          We say <m>\mathfrak{p}</m> is <term>prime</term> if whenever <m>a,b\in R</m> such that <m>ab\in \mathfrak{p}</m>,
-          we have <m>a\in \mathfrak{p}</m> or <m>b\in \mathfrak{p}</m>.
-        </p>
-      </statement>
-    </definition>
-
-    <p>
-      This definition arises by replacing <em>divides</em> with <em>is contained in</em> in the usual definition of prime element???
-      The following theorem shows that these definitions agree to the extent they can: prime elements generate prime ideals.
-    </p>
-    
-    <theorem xml:id="thm_primeElementGeneratesPrimeIdeal">
-      <statement>
-        <p>
-          Let <m>R</m> be a domain and <m>p\in R</m> be prime. Then <m>\mathfrak{p} = (p)</m> is a prime ideal.
-        </p>
-      </statement>
-      <proof>
-        <p>
-        Suppose <m>p</m> is a prime element of a domain and <m>\mathfrak{p} = (p)</m>. Suppose a product is in <m>\mathfrak{p}</m>, 
-        say <m>ab\in\mathfrak{p}</m>. Then there exists <m>r\in R</m> with <m>rp = ab</m>. Thus <m>p\mid ab</m>. Since <m>p</m> is prime, 
-        either <m>p\mid a</m> or <m>p\mid b</m>.
-        </p>
-        <p>
-          Without loss of generality assume <m>p\mid a</m>. Then there exists <m>s\in R</m> with <m>a = sp</m>. Hence, <m>a\in (p) = \mathfrak{p}</m>.
-        </p>
-      </proof>
-    </theorem>
-    
-    
-    <activity>
-      <statement>
-        <p>
-          Which of the following ideals are prime?
-          <ol>
-            <li>
-              <p>
-                <m>(9)</m> in <m>\Z</m>
-              </p>
-            </li>
-            <li>
-              <p>
-                <m>(11)</m> in <m>\Z</m>
-              </p>
-            </li>
-            <li>
-              <p>
-                <m>(x^2+1)</m> in <m>\R[x]</m>
-              </p>
-            </li>
-            <li>
-              <p>
-                <m>(x^2-1)</m> in <m>\R[x]</m>
-              </p>
-            </li>
-            <li>
-              <p>
-                <m>(x^2-5x+6, x^4+2x^3-10x^2+5x-2)</m> in <m>\R[x]</m>
-              </p>
-            </li>
-          </ol>
-        </p>
-      </statement>
-      <solution>
-        <p>
-          <ol>
-            <li>
-              <p>
-                Not prime.
-                <m>3\cdot 3= 9\in (9)</m>,
-                but <m>3\notin(9)</m>.
-              </p>
-            </li>
-            <li>
-              <p>
-                Prime.
-                If <m>x\in (11)</m>, then <m>11|x</m> and 11 is prime.
-              </p>
-            </li>
-            <li>
-              <p>
-                Prime.
-                Easy explanation is that <m>R[x]/(x^2+1)</m> is isomorphic to <m>\C</m>.
-                <m>\ddot\smile</m> For now, though,
-                we know that <m>x^2+1</m> is irreducible,
-                and <m>R[x]</m> is a PID, so irreducibles are prime.
-              </p>
-            </li>
-            <li>
-              <p>
-                Not prime.
-                <m>x^2-1 = (x-1)(x+1)</m>,
-                but <m>x\pm 1\notin (x^2-1)</m> for degree reasons.
-              </p>
-            </li>
-            <li>
-              <p>
-                One may use the EA to show that <m>\gcd(x^2-5x+6,x^4+2x^3-10x^2+5x-2) = x-2</m>,
-                so <m>(x^2-5x+6, x^4+2x^3-10x^2+5x-2) = (x-2)</m>.
-                This is prime.
-              </p>
-            </li>
-          </ol>
-        </p>
-      </solution>
-    </activity>
-    
-    
-    <p>
-    	It is this precise condition that guarantees that the resulting quotient is a domain.
-	</p>
-	
-	<theorem>
-      <statement>
-        <p>
-          Let <m>R</m> be commutative with identity and <m>I</m> an ideal of <m>R</m>.
-          Then <m>I</m> is prime if and only if <m>R/I</m> is an integral domain.
-        </p>
-      </statement>
-    </theorem>
-    <proof>
-      <p>
-        Begin by assuming that <m>I</m> is prime,
-        and suppose <m>(a+I)(b+I) = 0+I = I</m>.
-        Then <m>ab \in I</m>, and since <m>I</m> is prime,
-        either <m>a\in I</m> or <m>b\in I</m>.
-        Thus either <m>a+I = 0+I</m> or <m>b+I = 0+I</m>.
-      </p>
-      <p>
-        Now assume that <m>R/I</m> is a domain.
-        Further, let <m>a,b\in R</m> be such that <m>(a+I)(b+I) = ab+I = 0+I</m>.
-        Then <m>ab\in I</m>, and since <m>R/I</m> is a domain,
-        <m>a+I = 0+I</m> or <m>b+I = 0+I</m>,
-        i.e., <m>a\in I</m> or <m>b\in I</m>.
-        Thus, <m>I</m> is prime.
-      </p>
-    </proof>
-    
-    
-    
-    
-
-    		
-    
-    <p>
-    		We now consider another important class of ideals: the maximal ideals.
-    	</p>
-
-	
-
-    <definition>
-      <notation>
-        <usage>\mathfrak{m}</usage>
-        <description>Maximal ideal</description>
-      </notation>
-    <idx>maximal ideal</idx>
-    <idx>ideal (maximal)</idx>
-      <statement>
-        <p>
-          Let <m>R</m> be commutative with identity and let <m>\mathfrak{m}\subsetneq R</m> be a non-zero proper ideal.
-          We say that <m>\mathfrak{m}</m> is a <term>maximal ideal</term> if no proper ideal of <m>R</m> properly contains <m>M</m>.
-          That is, if <m>J</m> is an ideal satisfying <m>\mathfrak{m}\subseteq J\subseteq R</m>,
-          either <m>J=\mathfrak{m}</m> or <m>J=R</m>.
-        </p>
-    </statement>
-    </definition>
-    <p>
-    	In other words, an ideal <m>\mathfrak{m}\ne R</m> is maximal if no <q>larger</q> ideal (with respect to inclusion) properly contains it.
-    	As we will see later, rings can have many maximal ideals.
-    </p>
-
-    <p>
-      It is a fact that any ring <m>R</m> with <m>0_R\ne 1_R</m> has a maximal ideal.
-      This follows from <em>Zorn's Lemma</em>;
-      a rigorous exploration of Zorn's Lemma lies outside of the scope of this text,
-      but suffice it to say that Zorn's Lemma is incredibly useful in all areas of algebra for proving existence theorems.
-      For example,
-      a proof that every vector space has a basis relies on Zorn's Lemma.
-    </p>
-    <p>
-      Rings with only one maximal ideal are said to be <em>local rings</em>,
-      and are actively studied in modern research in commutative algebra
-      (the study of commutative rings and their properties).
-    </p>
-    
-    <p>
-    	The next two results demonstrate that the maximality of <m>I</m> is precisely the condition that guarantees that <m>R/I</m> is a field.
-    </p>
 
     
-    <lemma>
-      <statement>
-        <p>
-          Let <m>R</m> be commutative with identity and <m>M</m> a maximal ideal of <m>R</m>.
-          Let <m>x\in R\setminus M</m>,
-          and set <m>J = \{xr+y\mid r\in R, \ y\in M}</m>.
-          Then: <m>J</m> is an ideal of <m>R</m>; <m>M\subsetneq J</m>;
-          and thus there exist <m>r'\in R</m>,
-          <m>y'\in M</m> such that <m>1 = xr'+y'</m>.
-        </p>
-      </statement>
-      <proof>
-       	TBD
-      </proof>
-
-    </lemma>
-    <theorem>
-      <statement>
-        <p>
-          Let <m>R</m> be commutative with identity and <m>I</m> an ideal of <m>R</m>.
-          Then <m>I</m> is maximal if and only if <m>R/I</m> is a field.
-        </p>
-      </statement>
-      <hint>
-        <p>
-          For the forward direction, apply the previous lemma to construct an inverse for <m>x+I</m> given any <m>x\in R\setminus I</m>.
-        </p>
-      </hint>
-      <proof>
-      <p>
-        If <m>R/I</m> is a field,
-        assume <m>J</m> is an ideal of <m>R</m> that properly contains <m>I</m>.
-        Let <m>x\in J\setminus I</m>;
-        then <m>x+I</m> is a nonzero element of <m>R/I</m>,
-        and since <m>R/I</m> is a field,
-        there is some <m>y+I</m> such that <m>(xy)+I = 1+I</m>.
-        Since <m>x\in J</m>, <m>xy\in J</m>.
-        As <m>1+I = (x+I)(y+I) = xy+I</m>,
-        we have <m>1-xy\in I\subsetneq J</m>,
-        and thus <m>1 = (1-xy)+xy \in J</m>, which means <m>J = R</m>.
-        Thus, <m>I</m> is maximal.
-      </p>
-      <p>
-        Now, suppose that <m>I</m> is maximal and let <m>x\in R\setminus I</m>.
-        Apply the previous lemma to obtain
-        <m>1 = xr' + y'</m>, where <m>y'\in I</m>.
-        Then
-        <me>
-          1 + I = xs+y + I = xs + I = (x+I)(y+I).
-        </me>
-      </p>
-    </proof>
-    </theorem>
-    
-    
-    <theorem>
-      <statement>
-        <p>
-          Every maximal ideal is prime.
-        </p>
-      </statement>
-      <proof>
-      <p>
-        All fields are integral domains.
-        Thus, if <m>I</m> is maximal,
-        <m>R/I</m> is a field, thus a domain,
-        and thus <m>I</m> is prime.
-      </p>
-    </proof>
-    </theorem>
-    
-    <p>
-    		In general, the converse is not true (see the <xref ref="challenge-nonmaximal-prime" text="custom">Challenge</xref> below).
-    		However, it holds in sufficiently nice rings.
-    	</p>
-
-    
-    <theorem xml:id="thm-pid-primes-are-maximal">
-      <statement>
-        <p>
-          In a principal ideal domain, every prime ideal is maximal.
-        </p>
-      </statement>
-      <proof>
-      <p>
-        Let <m>R</m> be a PID and <m>\mathfrak{p}=(p)</m> a prime ideal.
-        By previous work, <m>p</m> is prime.
-        Suppose that <m>\mathfrak{p} \subseteq \mathfrak{m}</m>.
-        Thus, <m>p\in \ideal{m}</m>, so <m>m|p</m>.
-        That is, <m>p = mk</m>.
-        Since <m>p</m> is prime and <m>R</m> is a domain, it is irreducible.
-        Thus, either <m>m</m> or <m>k</m> is a unit.
-        If <m>m</m> is a unit, then <m>\ideal{m} = R</m>.
-        If <m>k</m> is a unit, then <m>m = k^{-1} p</m>,
-        and thus <m>m\in \ideal{p}</m>,
-        which means that <m>\ideal{m} = \ideal{p}</m>.
-      </p>
-      <p>
-        Thus, <m>\ideal{p}</m> is maximal.
-      </p>
-    </proof>
-    </theorem>
-    
-    <exploration>
-    		<statement>
-    			<p>
-    				Describe the prime and maximal ideals of <m>\Z</m> and <m>\Q[x]</m>.
-    			</p>
-    		</statement>
-
-			<hint>
-				For which ideals <m>I</m> is <m>\Z/I</m> a domain? A field? Similarly for <m>\Q[x]</m>.
-				
-				Or, use <xref ref="thm-pid-primes-are-maximal" />.
-			</hint>
-		<solution>
-			TBD
-		</solution>
-	</exploration>
-
-
-    
-    <assemblage xml:id="challenge-nonmaximal-prime">
-    <title>Challenge</title>
-    <p>
-    <statement>
-      Find a commutative ring with identity, <m>R</m>, and a nonmaximal prime ideal <m>P</m> of <m>R</m>.
-      </statement>
-
-    </p>
-    <solution>
-      <p>
-        In <m>\Z[x]</m>,
-        it is straightforward to see that <m>\ideal{x}</m> is prime (<m>\Z/\ideal{x}\isomorphic \Z</m>).
-        Moreover, <m>\ideal{x}\subsetneq \ideal{2,x}</m>, and thus is not maximal.
-      </p>
-    </solution>
-    </assemblage>
-    
-    
-    
-
-    
-    
-    
-    
-    </subsection>
-    
-    
-    <subsection>
-    	<title>Homomorphisms and Quotient Rings</title>
+    <subsection xml:id="ssec_NoetherIsomorphismTheorem">
+    	<title>Noether Isomorphism Theorem</title>
     	
     	<p>
     		As quotient rings provide fertile soil for building new examples of rings, it should not surprise us to find that homomorphisms interact with quotient rings in interesting and useful ways.
-    		Chief among them are the <em>isomorphism theorems</em>.
-    		In this subsection, we focus primarily on the First Isomorphism Theorem.
-    		
+    		Chief among them are the <em>isomorphism theorems</em>. In this subsection, we focus primarily on the Noether Isomorphism Theorem (also 
+        called the First Isomorphism Theorem).
     	</p>
     	
     	<p>
-    		We have seen that any homomorphism <m>\p : R\to S</m> gives rise to an ideal of <m>R</m>, namely <m>\ker\p</m>.
-    		Our next theorem demonstrates that, given a commutative ring with identity <m>R</m>, every ideal is the kernel of some homomorphism defined on <m>R</m>.
+    		We have seen that any homomorphism <m>\varphi\colon R\to S</m> gives rise to an ideal of <m>R</m>, namely <m>\ker\varphi</m>. 
+    		Our next theorem demonstrates that, given a commutative ring <m>R</m>, every ideal is the kernel of 
+        some homomorphism defined on <m>R</m>. In particular, our definition of ideal accurately captured what it meant to be a kernel.
     	</p>
 
-
-    	
     	<theorem>
       <statement>
         <p>
-          Let <m>R</m> be commutative with identity and <m>I</m> an ideal of <m>R</m>.
-          Define <m>\p: R\to R/I</m> by <m>\p(r) = r+I</m>.
-          Then <m>\p</m> is a homomorphism with <m>\ker\p = I</m>.
+          Let <m>R</m> be commutative and <m>I</m> an ideal of <m>R</m>.
+          Define <m>\varphi\colon R\to R/I</m> by <m>\varphi(r) = r+I</m>.
+          Then <m>\varphi</m> is an epimorphism with <m>\ker\varphi = I</m>.
         </p>
       </statement>
+      <proof>
+        <p>
+          We first verify that <m>\varphi</m> is a homomorphism. Note that <m>\varphi(1_R) = 1_R+I</m> which 
+          is the multiplicative identity in <m>R/I</m>.
+        </p>
+        <p>
+          For compatibility with addition:
+          <me>\varphi(a+b) = a+b+I = (a+I) + (b+I) = \varphi(a) + \varphi(b).</me>
+        </p>
+        <p>
+          For compatibility with multiplication:
+          <me>\varphi(ab) = ab+I = (a+I)(b+I) = \varphi(a)\varphi(b).</me>
+          Thus <m>\varphi</m> is a homomorphism.
+        </p>
+        <p>
+          That <m>\varphi</m> is surjective is clear: for any <m>a+I\in R/I</m> we have <m>\varphi(a)  = a+I</m>. Lastly, suppose 
+          <m>\varphi(x) = 0_R + I</m>. Then <m>x+I = 0_R+I</m> so that <m>x\in I</m>. Thus <m>\ker\varphi\subseteq I</m>. Also for any 
+          <m>x\in I</m> we have <m>\varphi(x) = x+ I = I</m> so that <m>x\in \ker\varphi</m> which shows <m>\ker\varphi = I</m>.
+        </p>
+      </proof>
     </theorem>
     
+    <p>
+      This is just a generalization of <xref ref="thm_reductionModuloMIsHomomorphism"/>.
+    </p>
     
     <p>
-      In what follows,
-      we work toward a proof of the First Isomorphism Theorem for Rings.
+      We work toward a proof of the Noether Isomorphism Theorem for Rings. The proof will proceed by a sequence of lemmas.
     </p>
     <p>
-      Throughout, let <m>R</m> and <m>S</m> be commutative rings with identity,
-      and let <m>\p : R\to S</m> be a homomorphism.
-      Recall that <m>\im \p = \{s\in S\mid \p(r) = s\text{ for some } r\in R}</m>.
+      Throughout, let <m>R</m> and <m>S</m> be commutative rings,
+      and let <m>\varphi\colon R\to S</m> be a homomorphism.
+      Recall that 
+      <me>
+        \mathrm{im} \varphi = \{s\in S\mid \varphi(r) = s\text{ for some } r\in R\}
+      </me> 
+      is a subring of <m>S</m>.
     </p>
     <p>
-      Define <m>f: R/\ker \p \to \im \p</m> by <m>f(r+\ker \p) = \p(r)</m>.
+      Define <m>f\colon R/\ker \varphi \to \mathrm{im} \varphi</m> by <m>f(r+\ker \varphi) = \varphi(r)</m>.
     </p>
     <lemma>
       <statement>
         <p>
-          Using the notation from above,
-          <m>f</m> is a well-defined function.
+          Using the notation from above, <m>f</m> is a well-defined function.
         </p>
       </statement>
     </lemma>
     <proof>
       <p>
-        Suppose that <m>r_1 + \ker\p = r_2 + \ker\p</m>.
-        Then <m>r_2-r_1 \in \ker\p</m>,
-        so <m>\p(r_2-r_1) = 0_S</m>, and thus <m>\p(r_1) = \p(r_2)</m>.
-        Therefore, <m>f(r_1+\ker\p) = f(r_2+\ker\p)</m>,
+        Suppose that <m>r_1 + \ker\varphi = r_2 + \ker\varphi</m>.
+        Then <m>r_2-r_1 \in \ker\varphi</m>,
+        so <m>\varphi(r_2-r_1) = 0_S</m>, and thus <m>\varphi(r_1) = \varphi(r_2)</m>.
+        Therefore, <m>f(r_1+\ker\varphi) = f(r_2+\ker\varphi)</m>,
         and <m>f</m> is well-defined.
       </p>
     </proof>
+
     <lemma>
       <statement>
         <p>
@@ -876,13 +541,24 @@
         </p>
       </statement>
     </lemma>
+
     <proof>
       <p>
+        We have <m>f(1_R+\ker\varphi) = \varphi(1_R) = 1_S</m> as <m>\varphi</m> is a homomorphism.
+      </p>
+      <p>
         We show that <m>f</m> preserves addition.
-        That it preserves multiplication will follow similarly.
-        Observe that <m>f((x+\ker\p) + (y+\ker\p)) = f((x+y)+\ker\p) = \p(x+y) = \p(x)+\p(y) = f(x+\ker\p) + f(y+\ker\p)</m>.
+        That it preserves multiplication will follow similarly. We compute:
+        <md>
+          <mrow> f((x+\ker\varphi) + (y+\ker\varphi)) \amp= f((x+y)+\ker\varphi) </mrow>
+          <mrow> \amp= \varphi(x+y) </mrow>
+          <mrow> \amp= \varphi(x)+\varphi(y) </mrow>
+          <mrow> \amp= f(x+\ker\varphi) + f(y+\ker\varphi)</mrow>
+        </md>
+        where we have used that <m>\varphi</m> is a homomorphism in line 2.
       </p>
     </proof>
+
     <lemma>
       <statement>
         <p>
@@ -892,11 +568,11 @@
     </lemma>
     <proof>
       <p>
-        Suppose that <m>f(r_1 + \ker\p) = f(r_2 + \ker\p)</m>.
-        That is, <m>\p(r_1) = \p(r_2)</m>.
-        Then <m>\p(r_1 - r_2) = 0_S</m>,
-        so <m>r_1 -r_2 \in \ker\p</m>,
-        and therefore <m>r_1 + \ker\p = r_2 + \ker \p</m>.
+        Suppose that <m>f(r_1 + \ker\varphi) = f(r_2 + \ker\varphi)</m>.
+        That is, <m>\varphi(r_1) = \varphi(r_2)</m>.
+        Then <m>\varphi(r_1 - r_2) = 0_S</m>,
+        so <m>r_1 -r_2 \in \ker\varphi</m>,
+        and therefore <m>r_1 + \ker\varphi = r_2 + \ker \varphi</m>.
         Thus, <m>f</m> is one-to-one.
       </p>
     </proof>
@@ -909,9 +585,9 @@
     </lemma>
     <proof>
       <p>
-        Since <m>\p</m> is onto <m>\im \p</m> by definition,
-        given any <m>s\in \im \p</m> there is some <m>r\in R</m> such that <m>\p(r) = s</m>.
-        Then <m>f(r+\ker\p) = \p(r)</m>.
+        Since <m>\varphi</m> is onto <m>\mathrm{im} \varphi</m> by definition,
+        given any <m>s\in \mathrm{im} \varphi</m> there is some <m>r\in R</m> such that <m>\varphi(r) = s</m>.
+        Then <m>f(r+\ker\varphi) = \varphi(r)</m>.
       </p>
     </proof>
     <p>
@@ -919,68 +595,100 @@
     </p>
     <theorem>
     	<idx>First Isomorphism Theorem</idx>
+      <idx><h>Noether Isomorphism Theorem</h></idx>
       <title>Noether's Isomorphism Theorem</title>
       <creator>E. Noether</creator>
       <statement>
         <p>
-          Let <m>\p : R\to S</m> be a homomorphism of commutative rings.
-          Then <m>R/\ker \p \cong \im \p</m>.
+          Let <m>\varphi \colon R\to S</m> be a homomorphism of commutative rings.
+          Then <m>R/\ker \varphi \cong \mathrm{im} \varphi</m>.
         </p>
         <p>
           In particular,
-          if <m>\p : R\to S</m> is onto, <m>R/\ker \p \cong S</m>.
+          if <m>\varphi \colon R\to S</m> is an epimorphism (it is onto), <m>R/\ker \varphi \cong S</m>.
         </p>
       </statement>
     </theorem>
     
     <p>
-    	The First Isomorphism Theorem gives a useful way of establishing an isomorphism between a quotient ring <m>R/I</m> and another ring <m>S</m>: find an onto homomorphism <m>R\to S</m> with kernel <m>I</m>.
-    	
-    	</p>
+    	The Noether Isomorphism Theorem gives a useful way of establishing an isomorphism between a 
+      quotient ring <m>R/I</m> and another ring <m>S</m>: find an onto homomorphism <m>R\to S</m> with kernel <m>I</m>.
+    </p>
 
-    
-    <theorem>
+  </subsection>
+    <subsection xml:id="subsec-">
+      <title>Applying the Noether Isomorphism Theorem</title>
+      
+      <p>
+        In the next three examples, we make heavy use of the evaluation homomorphism. We prove three separate isomorphisms using it.
+      </p>
+    <example>
       <statement>
         <p>
-          We have the following isomorphisms of rings.
-          <ol>
-            <li>
-              <p>
-                <m>\Z/\ideal{m} \cong \Z_m</m>
-              </p>
-            </li>
-            <li>
-              <p>
-                <m>\Q[x]/\ideal{x-5} \cong \Q</m>
-              </p>
-            </li>
-            <li>
-              <p>
-                <m>\R[x]/\ideal{x^2+1} \cong \C</m>
-              </p>
-            </li>
-          </ol>
+          There is an isomorphism of rings <m>\Z[x]/(x)\cong \Z</m>. Indeed, let us consider the evaluation homomorphism
+          <me>\mathrm{ev}_0\colon\Z[x]\to \Z</me>
+          defined by <m>\mathrm{ev}_0(f(x)) = f(0)</m>. We have seen it is a homomorphism in Exercise??? 
+        </p>
+        <p>
+          Evaluation is an epimorphism: Pick any <m>a\in\Z</m> and consider the polynomial <m>f(x) = a</m>. Then <m>\mathrm{ev}_0(f(x)) = f(0) = a</m>.
+          Since evaluation is a surjective homomorphism it is an epimorphism.
+        </p>
+        <p>
+          We claim the kernel of evaluation at zero is <m>(x)</m>. Suppose <m>f(x) = a_0+a_1x+\cdots + a_nx^n\in \ker\mathrm{ev}_0</m>. Then 
+          <me>0 = \mathrm{ev}_0(f(x)) = a_0</me>
+          and so <m>a_0 = 0</m>. We conclude 
+          <me>f(x) = a_1x+\cdots + a_nx^n = x(a_1+\cdots +a_nx^{n-1})</me>.
+          and so <m>f(x)\in (x)</m>. Thus <m>\ker\mathrm{ev}_0(f(x)) = (x)</m>.
+        </p>
+        <p>
+          By the Noether Isomorphism Theorem we have <m>\Z[x]/(x)\cong \Z</m>.
         </p>
       </statement>
-    </theorem>
-    <proof>
-    TBD
-      <p>
-        Define <m>\p: \R[x] \to \C</m> by <m>\p(p(x)) = p(i)</m>.
-        We saw earlier that this evaluation map is a homomorphism.
-        It is easy to see that <m>\p</m> is onto as
-        <m>\p(a+bx) = a+bi</m> for any <m>a,b\in \R</m>.
-        Thus, <m>\R[x]/\ker\p \cong \C</m> by the First Isomorphism Theorem.
-      </p>
-      <p>
-        We claim that <m>\ker\p = \ideal{x^2+1}</m>.
-        Clearly, <m>\ideal{x^2+1} \subseteq \ker\p</m>.
-        Moreover, <m>\ker\p \subsetneq \R[x]</m>.
-        Finally, <m>\ideal{x^2+1}</m> is prime and thus maximal,
-        as <m>\R[x]</m> is a PID. Thus,
-        <m>\ker\p = \ideal{x^2+1}</m>.
-      </p>
-    </proof>
+    </example>
+
+    <p>
+      The previous example illustrates the power of the evaluation mapping. Here's another (similar) example.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          There is an isomorphism of rings <m>\Q[x]/(x-5)\cong \Q</m>. Indeed, let us consider the evaluation at <m>5</m> mapping:
+          <me>\mathrm{ev}_5\colon\Q[x]\to\Q</me>
+          defined by <m>\mathrm{ev}_5(f(x)) = f(5)</m>. It is a homomorphism and, in a manner similar to the previous example but using polynomial
+          division, we can see that <m>\ker\mathrm{ev}_5 = (x-5)</m>. 
+        </p>
+        <p>
+          The evaluation at <m>5</m> mapping is an epimorphism as for any <m>r\in\Q</m> we have <m>\mathrm{ev}_5(r) = r</m>. By the Noether Isomorphism 
+          Theorem <m>\Q[x]/(x-5)\cong \Q</m>.
+        </p>
+        <p>
+          Of course nothing is special about <m>5</m> here. You will prove a general theorem in Exercise????
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <title>Algebraic Definition of Complex Numbers</title>
+      <statement>
+        <p>
+          At this point, we've seen two different incarnations of the complex numbers. Refernce definition and Example ?????
+          We will show yet another way of constructing them.
+        </p>
+        <p>
+          Let <m>\mathrm{ev}_i\colon\R[x]\to\C</m> be the evaluation at <m>i</m> mapping. Evaluation is a homomorphism. Let's also note that 
+          <m>\mathrm{ev}_i(a+bx) = a+bi</m>. Thus <m>\mathrm{ev}_i</m> is an epimorphism.
+        </p>
+        <p>
+          Since <m>\mathrm{ev}_i(x^2+1) = i^2+1 = -1+1 = 0</m> we know that <m>x^2+1\in\ker\mathrm{ev}_i</m>. When we get to factorizations in the next chapter 
+          we will use the division algorithm to revisit this example and prove that <m>\ker\mathrm{ev}_i = (x^2+1)</m>. At the moment we do not yet have the Euclidean 
+          Algorithm at our disposal. Nevertheless, it is true so by the Noether Isomorphism Theorem <m>\R[x]/(x^2+1)\cong\C</m>. 
+        </p>
+        <p>
+          One could redefine the complex numbers as <m>\R[x]/(x^2+1)</m> and this is a purely algebraic definition of <m>\C</m> (up to using <m>\R</m>).
+        </p>
+      </statement>
+    </example>
     
     <activity>
     		<statement>
@@ -1002,6 +710,5 @@
 	</activity>
     
   </subsection>
-
 
 </section>
