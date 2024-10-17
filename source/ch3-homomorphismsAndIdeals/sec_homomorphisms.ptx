@@ -578,9 +578,9 @@
   
 </subsection>
 
-  <exercises xml:id="exers-homomorphisms">
+  <exercises xml:id="exers_homomorphisms">
     <title>Exercises</title>
-    <exercise xml:id="sec-homomorphisms-tf" label="sec-homomorphisms-tf">
+    <exercise xml:id="sec_homomorphismsTF" label="sec_homomorphismsTF">
     <statement>
       <p>
         Mark the following as true or false. 
@@ -648,6 +648,25 @@
       <statement>
         <p>
           Consider the function <m>\mathrm{ev}_{\sqrt{2}}\colon \Z[x]\to\R</m> defined by <m>\mathrm{ev}_{\sqrt{2}}(p(x)) = p(\sqrt{2})</m>. Prove that this mapping is a homomorphism. Then show it is neither injective nor bijective. What is it's image?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="exer_evaluationHomomorphism">
+      <notation>
+        <usage>\mathrm{ev}_a</usage>
+        <description>Evaluation Homomorphism</description>
+      </notation>
+      <idx><h>Evaluation Homomorphism</h></idx>
+      <title>Evaluation Homomorphism</title>
+      <statement>
+        <p>
+          Let <m>R</m> be a ring. Consider the polynomial ring <m>R[x]</m> over <m>R</m>. For any <m>a\in R</m>, define the evaluation function:
+          <me>\mathrm{ev}_a\colon R[x]\to R</me>
+          by <m>\mathrm{ev}_a(p(x)) = p(a)</m>. Prove that <m>\mathrm{ev}_a</m> is always an epimorphism. That is, it is a homomorphism which is always surjective.
+        </p>
+        <p>
+          Why does this exercise not contradict the previous exercise?
         </p>
       </statement>
     </exercise>

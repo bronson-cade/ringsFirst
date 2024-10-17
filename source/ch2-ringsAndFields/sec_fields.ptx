@@ -910,7 +910,7 @@
       </statement>
     </exercise>
 
-    <exercise>
+    <exercise xml:id="exer_complexNumbersAsMatrices">
       <statement>
         <p>
           Consider the set 

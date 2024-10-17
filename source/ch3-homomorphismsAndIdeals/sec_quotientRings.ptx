@@ -623,14 +623,15 @@
       <title>Applying the Noether Isomorphism Theorem</title>
       
       <p>
-        In the next three examples, we make heavy use of the evaluation homomorphism. We prove three separate isomorphisms using it.
+        In the next three examples, we make heavy use of the fact that the evaluation homomorphism from 
+        <xref ref="exer_evaluationHomomorphism"/> is a homomorphism. We prove three separate isomorphisms using it.
       </p>
     <example>
       <statement>
         <p>
           There is an isomorphism of rings <m>\Z[x]/(x)\cong \Z</m>. Indeed, let us consider the evaluation homomorphism
           <me>\mathrm{ev}_0\colon\Z[x]\to \Z</me>
-          defined by <m>\mathrm{ev}_0(f(x)) = f(0)</m>. We have seen it is a homomorphism in Exercise??? 
+          defined by <m>\mathrm{ev}_0(f(x)) = f(0)</m>. 
         </p>
         <p>
           Evaluation is an epimorphism: Pick any <m>a\in\Z</m> and consider the polynomial <m>f(x) = a</m>. Then <m>\mathrm{ev}_0(f(x)) = f(0) = a</m>.
@@ -658,7 +659,7 @@
         <p>
           There is an isomorphism of rings <m>\Q[x]/(x-5)\cong \Q</m>. Indeed, let us consider the evaluation at <m>5</m> mapping:
           <me>\mathrm{ev}_5\colon\Q[x]\to\Q</me>
-          defined by <m>\mathrm{ev}_5(f(x)) = f(5)</m>. It is a homomorphism and, in a manner similar to the previous example but using polynomial
+          defined by <m>\mathrm{ev}_5(f(x)) = f(5)</m>. In a manner similar to the previous example but using polynomial
           division, we can see that <m>\ker\mathrm{ev}_5 = (x-5)</m>. 
         </p>
         <p>
@@ -675,11 +676,11 @@
       <title>Algebraic Definition of Complex Numbers</title>
       <statement>
         <p>
-          At this point, we've seen two different incarnations of the complex numbers. Refernce definition and Example ?????
+          At this point, we've seen two different incarnations of the complex numbers: <xref ref="def_complexNumbers"/> and <xref ref="exer_complexNumbersAsMatrices"/>
           We will show yet another way of constructing them.
         </p>
         <p>
-          Let <m>\mathrm{ev}_i\colon\R[x]\to\C</m> be the evaluation at <m>i</m> mapping. Evaluation is a homomorphism. Let's also note that 
+          Let <m>\mathrm{ev}_i\colon\R[x]\to\C</m> be the evaluation at <m>i</m> homomorphism. Let's also note that 
           <m>\mathrm{ev}_i(a+bx) = a+bi</m>. Thus <m>\mathrm{ev}_i</m> is an epimorphism.
         </p>
         <p>
@@ -721,5 +722,161 @@
 	</activity>
     
   </subsection>
+  <exercises xml:id="exers_divisibilityIntegralDomains">
 
+    <exercise>
+      <statement>
+        <p>
+          Mark the following as true or false.
+        </p>
+        <ol>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+          <li>
+            <p>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          The quotient ring <m>\Z[i]/(1+i)</m> is isomorphic to <m>\mathbb{F}_2</m>. Prove it by writing out all of the elements of the quotient ring and computing 
+          their addition and multiplication tables.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be a ring. Prove that for any <m>a\in R</m>, we have an isomorphism <m>R[x]/(x-a)\cong R</m>. 
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+        </p>
+      </statement>
+    </exercise>
+    
+  </exercises>
 </section>
