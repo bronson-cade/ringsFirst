@@ -149,7 +149,7 @@
       <p>
         Let <m>p</m> be a prime. Consider the function:
         <me>\mathrm{Fr}\colon \mathbb{F}_p[x]\to \mathbb{F}_p[x]</me>
-        defined by <m>\mathrm{Fr}(f(x)) = (f(x))^2</m>. 
+        defined by <m>\mathrm{Fr}(f(x)) = (f(x))^p</m>. 
       </p>
       <p>
         Before we prove that the Frobenius is a homomorphism, let's recall that whenever <m>k\neq 0,p</m> the 
@@ -166,7 +166,7 @@
         For compatibility with addition, suppose <m>f(x),g(x)\in\mathbb{F}_2[x]</m>:
         <md>
           <mrow>\amp\mathrm{Fr}(f(x)+g(x)) </mrow>
-          <mrow>\amp= (f(x)+g(x))^2 </mrow>
+          <mrow>\amp= (f(x)+g(x))^p </mrow>
           <mrow> \amp= f(x)^p +{p\choose 1}f(x)^{p-1}g(x) + \cdots + {p\choose p-1}f(x)g(x)^{p-1} + g(x)^p</mrow>
           <mrow> \amp = f(x)^p + 0 + g(x)^p </mrow>
           <mrow> \amp = \mathrm{Fr}(f(x)) + \mathrm{Fr}(g(x)) </mrow>
@@ -208,7 +208,71 @@
     </solution>
   </exploration>
 -->
-
+<exercise label="number-theory-proof" adaptive="yes">
+  <title>Parsons Problem, Mathematical Proof</title>
+  <idx>even numbers</idx>
+  <statement>
+    <p>
+      Create a proof of the theorem: All automorphisms are monomorphisms.
+    </p>
+  </statement>
+  <blocks>
+  <block order="2">
+  <p>
+    Let <m>\varphi\colon R\to R</m> be an automorphism.
+  </p>
+  </block>
+  <block order="3">
+  <choice>
+  <p>
+    Then <m>n</m> is a prime number.
+  </p>
+  </choice>
+  <choice correct="yes">
+  <p>
+    Then there exists an <m>m</m> so that <m>n = 2m</m>.
+  </p>
+  </choice>
+  <choice>
+  <p>
+    Then there exists an <m>m</m> so that <m>n = 2m + 1</m>.
+  </p>
+  </choice>
+  </block>
+  <block order="1" correct="no">
+  <p>
+    Click the heels of your ruby slippers together three times.
+  </p>
+  </block>
+  <block order="5">
+  <p>
+    So <m>n = 2m + 0</m>.
+  </p>
+  <p>
+    This is a superfluous second paragraph in this block.
+  </p>
+  </block>
+  <block order="4">
+  <p>
+    Thus <m>n\equiv 0\mod 2</m>.
+  </p>
+  </block>
+  <block order="6" correct="no">
+  <p>
+    And a little bit of irrelevant multi-line math
+    <md>
+      <mrow>c^2&amp;a^2+b^2</mrow>
+      <mrow>&amp;x^2+y^2</mrow>
+    </md>.
+  </p>
+  </block>
+  </blocks>
+  <hint>
+    <p>
+      Dorothy will not be much help with this proof.
+    </p>
+  </hint>
+</exercise>
 </subsection>
 <subsection xml:id="ssec_propertiesOfHomomorphisms">
   <title>Properties of Homomorphisms</title>
@@ -260,22 +324,6 @@
   </p>
 </proof>
 </theorem>
-
-<activity>
-  <statement>
-    <p>
-      Show that a homomorphism sends a zero-divisor to either zero or a zero-divisor.
-    </p>
-  </statement>
-  <hint>
-    <p>
-      Mimic the ideas in <xref ref="thm_homomorphismsPreserveUnits"/>.
-    </p>
-  </hint>
-  <solution>
-    TBD
-  </solution>
-</activity>
 
 <p>
   Since homomorphisms are compatible with multiplication, and powers of elements are defined with multiplication, they must preserve powers as the next theorem shows.
@@ -587,14 +635,13 @@
       </p>
       <ol>
         <li>Suppose <m>R,S</m> are rings. Any function <m>f\colon R\to S</m> is a ring homomorphism.</li>
-        <li>Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism. Then <m>\ker(\varphi)</m> is an ideal.</li>
+        <li>The identity map on a ring is a ring homomorphism.</li>
+        <li>The zero map <m>0\colon R\to R</m> defined by <m>0(r) = 0</m> is a ring homomorphism.</li>
         <li>If <m>\varphi\colon R\to F</m> is a ring homomorphism and <m>F</m> is a field, then <m>R</m> is a field.</li>
         <li>If <m>\varphi\colon F\to R</m> is a ring homomorphism and <m>F</m> is a field, then <m>R</m> is a field.</li>
         <li>If <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>R</m> is a finite ring, then <m>S</m> is a finite ring.</li>
         <li>If <m>\varphi\colon R\to S</m> is a ring homomorphism and <m>S</m> is a finite ring, then <m>R</m> is a finite ring.</li>
         <li>If <m>\varphi\colon R\to S</m> is an injective ring homomorphism and <m>S</m> is a finite ring, then <m>R</m> is a finite ring.</li>
-        <li>The identity map on a ring is a ring homomorphism.</li>
-        <li>The zero map <m>0\colon R\to R</m> defined by <m>0(r) = 0</m> is a ring homomorphism.</li>
       </ol>
     </statement>
     </exercise>
@@ -626,10 +673,10 @@
       </statement>
     </exercise>
 
-    <exercise xml:id="evaluationHomomorphismGeneralR">
+    <exercise xml:id="exer_evaluationHomomorphismGeneralR">
       <statement>
         <p>
-          Suppose <m>R</m> is a ring. Fix <m>a\in R</m>. Let <m>\mathrm{ev}_a\colon R[x]\to R</m> be defined by <m>\mathrm{ev}_a(p(x)) = p(a)</m>. 
+          Suppose <m>R</m> is a commutative ring. Fix <m>a\in R</m>. Let <m>\mathrm{ev}_a\colon R[x]\to R</m> be defined by <m>\mathrm{ev}_a(p(x)) = p(a)</m>. 
           Prove that <m>\mathrm{ev}_a</m> is a ring homomorphism. Is the evaluation homomorphism injective, surjective, and/or bijective?
         </p>
       </statement>
@@ -679,11 +726,38 @@
         </p>
       </statement>
     </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Suppose <m>\varphi\colon R\to S</m> is a homomorphism. Prove <m>\varphi(-a) = -\varphi(a)</m> for all <m>a\in R</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\varphi\colon \Z/6\to \Z/3</m> be the <em>further reduce modulo three</em> map. Show that <m>\varphi</m> is well-defined and an epimorphism. 
+          Then show that <m>\varphi(\bar{3})</m> is not a zero-divisor. That is, homomorphisms need not preserve zero-divisors.
+        </p>
+      </statement>
+    </exercise>
   
     <exercise>
       <statement>
         <p>
-          Let <m>\varphi\colon R\to S</m> be a ring homomorphism. Prove that <m>\varphi(0_R) = 0_S</m>. That is, ring homomorphisms also preserve the additive identity.
+          Let <m>\varphi\colon R\to S</m> and <m>\psi\colon S\to T</m> be ring homomorphisms. Prove <m>\psi\circ \varphi\colon R\to T</m> defined by <m>(\psi\circ \varphi)(r) = \psi(\varphi(r))</m> 
+          is again a ring homomorphism.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Which of the properties one-to-one, onto, bijective are stable under composition of ring homomorphisms? That is, if <m>\varphi,\psi</m> both have one of these properties, 
+          must <m>\psi\circ\varphi</m> also have it?
         </p>
       </statement>
     </exercise>
@@ -734,5 +808,101 @@
         </p>
       </statement>
     </exercise>
+
+    <exercise xml:id="matching-one" label="matching-dates">
+      <title>Matching Problem, Dates</title>
+      <idx>matching US dates</idx>
+      <statement>
+        <p>
+          Match each type of (blank)-morphism with its definition
+        </p>
+      </statement>
+      <matches>
+      <match order="3">
+      <premise>epimorphism</premise>
+      <response>An onto homomorphism</response>
+      </match>
+      <match order="2">
+      <premise>monomorphism</premise>
+      <response>An into homomorphism</response>
+      </match>
+      <match order="1">
+      <premise>isomorphism</premise>
+      <response>An onto and into homomorphism</response>
+      </match>
+      <match order="4">
+      <premise>automorphism</premise>
+      <response>An isomorphism where codomain is domain</response>
+      </match>
+      </matches>
+
+    </exercise>
+      <!--
+    <exercise label="number-theory-proof" adaptive="yes">
+      <title>Parsons Problem, Mathematical Proof</title>
+      <idx>even numbers</idx>
+      <statement>
+        <p>
+          Create a proof of the theorem: All automorphisms are monomorphisms.
+        </p>
+      </statement>
+      <blocks>
+      <block order="2">
+      <p>
+        Let <m>\varphi\colon R\to R</m> be an automorphism.
+      </p>
+      </block>
+      <block order="3">
+      <choice>
+      <p>
+        Then <m>n</m> is a prime number.
+      </p>
+      </choice>
+      <choice correct="yes">
+      <p>
+        Then there exists an <m>m</m> so that <m>n = 2m</m>.
+      </p>
+      </choice>
+      <choice>
+      <p>
+        Then there exists an <m>m</m> so that <m>n = 2m + 1</m>.
+      </p>
+      </choice>
+      </block>
+      <block order="1" correct="no">
+      <p>
+        Click the heels of your ruby slippers together three times.
+      </p>
+      </block>
+      <block order="5">
+      <p>
+        So <m>n = 2m + 0</m>.
+      </p>
+      <p>
+        This is a superfluous second paragraph in this block.
+      </p>
+      </block>
+      <block order="4">
+      <p>
+        Thus <m>n\equiv 0\mod 2</m>.
+      </p>
+      </block>
+      <block order="6" correct="no">
+      <p>
+        And a little bit of irrelevant multi-line math
+        <md>
+          <mrow>c^2&amp;a^2+b^2</mrow>
+          <mrow>&amp;x^2+y^2</mrow>
+        </md>.
+      </p>
+      </block>
+      </blocks>
+      <hint>
+        <p>
+          Dorothy will not be much help with this proof.
+        </p>
+      </hint>
+    </exercise>
+    -->
   </exercises>
 </section>

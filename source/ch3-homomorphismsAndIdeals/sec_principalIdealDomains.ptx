@@ -61,7 +61,7 @@
       </p>
       <p>
         Take any other element <m>b\in I</m>, which we assume is positive. Then the division algorithm tells us there exists <m>q,r\in\N</m> with 
-        <m>0\leq r\le d</m> such that <m>b = dq+r</m>. But this would tell us <m>r = b-dq\in I</m> and <m>r \le d</m>. Since <m>d</m> is the least 
+        <m>0\leq r \lt d</m> such that <m>b = dq+r</m>. But this would tell us <m>r = b-dq\in I</m> and <m>r \lt d</m>. Since <m>d</m> is the least 
         positive element of <m>I</m>, this can only happen if <m>r=0</m> and so <m>b=dq</m> and <m>b\in (d)</m>. Therefore <m>I=(d)</m>.
       </p>
       <p>

@@ -64,7 +64,7 @@
   <idx>factor (ring)</idx>
     <statement>
       <p>
-        Let <m>R</m> be a commutative ring with identity, and let <m>a,b\in R</m>.
+        Let <m>R</m> be a commutative ring, and let <m>a,b\in R</m>.
         We say <m>a</m> <term>divides</term>
         <m>b</m> and write <m>a\mid b</m> if there is a <m>c\in R</m> such that <m>ac = b</m>.
         We then say that <m>a</m> is a <term>factor</term> of <m>b</m>.
@@ -74,14 +74,14 @@
   
   <investigation>
   <statement>
-        <p>
-          Find all factors of <m>\overline{2}</m> in the following rings:
-        </p>
+    <p>
+      Find all factors of <m>\overline{2}</m> in the following rings:
     <ol>
       <li><m>\Z/5</m></li>
       <li><m>\Z/6</m></li>
       <li><m>\Z/10</m></li>
     </ol>
+  </p>
   </statement>
   <solution>
     <p>
@@ -107,7 +107,7 @@
     <idx><h>prime (ring element)</h></idx>
     <statement>
       <p>
-        Let <m>R</m> be commutative. We say a nonzero nonunit element <m>a\in R</m> is <term>prime</term>
+        Let <m>R</m> be a commutative ring. We say a nonzero nonunit element <m>a\in R</m> is <term>prime</term>
         if whenever <m>a\mid bc</m> for some <m>b,c\in R</m>, either <m>a|b</m> or <m>a|c</m>.
       </p>
     </statement>
@@ -122,7 +122,7 @@
   <idx>atom</idx>
     <statement>
       <p>
-        Let <m>R</m> be commutative with identity.
+        Let <m>R</m> be a commutative ring.
         We say a nonzero nonunit element <m>a\in R</m> is <term>irreducible</term>
         if whenever <m>a = bc</m> for some <m>b,c\in R</m>,
         one of <m>b</m> or <m>c</m> is a unit.
@@ -338,6 +338,324 @@
 
 
 </subsection>
+<subsection xml:id="ssec_polynomialEuclideanAlgorithm">
+  <title>Polynomial Euclidean Algorithm</title>
+  <p>
+    We now specialize divisibility to polynomial rings over a field and recover many of the results we have for divisibility in <m>\Z</m>.
+  </p>
+<theorem xml:id="theorem_polynomialDivisionAlgorithm">
+  <title>
+  Polynomial Division Algorithm
+  </title>
+  <statement>
+    <p>
+      Let <m>F</m> be a field and
+      <m>f(x),g(x)\in F[x]</m> with <m>g(x)\ne 0</m>.
+      Then there exist unique <m>q(x),
+      r(x) \in F[x]</m> such that
+      <me>
+        f(x) = g(x) q(x) + r(x)
+      </me>,
+      where <m>\deg(r(x)) \lt  \deg g(x)</m>.
+    </p>
+  </statement>
+</theorem>
+<proof>
+  <p>
+    <em>Existence:</em> If <m>f(x) = 0</m>,
+    then <m>q(x) = 0</m> and <m>r(x) = 0</m> will do.
+    If <m>f(x)\ne 0</m> and <m>\deg f \lt \deg g</m>,
+    then <m>q(x) = 0</m> and <m>r(x) = f(x)</m> will suffice.
+    Thus, we need only consider the case in which
+    <m>f(x) \ne 0</m> and <m>\deg f \ge \deg g</m>.
+    We use induction on <m>\deg f = m</m>.
+  </p>
+  <p>
+    When <m>m = 0</m>, <m>\deg g \le 0 = \deg f</m>,
+    and as <m>g(x) \ne 0</m>, both <m>f</m> and <m>g</m> are nonzero constants.
+    Then <m>r = 0</m> and <m>q = fg^{-1}</m> will work.
+  </p>
+  <p>
+    Now assume <m>q</m> and <m>r</m> exist whenever <m>\deg f \lt m</m>.
+    Assume <m>\deg f = m</m> and write
+    <m>f(x) = a_0 + a_1 x + \cdots + a_m x^m</m> and <m>g(x) = b_0 + b_1 x + \cdots + b_n x^n</m>.
+    Use <xref ref="lem_polydivalglem">Lemma</xref>
+    and set <m>h(x) = f(x) - a_m b_n^{-1} x^{m-n} g(x)</m>,
+    which must have degree less than <m>f</m>.
+    Thus, by induction, there exist
+    <m>q_1, r_1\in F[x]</m> such that <m>h = g q_1 + r_1</m>,
+    with <m>r_1 = 0</m> or <m>\deg r_1 \lt \deg g</m>.
+  </p>
+  <p>
+    We therefore have
+    <md>
+      <mrow>f(x) \amp = a_m b_n^{-1} x^{m-n} g(x) + h(x)</mrow>
+      <mrow>\amp = a_m b_n^{-1} x^{m-n} g(x) + g(x) q_1(x) + r_1(x)</mrow>
+      <mrow>\amp = (a_m b_n^{-1} x^{m-n} + q_1(x)) g(x) + r_1(x)</mrow>
+    </md>,
+    where <m>q = a_m b_n^{-1} x^{m-n} + q_1(x)</m> and
+    <m>r = r_1(x)</m> have the desired properties.
+  </p>
+  <p>
+    <em>Uniqueness:</em> Suppose
+    <m>f = gq + r</m> and <m>f = g\hat{q} + \hat{r}</m>,
+    where <m>r,\hat{r}</m> both have the desired properties.
+    Then
+    <me>
+      0 = g[q - \hat{q}] + [r - \hat{r}]
+    </me>,
+    or <m>\hat{r} - r = g [q - \hat{q}]</m>.
+    Thus either <m>\hat{r} - r = 0</m>,
+    or <m>\hat{r} - r</m> has degree at least <m>\deg g</m>.
+    The latter is clearly impossible,
+    so <m>\hat{r} = r</m> and <m>\hat{q} = q</m>.
+  </p>
+</proof>
+
+<p>
+  The division algorithm was the crucial ingredient for the Euclidean algorithm.
+</p>
+<algorithm xml:id="alg_euclideanAlgorithmPolynomials">
+  <title>Polynomial Euclidean Algorithm</title>
+  <statement>
+    <p>
+      Let <m>F</m> be a field and <m>f(x),g(x)\in F[x]</m> two polynomials (not both zero). To compute <m>\gcd(f,g)</m> construct a sequence of 
+      remainders initializing <m>r_{-2} = f</m> and <m>r_{-1}=g</m>. Set <m>i=0</m> then:
+      <ol>
+        <li>
+          <p>
+            Use the <xref ref="thm_polynomialDivisionAlgorithm" text="title"/> to divide <m>r_{i-2}</m> by <m>r_{i-1}</m> with new remainder <m>r_i</m>:
+            <me>
+              r_{i-2} = q_ir_{i-1} + r_i
+            </me>
+            where <m>0\leq \deg(r_i)\lt \deg(r_{i-1})</m>.
+          </p>
+        </li>
+        <li>
+          <p>
+            If <m>r_i(x) = 0</m>, then <m>\gcd(f,g) = r_{i-1}</m>. STOP.
+          </p>
+        </li>
+        <li>
+          <p>
+            Increment <m>i</m> by <m>1</m> to <m>i+1</m> and return to the first step.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </statement>
+</algorithm>
+
+<p>
+  The Euclidean algorithm always terminates in finitely many steps as the degree of the remainders is strictly decreasing and bounded below by <m>0</m>. In particular, 
+  the process will terminate in at most <m>\deg(f)</m> steps. In each instance, we are simple dividing the previous remainder by the next to get our new remainder. 
+  We will refer to this as <em>repeated division</em>.
+</p>
+
+<example>
+  <statement>
+    <p>
+      Consider <m>f(x) = x^4-1</m> and <m>g(x) = x^4+x</m> viewed as polynomials over the field of rational numbers. Carry 
+      out repeated division:
+      <md>
+        <mrow>x^4-1 \amp= 1\cdot(x^4+x)+(-x-1)</mrow>
+        <mrow>x^4+x \amp= (-x^3+x^2-x)(-x-1)+0</mrow>
+      </md>
+      and so <m>\gcd(x^4-1,x^4+x) = -x-1</m>. But since greatest common divisors are only unique up to units, we say <m>\gcd(x^4-1,x^4+x) = x+1</m> by multiplying 
+      through by <m>-1</m>.
+    </p>
+  </statement>
+</example>
+
+<p>
+  The previous example shows that in polynomials over a field we can always multiply through by an appropriate constant so that the greatest common divisor 
+  is <em>monic</em>.
+</p>
+
+<definition>
+  <statement>
+    <p>
+      Let <m>f(x),g(x)\in F[x]</m> be polynomials over a field, not both zero. The greatest common divisor is the monic polynomial which is a greatest common 
+      divisor of <m>f,g</m>.
+    </p>
+  </statement>
+</definition>
+
+<p>
+  Since greatest common divisors are all associates, once we require that they are monic the gcd becomes unique.
+</p>
+
+<lemma>
+  <statement>
+    <p>
+      Let <m>d,d'</m> be two monic greatest common divisors of <m>f,g\in F[x]</m> where <m>F</m> is a field. Then <m>d=d'</m>.
+    </p>
+  </statement>
+  <proof>
+    <p>
+      Since <m>d,d'</m> are both greatest common divisors, <m>d\mid d'</m> and <m>d'\mid d</m>. In particular, this only happens when <m>d = \lambda d'</m> for 
+      some <m>\lambda\in F</m>. Since they are both monic, it must be that <m>\lambda=1</m>.
+    </p>
+  </proof>
+</lemma>
+<aside>
+  <p>
+    Due to Bill Cook: https://www.billcookmath.com/sage/algebra/Euclidean_algorithm-poly.html
+  </p>
+</aside>
+<example>
+  
+  <statement>
+    <p>
+      Consider the polynomials <m>x^4+2x^4-x^2+1</m> and <m>x^4-1</m>. We compute their gcd using repeated division:
+      <md>
+        <mrow> x^5+2x^4-x^2+1 \amp= (x+2)\cdot (x^4-1) +(-x^2+x+3)</mrow>
+        <mrow> x^4-1\amp=(-x^2-x-4)\cdot(-x^2+x+3) + (7x+11) </mrow>
+        <mrow> -x^2+x+3\amp=\left(-\frac{1}{7}+\frac{18}{49}\right)\cdot(7x+11) + \left(-\frac{51}{49}\right) </mrow>
+        <mrow> 7x+11 \amp= -\frac{51}{49}\left(-\frac{343}{51}x-\frac{539}{51}\right)+0</mrow>
+      </md>
+    </p>
+    <p>
+      The Euclidean Algorithm tells us a greatest common divisor is <m>-51/49</m>. Multiplying by <m>-49/51</m> we have 
+      <me>\gcd(x^4+2x^4-x^2+1,x^4-1) = 1.</me>
+      In particular, these polynomials are relatively prime.
+    </p>
+  </statement>
+</example>
+
+<p>
+  The last result is a polynomial generalization of Bezout's identity.
+</p>
+<theorem xml:id="thm_polynomialBezoutIdentity">
+  <title>Polynomial B&#xe9;zout's Identity</title>
+  <idx>B&#xe9;zout's Identity (polynomials)</idx>
+  <statement>
+    <p>
+      Let <m>F</m> be a field. For any polynomials <m>f,g\in F[x]</m> not both 0, there are polynomials <m>p</m> and <m>q</m> such that
+      <me>
+        pf + qg = \gcd(f,g)
+      </me>.
+    </p>
+  </statement>
+
+  <proof>
+    <p>
+    The Euclidean algorithm computes the greatest common divisor of <m>f,g</m>. After running the Euclidean Algorithm, we have a sequence of remainders and 
+    quotients <m>r_i</m> and <m>q_i</m>, respectively. Here <m>r_{-2} = f</m> and <m>r_{-1} = g</m>:
+    <md>
+      <mrow>r_{-2} \amp= q_0r_{-1} + r_0 </mrow>
+      <mrow>r_{-1} \amp = q_1r_0+r_1</mrow>
+      <mrow>\vdots \amp= \vdots </mrow>
+      <mrow>r_{n-3}\amp = q_{n-1}r_{n-2}+r_{n-1}</mrow>
+      <mrow>r_{n-2}\amp = q_nr_{n-1}+r_n</mrow>
+      <mrow>r_{n-1}\amp= q_{n+1}r_n+0</mrow>
+    </md>
+    where <m>r_n = \gcd(f,g)</m>.
+    </p>
+    <p>
+      Solving this system of equations for the remainders we get:
+      <md>
+      <mrow>r_{-2} -q_0r_{-1} \amp= r_0 </mrow>
+      <mrow>r_{-1} - q_1r_0 \amp= r_1</mrow>
+      <mrow>\vdots \amp= \vdots </mrow>
+      <mrow>r_{n-3} - q_{n-1}r_{n-2} \amp= r_{n-1}</mrow>
+      <mrow>r_{n-2} - q_nr_{n-1}\amp= r_n</mrow>
+    </md>
+    Now substitute <m>r_{n-1}</m> from the second to last equation into the last equation:
+    <md>
+      <mrow> r_n \amp= r_{n-2}-q_nr_{n-1}</mrow>
+      <mrow> \amp= r_{n-2}-q_n(r_{n-3}-q_{n-1}r_{n-2}) </mrow>
+      <mrow> \amp= (1+q_nq_{n-1})r_{n-2}-q_nr_{n-3}</mrow>
+    </md>
+    and in particular we have expressed <m>r_n</m> as a polynomial combination of <m>r_{n-2}</m> and <m>r_{n-3}</m>.
+    </p>
+    <p>
+      Into this equation substitute in <m>r_{n-2}</m>, which is a polynomial combination of <m>r_{n-3}</m> and <m>r_{n-4}</m>. 
+      This will express <m>r_n</m> as a polynomial combination of <m>r_{n-3}</m> and <m>r_{n-4}</m>. And keep doing so until we have arrived at
+      <me>
+        \gcd(f,g) = r_n = pr_{-2}+qr_{-1} = pf+qg.
+      </me>
+      This completes the proof.
+    </p>
+  </proof>
+</theorem>
+
+<example>
+  <title>B&#xe9;zout Coefficients over <m>\mathbb{F}_2</m></title>
+  <statement>
+    <p>
+      Let's consider the polynomials <m>f(x) = x^5+x^4+1</m> and <m>g(x) = x^3+x</m> as polynomials in <m>\mathbb{F}_2[x]</m>. Carrying out 
+      repeated division:
+      <md>
+        <mrow>x^5+x^4+1 \amp= (x^2+x+1)(x^3+x)+(x^2+x+1) </mrow>
+        <mrow>x^3+x \amp= (x+1)(x^2+x+1) + (x+1)</mrow>
+        <mrow>x^2+x+1 \amp = x\cdot (x+1)+1</mrow>
+        <mrow>x+1 \amp = 1\cdot(x+1)+0</mrow>
+      </md>
+      and so <m>\gcd(f,g) = 1</m>.
+    </p>
+    <p>
+      To find B&#xe9;out coefficients, we solve for the remainders:
+      <md>
+        <mrow>x^5+x^4+1 - (x^2+x+1)(x^3+x)\amp=(x^2+x+1) </mrow>
+        <mrow>x^3+x - (x+1)(x^2+x+1) \amp= (x+1)</mrow>
+        <mrow>x^2+x+1 - x\cdot (x+1) \amp= 1</mrow>
+      </md>
+      and substitute <m>x+1</m> into the last equation:
+      <md>
+        <mrow> 1\amp= x^2+x+1-x(x^3+x-(x+1)(x^2+x+1)) </mrow>
+        <mrow> \amp = (x^2+x+1)(x^2+x+1)+x(x^3+x)</mrow>
+      </md>
+      note that in <m>\mathbb{F}_2</m> we have <m>1=-1</m>.
+    </p>
+    <p>
+      We now substitute <m>x^2+x+1</m> into this equation:
+      <md>
+        <mrow> 1\amp= (x^2+x+1)(x^2+x+1)+x(x^3+x) </mrow>
+        <mrow> \amp=(x^2+x+1)((x^5+x^4+1)-(x^2+x+1)(x^3+x)) + x(x^3+x) </mrow>
+        <mrow> \amp=(x^2+x+1)(x^5+x^4+1) + (x^4+x^2+x+1)(x^3+x) </mrow>
+      </md>
+      and we have found our B&#xe9;zout coefficients.
+    </p>
+  </statement>
+</example>
+
+<example>
+  <statement>
+    <p>
+      Let's use the same polynomials: <m>x^5+x^4+1</m> and <m>x^3+x</m> but work over <m>\mathbb{F}_3</m> instead.
+      Carrying out repeated division yields:
+      <md>
+        <mrow>x^5+x^4+1 \amp= (x^2+x+2)(x^3+x) + (2x^2+x+1)</mrow>
+        <mrow>x^3+x \amp= (2x+2)(2x^2+x+1) +1</mrow>
+      </md>
+      and we will stop here because we have a constant remainder. This means that in <m>\mathbb{F}_3</m> we have:
+      <me>
+        \gcd(x^5+x^4+1,x^3+x) = 1.
+      </me>
+    </p>
+    <p>
+      Solving our equations for the remainders yields:
+      <md>
+        <mrow>x^5+x^4+1 -(x^2+x+2)(x^3+x) = (2x^2+x+1)</mrow>
+        <mrow>x^3+x -(2x+2)(2x^2+x+1) \amp= 1</mrow>
+      </md>
+      and so we substitute the first equation into the second:
+      <md>
+        <mrow>1 \amp= x^3+x -(2x+2)(2x^2+x+1) </mrow>
+        <mrow> \amp= x^3+x-(2x+2)(x^5+x^4+1 -(x^2+x+2)(x^3+x)) </mrow>
+        <mrow> \amp= (x+1)(x^5+x^4+1) + (2x^3+x^2+2)(x^3+x)</mrow>
+      </md>
+      noting that <m>-2=1</m> and <m>-1=2</m> in <m>\mathbb{F}_3</m>.
+    </p>
+    <p>
+      Notice here that the coefficients are different in degrees than the previous example.
+    </p>
+  </statement>
+</example>
+
+
+</subsection>
 <exercises xml:id="exers_divisibilityIntegralDomains">
 
   <exercise>
@@ -506,8 +824,8 @@
             <me>
               N(a+b\sqrt{-5}) = a^2+5b^2.
             </me>
-          </p>
           Prove that <m>N</m> is multiplicative, i.e. <m>N( (a+b\sqrt{-5})(c+d\sqrt{-5})) = N(a+b\sqrt{-5})N(c+d\sqrt{-5})</m>.
+          </p>
         </li>
         <li>
           <p>
@@ -526,6 +844,53 @@
           </p>
         </li>
       </ol>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Suppose that <m>f(x),g(x)\in F[x]</m> are non-zero polynomials over a field such that <m>f\mid g</m> and <m>g\mid f</m>. Prove that there exists <m>c\in F</m> 
+        such that <m>f = cg</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Compute the greatest common divisors of the following polynomials over the given field.
+      </p>
+      <ol>
+        <li>
+          <p>
+            <m>x^4-x^3-2x^2+x+1</m> and <m>x^3+x^2+x+1</m> over <m>\mathbb{Q}</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>x^4-x^3-2x^2+x+1</m> and <m>x^3+x^2+x+1</m> over <m>\mathbb{F}_2</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>x^4-x^3-2x^2+x+1</m> and <m>x^3+x^2+x+1</m> over <m>\mathbb{F}_3</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>x^4-x^3-2x^2+x+1</m> and <m>x^3+x^2+x+1</m> over <m>\mathbb{F}_5</m>
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Compute B&#xe9;zout coefficients for each of the pairs of polynomials in the previous exercise.
+      </p>
     </statement>
   </exercise>
   

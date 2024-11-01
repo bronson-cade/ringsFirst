@@ -14,7 +14,7 @@
       			
       <li>How can we use ideals to build new rings out of old?</li>
       <li>What sorts of ideals allow us to build domains? Fields?</li>
-      <li>What is the First Isomorphism Theorem?</li>
+      <li>What is the Noether Isomorphism Theorem?</li>
     </ul>
   </objectives>
   <introduction>
@@ -47,54 +47,92 @@
       </statement>
     </definition>
 
-    <activity>
-    		<statement>
-    			<p>
-    				Determine (with brief justification) whether <m>a + I = b + I</m> in the following rings <m>R</m>.
-    			</p>
-			<ol>
-				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = (6)</m>, <m>R = \Z</m></li>
-				<li><m>a = 10</m>, <m>b = 4</m>, <m>I = (7)</m>, <m>R = \Z</m></li>
-				<li><m>a = 9</m>, <m>b = 3</m>, <m>I = (6)</m>, <m>R = \Z[x]</m></li>
-				<li><m>a = x^2+x-2</m>, <m>b = x-1</m>, <m>I = (x+1)</m>, <m>R = \Q[x]</m></li>
-				<li> (<em>Challenge.</em>) <m>a = x^3</m>, <m>b = x^2+2x</m>, <m>I = (y-x^2, y-x-2)</m>, <m>R = \Q[x,y]</m></li>
-			</ol>
-		</statement>
-		<solution>
-			
-      <ol>
-        <li>
-          <p>
-            We have <m>3-9 = -6 = (-1)\cdot 6\in (6)</m> so <m>9+(6) = 3+ (6)</m> in <m>\Z</m>.
-          </p>
-        </li>
-        <li>
-          <p>
-            We have <m>4-10 = -6\notin (7)</m> as <m>-6\neq 7k</m> for any <m>k\in\Z</m>. Thus 
-            <m>10+(7)\neq 4+(7)</m> in <m>\Z</m>.
-          </p>
-        </li>
-        <li>
-          <p>
-            <m>3-9 = -6 = (-1)\cdot 6\in (6)</m>. Thus <m>9+(6) = 3+(6)</m> in <m>\Z[x]</m>.
-          </p>
-        </li>
-        <li>
-          <p>
-            <m>x-1-(x^2+x-2) = -x^2+1 = -(x-1)(x+1)\in (x+1)</m>. Thus <m>x-1+(x+1) = x^2+x-2 + (x+1)</m> 
-            in <m>\Q[x]</m>.
-          </p>
-        </li>
-        <li>
-          <p>
-            <m>x^3 - x^2 - 2x = x(x-2)(x+1) = -x(y-x^2) + x(y-x-2)</m>. Thus
-            <me>x^3+(y-x^2,y-x-2) = x^2+x+ (y-x^2,y-x-2)</me>
-            in <m>\Q[x,y]</m>.
-          </p>
-        </li>
-      </ol>
-		</solution>
-	</activity>
+    <example>
+      <title>Congruence modulo <m>(m)</m></title>
+      <statement>
+        <p>
+          We first show that in the case <m>R=\Z</m>, congruence modulo <m>(m)</m> is the same 
+          as congruence modulo <m>m</m>. Indeed, supppose <m>a,b\in\Z</m> are congruent modulo <m>(m)</m>. 
+          Then <m>b-a\in (m)</m> and so <m>b-a=mk</m> for some <m>k\in\Z</m>. Hence, <m>a\equiv_m b</m>. 
+        </p>
+        <p>
+          The preceeding argument is an if and only if argument so can be read in reverse too. Hence, 
+          congruence modulo <m>(m)</m> and congruence modulo <m>m</m> agree.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <title>Congruence in <m>\Z[x]</m></title>
+      <statement>
+        <p>
+          Let's now work in <m>R=\Z[x]</m> and first consider the ideal <m>(6)</m>. Are <m>9x</m> and <m>3x</m> congruent modulo <m>(6)</m>?
+          The difference is <m>3x-9x=6(-x)\in (6)</m> and so they are congruent modulo <m>6</m>. What other elements are congruent modulo <m>6</m>?
+        </p>
+        <p>
+          What other elements are congruent modulo <m>(6)</m>? Let's first better understand <m>(6)</m>. This is the set of all integral polynomial 
+          multiples of <m>6</m>:
+          <me>
+            (6) = \{6p(x)\mid p(x)\in\Z[x]\}.
+          </me>
+          In particular, all coefficients of elements of <m>(6)</m> are multiples of <m>6</m>. From this we learn that <m>p(x),q(x)\in \Z[x]</m> are 
+          congruent modulo <m>(6)</m> if and only if the coefficients of their difference are divisible by <m>6</m>. So, for example, <m>9x,3</m> are not 
+          congruent modulo <m>6</m>, while <m>9x^2+12x-32</m> and <m>21x^2-38</m> are congruent modulo <m>6</m>.
+        </p>
+        <p>
+          Let's look at another ideal here, say <m>(x)\subseteq \Z[x]</m>. As a first example, <m>9x</m> and <m>3x</m> are congruent modulo <m>(x)</m> as 
+          <m>3x-9x=(-6)x\in(x)</m>. However, <m>9x^2+12x-32,21x^2-38</m> are not congruent modulo <m>(x)</m> as their difference is <m>12x^2-12x-6</m> 
+          which is not a multiple of <m>x</m>.
+        </p>
+        <p>
+          What does it mean here to be congruent modulo <m>(x)</m>? Again, let's better understand the ideal <m>(x)</m>:
+          <me>
+            (x) = \{xp(x)\mid p(x)\in\Z[x]\}
+          </me>
+          and so elements of <m>(x)</m> are precisely the polynomials without a constant term. In particular, two elements <m>p(x),q(x)\in\Z[x]</m> are 
+          congruent modulo <m>(x)</m> if and only if they have identical constant term as their difference needs to not have a constant term. 
+        </p>
+        <p>
+          Hence, the polynomial <m>9x^2+12-32</m> and <m>21x^2-32</m> are congruent modulo <m>(x)</m> while the polynomials <m>9x,3</m> are not.
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <title>Congruence in <m>\C[x,y]</m></title>
+      <statement>
+        <p>
+          Let's now look at a more complicated example: the ideal <m>(x,y)\subseteq \C[x,y]</m>. 
+          This ideal is not principal and as a reminder it is equal to:
+          <me>
+            (x,y) = \{xp(x,y)+yq(x,y)\mid p(x,y),q(x,y)\in\C[x,y]\}.
+          </me>
+          That is, it is all polynomial combinations of <m>x,y</m>.
+        </p>
+        <p>
+          What is congruence modulo <m>(x,y)</m>? We consider a couple of examples first. The polynomials <m>x+y-2</m> and <m>xy+2x-2</m> are congruent modulo <m>(x,y)</m> 
+          as
+          <me>
+            xy+2x-2-(x+y-2) = xy+x-y = x(y+1)+y(-1).
+          </me>
+          and so the difference is a polynomial combination of <m>x,y</m>. As another example, we see that <m>xy-x-y</m> and <m>x^2+xy+y^2</m> are also 
+          congruent modulo <m>(x,y)</m>:
+          <me>
+            x^2+xy+y^2 - (xy-x-y) = x^2+y^2+x+y = x(x+1) + y(y+1)
+          </me>
+          and the difference is again a polynomial combination of <m>x,y</m>. Let's look at <m>xy+y+1</m> and <m>2xy+2x-3y+2</m>:
+          <me>
+            2xy+2x-3y+2-(xy+y+1) = xy+2x-4y+1.
+          </me>
+          This polynomial cannot be written as a polynomial combination of <m>x,y</m> because such combinations cannot have a constant term!
+        </p>
+        <p>
+          Our sequence of example elements seems to indicate that polynomials are congruent modulo <m>(x,y)</m> if and only if they have the same constant term. 
+          And indeed this is the case. The details of which are left as an exercise which is primarily an exercise in multivariate polynomial notation.
+        </p>
+      </statement>
+    </example>
+
     
     <exploration>
       <statement>
@@ -174,7 +212,7 @@
     </example>
     
     <p>
-    	As was the case in <m>\Z_m</m>, congruence modulo <m>I</m> is an equivalence relation.
+    	As was the case in <m>\Z/m</m>, congruence modulo <m>I</m> is an equivalence relation.
     </p>
 
     <theorem>
@@ -373,7 +411,7 @@
         </p>
         <ol>
           <li>Suppose <m>R= \Z</m> and <m>I = (8)</m>. Calculate <m>(3+I) + (7+I)</m> and <m>(4+I)\cdot (6+I)</m>.</li>
-          <li>Let <m>R = \Z_3[x]</m> and <m>J = (x^2)</m>. List all elements of <m>R/J</m> (there should be 9 in total).</li>
+          <li>Let <m>R = \Z/3[x]</m> and <m>J = (x^2)</m>. List all elements of <m>R/J</m> (there should be 9 in total).</li>
           <li>Set <m>R = \R[x]</m> and <m>I = (x^2-1)</m>. Find an element <m>f + I \in R/I</m> such that <m>(f+I)(2x+2 + I) = I</m>.</li>
         </ol>
       </statement>
@@ -390,7 +428,7 @@
     <exploration>
 	    	<statement>
 	    		<p>
-	    			Consider the ring <m>R=\Z_2[x]</m> and the ideals <m>I = (x^2-1)</m> and <m>J = (x^3 -x -1)</m>.
+	    			Consider the ring <m>R=\Z/2[x]</m> and the ideals <m>I = (x^2-1)</m> and <m>J = (x^3 -x -1)</m>.
 	    		</p>
 			<ol>
 				<li>List the elements of <m>R/I</m> and <m>R/J</m>.</li>
@@ -616,8 +654,24 @@
     <p>
     	The Noether Isomorphism Theorem gives a useful way of establishing an isomorphism between a 
       quotient ring <m>R/I</m> and another ring <m>S</m>: find an onto homomorphism <m>R\to S</m> with kernel <m>I</m>.
+      It's helpful to think of the Noether isomorphism theorem in terms of a diagram:
+    <me>
+      \begin{CD}
+      R @>\varphi>> S\\
+      @VVV @AAA\\
+      R/\ker\varphi @>\sim>> \mathrm{im}\varphi 
+      \end{CD}
+    </me>
     </p>
-
+    <p>
+      The way we read these diagrams is if you start with an element at any of the nodes and compute the images under each arrow. You should always end up with the same spot. 
+      In this context, to compute <m>\varphi(r)</m>, we can first surject onto <m>R/\ker\varphi</m> sending <m>r\to\bar{r}</m>. Then apply the Noether isomorphism 
+      <m>f(\bar{r}) = \varphi(r)</m>. Then include that into <m>S</m>. 
+    </p>
+    <p>
+      The diagram is meant to visualize a factorization of <m>\varphi</m> into varies pieces. In particular, we see that any homomorphism factors into the composite of an epimorphism 
+      followed by a monomorphism.
+    </p>
   </subsection>
     <subsection xml:id="subsec-">
       <title>Applying the Noether Isomorphism Theorem</title>
@@ -684,12 +738,71 @@
           <m>\mathrm{ev}_i(a+bx) = a+bi</m>. Thus <m>\mathrm{ev}_i</m> is an epimorphism.
         </p>
         <p>
-          Since <m>\mathrm{ev}_i(x^2+1) = i^2+1 = -1+1 = 0</m> we know that <m>x^2+1\in\ker\mathrm{ev}_i</m>. When we get to factorizations in the next chapter 
-          we will use the division algorithm to revisit this example and prove that <m>\ker\mathrm{ev}_i = (x^2+1)</m>. At the moment we do not yet have the Euclidean 
-          Algorithm at our disposal. Nevertheless, it is true so by the Noether Isomorphism Theorem <m>\R[x]/(x^2+1)\cong\C</m>. 
+          Since <m>\mathrm{ev}_i(x^2+1) = i^2+1 = -1+1 = 0</m> we know that <m>x^2+1\in\ker\mathrm{ev}_i</m>. Suppose that <m>p(x)\in\ker\mathrm{ev}_i</m>. 
+          Using the <xref ref="thm_polynomialDivisionAlgorithm" text="title"/>, we can divide <m>p(x)</m> by <m>x^2+1</m> to get 
+          <me>
+            p(x) = q(x)(x^2+1) + r(x)
+          </me>
+          where <m>\deg(r(x)) \lt 2</m>. Since <m>p(x)</m> is in the kernel we have:
+          <md>
+            <mrow>0 \amp= p(i) </mrow>
+            <mrow> \amp=q(i)(i^2+1)+r(i) </mrow>
+            <mrow> \amp=r(i) </mrow>
+          </md>
+          and so <m>r(i)=0</m>. Since <m>r(x)</m> has degree at most one, we can write <m>r(x) = a+bx</m>. But then 
+          <me>
+            0=r(i) = a+bi
+          </me>
+          implies <m>a=0,b=0</m>. Thus <m>r(x) = 0</m> and <m>p(x) = q(x)(x^2+1)</m>. In particular, <m>p(x)\in (x^2+1)</m>. Finally, we can conclude that 
+          <m>\ker\mathrm{ev}_i = (x^2+1)</m> and by the Noether Isomorphism Theorem
+          <me>
+            \R[x]/(x^2+1)\cong \C.
+          </me>
         </p>
         <p>
-          One could redefine the complex numbers as <m>\R[x]/(x^2+1)</m> and this is a purely algebraic definition of <m>\C</m> (up to using <m>\R</m>).
+          This example shows we could redefine the complex numbers as <m>\R[x]/(x^2+1)</m> and this is a purely algebraic 
+          definition of <m>\C</m> (up to using <m>\R</m>).
+        </p>
+      </statement>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          Let's now consider <m>(1+\sqrt{-2})\in\Z[\sqrt{-2}]</m>. Since <m>1+\sqrt{-2}\in(1+\sqrt{-2})</m> we have equality of cosets:
+          <me>
+            \sqrt{-2} + (1+\sqrt{-2}) = -1+(1+\sqrt{-2}).
+          </me>
+          This means that any <m>\sqrt{-2}</m> can be replaced with a <m>-1</m>. Also notice that 
+          <me>
+            (1+\sqrt{-2})^2 = -3+2\sqrt{-2}\in (1+\sqrt{-2})
+          </me>
+          and so, coupled with the previous fact, we have equality of cosets:
+          <me>
+            0+(1+\sqrt{-2}) = -3+2\sqrt{-2}+(1+\sqrt{-2}) = -5+(1+\sqrt{-2})
+          </me>
+          and so <m>5=-(-5)\in(1+\sqrt{-2})</m>.
+        </p>
+        <p>
+          This seems to indicate that the quotient ring doesn't have a <m>\sqrt{-2}</m> (as it becomes <m>-1</m>) so it's as if we just have <m>\Z</m>. 
+          Furthermore, <m>5=0</m> in this ring. One ring that should come to mind is <m>\mathbb{F}_5</m>! Let's try to prove it is isomorphic to <m>\mathbb{F}_5</m>.
+        </p>
+        <p>
+          To apply the Noether Isomorphism Theorem we first need a homomorphism. Whatever the homomorphism we define it should send <m>\sqrt{-2}</m> to <m>-1</m>. 
+          Likely it should be similar to the reduction modulo <m>5</m> mapping as well. Coupling these two requirements leads to <m>\varphi\colon\Z[\sqrt{-2}]\to\mathbb{F}_5</m> 
+          defined by 
+          <me>
+            \varphi(a+b\sqrt{-2}) = \overline{a-b}.
+          </me>
+        </p>
+        <p>
+          Let's check it is a homomorphism: <m>\varphi(1) = \bar{1}</m> and so <m>\varphi</m> preserves unity. For <m>a+b\sqrt{-2},c+d\sqrt{-2}\in\Z[\sqrt{-2}]</m> we have 
+          <md>
+            <mrow>\varphi((a+b\sqrt{-2})(c+d\sqrt{-2})) \amp= \varphi(ac-2bd+(ad+bc)\sqrt{-2}) </mrow>
+            <mrow> \amp=\overline{ac-2bd-(ad-bc)} </mrow>
+            <mrow> \amp=\overline{ac-2bd-ad+bc)} </mrow>
+            <mrow> \varphi(a+b\sqrt{-2})\varphi(c+d\sqrt{-2})\amp=\overline{a-b}\cdot\overline{c-d} </mrow>
+          </md>
         </p>
       </statement>
     </example>
@@ -732,45 +845,78 @@
         <ol>
           <li>
             <p>
+              Suppose <m>I</m> is an ideal of a ring <m>R</m>, then congruence modulo <m>I</m> is reflexive.
             </p>
           </li>
           <li>
             <p>
+              Suppose <m>I</m> is an ideal of a ring <m>R</m>, then congruence modulo <m>I</m> is symmetric.
             </p>
           </li>
           <li>
             <p>
+              If <m>I</m> is an ideal of <m>R</m>, then <m>R/I</m> is a non-zero ring.
             </p>
           </li>
           <li>
             <p>
+              Suppose <m>\varphi\colon R\to S</m> is a ring homomorphism, then <m>R\cong \mathrm{im}\varphi</m>.
             </p>
           </li>
           <li>
             <p>
+              Every ideal is a kernel of a homomorphism.
             </p>
           </li>
           <li>
             <p>
+              Every kernel of a homomorphism is an ideal.
             </p>
           </li>
           <li>
             <p>
+              An ideal <m>\mathfrak{m}</m> is maximal if <m>ab\in \mathfrak{m}</m> implies <m>a\in\mathfrak{m}</m> or <m>b\in\mathfrak{m}</m>.
             </p>
           </li>
           <li>
             <p>
+              An ideal <m>\mathfrak{p}</m> is prime if <m>ab\in \mathfrak{p}</m> implies <m>a\in\mathfrak{p}</m> or <m>b\in\mathfrak{p}</m>.
             </p>
           </li>
           <li>
             <p>
+              Suppose <m>I</m> is an ideal, then <m>r+I=s+I</m> if and only if <m>r-s\in I</m>.
             </p>
           </li>
           <li>
             <p>
+              Suppose <m>I</m> is an ideal, then <m>(r+I)\cdot (s+I) = rs+I</m>.
             </p>
           </li>
         </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Determine (with brief justification) whether <m>a + I = b + I</m> in the following rings <m>R</m>.
+        </p>
+    <ol>
+      <li><m>a = 9</m>, <m>b = 3</m>, <m>I = (6)</m>, <m>R = \Z</m></li>
+      <li><m>a = 10</m>, <m>b = 4</m>, <m>I = (7)</m>, <m>R = \Z</m></li>
+      <li><m>a = 9</m>, <m>b = 3</m>, <m>I = (6)</m>, <m>R = \Z[x]</m></li>
+      <li><m>a = x^2+x-2</m>, <m>b = x-1</m>, <m>I = (x+1)</m>, <m>R = \Q[x]</m></li>
+      <li> (<em>Challenge.</em>) <m>a = x^3</m>, <m>b = x^2+2x</m>, <m>I = (y-x^2, y-x-2)</m>, <m>R = \Q[x,y]</m></li>
+    </ol>
+  </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>p(x,y),q(x,y)\in\C[x,y]</m> are congruent modulo <m>(x,y)</m> if and only if they have the same constant term.
+        </p>
       </statement>
     </exercise>
   
@@ -785,11 +931,45 @@
   
     <exercise>
       <statement>
+        <p>
+          In this exercise you will prove that <m>\Z[i]/(2+i)\cong\mathbb{Z}/5</m>. It will proceed in a sequence of steps.
+          <ol>
+            <li>
+              <p>
+                Show that in <m>\Z[i]/(2+i)</m> we have <m>5+(2+i) = 0+(2+i)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use the multiplicativity of the norm <m>N\colon\Z[i]\to\N</m> given by <m>N(a+bi) = a^2+b^2</m> to prove that the non-zero elements in <m>(2+i)</m> have 
+                norm divisible by <m>5</m>: <m>a+bi\in (2+i)</m> implies <m>5\mid N(a+bi)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that the unique homomorphism <m>\varphi\colon \Z\to\Z[i]/(2+i)</m> defined by <m>\varphi(a) = a+(2+i)</m> is in fact a homomorphism (or use a result to see it is).
+              </p>
+            </li>
+            <li>
+              <p>
+                Show that <m>5\in \ker\varphi</m>. Use (b) to prove that <m>5</m> is the smallest positive integer <m>a\in\Z</m> such that <m>\varphi(a) = 0+(2+i)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Prove that <m>\varphi</m> is an epimorphism using coset arithmetic and then use the Noether isomorphism theorem to prove <m>\Z/5\cong \Z[i]/(2+i)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
       </statement>
     </exercise>
   
     <exercise>
       <statement>
+        <p>
+          Ponder what happens in general with a quotient <m>\Z[i]/(a+bi)</m> where <m>a^2+b^2</m> is prime.
+        </p>
       </statement>
     </exercise>
   
@@ -804,6 +984,121 @@
     <exercise>
       <statement>
         <p>
+          Suppose <m>m,n\in\N</m> with <m>m\mid n</m>. Define <m>\varphi\colon \Z/n\to\Z/m</m> given by <m>\varphi(\bar{x}) = \bar{x}</m>. 
+          That is, <m>\varphi</m> sends an equivalence class <m>\bar{x}\in \Z/n</m> represented by <m>x\in\Z</m> to the equivalence class
+          represented by <m>\bar{x}\in\Z/m</m>.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Prove <m>\varphi</m> is well-defined: If <m>x,y\in \Z</m> are such that <m>\bar{x}=\bar{y}</m> in <m>\Z/n</m>, then <m>\bar{x} = \bar{y}</m> in <m>\Z/m</m>.
+              This part uses the divsibility hypothesis.
+            </p>
+          </li>
+          <li>
+            <p>
+              Prove <m>\varphi</m> is a homomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              Determine if <m>\varphi</m> is a monomorphism, epimorphism, and/or isomorphism.
+            </p>
+          </li>
+          <li>
+            <p>
+              What is the kernel and what does the Noether Isomorphism tell us here?
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Show that if <m>m,n\in\N</m> and <m>m\nmid n</m>, then there cannot exist a homomorphism <m>\varphi\colon \Z/n\to\Z/m</m>. Hint: Look at the image of the unity.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Consider the polynomial ring in two variables <m>\Q[x,y]</m> over <m>\Q</m>. Elements here look like:
+          <me>
+            p(x,y) = a_{00} + a_{10}x+a_{01}y+a_{20}x^2+a_{11}xy+a_{02}y^2+\cdots + a_{ij}x^my^n
+          </me>
+          where the subscript on <m>a_{ij}</m> tells us which monomial it is the coefficient of. 
+        </p>
+        <p>
+          We can think of this polynomial ring as polynomial functions on 
+          <me>
+            \Q^2 = \{(r,s)\mid r,s\in\Q\}
+          </me>
+          where <m>p(x,y)\colon \Q^2\to \Q</m> is the function <m>(r,s)\mapsto p(r,s)</m>. 
+        </p>
+        <p>
+          The horizontal axis is defined by the polynomial equation <m>y=0</m>. In this way we think of the 
+          horizontal axis as being the <q>same</q> as the polynomial <m>y</m>. Prove that 
+          <me>
+            \Q[x,y]/(y)\cong \Q[x]
+          </me>
+          by defining a homomorphism <m>\varphi\colon \Q[x,y]\to \Q[x]</m> by <m>\varphi(p(x,y)) = p(x,0)</m>. Show 
+          that <m>\varphi</m>, which is just the evaluation at <m>y=0</m> function, is an epimorphism. Then show that it's kernel 
+          is precisely <m>(y)</m>. Deduce the desired isomorphism from the Noether Isomorphism Theorem.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Show that for <m>m\leq n</m> and <m>F</m> a field:
+          <me>
+            F[x_1,\ldots,x_n]/(x_1,\ldots,x_m)\cong F[x_{m+1},\ldots,x_n].
+          </me>
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Prove <m>\Z[x]/(x^2+1)\cong \Z[i]</m>. Do so by defining an epimorphism <m>\Z[x]\to\Z[i]</m>. Then show that <m>(x^2+1)\subseteq \ker</m> and that 
+          any element in <m>\Z[x]/(x^2+1)</m> can be written as a linear coset: <m>a+bx+(x^2+1)</m>. Use this to deduce <m>\ker\subseteq (x^2+1)</m>. Finally 
+          use the Noether Isomorphism Theorem to prove the desired isomorphism.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise xml:id="exer_correspondenceTheorem">
+      <title>Correspondence Theorem</title>
+      <statement>
+        <p>
+          Prove the weak Correspondence Theorem: For any ideals <m>I\subseteq R</m> and <m>\bar{J}\subseteq \bar{R}=R/I</m>, there exists a unique ideal 
+          <m>I\subseteq J\subseteq R</m> such that the image of <m>J</m> under the quotient <m>\pi\colon R\to \bar{R}</m> is <m>\bar{J}</m>. Hint: 
+          Set
+          <me>
+            J = \pi^{-1}(J) = \{r\in R\mid \pi(r)\in J\}.
+          </me>
+          Show that <m>J</m> is an ideal of <m>R</m>, that it contains <m>I</m>, that <m>\pi(J) = \bar{J}</m>. Then prove that <m>J</m> is unique.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+          Use the <xref ref="exer_correspondenceTheorem" text="title"/> to find all ideals in <m>\Z/12</m>. <xref ref="exer_subidealsZ12"/> might be helpful too.
+        </p>
+      </statement>
+    </exercise>
+  
+    <exercise>
+      <statement>
+        <p>
+
         </p>
       </statement>
     </exercise>
@@ -821,56 +1116,7 @@
         </p>
       </statement>
     </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
-    <exercise>
-      <statement>
-        <p>
-        </p>
-      </statement>
-    </exercise>
-  
+
     <exercise>
       <statement>
         <p>

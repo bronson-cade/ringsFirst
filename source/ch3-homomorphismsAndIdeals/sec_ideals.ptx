@@ -233,7 +233,8 @@
     We do this now as it is an important skill to develop.
   </p>
 
-  <example>
+  <example xml:id="ex_idealsInZ">
+    <title>Multiples of <m>m</m> in <m>\Z</m></title>
     <statement>
       <p>
         Fix any <m>m\in\Z</m>, then the set of multiples of <m>m</m> is an ideal. That is, <m>m\Z</m> is an ideal. We prove this 
@@ -256,7 +257,8 @@
     </statement>
   </example>
 
-  <example>
+  <example xml:id="ex_matrixRingsAreSimple">
+    <title>Matrix Rings are Simple</title>
     <statement>
       <p>
         Let's consider our non-commutative example: <m>M_2(\R)</m>. What are the ideals here? It turns out, that this ring is <em>simple</em> in that it 
@@ -295,26 +297,87 @@
         Each one of the terms in this sum is in <m>I</m> since <m>I</m> absorbs multiplication. Since <m>I</m> is closed under 
         addition, <m>B\in I</m>. But <m>B</m> was arbitrary so that <m>I = M_2(\R)</m>.
       </p>
+      <p>
+        In fact, more is true! For any field <m>\mathbb{F}</m> and any <m>n\in\mathbb{N}</m>, the ring <m>M_n(\mathbb{F})</m> of <m>n\times n</m> matrices over <m>\mathbb{F}</m> is a 
+        simple ring. That is, it has no non-trivial ideals. The proof is similar to the case <m>n=2</m> and <m>\mathbb{F} = \R</m>: the field was irrelevant in our work and we use the 
+        matrices <m>e_{ij}</m> and their multiplication rules to show that we get all of <m>M_n(\mathbb{R})</m>.
+      </p>
     </statement>
   </example>
 
-  <example>
+  <aside>
+    <title>Central Elements</title>
+    <p>
+      In <xref ref="ex_kernelEvaluation0"/>, to show closure under multiplication by <m>R</m>, we used that for 
+      any polynomial <m>r(x)\in R[x]</m> we have <m>r(x)\cdot x = x\cdot r(x)</m>. If <m>R</m> is not commutative, then <m>R[x]</m> 
+      is also non-commutative. However, <m>x</m> is a <em>central element</em> of <m>R[x]</m>. Namely, <m>x</m> commutes with all polynomials.
+    </p>
+  </aside>
+  <example xml:id="ex_kernelEvaluation0">
+    <title>Polynomials Without Constant Term</title>
     <statement>
       <p>
-        Let's now consider the polynomial ring over <m>\C</m>: <m>\C[x]</m>. Define the homomorphism 
-        <m>\mathrm{ev}_0\colon\C[x]\to \C</m> given by <m>\mathrm{ev}_0(p(x)) = p(0)</m>. We've already see that 
-        <m>\mathrm{ev}_0</m> is a homomorphism in <xref ref="ex_evaluationHomomorphism"/>. 
-        From <xref ref="prop_kernelIsIdeal"/>, the kernel of this mapping is an ideal.
+        Let's now consider the polynomial ring <m>R[x]</m> over a genral ring <m>R</m> in the indeterminant <m>x</m>. Let <m>I\subseteq R[x]</m> 
+        be the collection of all polynomials without constant term:
+        <me>
+          I = \{a_1x+a_2x^2+a_3x^3+\cdots + a_nx^n\mid a_1,a_2,a_3,\ldots,a_n\in R\}.
+        </me>
+        Let us check that <m>I</m> is an ideal. Before that, let us notice that if <m>p(x)\in I</m> then the lack of a constant term allows us to factor out an <m>x</m>. 
+        So there is some <m>q(x)</m> such that <m>p(x) = xq(x)</m>. Explicitly:
+        <md>
+          <mrow>p(x) \amp=a_1x+a_2x^2+a_3x^3+\cdots + a_nx^n </mrow>
+          <mrow> \amp=x(a_1+a_2x+a_3x^2+\cdots + a_nx^{n-1}) </mrow>
+          <mrow> \amp=xq(x) </mrow>
+        </md>
+        where we set <m>q(x) = a_1+a_2x+a_3x^2+\cdots + a_nx^{n-1}</m>.
       </p>
       <p>
-        Suppose <m>\mathrm{ev}_0(p(x)) = 0</m> or equivalently <m>p(0) = 0</m>. We will revisit evaluation later but for now 
-        recall that this means that <m>x</m> is a factor of <m>p(x)</m>. That is, there exists <m>p'(x)</m> such that 
-        <m>p(x) = xp'(x)</m>. 
+        The zero polynomial has zero as a constant term so <m>0\in I</m>. Suppose we add two polynomials without constant term (possibly extend by zero so degrees match):
+        <md>
+          <mrow>p(x) \amp= a_1x+\cdots + a_nx^n</mrow>
+          <mrow>q(x) \amp= b_1x+\cdots + b_nx^n</mrow>
+          <mrow>p(x)+q(x) \amp= (a_1+b_1)x+\cdots + (a_n+b_n)x^n </mrow>
+        </md>
+        and their sum also has no constant term. Alternatively, there exists polynomials <m>p'(x),q'(x)\in R[x]</m> such that <m>p(x) = xp'(x)</m> and <m>q(x) = xq'(x)</m>. Hence, 
+        <me>
+          p(x) + q(x) = xp'(x) + xq'(x) = x(p'(x)+q'(x))
+        </me>
+        also has no constant term.
       </p>
       <p>
-        On the other hand, suppose <m>f(x)\in\C[x]</m>, then <m>\mathrm{ev}_0(xf(x)) = 0f(0) = 0</m>. We can therefore describe 
-        the kernel of the multiplication map as the multiples of <m>x</m>:
-        <me>\ker\mathrm{ev}_0 = x\C[x] = \{xp(x)\mid p(x)\in \C[x]\}.</me>
+        Suppose we have a polynomial without a constant term with a general polynomial, so <m>p(x)\in I</m> and <m>r(x)\in R[x]</m>. Then there is <m>p'(x)\in R[x]</m> 
+        with <m>p(x) = xp'(x)</m>. Hence, 
+        <me>
+          r(x)p(x) = r(x)xp'(x) = x(r(x)p'(x))
+        </me>
+        and so the product lacks a constant term. We conclude that the polynomials without constant term collectively form an ideal <m>I</m> in <m>R[x]</m>.
+      </p>
+      <p>
+        We now show that, at least in the commutative case, this ideal is the kernel of a familiar homomorphism. It is true in the non-commutative case 
+        as well but some care needs to be taken as the evaluation homomorphism from <xref ref="exer_evaluationHomomorphismGeneralR"/> is ill-behaved 
+        when <m>R</m> is non-commutative. 
+      </p>
+      <p>
+        Suppose that <m>R</m> is commutative and let us consider the evaluation homomorphism 
+        <me>
+          \mathrm{ev}_{0_R}\colon R[x]\to R\text{ given by }\mathrm{ev}_0(p(x)) = p(0).
+        </me>
+        From <xref ref="prop_kernelIsIdeal"/>, the kernel of this homomorphism, <m>\ker\mathrm{ev}_0</m> is an ideal. We claim that it is precisely the ideal 
+        of polynomials without constant term.
+      </p>
+      <p>
+        Suppose <m>\mathrm{ev}_{0_R}(p(x)) = 0</m> or equivalently <m>p(0_R) = 0_R</m>. Writing <m>p(x) = a_0+a_1x+\cdots +a_nx^n</m> we have
+        <md>
+          <mrow>0_R \amp=p(0_R) </mrow>
+          <mrow> \amp= a_0 + a_1\cdot 0_R+\cdots + a_n\cdot 0_R^n </mrow>
+          <mrow> \amp= a_0 </mrow>
+        </md>
+        and so <m>a_0=0</m>. That is to say, the condition that <m>p(x)\in \ker\mathrm{ev}_{0_R}</m> is precisely the condition that <m>p(x)</m> has no 
+        constant term. Hence, <m>\ker\mathrm{ev}_{0_R} = I</m>.
+      </p>
+      <p>
+        This example shows that the ideal we defined is in fact a kernel of a homomorphism. This is a general fact that will lead us to the construction of 
+        <term>quotient rings</term>.
       </p>
     </statement>
   </example>
@@ -340,7 +403,7 @@
     <idx><h>Principal Ideal</h></idx>
     <statement>
       <p>
-        Let <m>R</m> be commutative with identity and let <m>a\in R</m>.
+        Let <m>R</m> be a commutative ring and let <m>a\in R</m>.
         The set
         <me>
           (a) = \{ra\mid r\in R\}
@@ -370,7 +433,7 @@
   <investigation>
     <statement>
       <p>
-        Let <m>R</m> be commutative with identity, and let <m>x,y,z\in R</m>.
+        Let <m>R</m> be a commutative ring, and let <m>x,y,z\in R</m>.
         Give necessary and sufficient conditions for <m>z\in (x)</m> and,
         separately,
         <m>(x) \subseteq (y)</m>.
@@ -680,6 +743,22 @@
     <statement>
       <p>
         Given <m>\bar{a}\in \Z/m</m>, when is <m>(\bar{a})</m> a proper ideal? Can you describe it's elements?
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise xml:id="exer_subidealsZ12">
+    <statement>
+      <p>
+        What are all the sub-ideals of <m>(12)\subseteq\Z</m>? That is, what are the ideals <m>I\subseteq \Z</m> such that <m>I\subseteq (12)</m>?
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        Prove that for any <m>n\gt 1</m>, there are only finitely many sub-ideals of <m>(n)\subseteq\Z</m>.
       </p>
     </statement>
   </exercise>
