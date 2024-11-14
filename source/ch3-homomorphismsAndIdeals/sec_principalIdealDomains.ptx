@@ -30,7 +30,7 @@
     <title>Principal Ideal Domains</title>
     
   <p>
-    In <m>\Z</m>, and as we will see <m>F[x]</m> where <m>F</m> is a field, ideals are particularly simple in that they 
+    TestIn <m>\Z</m>, and as we will see <m>F[x]</m> where <m>F</m> is a field, ideals are particularly simple in that they 
     are always principal. We first give domains satisfying that property a name.
   </p>
   <definition>
