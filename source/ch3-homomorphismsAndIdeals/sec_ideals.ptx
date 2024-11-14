@@ -813,8 +813,8 @@
     <statement>
       <p>
         Suppose <m>I,J\subseteq R</m> are ideals of the ring <m>R</m>. Define
-        <me>I\cdot J = \{ij\mid i\in I, j\in J\}.</me>
-        Show that <m>I\cdot J</m> is an ideal.
+        <me>I\cdot J = \left\{\sum_{k=1}^mi_k\cdot j_k\mid i_k\in I, j_k\in J\}</me>
+        to be the set of finite sums of products of elements of <m>I</m> and <m>J</m>. Show that <m>I\cdot J</m> is an ideal.
       </p>
     </statement>
   </exercise>

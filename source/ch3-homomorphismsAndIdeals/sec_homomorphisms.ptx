@@ -57,7 +57,7 @@
         If <m>\varphi</m> is injective (one-to-one), we say that <m>\varphi</m> is a <term>monomorphism</term>. If <m>\varphi</m> is surjective (onto), 
         we say that <m>\varphi</m> is an <term>epimorphism</term>. If <m>\varphi</m> is a bijection (both injective and surjective), we say that <m>\varphi</m> is an <term>isomorphism</term>
         and write <m>R\cong S</m>.
-        If <m>\varphi : R\to R</m> is an isomorphism, we say <m>\varphi</m> is an <term>automorphism</term> of <m>R</m>.
+        If <m>\varphi \colon R\to R</m> is an isomorphism, we say <m>\varphi</m> is an <term>automorphism</term> of <m>R</m>.
       </p>
     </statement>
   </definition>
