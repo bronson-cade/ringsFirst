@@ -700,6 +700,7 @@
     </exploration>
 
   </subsection>
+
   <exercises xml:id="exers_principalIdealDomains">
     <exercise>
       <statement>
@@ -1032,7 +1033,7 @@
     <exercise>
       <statement>
         <p>
-          Prove that <m>(x^4+x^3+x^2+1)</m> is a prime ideal in <m>\Q[x]</m>. Identify <m>\Q[x]/(x^2+x+1)</m> with a subfield of <m>\C</m>.
+          Prove that <m>(x^4+x^3+x^2+1)</m> is a prime ideal in <m>\Q[x]</m>. Identify <m>\Q[x]/(x^4+x^3+x^2+x+1)</m> with a subfield of <m>\C</m>.
         </p>
       </statement>
     </exercise>
@@ -1040,7 +1041,14 @@
     <exercise>
       <statement>
         <p>
-          Prove that if <m>I=(a+bi)</m> is prime, then <m>\Z[i]/I\cong \mathbb{F}_m</m> where <m>m=N(a+bi) + a^2+b^2</m>.
+          Prove that if <m>I=(a+bi)</m> is prime, then <m>\Z[i]/I\cong \mathbb{F}_m</m> where <m>m=N(a+bi) = a^2+b^2</m>.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Find all ideals <m>J\subsetneq\mathbb{Z}[x]</m> such that <m>(x)\subsetneq J\subsetneq \mathbb{Z}[x]</m>.
         </p>
       </statement>
     </exercise>
