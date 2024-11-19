@@ -362,7 +362,7 @@
       <idx>ideal (prime)</idx>
         <statement>
           <p>
-            Let <m>R</m> be commutative and <m>\mathfrak{p}\subsetneq R</m> a non-zero proper ideal.
+            Let <m>R</m> be a commutative ring and <m>\mathfrak{p}\subsetneq R</m> a proper ideal.
             We say <m>\mathfrak{p}</m> is <term>prime</term> if whenever <m>a,b\in R</m> such that <m>ab\in \mathfrak{p}</m>,
             we have <m>a\in \mathfrak{p}</m> or <m>b\in \mathfrak{p}</m>.
           </p>
@@ -478,7 +478,7 @@
     <theorem xml:id="thm_quotientByPrimeIsDomain">
         <statement>
           <p>
-            Let <m>R</m> be commutative and <m>I</m> an ideal of <m>R</m>.
+            Let <m>R</m> be a commutative ring and <m>I</m> an ideal of <m>R</m>.
             Then <m>I</m> is prime if and only if <m>R/I</m> is an integral domain.
           </p>
         </statement>
@@ -509,6 +509,41 @@
         </statement>
       </example>
 
+      <example>
+        <statement>
+          <p>
+            The ideal <m>(x)</m> is a prime ideal of <m>\Z[x]</m> because the quotient <m>\Z[x]/(x)\cong \Z</m> and <m>\Z</m> is a domain.
+          </p>
+        </statement>
+      </example>
+
+      <example>
+        <statement>
+          <p>
+            The ideal <m>(x^2)</m> is not a prime ideal of <m>\Z[x]</m>. Indeed, <m>x\cdot x\in (x^2)</m> but <m>x\notin (x^2)</m>. 
+          </p>
+          <p>
+            Alternatively, in <m>\Z[x]/(x^2)</m> we have <m>\bar{x}\neq 0</m> but <m>\bar{x}\cdot \bar{x} = \bar{x}^2=0</m>. Thus <m>\Z[x]/(x^2)</m> is not a domain and consequently <m>(x^2)</m> is not prime.
+          </p>
+        </statement>
+      </example>
+
+      <example xml:id="ex_nonprincipalPrimeIdeal">
+        <statement>
+          <p>
+            The ideal <m>(x,2)</m> is a prime ideal of <m>\Z[x]</m>. Indeed, the mapping <m>\varphi\colon \Z[x]\to \mathbb{F}_2</m> defined by 
+            <me>
+              \varphi(a_0+a_1x+\cdots+a_nx^n) = \bar{a}_0
+            </me>
+            is an epimorphism (exercise). This is nothing more than the reduce the constant term modulo 2 mapping.
+          </p>
+          <p>
+            The kernel of this mapping certainly contains <m>(x,2)</m> as polynomials in <m>(x,2)</m> are nothing more than the polynomials with even constant term, which reduces to 0 modulo 2.
+            Any element not in <m>(x,2)</m> has odd constant term. Thus it will not be in the kernel. Hence, <m>\ker(\varphi) = (x,2)</m> and by the Noether Isomorphism Theorem <m>\Z[x]/(x,2)\cong\mathbb{F}_2</m>.
+            This is a field and so a domain. Thus <m>(x,2)</m> is a prime ideal that is not principal.
+          </p>
+        </statement>
+      </example>
       
     </subsection>
   <subsection xml:id="ssec_maximalIdeals">
@@ -527,7 +562,7 @@
       <idx>maximal ideal</idx>
       <idx>ideal (maximal)</idx>
       <statement>
-        <p> Let <m>R</m> be commutative and let <m>\mathfrak{m}\subsetneq R</m> be a non-zero proper
+        <p> Let <m>R</m> be a commutative ring and let <m>\mathfrak{m}\subsetneq R</m> be a proper
           ideal. We say that <m>\mathfrak{m}</m> is a <term>maximal ideal</term> if no proper ideal
           of <m>R</m> properly contains <m>\mathfrak{m}</m>. That is, if <m>J</m> is an ideal satisfying <m>\mathfrak{m}\subseteq
           J\subseteq R</m>, either <m>J=\mathfrak{m}</m> or <m>J=R</m>. </p>
@@ -554,7 +589,7 @@
 
     <lemma>
       <statement>
-        <p> Let <m>R</m> be commutative and <m>\mathfrak{m}</m> a maximal ideal of <m>R</m>. Let <m>x\in
+        <p> Let <m>R</m> be a commutative ring and <m>\mathfrak{m}</m> a maximal ideal of <m>R</m>. Let <m>x\in
           R\setminus \mathfrak{m}</m>, and set <m>J = \{xr+y\mid r\in R, \ y\in \mathfrak{m}\}</m>. Then: <m>J</m> is an
           ideal of <m>R</m> such that <m>\mathfrak{m}\subsetneq J</m>. Thus there exist <m>r'\in R</m>, <m>y'\in \mathfrak{m}</m>
           such that <m>1 = xr'+y'</m>. </p>
@@ -582,7 +617,7 @@
 
     <theorem>
       <statement>
-        <p> Let <m>R</m> be commutative and <m>I</m> an ideal of <m>R</m>. Then <m>I</m> is maximal
+        <p> Let <m>R</m> be a commutative ring and <m>I</m> an ideal of <m>R</m>. Then <m>I</m> is maximal
           if and only if <m>R/I</m> is a field. </p>
       </statement>
       <hint>
@@ -669,6 +704,61 @@
     <exercise>
       <statement>
         <p>
+          Mark the following as true or false.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Let <m>F</m> be a field, then <m>F[x]</m> is a PID.
+            </p>
+          </li>
+          <li>
+            <p>
+              Let <m>F</m> be a field, then <m>F[x,y]</m> is a PID.
+            </p>
+          </li>
+          <li>
+            <p>
+              The ring of integers is a PID.
+            </p>
+          </li>
+          <li>
+            <p>
+              The domain <m>\Z[x]</m> is a PID.
+            </p>
+          </li>
+          <li>
+            <p>
+              Every prime ideal is maximal.
+            </p>
+          </li>
+          <li>
+            <p>
+              Every maximal ideal is prime.
+            </p>
+          </li>
+          <li>
+            <p>
+              Every prime ideal is maximal in a PID.
+            </p>
+          </li>
+          <li>
+            <p>
+              Every irreducible element in a ring is prime.
+            </p>
+          </li>
+          <li>
+            <p>
+              Every irreducible element in a PID is prime.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
           Find an integer <m>d</m> such that <m>I = (d)\subseteq \Z</m>, if
           <ol>
             <li>
@@ -699,10 +789,258 @@
         </p>
       </statement>
     </exercise>
+
     <exercise>
       <statement>
         <p>
-          Let <m>I</m> be a non-zero ideal in <m>\Z</m>. Show that <m>I=(d)</m>, where <m>d</m> is the greatest common divisor of all the elements of <m>I</m>.
+          Let <m>I</m> be an ideal in the ring <m>\mathbb{F}_2[x]</m>. Find a polynomial <m>d(x)</m> such that <m>I = (d(x))</m>, if
+          <ol>
+            <li>
+              <p>
+                <m>I = (x+1,x^2+1) = \{(x+1)p(x)+(x^2+1)q(x)\mid p(x),q(x)\in\mathbb{F}_2[x]\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>I = (x+1,x^2+x+1) = \{(x+1)p(x)+(x^2+x+1)q(x)\mid p(x),q(x)\in\mathbb{F}_2[x]\}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>I = (x^4+x,x^3+x) =  \{(x^4+x)p(x)+(x^3+x)q(x)\mid p(x),q(x)\in\mathbb{F}_2[x]\}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          You do not need to prove that each of the sets above are ideals
+          (though you should make sure you can do it).
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>I</m> be a non-zero ideal in <m>\Z</m>. Show that <m>I=(d)</m>, where <m>d</m> is the greatest common divisor of all the non-zero elements of <m>I</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>I</m> be a non-zero ideal in <m>F[x]</m> where <m>F</m> is a field. Show that <m>I=(d(x))</m>, where <m>d(x)</m> is a greatest common divisor of all the non-zero elements of <m>I</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Determine if the following ideals in the corresponding ring are prime and/or maximal or neither.
+        </p>
+        <ol>
+          <li>
+            <p>
+              <m>R=\Z,\ I = (57)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\Z,\ I = (31)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\Z[x],\ I = (x-1)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\Z[x],\ I = (x,2)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\R[x],\ I = (x^2+2)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\R[x],\ I = (x^2-5x+6)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\Z[x,y], I=(x^2,2)</m>
+            </p>
+          </li>
+          <li>
+            <p>
+              <m>R=\Z[x,y], I = (x,7)</m>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be a domain and <m>\mathfrak{p}=(p)</m> a principal ideal. Prove the converse of <xref ref="thm_primeElementGeneratesPrimeIdeal"/>. That is, prove that 
+          if <m>\mathfrak{p}</m> is a prime ideal, then <m>p</m> is a prime element.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that the homomorphism in <xref ref="ex_nonprincipalPrimeIdeal"/> is in fact a homomorphism and is onto.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Generalize <xref ref="ex_nonprincipalPrimeIdeal"/> by showing that the <m>(x,m)</m> in <m>\Z[x]</m> is prime if and only if <m>m\in\mathbb{Z}</m> is a prime number.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Consider the principal ideal <m>\mathfrak{p}=(x^2+y^2+1)</m> in <m>\R[x,y]</m>. Prove that <m>\mathfrak{p}</m> is prime but not maximal. Hint: Show that <m>\mathfrak{m}=(\mathfrak{p},x)</m> is a larger 
+          ideal that is still proper.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>\R[x,y]/(x^2+y^2+1,x)\cong \C</m> so that the ideal <m>\mathfrak{m}</m> from the previous example is a maximal ideal containing <m>\mathfrak{p}</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>\mathbb{F}_2[x]/(x^2+x+1)</m> is a field. Then write out the multiplication and addition tables.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>\mathbb{F}_3[x]/(x^2+x+1)</m> is not a field but <m>\mathbb{F}_3[x]/(x^2+1)</m> is a field. Write out the multiplication and addition tables for the latter.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>R</m> be a commutative ring. Prove that the zero ideal <m>(0)</m> is prime if and only if <m>R</m> is a domain.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise xml:id="exer_divisionAlgorithmGaussianIntegers">
+      <title>Division Algorithm for Gaussian Integers</title>
+      <statement>
+        <p>
+          Let <m>\Z[i]</m> be the Gaussian integers. Given <m>\alpha,\beta\in\Z[i]</m>, not both zero, show there exists (not necessarily unique) <m>\kappa,\rho\in\Z[i]</m> with
+          <me>
+            \alpha = \beta\kappa + \rho
+          </me>
+          where <m>N(\rho)\lt N(\beta)</m>. Here, <m>N(a+bi) = a^2+b^2</m>. Do so as follows:
+        </p>
+        <ol>
+          <li>
+            <p>
+              Divide <m>\alpha</m> by <m>\beta</m> in <m>\C</m> to get <m>\alpha/\beta = x+iy</m> where <m>x,y\in\mathbb{Q}</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Choose integers <m>m,n\in\Z</m> such that <m>|x-m|,|y-n|\leq\frac{1}{2}</m>. Then argue
+              <me>
+                N(x+iy-(m+in))\leq 1/2.
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              Show that if <m>\kappa=m+in</m> and <m>\rho=\alpha-\beta\kappa</m>, then
+              <me>
+                \alpha = \beta\kappa+\rho
+              </me>
+              and
+              <me>
+                N(\rho)\lt N(\beta).
+              </me>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>\Z[i]</m> is a PID by:
+        </p>
+        <ol>
+          <li>
+            <p>
+              Let <m>I</m> be a non-zero ideal. Show there exists an element <m>\alpha\in I</m> of minimal norm. Here, the norm is <m>N(a+bi)=a^2+b^2</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Argue that <m>(\alpha)\subseteq I</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              For the reverse containment, use the division algorithm for <m>\Z[i]</m> in the previous problem. 
+            </p>
+          </li>
+          <li>
+            <p>
+              Deduce that <m>\Z[i]</m> is a PID.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>(x^2+x+1)</m> is a prime ideal in <m>\Q[x]</m>. Identify <m>\Q[x]/(x^2+x+1)</m> with a subfield of <m>\C</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that <m>(x^4+x^3+x^2+1)</m> is a prime ideal in <m>\Q[x]</m>. Identify <m>\Q[x]/(x^2+x+1)</m> with a subfield of <m>\C</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Prove that if <m>I=(a+bi)</m> is prime, then <m>\Z[i]/I\cong \mathbb{F}_m</m> where <m>m=N(a+bi) + a^2+b^2</m>.
         </p>
       </statement>
     </exercise>
