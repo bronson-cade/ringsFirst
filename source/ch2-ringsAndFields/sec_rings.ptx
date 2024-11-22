@@ -1375,7 +1375,7 @@
         </p>
       </statement>
     </exercise>
-    <exercise>
+    <exercise xml:id="exer_upperTriangularMatrices">
       <title>Upper Triangular Matrices</title>
       <notation>
         <usage>UT_n(R)</usage>
@@ -1417,7 +1417,30 @@
       </p>
     </statement>
   </exercise>
-  
+
+  <exercise>
+    <statement>
+      <p>
+        Consider the subset <m>R\subseteq M_2(\Q)</m> defined by:
+        <me>
+          R = \left\{\begin{bmatrix} a \amp b \\ 0 \amp c\end{bmatrix}\mid a\in\Z, b,c\in\Q \right\}
+        </me>
+        Prove that <m>R</m> is a subring of <m>M_2(\Q)</m>.
+      </p>
+    </statement>
+  </exercise>
+
+  <exercise>
+    <statement>
+      <p>
+        In contrast to the previous example, show that the subset <m>S\subset M_2(\Q)</m> defined by
+        <me>
+          S = \left\{\begin{bmatrix} a \amp b \\ 0 \amp c\end{bmatrix}\mid a,c\in\Z, b\in\Q \right\}
+        </me>
+        is not a subring of <m>M_2(\Q)</m>.
+      </p>
+    </statement>
+  </exercise>
 </exercises>
 </subsection>
   <references>

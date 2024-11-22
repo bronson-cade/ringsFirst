@@ -4,7 +4,7 @@
   <!-- we first include a file which contains the docinfo element: -->
   <xi:include href="./docinfo.ptx" />
 
-  <book xml:id="my-great-book">
+  <book xml:id="RFIAA">
     <title>Rings First</title>
     <subtitle>An Introduction to Abstract Algebra</subtitle>
 
@@ -15,6 +15,7 @@
     <xi:include href="./ch1-Integers/ch1-integers.ptx" />
     <xi:include href="./ch2-ringsAndFields/ch2-ringsAndFields.ptx" />
     <xi:include href="./ch3-homomorphismsAndIdeals/ch3-homomorphismsAndIdeals.ptx" />
+    <xi:include href="./ch4-factorization/ch4-factorization.ptx"/>
 
 
     <!-- Include backmatter -->

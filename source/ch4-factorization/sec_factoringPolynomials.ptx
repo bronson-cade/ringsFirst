@@ -11,7 +11,6 @@
     </p>
     </introduction>
     <ul>
-      <li>What properties of divisibility in <m>\Z</m> extend to <m>F[x]</m>?</li>
       <li>What is an irreducible polynomial? Are there any tools we can use to determine if a given polynomial is irreducible?</li>
     </ul>
   </objectives>
@@ -19,16 +18,13 @@
 
   <p>
     One of the most beautiful consequences of an abstract study of algebra is the fact that both <m>\Z</m> and <m>F[x]</m> are Euclidean domains.
-    While they are not
-    <q>the same</q>,
+    While they are not <q>the same</q>,
     we can expect them to share many of the same properties.
-    In this section,
-    our first goal will be to extend familiar properties from <m>\Z</m> to <m>F[x]</m>.
+    In this section, our first goal will be to extend familiar properties from <m>\Z</m> to <m>F[x]</m>.
     We will also see that particular features of a polynomial (e.g., its degree, or the existence of roots) allows for additional criteria for its irreducibility to be decided.
   </p>
   <p>
-    Since both <m>\Z</m> and <m>F[x]</m> have a division algorithm,
-    it is reasonable
+    Since both <m>\Z</m> and <m>F[x]</m> have a division algorithm, it is reasonable
     to expect that, similar to the integers, we can also investigate the greatest common divisor of polynomials.
     In fact, <xref ref="invest-euclid-alg-integers" text="custom">our method</xref> for finding the greatest common divisor of two integers extends nicely to polynomials.
   </p>

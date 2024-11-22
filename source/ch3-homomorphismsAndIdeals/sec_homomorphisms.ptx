@@ -809,6 +809,22 @@
       </statement>
     </exercise>
 
+    <exercise>
+      <statement>
+        <p>
+          Revisiting upper triangular matrices from <xref ref="exer_upperTriangularMatrices"/>. Consider the projection onto the entry maps: <m>\pi_{ij}\colon UT_2(\Q)\to \Q</m>
+          defined by
+          <md>
+            <mrow> \pi_{11}\left(\begin{bmatrix} a \amp b \\ 0 \amp c\end{bmatrix}\right)\amp= a</mrow>
+            <mrow> \pi_{12}\left(\begin{bmatrix} a \amp b \\ 0 \amp c\end{bmatrix}\right)\amp= b</mrow>
+            <mrow> \pi_{22}\left(\begin{bmatrix} a \amp b \\ 0 \amp c\end{bmatrix}\right)\amp= c</mrow>
+            <mrow> \pi_{21}\left(\begin{bmatrix} a \amp b \\ 0 \amp c\end{bmatrix}\right)\amp= 0</mrow>
+          </md>
+          Prove that <m>\pi_{11}</m> and <m>\pi_{22}</m> are homomorphisms; however, <m>\pi_{12}</m> and <m>\pi_{21}</m> are not homomorphisms.
+        </p>
+      </statement>
+    </exercise>
+
     <exercise xml:id="matching-one" label="matching-dates">
       <title>Matching Problem, Dates</title>
       <idx>matching US dates</idx>
