@@ -6,9 +6,9 @@
   <introduction>
   	<p>
   		In this chapter, we come to the heart of the text: a structural investigation of unique factorization in the familiar contexts of <m>\Z</m> and <m>F[x]</m>.
-  		In <xref ref="SubSec-Factoring-Polynomials" />, we explore theorems that formalize much of our understanding of that quintessential high school algebra problem: factoring polynomials.
+  		In <xref ref="sec_factoringPolynomials" />, we explore theorems that formalize much of our understanding of that quintessential high school algebra problem: factoring polynomials.
   		As we saw in <xref ref="thm_divalg" /> and <xref ref="theorem_polydivalg" />, both <m>\Z</m> and <m>F[x]</m> have a division algorithm and, thus, are Euclidean domains.
-  		In <xref ref="SubSec-Factorization-in-Euclidean-Domains" />, we explore the implications for multiplication in Euclidean domains. That is: given that we have a well-behaved division algorithm in an integral domain, what can we say about the factorization properties of the domain?
+  		In <xref ref="sec-factorizationEuclideanDomains" />, we explore the implications for multiplication in Euclidean domains. That is: given that we have a well-behaved division algorithm in an integral domain, what can we say about the factorization properties of the domain?
   	</p>
   </introduction>
 

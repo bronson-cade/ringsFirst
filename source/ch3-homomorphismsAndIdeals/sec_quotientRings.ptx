@@ -182,12 +182,11 @@
     </theorem>
     
     <definition xml:id="def_cosetsIdeal">
+      <idx><h>coset (ideal)</h></idx>
        <notation>
-        <usage>a+I</usage>
+        <usage><m>a+I</m></usage>
         <description>Coset (ideal)</description>
       </notation>
-      <idx><h>coset (ideal)</h></idx>
-
       <statement>
         <p>
           Given an ideal <m>I\subseteq R</m> in a commutative ring <m>R</m>. A <term>coset</term> of <m>I</m> is a set of the form 
@@ -323,11 +322,11 @@
           The set of cosets of <m>I</m>, denoted <m>\bar{R} = R/I</m>,
           is a commutative ring (called the <term>quotient ring</term> of <m>R</m> by <m>I</m>) with additive identity <m>0_R+I</m> and 
           multiplicative identity <m>1_R + I</m> under the following operations:
-        </p>
         <md>
           <mrow>(a+I) + (b+I) &amp; := (a+b) + I</mrow>
           <mrow>(a+I) \cdot (b+I) &amp; := (ab) + I.</mrow>
         </md>
+      </p>
       </statement>
       <proof>
         <p>
@@ -409,11 +408,13 @@
           Answer the questions below.
           Be prepared to give an information justification of your thinking.
         </p>
+        <p>
         <ol>
           <li>Suppose <m>R= \Z</m> and <m>I = (8)</m>. Calculate <m>(3+I) + (7+I)</m> and <m>(4+I)\cdot (6+I)</m>.</li>
           <li>Let <m>R = \Z/3[x]</m> and <m>J = (x^2)</m>. List all elements of <m>R/J</m> (there should be 9 in total).</li>
           <li>Set <m>R = \R[x]</m> and <m>I = (x^2-1)</m>. Find an element <m>f + I \in R/I</m> such that <m>(f+I)(2x+2 + I) = I</m>.</li>
         </ol>
+      </p>
       </statement>
     </activity>
     
@@ -425,20 +426,22 @@
     to <em>solution sets</em> of polynomial equations.
     </p>
     
-    <exploration>
-	    	<statement>
-	    		<p>
-	    			Consider the ring <m>R=\Z/2[x]</m> and the ideals <m>I = (x^2-1)</m> and <m>J = (x^3 -x -1)</m>.
-	    		</p>
+  <exploration>
+	  <statement>
+	    <p>
+	    	Consider the ring <m>R=\Z/2[x]</m> and the ideals <m>I = (x^2-1)</m> and <m>J = (x^3 -x -1)</m>.
+	    </p>
+      <p>
 			<ol>
 				<li>List the elements of <m>R/I</m> and <m>R/J</m>.</li>
 				<li>What happens to <m>x^2</m> in <m>R</m> when you pass to the quotient ring <m>R/I</m>? How about <m>x^3</m> as you pass from <m>R</m> to <m>R/J</m>?</li>
 				<li>In view of your answer to the previous question, how does <m>x</m> behave as you <q>mod out</q> by <m>I</m> and <m>J</m>?</li>
 				<li>Build addition and multiplication tables for each of <m>R/I</m> and <m>R/J</m>.</li>
 			</ol>
+      </p>
 		</statement>
 		<solution>
-		TBD
+		<p>TBD</p>
 		</solution>
 
 	</exploration>
@@ -457,15 +460,19 @@
 				We define the <term>zero set</term> of <m>I</m>, denoted <m>Z(I)</m>, as the set of all points <m>(a,b)\in F^2</m> for which <m>f(a,b)=0</m> for all <m>f\in I</m>.
 				
 			</p>
+      <p>
 			<ol>
 				<li>Suppose <m>I = (f_1, f_2, \ldots, f_n)</m>. Prove that <m>(a,b)\in Z(I)</m> if and only if <m>f_j(a,b) = 0</m> for each <m>j\in \set{1,\ldots, n}</m>. Thus, <m>Z(I)</m> can be determined entirely by examining the generators of <m>I</m>.</li>
 				<li>Describe <m>Z(I)</m> given <m>I = (y-x^2)</m>.</li>
 				<li>(Challenge) Given <m>I = (y-x^2)</m> and <m>J = (y-x-2)</m>, describe <m>Z(I+J)</m> and <m>Z(I\cap J)</m>.</li>
 				<li>Given <m>I= (y-x^2)</m>, describe the relationship between the variables <m>x</m> and <m>y</m> in the quotient <m>R/I</m>. In what way have we restricted our polynomial <q>inputs</q> to the parabola <m>y = x^2</m>?</li>
 			</ol>
+    </p>
 		</statement>
 		<solution>
-			TBD.
+			<p>
+        TBD.
+      </p>
 		</solution>
 	</exploration>
 
@@ -635,10 +642,10 @@
       We thus obtain the following, due to Emmy Noether:
     </p>
     <theorem>
-    	<idx>First Isomorphism Theorem</idx>
-      <idx><h>Noether Isomorphism Theorem</h></idx>
       <title>Noether's Isomorphism Theorem</title>
       <creator>E. Noether</creator>
+    	<idx>First Isomorphism Theorem</idx>
+      <idx><h>Noether Isomorphism Theorem</h></idx>
       <statement>
         <p>
           Let <m>\varphi \colon R\to S</m> be a homomorphism of commutative rings.
@@ -834,13 +841,14 @@
       </statement>
     </example>
     
-    <activity>
-    		<statement>
-    			<p>
-    				Let <m>R = \Z/6</m> and define <m>\varphi\colon \Z/6 \to \Z/2</m> by <m>\varphi(\overline{x}) = \overline{x}</m>.
-    				That is, <m>\varphi</m> sends an equivalence class <m>\overline{x}\in \Z/6</m> represented by <m>x\in \Z</m> to the equivalence 
-            class represented by <m>x</m> in <m>\Z/2</m>.
-    			</p>
+  <activity>
+    <statement>
+    	<p>
+    		Let <m>R = \Z/6</m> and define <m>\varphi\colon \Z/6 \to \Z/2</m> by <m>\varphi(\overline{x}) = \overline{x}</m>.
+    		That is, <m>\varphi</m> sends an equivalence class <m>\overline{x}\in \Z/6</m> represented by <m>x\in \Z</m> to the equivalence 
+        class represented by <m>x</m> in <m>\Z/2</m>.
+    	</p>
+      <p>
 			<ol>
 				<li>Show that <m>\varphi</m> is a <xref ref="def-well-defined" text="custom">well-defined</xref> function. That is, to say if <m>a\equiv_6 b</m>, then 
         <m>\varphi(a) = \varphi(b)</m>.</li> 
@@ -849,8 +857,10 @@
 				<li>Compute <m>\ker\varphi</m> (that is, list the elements in the set). Is <m>\varphi</m> one-to-one?</li>
 				<li>Without appealing to the definition, is <m>\ker\varphi</m> prime? Maximal? Explain.</li>
 			</ol>
+      </p>
 		</statement>
 		<solution>
+      <p>
       <me>
         \begin{CD}
         S^{{\mathcal{W}}_\Lambda}\otimes T @>j>> T\\
@@ -858,13 +868,14 @@
 (S\otimes T)/I @= (Z\otimes T)/J
         \end{CD}
       </me>
+      </p>
 		</solution>
 	</activity>
     
   </subsection>
-  <exercises xml:id="exers_divisibilityIntegralDomains">
+  <exercises xml:id="exers_quotientRings">
 
-    <exercise>
+    <exercise xml:id="exer_quotientRingsTF">
       <statement>
         <p>
           Mark the following as true or false.

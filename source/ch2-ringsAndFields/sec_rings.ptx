@@ -342,12 +342,11 @@
   <p>
     While rings do not enjoy all the properties of fields,
     they are incredibly useful even in applied mathematics
-    (see, e.g., <xref ref="Curto2013" /> for one recent example).
   </p>
 
-  <definition>
-    <statement>
+  <definition xml:id="defn_commRing">
     <idx>commutative ring</idx>
+    <statement>
       <p>
         A ring <m>R</m> is said to be <term>commutative</term> if,
         for all <m>a,b\in R</m>, <m>ab = ba</m>.
@@ -436,17 +435,14 @@
 
   <historical>
   <title>Emmy Noether</title>
-  <p>
-  <figure>
   <image source="../../images/Noether.jpg" width="50%">
     <shortdescription>Portrait of Emmy Noether</shortdescription>
   </image>
-  </figure>
-
+  <p>
     In the 1920s, Emmy Noether was the first to explicitly describe the ring axioms as we know them today,
     and her definition of a (not-necessarily-commutative) ring has led to a great deal of interesting work in algebra,
     number theory, and geometry, including the
-    (see <xref ref="SubSec-Nonunique-Factorization" />
+    (see <xref ref="Sec-Nonunique-Factorization" />
     for more on the historical development of the proof of Fermat's Last Theorem).
     Most modern definitions of <em>ring</em>
     agree with our <xref ref="def_ring">Definition</xref>
@@ -1127,10 +1123,6 @@
         </ol>
       </p>
     </statement>
-    <answer>
-    
-    </answer>
-
   </activity>
 </subsection>
 
@@ -1316,10 +1308,6 @@
       </statement>
     </exercise>
     <exercise>
-      <notation>
-        <usage>M_n(R)</usage>
-        <description>Square Matrices over a Ring</description>
-      </notation>
       <statement>
         <p>
           Consider the set of <m>2\times 2</m> matrices with real entries, <m>M_2(\mathbb{R})</m>, as in <xref ref="ex_M2R"/>. 
@@ -1377,10 +1365,10 @@
     </exercise>
     <exercise xml:id="exer_upperTriangularMatrices">
       <title>Upper Triangular Matrices</title>
-      <notation>
+      <!-- <notation>
         <usage>UT_n(R)</usage>
         <description>Upper Triangular Matrices</description>
-      </notation>
+      </notation> -->
       <idx><h>Upper Triangular Matrices</h></idx>
       <statement>
         <p>
@@ -1443,9 +1431,9 @@
   </exercise>
 </exercises>
 </subsection>
-  <references>
+  <!-- <references>
       <biblio xml:id="Curto2013">
           C. Curto, V. Itskov, A. Veliz-Cuba, N. Youngs, <em>The Neural Ring: An Algebraic Tool for Analyzing the Intrinsic Structure of Neural Codes</em>, Bull. Math. Bio. 75 (2013), 1571-1611, <url href="https://doi.org/10.1007/s11538-013-9860-3">DOI 10.1007/s11538-013-9860-3</url>
       </biblio>
-  </references>
+  </references> -->
 </section>

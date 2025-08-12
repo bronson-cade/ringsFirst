@@ -555,14 +555,14 @@
 
 
     <definition>
-      <notation>
-        <usage>\mathfrak{m}</usage>
-        <description>Maximal ideal</description>
-      </notation>
-      <idx>maximal ideal</idx>
-      <idx>ideal (maximal)</idx>
+      <idx><h>ideal</h><h>maximal</h></idx>
       <statement>
-        <p> Let <m>R</m> be a commutative ring and let <m>\mathfrak{m}\subsetneq R</m> be a proper
+        <p> 
+      <notation>
+        <usage><m>\mathfrak{m}</m></usage>
+        <description>maximal ideal</description>
+      </notation>
+          Let <m>R</m> be a commutative ring and let <m>\mathfrak{m}\subsetneq R</m> be a proper
           ideal. We say that <m>\mathfrak{m}</m> is a <term>maximal ideal</term> if no proper ideal
           of <m>R</m> properly contains <m>\mathfrak{m}</m>. That is, if <m>J</m> is an ideal satisfying <m>\mathfrak{m}\subseteq
           J\subseteq R</m>, either <m>J=\mathfrak{m}</m> or <m>J=R</m>. </p>
@@ -620,10 +620,6 @@
         <p> Let <m>R</m> be a commutative ring and <m>I</m> an ideal of <m>R</m>. Then <m>I</m> is maximal
           if and only if <m>R/I</m> is a field. </p>
       </statement>
-      <hint>
-        <p> For the forward direction, apply the previous lemma to construct an inverse for <m>x+I</m>
-          given any <m>x\in R\setminus I</m>. </p>
-      </hint>
       <proof>
         <p> If <m>R/I</m> is a field, assume <m>J</m> is an ideal of <m>R</m> that properly contains <m>
           I</m>. Let <m>x\in J\setminus I</m>; then <m>x+I</m> is a nonzero element of <m>R/I</m>,
@@ -678,21 +674,21 @@
         <p> Describe the prime and maximal ideals of <m>\Z</m> and <m>\Q[x]</m>. </p>
       </statement>
 
-      <hint> For which ideals <m>I</m> is <m>\Z/I</m> a domain? A field? Similarly for <m>\Q[x]</m>.
-        Or, use <xref ref="thm-pid-primes-are-maximal" />. </hint>
+      <hint> <p>For which ideals <m>I</m> is <m>\Z/I</m> a domain? A field? Similarly for <m>\Q[x]</m>.
+        Or, use <xref ref="thm-pid-primes-are-maximal" />.</p></hint>
       <solution>
-        TBD
+        <p>TBD</p>
       </solution>
     </exploration>
 
 
     <exploration xml:id="challenge-nonmaximal-prime">
       <title>Challenge</title>
-      <p>
-        <statement> Find a commutative ring , <m>R</m>, and a nonmaximal prime ideal <m>P</m> of <m>
-          R</m>. </statement>
-
-      </p>
+        <statement> 
+          <p>Find a commutative ring , <m>R</m>, and a nonmaximal prime ideal <m>P</m> of <m>
+          R</m>.
+          </p>
+        </statement>
       <solution>
         <p> In <m>\Z[x]</m>, it is straightforward to see that <m>(x)</m> is prime (<m>\Z/(x)\cong
           \Z</m>). Moreover, <m>(x)\subsetneq (2,x)</m>, and thus is not maximal. </p>

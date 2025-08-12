@@ -34,7 +34,7 @@
             <h>natural numbers</h>
           </idx>
           <notation>
-            <usage>\N</usage>
+            <usage><m>\N</m></usage>
             <description>Natural Numbers</description>
           </notation>
 
@@ -44,7 +44,7 @@
           </me>. </p>
         <p> 
           <notation>
-            <usage>\N_0</usage>
+            <usage><m>\N_0</m></usage>
             <description>Natural Numbers including <m>0</m></description>
           </notation>
           By <m>\N_0</m> we mean the set <m>\N\cup \set{0} = \set{0, 1, 2, 3, \ldots}</m>. 
@@ -93,6 +93,7 @@
           for now you may use your intuition from previous courses in algebra. </p>
         <p> Let <m>S</m> be the set of all polynomials <m>f</m> in the variable <m>x</m> with real
           coefficients such that <m>f(2) = f(-2) = 0</m> and <m>f(0) = -4</m>. </p>
+        <p>
         <ol>
           <li>Give an example of an <m>f\in S</m> and <m>g\notin S</m>.</li>
           <li>Let <m>D = \{\deg f\mid f\in S\}</m> be the set of possible degrees of polynomials in <m>
@@ -100,8 +101,10 @@
           <li>Apply the Well-Ordering Principle to argue that <m>D</m> has a least element. To what
             does this correspond in <m>S</m>?</li>
         </ol>
+        </p>
       </statement>
       <solution>
+        <p>
         <ol>
           <li>Examples vary, but <m>f(x) = x^2-4</m> and <m>g(x) = x+1</m> suffice.</li>
           <li>Since <m>f(x) = x^2 - 4\in S</m>, we see that <m>2\in D</m>. Furthermore, the zero
@@ -111,18 +114,18 @@
             has a least element. This least element is the degree of the polynomial of least degree
             satisfying <m>f(2) = f(-2) = 0</m> and <m>f(0) = -4</m>.</li>
         </ol>
+        </p>
       </solution>
     </exploration>
 
     <p> We will use this principle throughout the text, next in <xref ref="thm_divisionAlgorithm" />. </p>
-  </subsection>
 
   <definition xml:id="def_integers">
     <idx>
       <h>integers</h>
     </idx>
     <notation>
-      <usage>\Z</usage>
+      <usage><m>\Z</m></usage>
       <description>Integers</description>
     </notation>
     <statement>
@@ -133,16 +136,20 @@
         </me>. </p>
     </statement>
   </definition>
+  </subsection>
 
   <subsection xml:id="ssec_induction">
     <title>Principle of Mathematical Induction</title>
     <theorem xml:id="thm_mathematical_induction">
       <title>Principle of Mathematical Induction</title>
-      <statement> Let <m>P(m)</m> be a statement for each <m>m\in \N</m>. Suppose that <ol>
+      <statement> 
+        <p>Let <m>P(m)</m> be a statement for each <m>m\in \N</m>. Suppose that <ol>
           <li><m>P(1)</m> is true.</li>
           <li>For all <m>k\geq 0</m>, if <m>P(k)</m> is true, then <m>P(k+1)</m> is true.</li>
         </ol>
-        Then <m>P(m)</m> is true for all <m>m\in\N_0</m>. </statement>
+        Then <m>P(m)</m> is true for all <m>m\in\N_0</m>. 
+      </p>
+      </statement>
       <proof>
         <p> Suppose <m>P(m)</m> is a statement for each <m>m\in\N</m> satisfying both properties
           above. Suppose, for a contradiction, that there exists some <m>m_0\in\N</m> such that <m>
@@ -236,7 +243,7 @@
           reverse: <me>
             S = n+(n-1)+(n-2) + \cdots + 3 + 2 + 1.
           </me> Add these together termise: <me>
-          2S = (n+1) + (n+2) + (n+1)+\cdots + (n+1)+(n+1) + (n+1).
+          2S = (n+1) + (n+1) + (n+1)+\cdots + (n+1)+(n+1) + (n+1).
           </me> There are <m>n</m>
           total terms so we arrive at <m>2S = n(n+1)</m> and so <m>S = \frac{n(n+1)}{2}</m>. Thus <me>
           1+2+3+\cdots + n = \frac{n(n+1)}{2}.
@@ -291,10 +298,11 @@
     <theorem>
       <title>Sum of Cubes Formula</title>
       <statement>
-        <p> Prove that the sum of the first <m>n</m> cubes is <m>\dfrac{n^2(n+1)^2}{4}</m>. That is, </p>
+        <p> Prove that the sum of the first <m>n</m> cubes is <m>\dfrac{n^2(n+1)^2}{4}</m>. That is,
         <me>
           1^3 + 2^3 + 3^3 + \cdots + n^3 = \dfrac{n^2(n+1)^2}{4}.
         </me>
+        </p>
       </statement>
       <proof>
         <title>Inductive Proof</title>
@@ -328,8 +336,10 @@
 
     <theorem>
       <title>(Bernoulli's Inequality)</title>
-      <statement> Given a real number <m>b > -1</m>, <m>(1+b)^n \ge 1 + bn</m> for all <m>n\in \N_0</m>
+      <statement> <p>
+        Given a real number <m>b > -1</m>, <m>(1+b)^n \ge 1 + bn</m> for all <m>n\in \N_0</m>
         .
+      </p>
 		  </statement>
       <proof>
         <p> When <m>n=0</m> the inequality becomes <m>1 \ge 1</m>, which is clearly true. </p>

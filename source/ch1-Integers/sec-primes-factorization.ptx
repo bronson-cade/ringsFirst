@@ -30,9 +30,9 @@
   <p> We begin with the proper mathematical definition of <em>prime</em>. </p>
 
   <definition xml:id="def_primeInteger">
+    <idx>prime (integers)</idx>
+    <idx>composite (integers)</idx>
     <statement>
-      <idx>prime (integers)</idx>
-      <idx>composite (integers)</idx>
       <p> Let <m>p > 1</m> be a natural number. We say <m>p</m> is <term>prime</term> if whenever <m>a,b\in
         \Z</m> such that <m>p\mid ab</m>, either <m>p\mid a</m> or <m>p\mid b</m>. </p>
       <p> A natural number <m>m > 1</m> is said to be <term>composite</term> if it is not prime. </p>
@@ -112,38 +112,40 @@
     <statement>
       <p> Suppose <m>p</m> and <m>q</m> are primes with <m>p|q</m>. Then <m>p = q</m>. </p>
     </statement>
-    <proof> Since <m>p\mid q</m>, we know <m>\gcd(p,q) = p>1</m>. By <xref ref="thm_euclidsLemma">Euclid's
-      Lemma</xref>, the only possible divisors of <m>q</m> are <m>1,q</m>. It follows that <m>p=q</m>
-      .
+    <proof> 
+      <p>
+        Since <m>p\mid q</m>, we know <m>\gcd(p,q) = p>1</m>. By <xref ref="thm_euclidsLemma">Euclid's
+        Lemma</xref>, the only possible divisors of <m>q</m> are <m>1,q</m>. It follows that <m>p=q</m>.
+      </p>
     </proof>
   </theorem>
 </subsection>
+
 <subsection xml:id="ssec_fundamentalTheoremOfArithmetic">
   <title>Fundamental Theorem of Arithmetic</title>
-  
 
   <p> Our first major theorem makes two claims: that positive integers greater than 1 <em>can</em>
     be factored into products of primes, and that this factorization can happen in only one way. As
     the semester progresses, we will see other theorems like this one, and catch glimpses of other
     ways to think about the <em>unique factorization property</em>. </p>
   <theorem xml:id="thm_fundamentalTheoremOfArithmetic">
-    <idx><h>Fundamental Theorem of Arithmetic</h></idx>
     <title>Fundamental Theorem of Arithmetic</title>
-    <p>
-      <statement>
+    <idx>Fundamental Theorem of Arithmetic</idx>
+    <statement>
+      <p>
         Every natural number greater than 1 is either a prime number or it can be expressed as a
         finite product of prime numbers where the expression is unique up to the order of the
         factors.
-      </statement>
-    </p>
+      </p>
+    </statement>
   </theorem>
 
   <p> The proof is broken into two parts: existence (<xref ref="theorem_FTAexistence" />) and
     uniqueness (<xref ref="theorem_FTAuniqueness" />). </p>
 
   <theorem xml:id="theorem_FTAexistence">
-    <title>Fundamental Theorem of Arithmetic<ndash />Existence Part<fn> This approach to the
-      Fundamental Theorem of Arithmetic is adapted from<nbsp /><xref ref="NTI" />. </fn>
+    <title>
+      Fundamental Theorem of Arithmetic<ndash />Existence Part
     </title>
     <statement>
       <p> Every natural number <m>n > 1</m> is either a prime number or it can be expressed as a
@@ -153,11 +155,11 @@
           n = p_1^{r_1} p_2^{r_2} \cdots p_m^{r_m}
         </me>. </p>
     </statement>
-    <hint>
+    <!-- <hint>
       <p>
         Induction!
       </p>
-    </hint>
+    </hint> -->
   </theorem>
   <proof>
     <p> It is enough to show that, if <m>n > 1</m>, we may write <m>n = p_1 p_2 \cdots p_k</m>,
@@ -170,6 +172,7 @@
       cannot be factored as a product of primes, <m>b</m> has a prime factorization. But then so
       does <m>k</m>, a contradiction. </p>
   </proof>
+
   <lemma>
     <statement>
       <p> Let <m>p</m> and <m>q_1, q_2,\ldots,
@@ -177,6 +180,7 @@
         \ldots q_n</m>. Then <m>p = q_i</m> for some <m>i</m>. </p>
     </statement>
   </lemma>
+
   <proof>
     <p>
       We first state a claim that will be useful.
@@ -212,12 +216,6 @@
         = t_j</m>. In other words, if we express the same natural number as a product of distinct
         primes, then the expressions are identical except for the ordering of the factors. </p>
     </statement>
-    <hint>
-      <p>
-        Argue that the two sets are equal (how do we do that?).
-        Then argue that the exponents must also be equal.
-      </p>
-    </hint>
   </theorem>
   <proof>
     <p> Without loss of generality, assume <m>p_1 \lt p_2 \lt \cdots \lt p_m</m> and <m>q_1 \lt q_2
@@ -328,7 +326,7 @@
       </statement>
     </exercise>
 
-    <exercise xml:id="sec-divisibility-gcd-bezout-coeff" label="sec-divisibility-gcd-bezout-coeff">
+    <exercise xml:id="exer-divisibility-gcd-bezout-coeff">
       <statement>
         <p> For each of the pairs of integers in <xref ref="sec-divisibility-gcd-quorem" /> find
           B&#xe9;zout coefficients. That is, find <m>x,y\in \Z</m> such that <me>ax+by = \gcd(a,b)</me>
@@ -338,20 +336,19 @@
     </exercise>
 
     <exercise>
-      <introduction>
+      <statement>
         <p> Another way of computing the gcd is to compute the prime factorizations of two numbers
           and seeing what they share. Use this method to compute <m>\gcd(120,252)</m>. </p>
-      </introduction>
+      </statement>
     </exercise>
 
     <exercise>
-      <introduction>
+      <statement>
         <p>
           Find the prime factorization of 100!.
         </p>
-      </introduction>
+      </statement>
     </exercise>
-
 
     <exercise>
       <statement>
@@ -407,7 +404,7 @@
   </exercises>
 
   <references>
-    <biblio xml:id="NTI"> D. Marshall, E. Odell, M. Starbird, <em>Number Theory Through Inquiry</em>,
+    <biblio xml:id="NTI" type="raw"> D. Marshall, E. Odell, M. Starbird, <em>Number Theory Through Inquiry</em>,
       MAA Textbooks, Mathematical Association of America, 2007 </biblio>
   </references>
 </section>

@@ -29,13 +29,14 @@
       We begin with a familiar notion.
     </p>
     <definition>
-      <statement>
-        <notation>
-          <usage>\mid</usage>
-          <description>Divides</description>
-        </notation>
       <idx>divides (integers)</idx>
       <idx>factor (integers)</idx>
+
+      <notation>
+        <usage><m>\mid</m></usage>
+        <description>Divides</description>
+      </notation>
+      <statement>
         <p>
           Let <m>a,b\in \Z</m>.
           We say that <m>a</m> <term>divides</term>
@@ -215,21 +216,6 @@
           where <m>0 \le r \lt b</m>.
         </p>
       </statement>
-      <hint>
-      	<p>
-      		There are two parts to this theorem. First, you must establish that <m>q</m> and <m>r</m> exist. This is best done via <xref ref="axiom_wellordering" />. If you're stuck on that, check the second hint.
-      	</p>
-      	<p>
-      		Once you have established that <m>q</m> and <m>r</m> exist, show that they are unique but assuming <m>a = bq+r</m> and <m>a = bq' + r'</m>, where <m>r,r'</m> both satisfy the conditions of the theorem. Argue that <m>q = q'</m> and <m>r = r'</m>.
-      	</p>
-      </hint>
-      <hint>
-      	<p>
-      		Let <m>S = \{a-bs\mid s\in \N_0, a-bs\ge 0\}</m>.
-      	</p>
-
-      </hint>
-
       <proof>
       <p>
         First, assume that <m>a \lt b</m>.
@@ -270,7 +256,7 @@
         and since <m>b > 0</m>, <m>q - q'= 0</m>, i.e., <m>q = q'</m>.
       </p>
     </proof>
-    </theorem>
+  </theorem>
     
     <aside>
     	<title>Warning!</title>
@@ -279,12 +265,10 @@
     	</p>
     </aside>
     
-    
-    
     <p>
-    		Unsurprisingly, the Division Algorithm also holds in <m>\Z</m>, though the existence of negative integers requires a careful restatement.
+    	Unsurprisingly, the Division Algorithm also holds in <m>\Z</m>, though the existence of negative integers requires a careful restatement.
     		<!-- Though we only prove the Division Algorithm for <m>a,b\in\N</m>, it is the case that it holds for any <m>a,b\in\Z</m> where <m>b\ne 0</m>, and we will assume this going forward. -->
-    	</p>
+    </p>
     	
     	<corollary>
     		<title>The Division Algorithm for <m>\Z</m></title>
@@ -296,14 +280,9 @@
           		where <m>0 \le r \lt |b|</m>.
         		</p>
         	</statement>
-        	<hint>
-        		<p>
-        			Consider cases, and apply <xref ref="thm_divisionAlgorithm" /> wherever possible.
-        		</p>
-        	</hint>
         <proof>
         		<p>
-        			TBD.
+              If <m>a\geq 0, b>0</m>, this is the Division Algorithm. Suppose???
         		</p>
         	</proof>
     </corollary>
@@ -313,17 +292,13 @@
 
 		<subsection>
 			<title>Greatest Common Divisors</title>
-			
 			<p>
 				We next turn to another familiar property of the integers: the existence of greatest common divisors.
 			</p>
-
-    
-    
     <definition xml:id="def_gcdZ">
     		<idx>greatest common divisor (<m>\Z</m>)</idx>
         <notation>
-          <usage>\gcd(a,b)</usage>
+          <usage><m>\gcd(a,b)</m></usage>
           <description>Greatest Common Divisor of <m>a,b</m></description>
         </notation>
       <statement>
@@ -350,13 +325,15 @@
           If <m>\gcd(a,b) = 1</m>,
           we say that <m>a</m> and <m>b</m> are
           <term>relatively prime</term> or <term>coprime</term>.
-          <aside>
-          	This formalizes the idea of greatest common factors that is introduced around
-          <url href="http://www.corestandards.org/Math/Content/6/NS/B/4/">sixth grade</url>.
-          </aside>
         </p>
       </statement>
     </definition>
+      <aside>
+        <p>
+          This formalizes the idea of greatest common factors that is introduced around
+          <url href="http://www.corestandards.org/Math/Content/6/NS/B/4/">sixth grade</url>.
+        </p>
+      </aside>
     <p>
       This definition may be different than the one you are used to,
       which likely stated that <m>d \ge e</m> rather than condition 2 in <xref ref="def_gcdZ" />.
@@ -398,7 +375,7 @@
 
     
     <p>
-    		How did you answer the last question in <xref ref="act-gcdcomputations" />? If you are like the authors' classes, the answers probably varied, though you have referred at some point to a "prime" (<xref ref="def-primeinteger" text="custom">whatever those are</xref>), or possibly some other ad hoc method for finding the gcd.
+    		How did you answer the last question in <xref ref="act-gcdcomputations" />? If you are like the authors' classes, the answers probably varied, though you have referred at some point to a "prime" (<xref ref="def_primeInteger" text="custom">whatever those are</xref>), or possibly some other ad hoc method for finding the gcd.
     		Most such methods rely in some form on our ability to factor integers.
     		However, the problem of factoring arbitrary integers is actually surprisingly computationally intensive. 
     		Thankfully, there is another way to compute <m>\gcd(a,b)</m>, to which we now turn.
@@ -436,7 +413,9 @@
     			</p>
     		</statement>
 		<solution>
+      <p>
 			TBD.
+      </p>
 		</solution>
 
     </investigation>
@@ -561,14 +540,6 @@
           </me>.
         </p>
       </statement>
-      <hint>
-      	<p>Apply <xref ref="axiom_wellordering" /> to a well-chosen set.</p>
-      </hint>
-      
-      <hint>
-      	<p>Apply <xref ref="axiom_wellordering" /> to <m>S = \{as+bt\mid s,t\in\Z, \ as+bt \gt 0\}</m>.</p>
-      </hint>
-
       <proof>
       
       	<p>
@@ -640,15 +611,9 @@
     </subsection>
 
     
-  <conclusion>
-    <p>
-    	In this section, we have collected some initial results about divisibility in the integers.
-    	We'll next explore the multiplicative building blocks of the integers, the primes, in preparation for a deeper exploration of factorization.
-    </p>
-  </conclusion>
-
   <exercises xml:id="sec-divisibility-gcd-exercises">
     <title>Exercises</title>
+
     <exercise xml:id="sec-divisiblity-gcd-tf" label="sec-divisibility-gcd-tf">
     <statement>
       <p>
@@ -704,19 +669,19 @@
   </exercise>
 
   <exercise>
-    <introduction>
+    <statement>
       <p>
         Use induction to prove that for any <m>n\geq 1</m> <m>3\mid 2^{2n}-1</m>.
       </p>
-    </introduction>
+    </statement>
   </exercise>
 
   <exercise>
-    <introduction>
+    <statement>
       <p>
         Use induction to prove that for any <m>m\geq 1</m> <m>8\mid 5^{2m}+7</m>.
       </p>
-    </introduction>
+    </statement>
   </exercise>
 
 

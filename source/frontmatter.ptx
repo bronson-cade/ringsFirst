@@ -6,7 +6,7 @@
 <frontmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="frontmatter">
   <titlepage>
     <author>
-      <personname>Bronson Lim</personname>
+      <personname>Bronson Morningstar</personname>
       <department>Mathematics Department</department>
       <institution>California State University San Bernardino</institution>
     </author>
@@ -22,14 +22,14 @@
 
     <copyright>
       <year>2024<ndash />2030</year>
-      <holder>Bronson Lim</holder>
+      <holder>Bronson Morningstar</holder>
       <shortlicense> This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <url href="http://creativecommons.org/licenses/by-sa/4.0/" visual="creativecommons.org/licenses/by-sa/4.0"> CreativeCommons.org</url>
       </shortlicense>
     </copyright>
     </colophon>
     <dedication>
       <p>
-      For my dogs, Dana and Milla.
+      For my wife Hazel and my dogs Dana and Milla.
       </p>
     </dedication>
     <acknowledgement>

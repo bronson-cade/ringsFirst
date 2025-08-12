@@ -26,20 +26,23 @@
 
   <subsection xml:id="ssec_equivalenceRelations">
     <title>Equivalence Relations</title>
-    <p> Recall that given sets <m>S</m> and <m>T</m>, the Cartesian product of <m>S</m> with <m>
-        T</m>, denoted <m>S\times T</m> ("<m>S</m> cross <m>T</m>"), is the set of all possible
+    <p> 
+      Recall that given sets <m>S</m> and <m>T</m>, the Cartesian product of <m>S</m> with <m>
+      T</m>, denoted <m>S\times T</m> ("<m>S</m> cross <m>T</m>"), is the set of all possible
       ordered pairs whose first element is from <m>S</m> and second element is from <m>T</m>.
-      Symbolically, </p>
-    <me>
-      S\times T = \{(s,t)\mid s\in S, \ t\in T\}.
-    </me>
+      Symbolically,
+      <me>
+        S\times T = \{(s,t)\mid s\in S, \ t\in T\}.
+      </me>
+    </p>
 
-    <definition>
+
+    <definition xml:id="defn_relation">
+      <idx>relation</idx>
       <notation>
-        <usage>\sim</usage>
+        <usage><m>\sim</m></usage>
         <description>Relation</description>
       </notation>
-      <idx>relation</idx>
       <statement>
         <p> Let <m>S</m> be a nonempty set. A <term>relation</term> <m>R</m> on <m>S</m> is a subset
           of <m>S\times
@@ -180,18 +183,21 @@
     <title>Integers Modulo <m>m</m></title>
 
     <definition xml:id="def_integersModm">
+      <idx>
+        integers modulo <m>m</m>
+      </idx>
       <notation>
-        <usage>\Z/m</usage>
+        <usage><m>\Z/m</m></usage>
         <description>Integers modulo <m>m</m></description>
       </notation>
-      <idx>
-        <m>\Z/m</m>
-      </idx>
-      <statement> The set of equivalence classes of <m>\Z</m> under the equivalence relation <em>congruence
+      <statement> 
+        <p>
+        The set of equivalence classes of <m>\Z</m> under the equivalence relation <em>congruence
         modulo <m>m</m></em> is called <term>the integers modulo <m>m</m></term>, and is denoted <m>
-        \Z/m</m> (pronounced "Z mod m"). </statement>
+        \Z/m</m> (pronounced "Z mod m"). 
+        </p>
+      </statement>
     </definition>
-
 
     <exploration>
       <statement>
@@ -263,9 +269,7 @@
           well-defined operations on the equivalence classes: <ol>
             <li>
               <p>
-                <em>Addition modulo <m>m</m></em>: <m>\overline{a} + \overline{b} := \overline{a+b}</m>
-          . <aside>The symbol <m>:=</m> is often used to indicate that we are <em>
-                    defining</em> the expression on the left to equal the expression on the right. </aside>
+                <em>Addition modulo <m>m</m></em>: <m>\overline{a} + \overline{b} := \overline{a+b}</m>. 
               </p>
             </li>
             <li>
@@ -277,6 +281,12 @@
         </p>
       </statement>
     </definition>
+    <aside>
+      <p>
+        The symbol <m>:=</m> is often used to indicate that we are <em>
+        defining</em> the expression on the left to equal the expression on the right. 
+      </p>
+    </aside>
 
     <p> Most elementary propositions about <m>\Z/m</m> can be recast as statements about <m>\Z</m>.
       For instance, in proving <xref ref="thm-additionmodulom" /> you likely proved that if <m>m|a-c</m>
@@ -289,7 +299,7 @@
     <activity>
       <statement>
         <p> Without passing back to <m>\Z</m>, find the smallest nonnegative integer representative
-          of the resulting equivalence classes. </p>
+          of the resulting equivalence classes.
         <ol>
           <li><m>\overline{5}+\overline{11}</m> in <m>\Z/9</m></li>
           <li><m>\overline{-3}+\overline{-3}</m> in <m>\Z/6</m></li>
@@ -297,11 +307,8 @@
           <li><m>\overline{-1}\cdot(\overline{3}+\overline{8})</m> in <m>\Z/{7}</m></li>
           <li><m>\overline{3}\cdot(\overline{5}^2+\overline{3}^3)</m> in <m>\Z/{20}</m></li>
         </ol>
+        </p>
       </statement>
-      <solution>
-        TBD
-      </solution>
-
     </activity>
   </subsection>
 
@@ -375,7 +382,7 @@
     </table>
 
     <table xml:id="table-z3multiplication">
-      <title> Multiplication table for <m>\Z/3</m>. </title>> <tabular>
+      <title> Multiplication table for <m>\Z/3</m>. </title> <tabular>
         <row>
           <cell right="medium">
             <m>​\cdot</m>
@@ -440,7 +447,6 @@
       <statement>
         <p>
           Calculate addition and multiplication tables for the following rings.
-        </p>
         <ol>
           <li>
             <m>\Z/5</m>
@@ -449,6 +455,7 @@
             <m>\Z/6</m>
           </li>
         </ol>
+        </p>
         <p>List 2-3 observations about your tables.</p>
       </statement>
       <solution>

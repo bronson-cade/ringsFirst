@@ -16,6 +16,7 @@
   </objectives>
 
 
+  <introduction>
   <p>
     One of the most beautiful consequences of an abstract study of algebra is the fact that both <m>\Z</m> and <m>F[x]</m> are Euclidean domains.
     While they are not <q>the same</q>,
@@ -28,79 +29,55 @@
     to expect that, similar to the integers, we can also investigate the greatest common divisor of polynomials.
     In fact, <xref ref="invest-euclid-alg-integers" text="custom">our method</xref> for finding the greatest common divisor of two integers extends nicely to polynomials.
   </p>
-  <investigation>
-    <statement>
-      <p>
-        Given <m>f(x),g(x)\in F[x]</m>,
-        state a conjecture that gives a means for finding <m>\gcd(f(x),g(x))</m>.
-        Prove your conjecture is correct.
-      </p>
-    </statement>
-    <solution>
-      <p>
-        The Euclidean algorithm!
-        Apply the division algorithm for polynomials and mimic the proof of the Euclidean algorithm in <m>\Z</m>.
-      </p>
-    </solution>
-  </investigation>
+</introduction>
 
-  <investigation>
-    <statement>
-      <p>
-        Carefully state and prove a B&#xe9;zout-like theorem
-        (recall <xref ref="theorem_bezoutint">Theorem</xref>)
-        for polynomials in <m>F[x]</m>.
-      </p>
-    </statement>
-    <solution>
-      <p>
-        Let <m>f(x),
-        g(x)\in F[x]</m> such that <m>f</m> and <m>g</m> are not both the zero polynomial.
-        Then there exist polynomials
-        <m>s(x),
-        t(x)\in F[x]</m> such that <m>f(x) s(x) + g(x) t(x) = \gcd(f(x),g(x))</m>.
-      </p>
-    </solution>
-  </investigation>
-  
+
   <p>
-      One of the most useful things we can do with polynomials is <em>evaluate</em> them by <q>plugging in</q> elements from our coefficient set (or some superset that contains it) and performing the resulting arithmetic in an appropriate ring.
-      We can make this completely rigorous using the language of functions: given a commutative ring <m>R</m> and all polynomials <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n \in R[x]</m>, we define the function <m>p_f : R\to R</m> by <m>p_f(r) = a_0 + a_1 r + \cdots + a_n r^n </m>.
-      However, we will not belabor this point; instead, we will generally write <m>p(r)</m> in place of <m>p_f(r)</m> and appeal to our common notions of evaluating polynomials.
-    </p>
-    
-    <p>
-      Given a polynomial <m>p(x)\in R[x]</m>, we have frequently been interested in finding all <m>r\in R</m> for which <m>p(r) = 0</m>.
-    </p>
+    One of the most useful things we can do with polynomials is <em>evaluate</em> them by <q>plugging in</q> elements from our coefficient set (or some superset that contains it) and performing the resulting arithmetic in an appropriate ring.
+    We can make this completely rigorous using the language of functions: given a commutative ring <m>R</m> and all polynomials <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n \in R[x]</m>, we define the function <m>p_f : R\to R</m> by <m>p_f(r) = a_0 + a_1 r + \cdots + a_n r^n </m>.
+    However, we will not belabor this point; instead, we will generally write <m>p(r)</m> in place of <m>p_f(r)</m> and appeal to our common notions of evaluating polynomials.
+  </p>
+  <p>
+    Given a polynomial <m>p(x)\in R[x]</m>, we have frequently been interested in finding all <m>r\in R</m> for which <m>p(r) = 0</m>.
+  </p>
 
 
 
-<!-- 
   <p>
     We next make the somewhat pedantic <mdash/> yet valuable <mdash/> distinction between the polynomial <m>p(x)\in R[x]</m> and the function
     <m>p_f : R\to R</m> defined by the polynomial.
   </p>
--->
-
-<!-- 
   <definition>
     <statement>
       <p>
-        Let <m>R</m> be a commutative ring with identity and <m>.
-        A <term>polynomial function</term>
-        <m>p_f : R \to R</m> is defined, for all <m>r\in R</m>,
-        by \in R</m>.
-        We usually denote <m>p_f(r)</m> by <m>p(r)</m>,
-        and say that <m>p(r)</m> is the polynomial <m>p</m> evaluated at <m>r</m>.
+        Let <m>R</m> be a commutative ring.  For any <m>p(x)\in R[x]</m>, the corresponding <term>polynomial function</term>
+        <m>p_f\colon R \to R</m> is defined, for all <m>r\in R</m> by <m>p_f(r) = p(r)</m>.
+        We usually denote <m>p_f(r)</m> by <m>p(r)</m>, and say that <m>p(r)</m> is the polynomial <m>p</m> evaluated at <m>r</m>.
       </p>
     </statement>
   </definition>
--->
+
+  <p>
+    The following example illustrates that there is not, in general, a one-to-one correspondence between polynomials and polynomial functions.
+    This means we must be very careful in identifying polynomials with a polynomial function.
+  </p>
+
+  <example>
+    <title>Polynomials vs Polynomial Functions</title>
+    <p>
+      Consider the polynomial ring <m>\mathbb{F}_2[x]</m> over <m>\mathbb{F}_2</m>. We have, in particular, the polynomials <m>x^n\in\mathbb{F}_2[x]</m> for each <m>n\in\mathbb{N}</m>.
+      So the number of polynomials over <m>\mathbb{F}_2</m> is (countably) infinite.
+    </p>
+    <p>
+      By contrast, the number of functions <m>\mathbb{F}_2\to\mathbb{F}_2</m> is far less! There are four functions: the two constant functions, the identity, and the transposition. 
+      In particular, the assignment <m>p(x)\in\mathbb{F}_2[x]</m> to <m>p_f\colon \mathbb{F}_2\to\mathbb{F}_2</m> is not injective. However, it is surjective (exercise).
+    </p>
+    <p>
+      By contrast, if we consider polynomials over <m>\R</m>. The assignment <m>p(x)\in\R[x]</m> to a polynomial function <m>p_f\colon \R\to \R</m> is injective but not surjective. There 
+      are more functions than polynomial functions. There are even more smooth functions than polynomial functions.
+    </p>
+  </example>
   
-  
-
-
-
   <definition>
   <idx>zero (of a polynomial)</idx>
   <idx>root</idx>
@@ -114,9 +91,42 @@
   </definition>
   
   <p>
-      When considering polynomials with integer coefficients, any rational roots are particularly well-behaved.
-    </p>
+    When considering polynomials with integer coefficients, any rational roots are particularly well-behaved.
+  </p>
 
+  <theorem xml:id="thm_rootsLinearFactors">
+    <title>Roots and Linear Factors</title>
+    <statement>
+      <p>
+        Let <m>R</m> be a commutative ring. For any polynomial <m>p(x)\in R[x]</m> and <m>a\in R</m>, there exists a unique polynomial <m>q(x)\in R[x]</m> with
+        <me>
+          p(x) = (x-a)q(x)+p(a).
+        </me>
+        In particular, <m>a</m> is a root of <m>p(x)</m> if and only if <m>(x-a)</m> is a factor of <m>p(x)</m>.
+      </p>
+    </statement>
+  </theorem>
+
+  <proof>
+    <p>
+      By the division algorithm, there exists unique <m>q(x),r(x)\in R[x]</m> with
+      <me>
+        p(x) = (x-a)q(x) + r(x)
+      </me>
+      where <m>\deg(r)\lt\deg(x-a)=1</m>. Thus <m>r(x) = r</m> is constant. Since evaluation is a homomorphism we can evaluate at <m>a</m>:
+      <me>
+        p(a) = (a-a)q(a)+r = r.
+      </me>
+      This completes the first part.
+    </p>
+    <p>
+      If <m>a</m> is a zero of <m>p(x)</m>, then <m>r=0</m>. If <m>(x-a)</m> is a factor of <m>p(x)</m>, then <m>p(x)=(x-a)q(x)</m> and so 
+      <me>
+        p(a) =(a-a)q(a) = 0.
+      </me>
+      So <m>a</m> is a root.
+    </p>
+  </proof>
 
   
   <theorem xml:id="thm-rational-root">

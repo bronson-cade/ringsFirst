@@ -70,7 +70,6 @@
     <statement>
       <p>
           Determine whether the following functions are homomorphisms, monomorphisms, epimorphisms, isomorphisms, automorphisms, or none of these. Note that <m>R</m> denotes an arbitrary ring and <m>F</m> a field.
-      </p>
       <ol>
           <li><m>\varphi\colon R\to R</m> defined by <m>\varphi(x)=x</m></li>
           <li><m>\psi\colon R\to R</m> defined by <m>\psi(x)=-x</m></li>
@@ -82,9 +81,11 @@
           <li><m>\epsilon_r\colon F[x] \to F</m> defined by <m>\epsilon_r(p(x)) = p(r)</m>, where if <m>p(x) = a_0 + a_1 x + \cdots + a_n x^n</m>, <m>p(r)</m> is the expression obtained by <q>plugging <m>r</m> into <m>p</m></q>: <m>p(r) = a_0 + a_1 r + \cdots + a_n r^n</m> (this is known as the <m>r</m>-evaluation map)</li>
           <li><m>\xi\colon \Z/5 \to \Z/10</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m></li>
       </ol>
+    </p>
 
     </statement>
     <solution>
+      <p>
       <ol>
         <li><m>\varphi\colon R\to R</m> defined by <m>\varphi(x)=x</m> is called the <term>identity mapping</term>. We in particular have: 
           <m>\varphi(1_R) = 1_R</m>, <m>\varphi(x+y) = x+y = \varphi(x)+\varphi(y)</m>, and <m>\varphi(xy)=xy=\varphi(x)\varphi(y).</m>
@@ -122,16 +123,15 @@
           <m>\xi\colon \Z/5 \to \Z/10</m> defined by <m>\xi(\overline{x}) = \overline{5x}</m> TBD.
         </li>
       </ol>
+    </p>
     </solution>
   </exploration>
   <historical>
     <title>Ferdinand Georg Frobenius</title>
-    <p>
-    <figure>
     <image source="../images/Frobenius.jpg" width="50%">
       <shortdescription>Portrait of Ferdinand Georg Frobenius</shortdescription>
     </image>
-    </figure>
+    <p>
     Ferdinand Georg Frobenius, a student of Weierstrass, (1849-1917) was a German mathematician known for contributions 
     to number theory, group theory, differential equations, and elliptic functions. 
     </p>
@@ -208,71 +208,7 @@
     </solution>
   </exploration>
 -->
-<exercise label="number-theory-proof" adaptive="yes">
-  <title>Parsons Problem, Mathematical Proof</title>
-  <idx>even numbers</idx>
-  <statement>
-    <p>
-      Create a proof of the theorem: All automorphisms are monomorphisms.
-    </p>
-  </statement>
-  <blocks>
-  <block order="2">
-  <p>
-    Let <m>\varphi\colon R\to R</m> be an automorphism.
-  </p>
-  </block>
-  <block order="3">
-  <choice>
-  <p>
-    Then <m>n</m> is a prime number.
-  </p>
-  </choice>
-  <choice correct="yes">
-  <p>
-    Then there exists an <m>m</m> so that <m>n = 2m</m>.
-  </p>
-  </choice>
-  <choice>
-  <p>
-    Then there exists an <m>m</m> so that <m>n = 2m + 1</m>.
-  </p>
-  </choice>
-  </block>
-  <block order="1" correct="no">
-  <p>
-    Click the heels of your ruby slippers together three times.
-  </p>
-  </block>
-  <block order="5">
-  <p>
-    So <m>n = 2m + 0</m>.
-  </p>
-  <p>
-    This is a superfluous second paragraph in this block.
-  </p>
-  </block>
-  <block order="4">
-  <p>
-    Thus <m>n\equiv 0\mod 2</m>.
-  </p>
-  </block>
-  <block order="6" correct="no">
-  <p>
-    And a little bit of irrelevant multi-line math
-    <md>
-      <mrow>c^2&amp;a^2+b^2</mrow>
-      <mrow>&amp;x^2+y^2</mrow>
-    </md>.
-  </p>
-  </block>
-  </blocks>
-  <hint>
-    <p>
-      Dorothy will not be much help with this proof.
-    </p>
-  </hint>
-</exercise>
+
 </subsection>
 <subsection xml:id="ssec_propertiesOfHomomorphisms">
   <title>Properties of Homomorphisms</title>
@@ -383,9 +319,6 @@
         For each homomorphism in <xref ref="expl-homomorphism-examples" />, find (with justification), the kernel.
       </p>
     </statement>
-    <solution>
-      TBD
-    </solution>
   </activity>
   
 <!--
@@ -538,7 +471,7 @@
 
   <p>
     <notation>
-      <usage>n\cdot 1_R</usage>
+      <usage><m>n\cdot 1_R</m></usage>
       <description>Action of Integers</description>
     </notation>
 
@@ -700,12 +633,12 @@
     </exercise>
 
     <exercise xml:id="exer_evaluationHomomorphism">
-      <notation>
+      <!-- <notation>
         <usage>\mathrm{ev}_a</usage>
         <description>Evaluation Homomorphism</description>
-      </notation>
-      <idx><h>Evaluation Homomorphism</h></idx>
+      </notation> -->
       <title>Evaluation Homomorphism</title>
+      <idx><h>Evaluation Homomorphism</h></idx>
       <statement>
         <p>
           Let <m>R</m> be a ring. Consider the polynomial ring <m>R[x]</m> over <m>R</m>. For any <m>a\in R</m>, define the evaluation function:
@@ -826,14 +759,12 @@
     </exercise>
 
     <exercise xml:id="matching-one" label="matching-dates">
-      <title>Matching Problem, Dates</title>
-      <idx>matching US dates</idx>
       <statement>
         <p>
           Match each type of (blank)-morphism with its definition
         </p>
       </statement>
-      <matches>
+      <cardsort>
       <match order="3">
       <premise>epimorphism</premise>
       <response>An onto homomorphism</response>
@@ -850,8 +781,7 @@
       <premise>automorphism</premise>
       <response>An isomorphism where codomain is domain</response>
       </match>
-      </matches>
-
+    </cardsort>
     </exercise>
       <!--
     <exercise label="number-theory-proof" adaptive="yes">

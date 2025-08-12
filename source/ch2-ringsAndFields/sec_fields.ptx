@@ -26,11 +26,11 @@
     </p>
 
     <definition xml:id="def_rationalNumbers">
+      <idx>Rational Numbers</idx>
       <notation>
-        <usage>\Q</usage>
+        <usage><m>\Q</m></usage>
         <description>Rational Numbers</description>
       </notation>
-      <idx><h>Rational Numbers</h></idx>
       <statement>
         <p> The <em>rational numbers</em>, denoted by <m>\Q</m>, is the set <me>
             \Q = \left\{\frac{a}{b}\mid a,b\in \Z, \ b\ne 0\right\}
@@ -42,6 +42,7 @@
       </statement>
     </definition>
 
+    
 
     <activity>
       <statement>
@@ -83,6 +84,26 @@
         </p>
       </proof>
     </proposition>
+  <p>
+    We could attempt define any operations we like on <m>\Q</m>. It does not mean they are 
+    <term>well-defined</term>. To be well-defined we must actually get a function out of 
+    our definition. For example, we could define the rule <m>\oplus</m> by 
+    <m>\frac{a}{b}\oplus \frac{c}{d} = \frac{1}{bd}</m>. But this would not make sense at all. Indeed,
+    we have <m>\frac{2}{4} = \frac{1}{2}</m> so it should then be true that <m>\frac{2}{4}\oplus \frac{1}{1} = \frac{1}{2}\oplus\frac{1}{1}</m> 
+    as <m>\frac{2}{4}</m> and <m>\frac{1}{2}</m> are equivalent fractions. Yet, we can compute <m>\frac{2}{4} \oplus\frac{1}{1} = \frac{1}{4\cdot 1}</m>
+    and <m>\frac{1}{2}\oplus \frac{1}{1} = \frac{1}{2\cdot 1}</m>. Since <m>\frac{1}{4}\neq \frac{1}{2}</m>, the
+    rule <m>\oplus</m> is not well-defined. This indicates some care must be taken when dealing with any operation 
+    or function defined on equivalence classes of numbers (or objects) as we have just done for addition and multiplication 
+    on <m>\Q</m>.
+    </p>
+
+    <activity>
+      <statement>
+        <p>
+          Write down two binary operations on <m>\Q</m> that are not well-defined.
+        </p>
+      </statement>
+    </activity>
 
     <p>
       <idx>real numbers</idx> We likely have an intuitive idea of what is meant by <m>\R</m>, the
@@ -96,11 +117,11 @@
     <p> Out of <m>\R</m> we may build the complex numbers. </p>
 
     <definition xml:id="def_complexNumbers">
+      <idx>Complex Numbers</idx>
       <notation>
-        <usage>\C</usage>
+        <usage><m>\C</m></usage>
         <description>Complex Numbers</description>
       </notation>
-      <idx>Complex Numbers</idx>
       <statement>
         <p> The <term>complex numbers</term> consist of all expressions of the form <m>a+bi</m>,
           where <m>a,b\in
@@ -182,9 +203,12 @@
           than those in <xref ref="invest-binop" />. </p>
       </statement>
       <answer>
-        <p> Answers vary, but one option is to define <m>\min : \Z\times \Z \to \Z</m> by </p>
-        <me>\min(a,b) := \begin{cases} a \amp \text{if } a \le b\\ b \amp \text{if } b\le
-          a\end{cases}</me>
+        <p> Answers vary, but one option is to define <m>\min : \Z\times \Z \to \Z</m> by
+        <me>
+          \min(a,b) := \begin{cases} a \amp \text{if } a \le b\\ b \amp \text{if } b\le
+          a\end{cases}
+        </me>
+        </p>
       </answer>
     </activity>
 
@@ -219,12 +243,10 @@
     </p>
     <aside>
       <title>Heinrich Martin Weber</title>
+        <image source="../../images/HeinrichMartinWeber.jpg" width="50%">
+          <shortdescription>Portrait of Heinrich Martin Weber</shortdescription>
+        </image>
       <p>
-        <figure>
-          <image source="../../images/HeinrichMartinWeber.jpg" width="50%">
-            <shortdescription>Portrait of Heinrich Martin Weber</shortdescription>
-          </image>
-        </figure>
         The first whispers of a field were known to Lagrange in 1770. However, it was not until 1893 that a formal definition 
         of an abstract field was given. This definition is due to Heinrich Martin Weber in 
         the paper <em>Die allgemeinen Grundlagen der Galois'schen Gleichungstheorie</em>. Weber was a German mathematician known for 
@@ -415,7 +437,7 @@
       At the end of the section we will introduce a way of simplyfying some of our work.
     </p>
 
-    <example>
+    <example xml:id="ex_rationalsAreField">
       <title>Rational Numbers are a Field</title>
       <statement>
         <p>
@@ -504,7 +526,7 @@
       These types of checks will continue throughout the course and so we will spend quite some time developing procedural fluency in carrying out definition checks.
     </p>
 
-    <example>
+    <example xml:id="ex_complexAreField">
       <title>Complex Numbers Form a Field</title>
       <statement>
         <p>
@@ -621,8 +643,9 @@
       proper definition.
     </p>
     <definition xml:id="def_Fp">
+      <idx>finite field of order <m>p</m></idx>
       <notation>
-        <usage>\mathbb{F}_p</usage>
+        <usage><m>\mathbb{F}_p</m></usage>
         <description>Finite Field of Order <m>p</m></description>
       </notation>
       <statement>
@@ -668,15 +691,6 @@
             <li>
               <p>
                 <m>(-1)\cdot (-1) = 1</m>
-                <hint>
-                  <p>
-                    Note that we are saying that the additive inverse of the multiplicative identity
-          times itself equals the multiplicative identity. You should use only the field axioms and
-          the properties previously established in this theorem.
-</p>
-                </hint>
-                <aside><q>Minus times Minus equals Plus:
-                    The reason for this we need not discuss.</q> -W.H. Auden</aside>
               </p>
             </li>
           </ol>
@@ -684,6 +698,7 @@
       </statement>
     </theorem>
     <proof>
+      <p>
       <ol>
         <li>
           <p> Assume <m>0, 0'</m> both satisfy the additive identity axiom. Observe that <m>0 = 0 +
@@ -723,7 +738,9 @@
         </li>
 
       </ol>
+    </p>
     </proof>
+
     <p> One consequence of <xref ref="thm_fieldproperties" /> is that, given <m>a\in F</m>, <m>b\in
       F\setminus \set{0}</m>, we may refer to <m>-a</m> as <em>the</em> additive inverse of <m>a</m>,
       and <m>b^{-1}</m> as <em>the</em> multiplicative inverse of <m>b</m>. We will thus employ this
@@ -759,7 +776,10 @@
         </p>
       </statement>
     </definition>
-    Many of the number sets with which you are familiar are fields. <theorem>
+    <p>
+    Many of the number sets with which you are familiar are fields. 
+    </p>
+    <theorem>
       <statement>
         <p> The set of complex numbers <m>\mathbb{C}</m> is an extension field of <m>\R</m>.
     Equivalently, <m>\R</m> is a subfield of <m>\mathbb{C}</m>
@@ -863,9 +883,9 @@
   </subsection>
 
 
-  <exercises xml:id="exers_primesFactorization">
+  <exercises xml:id="exers_fields">
     <title>Exercises</title>
-    <exercise xml:id="exer_primesFactorizationTF" label="exer_primesFactorizationTF">
+    <exercise xml:id="exer_fieldsTF" label="exer_fieldsTF">
       <statement>
         <p>
           Mark the following as true or false.
@@ -900,13 +920,50 @@
         <ol>
           <li>
             <p>
-              Prove <m>\Q(i)</m> is a field only using <xref ref="def_field"/>.
+              Prove <m>\Q(i)</m> is a field only using <xref ref="def_field"/>. If it helps, follow <xref ref="ex_complexAreField"/>.
             </p>
+          </li>
+          <li>
             <p>
-              Prove <m>\Q(i)</m> is a field using the <xref ref="thm_subfieldTest"/>.
+              Prove <m>\Q(i)</m> is a field using the <xref ref="thm_subfieldTest"/>. If it helps, follow <xref ref="ex_qAdjoinNegative5"/>.
             </p>
           </li>
         </ol>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          In contrast to the previous exercise, consider the set of <term>Gaussian Integers</term>
+          <me>
+            \Z[i] = \{a+bi\mid a,b\in\Z\}
+          </me>
+          Which field axioms fail for <m>\Z[i]</m> with the same rule for addition and 
+          multiplication as in the previous exercise?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Show that the set of reciprocals of <m>\Z\setminus\{0\}</m> in <m>\Q</m>:
+          <me>
+            S = \{\frac{1}{a}\mid a\in\Z\setminus\{0\}\}
+          </me>
+          is not a subfield of <m>\Q</m>. Which parts of the subfield test fail?
+        </p>
+      </statement>
+    </exercise>
+
+    <exercise>
+      <statement>
+        <p>
+          Let <m>\R_+ = \{r\in\R\mid r>0\}</m> and <m>\R^\ast = \R\setminus\{0\}</m>. Letting <m>+,\cdot</m> be
+          the usual addition and multiplication of real numbers. Prove that neither <m>\R_+</m> nor <m>\R^\ast</m> are subfields of <m>\R</m>.
+          Either say which of the field axioms fail or what parts of the subfield test fail.
+        </p>
       </statement>
     </exercise>
 
@@ -915,11 +972,12 @@
         <p>
           Consider the set 
           <me>L = \left\{\begin{bmatrix} a \amp -b \\ b \amp a \end{bmatrix}\mid a,b\in\mathbb{R}\right\}.</me> 
-          Prove that \(L\) is a field with the usual addition and multiplication of matrices. 
+          Prove that <m>L</m> is a field with the usual addition and multiplication of matrices. 
         </p>
         <ol>
           <li>
-            Prove that \(L\) is a field with the usual addition and multiplication of matrices. 
+            Prove that <m>L</m> is a field with the usual addition and multiplication of matrices. You may use that multiplication and addition
+            of <m>2\times 2</m>-matrices are closed operations and that multiplication distributes (both ways) over addition. 
           </li>
           <li>
             Is there an element <m>A\in L</m> such that <m>A^2=-I_2</m> (the <m>2\times2</m> identity matrix)? That is, 
@@ -932,8 +990,27 @@
     <exercise>
       <statement>
         <p>
-          Prove that in a field, the additive identity is unique. 
+          Prove that in a field, the additive identity is unique. Do so as follows.
         </p>
+        <ol>
+          <li>
+            <p>
+              Suppose <m>0_F,0_F'</m> are two additive identities of <m>F</m>. Write down the definition of additive 
+              identity from <xref ref="def_field"/> for each of <m>0_F</m> and <m>0_F'</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              Substitute <m>0_F</m> into the defining equation for the additive identity <m>0_F'</m> and conversely.
+            </p>
+          </li>
+          <li>
+            <p>
+              Deduce <m>0_F=0_F'</m>. This is not the only way of doing this but this method generalizes appropriately for both 
+              the next exercises and the more abstract algebraic structures we will encounter further on.
+            </p>
+          </li>
+        </ol>
       </statement>
     </exercise>
 
@@ -1010,14 +1087,17 @@
     </exercise>
 
     <exercise>
-      <notation>
-        <usage>\Q(\sqrt{d})</usage>
-        <description>Rationals Adjoin <m>\sqrt{d}</m></description>
-      </notation>
       <idx><h>Quadratic Extensions of <m>\Q</m></h></idx>
       <statement>
         <p>
-          Suppose that <m>d\in\Q</m> is such that <m>\sqrt{d}\notin \Q</m>. Define the rationals adjoin <m>\sqrt{d}</m> by 
+          Suppose that <m>d\in\Q</m> is such that <m>\sqrt{d}\notin \Q</m>. Define the 
+          <!-- <term>
+            <notation>
+            <usage><m>\Q(\sqrt{d})</m></usage>
+            <description>Rationals Adjoin <m>\sqrt{d}</m></description>
+            </notation>
+          </term> -->
+          rationals adjoin <m>\sqrt{d}</m> by 
           <me>\Q(\sqrt{d})=\{a+b\sqrt{d}\mid a,b\in\Q\}</me>
           where addition and multiplication are defined by
           <md>
